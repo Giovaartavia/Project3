@@ -14,8 +14,8 @@
 		AC0C0BEE1F9BFBD70026A225 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */; };
 		AC0C0BF91F9BFBD70026A225 /* Project_3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0BF81F9BFBD70026A225 /* Project_3Tests.swift */; };
 		AC0C0C041F9BFBD70026A225 /* Project_3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C031F9BFBD70026A225 /* Project_3UITests.swift */; };
-		AC115D211F9FAA0E007208AF /* GamePlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC115D201F9FAA0E007208AF /* GamePlayingScreen.swift */; };
-		AC115D271F9FC1E1007208AF /* GamePlayingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC115D291F9FC1E1007208AF /* GamePlayingScreen.storyboard */; };
+		AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */; };
+		AC2B42751F9FCF1D00397CD8 /* PlsWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B42741F9FCF1D00397CD8 /* PlsWork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +49,8 @@
 		AC0C0BFF1F9BFBD70026A225 /* Project 3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project 3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0C0C031F9BFBD70026A225 /* Project_3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_3UITests.swift; sourceTree = "<group>"; };
 		AC0C0C051F9BFBD70026A225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC115D201F9FAA0E007208AF /* GamePlayingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayingScreen.swift; sourceTree = "<group>"; };
-		AC115D281F9FC1E1007208AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GamePlayingScreen.storyboard; sourceTree = "<group>"; };
+		AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamePlayingScreen.storyboard; sourceTree = "<group>"; };
+		AC2B42741F9FCF1D00397CD8 /* PlsWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlsWork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,8 @@
 				AC0C0BEA1F9BFBD70026A225 /* Assets.xcassets */,
 				AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */,
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
-				AC115D201F9FAA0E007208AF /* GamePlayingScreen.swift */,
-				AC115D291F9FC1E1007208AF /* GamePlayingScreen.storyboard */,
+				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
+				AC2B42741F9FCF1D00397CD8 /* PlsWork.swift */,
 			);
 			path = "Project 3";
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0C0BEE1F9BFBD70026A225 /* LaunchScreen.storyboard in Resources */,
-				AC115D271F9FC1E1007208AF /* GamePlayingScreen.storyboard in Resources */,
+				AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */,
 				AC0C0BEB1F9BFBD70026A225 /* Assets.xcassets in Resources */,
 				AC0C0BE91F9BFBD70026A225 /* Main.storyboard in Resources */,
 			);
@@ -266,9 +266,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC2B42751F9FCF1D00397CD8 /* PlsWork.swift in Sources */,
 				AC0C0BE61F9BFBD70026A225 /* ViewController.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
-				AC115D211F9FAA0E007208AF /* GamePlayingScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,14 +318,6 @@
 				AC0C0BED1F9BFBD70026A225 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		AC115D291F9FC1E1007208AF /* GamePlayingScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC115D281F9FC1E1007208AF /* Base */,
-			);
-			name = GamePlayingScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

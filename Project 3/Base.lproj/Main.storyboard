@@ -10,14 +10,12 @@
     </dependencies>
     <scenes>
         <!--GamePlayingScreen-->
-        <scene sceneID="xLt-3X-1gQ">
+        <scene sceneID="e6C-uA-bMv">
             <objects>
-                <viewControllerPlaceholder storyboardName="GamePlayingScreen" id="krm-hb-YKX" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="hpc-Tp-CoO"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="POa-bH-af6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="GamePlayingScreen" id="TD2-Yn-bIE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZlV-g3-WbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="-56"/>
+            <point key="canvasLocation" x="-242" y="-120"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -42,7 +40,7 @@
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9oh-TL-KwB"/>
-                                    <segue destination="krm-hb-YKX" kind="show" id="aG5-Vq-87e"/>
+                                    <segue destination="TD2-Yn-bIE" kind="show" id="jCa-zt-JnO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVj-15-Xyx">

@@ -12,8 +12,8 @@ class ViewController: UIViewController {
 
     @IBAction func start(_ sender: Any) {
         //Hide buttons
-        //self.optionsButton.isHidden = true
-        //self.startButton.isHidden = true
+        self.optionsButton.isHidden = true
+        self.startButton.isHidden = true
         
         //Center electric card and show it
         //self.electric.center.x = 500.0 //Not working?
