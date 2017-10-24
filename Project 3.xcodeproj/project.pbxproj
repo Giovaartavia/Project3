@@ -15,7 +15,7 @@
 		AC0C0BF91F9BFBD70026A225 /* Project_3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0BF81F9BFBD70026A225 /* Project_3Tests.swift */; };
 		AC0C0C041F9BFBD70026A225 /* Project_3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C031F9BFBD70026A225 /* Project_3UITests.swift */; };
 		AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */; };
-		AC2B42751F9FCF1D00397CD8 /* PlsWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B42741F9FCF1D00397CD8 /* PlsWork.swift */; };
+		AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		AC0C0C031F9BFBD70026A225 /* Project_3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_3UITests.swift; sourceTree = "<group>"; };
 		AC0C0C051F9BFBD70026A225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamePlayingScreen.storyboard; sourceTree = "<group>"; };
-		AC2B42741F9FCF1D00397CD8 /* PlsWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlsWork.swift; sourceTree = "<group>"; };
+		AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 				AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */,
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
 				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
-				AC2B42741F9FCF1D00397CD8 /* PlsWork.swift */,
+				AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */,
 			);
 			path = "Project 3";
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC2B42751F9FCF1D00397CD8 /* PlsWork.swift in Sources */,
+				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
 				AC0C0BE61F9BFBD70026A225 /* ViewController.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
 			);

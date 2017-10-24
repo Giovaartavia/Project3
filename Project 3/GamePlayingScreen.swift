@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Testooo: UIViewController {
+class ViewPlayGame: UIViewController {
     @IBOutlet weak var metal: UIImageView!
     @IBAction func buttonIsPressed(_ sender: Any)
     {
