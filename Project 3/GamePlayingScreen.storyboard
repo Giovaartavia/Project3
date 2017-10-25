@@ -17,24 +17,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Metal" translatesAutoresizingMaskIntoConstraints="NO" id="zCj-Ca-vOr">
-                                <rect key="frame" x="67" y="20" width="240" height="301"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3Z-2I-Ytw">
-                                <rect key="frame" x="60" y="465" width="46" height="30"/>
+                                <rect key="frame" x="27" y="599" width="96" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Play Card"/>
                                 <connections>
-                                    <action selector="buttonIsPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="5o5-C8-E5I"/>
+                                    <action selector="playCardPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="9C4-Zc-W8e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ts4-ts-W9e">
+                                <rect key="frame" x="62" y="425" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shuffle"/>
+                                <connections>
+                                    <action selector="shufflePress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="lTa-gK-Fnc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mX5-jt-K2z">
+                                <rect key="frame" x="295" y="601" width="71" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="End Turn"/>
+                                <connections>
+                                    <action selector="endTurnPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="IWg-8J-sh7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hz8-OZ-l0c">
+                                <rect key="frame" x="149" y="601" width="118" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Place Bottom"/>
+                                <connections>
+                                    <action selector="placeBottomPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="7Ys-rY-BQ1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njH-sD-Ezc">
+                                <rect key="frame" x="16" y="13" width="96" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Surrender"/>
+                                <connections>
+                                    <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="npl-af-Tb4"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Metal" translatesAutoresizingMaskIntoConstraints="NO" id="zCj-Ca-vOr">
+                                <rect key="frame" x="67" y="72" width="240" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
                     </view>
                     <connections>
+                        <outlet property="endTurnButton" destination="mX5-jt-K2z" id="LbL-2Q-ERj"/>
+                        <outlet property="endTurnPress" destination="mX5-jt-K2z" id="gb3-Qh-u9a"/>
                         <outlet property="metal" destination="zCj-Ca-vOr" id="GCn-cC-XUj"/>
+                        <outlet property="placeBottomButton" destination="Hz8-OZ-l0c" id="hpp-T2-IIO"/>
+                        <outlet property="playCard" destination="w3Z-2I-Ytw" id="FBY-oq-a6h"/>
+                        <outlet property="playCardButton" destination="w3Z-2I-Ytw" id="aJQ-J9-Q9M"/>
+                        <outlet property="shuffleButton" destination="ts4-ts-W9e" id="4gT-Jp-EeT"/>
+                        <outlet property="surrenderButton" destination="njH-sD-Ezc" id="u7I-aW-TAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRv-rd-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
