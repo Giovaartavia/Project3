@@ -80,13 +80,6 @@
             </objects>
             <point key="canvasLocation" x="120.8" y="189.3553223388306"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="ljj-uJ-Sun">
-            <objects>
-                <viewControllerPlaceholder id="cUO-NZ-fBO" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xMj-cv-KP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="Metal" width="214" height="300"/>

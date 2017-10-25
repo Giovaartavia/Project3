@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class ViewPlayGame: UIViewController {
-    @IBOutlet weak var metal: UIImageView!
-    /*
+    //@IBOutlet weak var metal: UIImageView!
+    
     class Mage
     {
         let mageDeck = ["electric", "fire"]
@@ -77,6 +77,6 @@ class ViewPlayGame: UIViewController {
     }
     
     
- */
+ 
 }
 

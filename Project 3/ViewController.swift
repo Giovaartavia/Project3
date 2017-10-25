@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //self.electric.isHidden = true //Hides the electric pokemon card at startup
-        self.startButton.isHidden = false
+        //self.startButton.isHidden = false
         self.optionsButton.isHidden = false
     }
 
