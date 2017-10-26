@@ -76,14 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRv-rd-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120.8" y="189.3553223388306"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="ljj-uJ-Sun">
-            <objects>
-                <viewControllerPlaceholder id="cUO-NZ-fBO" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xMj-cv-KP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="-71" y="185"/>
         </scene>
     </scenes>
     <resources>

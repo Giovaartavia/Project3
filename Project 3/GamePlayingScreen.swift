@@ -44,7 +44,7 @@ class ViewPlayGame: UIViewController {
         let mageDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"]
         var currDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"].shuffled()
         var currStamina = 2
-        var totalStamina: Int?
+        var totalStamina = 2
         var health = 20
         var attack = 0
         var buffArr: [String]?
@@ -60,7 +60,7 @@ class ViewPlayGame: UIViewController {
         let warriorDeck = ["wFighting", "wFighting","wSteel","wSteel","wSteel","wPsychic", "wPsychic", "wGrass", "wGrass", "wDark", "wFairy", "wFairy", "wLightning", "wPlasma", "wPlasma", "wWater", "wWater", "wFire", "wFire", "wFire"]
         var currDeck = ["wFighting", "wFighting","wSteel","wSteel","wSteel","wPsychic", "wPsychic", "wGrass", "wGrass", "wDark", "wFairy", "wFairy", "wLightning", "wPlasma", "wPlasma", "wWater", "wWater", "wFire", "wFire", "wFire"].shuffled()
         var currStamina = 2
-        var totalStamina: Int?
+        var totalStamina = 2
         var health = 20
         var attack = 0
         var buffArr: [String]?
@@ -119,6 +119,9 @@ class ViewPlayGame: UIViewController {
             
             var currCard = player1.currDeck[0]
             var selfDamage = false
+            
+            //Test print
+            print(player1.currStamina)
             
             //FIX THIS remove print statements
             switch currCard
@@ -195,7 +198,9 @@ class ViewPlayGame: UIViewController {
 
             default: //Necessary
                 print("Error in card selection switch case")
-                
+             
+            //FOR TESTING
+            addToBack(arr: &player1.currDeck)
             }
             
         }
@@ -207,7 +212,6 @@ class ViewPlayGame: UIViewController {
         //check to see if player has lost
         //check if self damage occured and check attacking player health first
         
-        
     }
     @IBAction func placeBottomPress(_ sender: Any) {
         
@@ -215,7 +219,7 @@ class ViewPlayGame: UIViewController {
         {
             if (player1.currStamina >= 1)
             {
-                //check if mage debuff is active
+                //TODO: check if mage debuff is active
                 player2.currStamina -= 1
                 print(player1.currDeck)
                 addToBack(arr: &player1.currDeck)
@@ -226,11 +230,11 @@ class ViewPlayGame: UIViewController {
                 print("NOT ENOUGH STAMINA HONEY!")
             }
         }
-        else
+        else if (turn == 2)
         {
             if (player2.currStamina >= 1)
             {
-                //check if mage debuff is active
+                //TODO: check if mage debuff is active
                 player2.currStamina -= 1
                 print(player2.currDeck)
                 addToBack(arr: &player2.currDeck)
@@ -241,22 +245,76 @@ class ViewPlayGame: UIViewController {
                 print("NOT ENOUGH STAMINA HONEY!")
             }
         }
+        else
+        {
+            print("Error inside placeButtomPress")
+        }
     }
+    
+    //Changes whose turn it is. 1 is player 1. 2 is player 2.
+    //Also replenishes stamina, updates total stamina, and checks for buffs/debuffs
     @IBAction func endTurnPress(_ sender: Any) {
         if(turn == 1)
         {
             turn = 2
+            if(player1.totalStamina != 10)
+            {
+                player1.totalStamina += 2
+            }
+            player1.currStamina = player1.totalStamina
+            
+            print ("player 1")
+            print (player1.currStamina)
+            print (player1.totalStamina)
         }
         else if(turn == 2)
         {
             turn = 1
+            if(player2.totalStamina != 10)
+            {
+                player2.totalStamina += 2
+            }
+            player2.currStamina = player2.totalStamina
+            print ("player 2")
+            print (player2.currStamina)
+            print (player2.totalStamina)
         }
         else
         {
         print("Error inside endTurnPress!")
         }
     }
+    
+    //Shuffles current player's deck if they have shuffles left
     @IBAction func shufflePress(_ sender: Any) {
+        if (turn == 1)
+        {
+            if (player1.shuffleCount > 0)
+            {
+                player1.shuffleCount -= 1
+                player1.currDeck.shuffle()
+            }
+            else
+            {
+                print("No more shuffles!")
+            }
+        }
+        else if (turn == 2)
+        {
+            if (player2.shuffleCount > 0)
+            {
+                player2.shuffleCount -= 1
+                player2.currDeck.shuffle()
+            }
+            else
+            {
+                print("No more shuffles!")
+            }
+        }
+        else
+        {
+            print ("Error inside shufflePress!")
+        }
     }
     @IBAction func surrenderPress(_ sender: Any) {
     }
