@@ -243,6 +243,18 @@ class ViewPlayGame: UIViewController {
         }
     }
     @IBAction func endTurnPress(_ sender: Any) {
+        if(turn == 1)
+        {
+            turn = 2
+        }
+        else if(turn == 2)
+        {
+            turn = 1
+        }
+        else
+        {
+        print("Error inside endTurnPress!")
+        }
     }
     @IBAction func shufflePress(_ sender: Any) {
     }

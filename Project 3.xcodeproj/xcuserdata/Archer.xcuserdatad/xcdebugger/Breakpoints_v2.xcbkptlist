@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project 3/GamePlayingScreen.swift"
+            timestampString = "530684316.440584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "ViewPlayGame"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project_3.ViewPlayGame.Warrior.health.getter : Swift.Int"
+                  moduleName = "Project 3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Archer/Desktop/Project3-master/Project3/Project%203/GamePlayingScreen.swift"
+                  timestampString = "530684319.62003"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project_3.ViewPlayGame.Warrior.health.setter : Swift.Int"
+                  moduleName = "Project 3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Archer/Desktop/Project3-master/Project3/Project%203/GamePlayingScreen.swift"
+                  timestampString = "530684319.64888"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project_3.ViewPlayGame.Warrior.init() -&gt; Project_3.ViewPlayGame.Warrior"
+                  moduleName = "Project 3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Archer/Desktop/Project3-master/Project3/Project%203/GamePlayingScreen.swift"
+                  timestampString = "530684319.65511"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1657">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
