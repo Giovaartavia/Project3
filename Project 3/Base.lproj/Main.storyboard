@@ -10,17 +10,16 @@
     </dependencies>
     <scenes>
         <!--GamePlayingScreen-->
-        <scene sceneID="QEM-wr-g77">
+        <scene sceneID="e6C-uA-bMv">
             <objects>
-                <viewControllerPlaceholder storyboardName="GamePlayingScreen" id="d37-e8-9nS" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mTC-Ze-EQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="GamePlayingScreen" id="TD2-Yn-bIE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZlV-g3-WbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-283" y="-85"/>
+            <point key="canvasLocation" x="-242" y="-120"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -40,7 +39,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <segue destination="d37-e8-9nS" kind="show" id="ehm-Dy-CsO"/>
+                                    <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9oh-TL-KwB"/>
+                                    <segue destination="TD2-Yn-bIE" kind="show" id="jCa-zt-JnO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVj-15-Xyx">
@@ -61,8 +61,10 @@
                     </view>
                     <connections>
                         <outlet property="optionsButton" destination="qVj-15-Xyx" id="jx4-uX-NLC"/>
+                        <outlet property="startButton" destination="E32-qD-oh0" id="Gof-Qc-RQA"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="96.799999999999997" y="33.733133433283363"/>
         </scene>
