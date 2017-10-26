@@ -9,13 +9,40 @@
 import Foundation
 import UIKit
 
+// Beginning of code from https://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
+extension MutableCollection {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            let i = index(firstUnshuffled, offsetBy: d)
+            swapAt(firstUnshuffled, i)
+        }
+    }
+}
+
+extension Sequence {
+    /// Returns an array with the contents of this sequence, shuffled.
+    func shuffled() -> [Element] {
+        var result = Array(self)
+        result.shuffle()
+        return result
+    }
+}
+
+//end of adapted code
+
 class ViewPlayGame: UIViewController {
+    
     @IBOutlet weak var metal: UIImageView!
     class Mage
     {
         //fighting and psychic are different for class
         let mageDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"]
-        var currDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"] // FIX THIS should be deck to be created from mage deck array
+        var currDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"].shuffled()
         var currStamina = 2
         var totalStamina: Int?
         var health = 20
@@ -24,16 +51,13 @@ class ViewPlayGame: UIViewController {
         var debuff: String?
         var shuffleCount = 2
         
-        func getMageDeck() -> [String]{
-            return mageDeck
-        }
     }
     
     class Warrior
     {
         //fighting and psychic are different for class
         let warriorDeck = ["wFighting", "wFighting","wSteel","wSteel","wSteel","wPsychic", "wPsychic", "wGrass", "wGrass", "wDark", "wFairy", "wFairy", "wLightning", "wPlasma", "wPlasma", "wWater", "wWater", "wFire", "wFire", "wFire"]
-        var currDeck: [String]?
+        var currDeck = ["wFighting", "wFighting","wSteel","wSteel","wSteel","wPsychic", "wPsychic", "wGrass", "wGrass", "wDark", "wFairy", "wFairy", "wLightning", "wPlasma", "wPlasma", "wWater", "wWater", "wFire", "wFire", "wFire"].shuffled()
         var currStamina = 2
         var totalStamina: Int?
         var health = 20
@@ -41,6 +65,8 @@ class ViewPlayGame: UIViewController {
         var buffArr: [String]?
         var debuff: String?
         var shuffleCount = 2
+        
+        
     }
     
     let player1 = Mage()
@@ -49,11 +75,7 @@ class ViewPlayGame: UIViewController {
     //turn for testing always starts on player 1
     var turn = 1;
     
-    func deckShuffle(deck: [String]) -> [String]
-    {
-        //shuffle deck
-        return deck
-    }
+
     
     //var test = deckShuffle(deck: player1.getMageDeck())
 
