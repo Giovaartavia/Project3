@@ -69,6 +69,13 @@ class ViewPlayGame: UIViewController {
         
     }
     
+    //Adds first element from array to back of array
+    func addToBack(arr: inout [String]){
+        let tempFirstElement = arr[0]
+        arr.remove(at: 0)
+        arr.append(tempFirstElement)
+    }
+    
     let player1 = Mage()
     let player2 = Warrior()
 
@@ -77,7 +84,6 @@ class ViewPlayGame: UIViewController {
     
 
     
-    //var test = deckShuffle(deck: player1.getMageDeck())
 
     @IBOutlet weak var playCardButton: UIButton!
     @IBOutlet weak var placeBottomButton: UIButton!
@@ -169,6 +175,37 @@ class ViewPlayGame: UIViewController {
         
     }
     @IBAction func placeBottomPress(_ sender: Any) {
+        
+        if (turn == 1)
+        {
+            if (player1.currStamina >= 1)
+            {
+                //check if mage debuff is active
+                player2.currStamina -= 1
+                print(player1.currDeck)
+                addToBack(arr: &player1.currDeck)
+                print(player1.currDeck)
+            }
+            else
+            {
+                print("NOT ENOUGH STAMINA HONEY!")
+            }
+        }
+        else
+        {
+            if (player2.currStamina >= 1)
+            {
+                //check if mage debuff is active
+                player2.currStamina -= 1
+                print(player2.currDeck)
+                addToBack(arr: &player2.currDeck)
+                print(player2.currDeck)
+            }
+            else
+            {
+                print("NOT ENOUGH STAMINA HONEY!")
+            }
+        }
     }
     @IBAction func endTurnPress(_ sender: Any) {
     }
