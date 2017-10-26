@@ -49,6 +49,7 @@ class ViewPlayGame: UIViewController {
         var attack = 0
         var buffArr: [String]?
         var debuff: String?
+        var debuffTime = 0
         var shuffleCount = 2
         
     }
@@ -64,6 +65,7 @@ class ViewPlayGame: UIViewController {
         var attack = 0
         var buffArr: [String]?
         var debuff: String?
+        var debuffTime = 0
         var shuffleCount = 2
         
         
@@ -110,12 +112,14 @@ class ViewPlayGame: UIViewController {
             //check card played and update
             
             var currCard = player1.currDeck[0]
+            var selfDamage = false
             
             //FIX THIS remove print statements
             switch currCard
             {
             
-            //buffs
+            //buffs (INFINITE)
+                
             case "mSteel", "wSteel":
                 print("Steel")
             case "mDark", "wDark":
@@ -123,32 +127,61 @@ class ViewPlayGame: UIViewController {
             case "mPlasma", "wPlasma":
                 print("Plasma")
             
-            //debuff
-                
-            case "mGrass", "wGrass":
+            //debuff (LASTS 2 TURNS)
+            
+            //subtract 2 ATK from opponent for 1st attack each turn
+            case "mGrass":
+                player1.debuff = "mGrass"
+                player1.debuffTime = 0
                 print("Grass")
-            case "mWater", "wWater":
+            case "wGrass":
+                player1.debuff = "wGrass"
+                player1.debuffTime = 0
+                print("Grass")
+            
+            //Stops Opponent from healing
+            case "mWater":
+                player1.debuff = "mWater"
+                player1.debuffTime = 0
                 print("Water")
+            case "wWater":
+                player1.debuff = "wWater"
+                player1.debuffTime = 0
+                print("Water")
+                
+            //1 damage to opponent
+            //mage: Opponent cannot use move card option
+            //warrior: Opponent takes 2 damage per turn
             case "mPsychic":
+                player1.debuff = "mPsychic"
+                player1.debuffTime = 0
                 print("mPsychic")
             case "wPsychic":
+                player1.debuff = "wPsychic"
+                player1.debuffTime = 0
                 print("wPsychic")
                 
-                
+            // single turn
             case "mFairy", "wFairy":
+                //call on function from button to move to bottom
                 print("Fairy")
             case "mLightning", "wLightning":
+                player1.health -= player1.attack
+                player2.health -= ((player1.attack * 2) + 2)
+                selfDamage = true
                 print("Lightning")
             case "mFire", "wFire":
+                player2.health -= (player1.attack + 2)
                 print("Fire")
-                
             case "mFighting":
                 player1.health += 3
                 player2.health -= 1
+                /*
                 print("mFighting")
                 print(player1.health)
                 print(player2.health)
                 print(player1.currStamina)
+                 */
             case "wFighting":
                 player1.currStamina += 2
                 player2.health -= 1
@@ -165,6 +198,8 @@ class ViewPlayGame: UIViewController {
             print("NOT ENOUGH STAMINA HONEY!")
         }
         
+        //check to see if player has lost
+        //check if self damage occured and check attacking player health first
         
         
     }
