@@ -38,7 +38,7 @@ extension Sequence {
 class ViewPlayGame: UIViewController {
     
     @IBOutlet weak var metal: UIImageView!
-    class Mage
+    class Player
     {
         //fighting and psychic are different for class
         let mageDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"]
@@ -54,22 +54,7 @@ class ViewPlayGame: UIViewController {
         
     }
     
-    class Warrior
-    {
-        //fighting and psychic are different for class
-        let warriorDeck = ["wFighting", "wFighting","wSteel","wSteel","wSteel","wPsychic", "wPsychic", "wGrass", "wGrass", "wDark", "wFairy", "wFairy", "wLightning", "wPlasma", "wPlasma", "wWater", "wWater", "wFire", "wFire", "wFire"]
-        var currDeck = ["wFighting", "wFighting","wSteel","wSteel","wSteel","wPsychic", "wPsychic", "wGrass", "wGrass", "wDark", "wFairy", "wFairy", "wLightning", "wPlasma", "wPlasma", "wWater", "wWater", "wFire", "wFire", "wFire"].shuffled()
-        var currStamina = 2
-        var totalStamina = 2
-        var health = 20
-        var attack = 0
-        var buffArr: [String]?
-        var debuff: String?
-        var debuffTime = 0
-        var shuffleCount = 2
-        
-        
-    }
+    //START OF FUNCTIONS
     
     //Adds first element from array to back of array
     func addToBack(arr: inout [String]){
@@ -78,14 +63,158 @@ class ViewPlayGame: UIViewController {
         arr.append(tempFirstElement)
     }
     
-    let player1 = Mage()
-    let player2 = Warrior()
+    //Contains all cards and their interactions
+    func playCard(currPlayer: Player, nextPlayer: Player)
+    {
+        //check stamina
+        if(currPlayer.currStamina >= 2)
+        {
+            //decrease stamina
+            currPlayer.currStamina -= 2
+            //check card played and update
+            
+            var currCard = currPlayer.currDeck[0]
+            var selfDamage = false
+            
+            //Test print
+            print(currPlayer.currStamina)
+            
+            //FIX THIS remove print statements
+            switch currCard
+            {
+                
+                //buffs (INFINITE)
+                
+            case "mSteel", "wSteel":
+                print("Steel")
+            case "mDark", "wDark":
+                print("Dark")
+            case "mPlasma", "wPlasma":
+                print("Plasma")
+                
+                //debuff (LASTS 2 TURNS)
+                
+            //subtract 2 ATK from opponent for 1st attack each turn
+            case "mGrass":
+                currPlayer.debuff = "mGrass"
+                currPlayer.debuffTime = 0
+                print("Grass")
+            case "wGrass":
+                currPlayer.debuff = "wGrass"
+                currPlayer.debuffTime = 0
+                print("Grass")
+                
+            //Stops Opponent from healing
+            case "mWater":
+                currPlayer.debuff = "mWater"
+                currPlayer.debuffTime = 0
+                print("Water")
+            case "wWater":
+                currPlayer.debuff = "wWater"
+                currPlayer.debuffTime = 0
+                print("Water")
+                
+                //1 damage to opponent
+                //mage: Opponent cannot use move card option
+            //warrior: Opponent takes 2 damage per turn
+            case "mPsychic":
+                currPlayer.debuff = "mPsychic"
+                currPlayer.debuffTime = 0
+                print("mPsychic")
+            case "wPsychic":
+                currPlayer.debuff = "wPsychic"
+                currPlayer.debuffTime = 0
+                print("wPsychic")
+                
+            // single turn
+            case "mFairy", "wFairy":
+                //call on function from button to move to bottom
+                print("Fairy")
+            case "mLightning", "wLightning":
+                currPlayer.health -= currPlayer.attack
+                nextPlayer.health -= ((currPlayer.attack * 2) + 2)
+                selfDamage = true
+                print("Lightning")
+            case "mFire", "wFire":
+                nextPlayer.health -= (currPlayer.attack + 2)
+                print("Fire")
+            case "mFighting":
+                currPlayer.health += 3
+                nextPlayer.health -= 1
+                /*
+                 print("mFighting")
+                 print(player1.health)
+                 print(player2.health)
+                 print(player1.currStamina)
+                 */
+            case "wFighting":
+                currPlayer.currStamina += 2
+                nextPlayer.health -= 1
+                print("wFighting")
+                
+            default: //Necessary
+                print("Error in card selection switch case")
+            }
+            addToBack(arr: &currPlayer.currDeck)
+            
+        }
+        else
+        {
+            print("NOT ENOUGH STAMINA HONEY!")
+        }
+        
+        //check to see if player has lost
+        //check if self damage occured and check attacking player health first
+    }
+    
+    // Place card to bottom and updates stamina
+    func placeBottom(currPlayer: Player)
+    {
+        if (currPlayer.currStamina >= 1)
+        {
+            //TODO: check if mage debuff is active
+            currPlayer.currStamina -= 1
+            print(currPlayer.currDeck)
+            addToBack(arr: &currPlayer.currDeck)
+            print(currPlayer.currDeck)
+        }
+        else
+        {
+            print("NOT ENOUGH STAMINA HONEY!")
+        }
+    }
+    
+    //Updates player's stamina upon ending turn
+    func endTurn(currPlayer: Player)
+    {
+        if(currPlayer.totalStamina != 10)
+        {
+            currPlayer.totalStamina += 2
+        }
+        currPlayer.currStamina = currPlayer.totalStamina
+    }
+    
+    //Shuffles current deck if applicable
+    func shuffleCards(currPlayer: Player)
+    {
+        if (currPlayer.shuffleCount > 0)
+        {
+            currPlayer.shuffleCount -= 1
+            currPlayer.currDeck.shuffle()
+        }
+        else
+        {
+            print("No more shuffles!")
+        }
+    }
+    
+    // END OF FUNCTIONS
+    
+    let player1 = Player()
+    let player2 = Player()
 
     //turn for testing always starts on player 1
     var turn = 1;
-    
-
-    
 
     @IBOutlet weak var playCardButton: UIButton!
     @IBOutlet weak var placeBottomButton: UIButton!
@@ -99,151 +228,27 @@ class ViewPlayGame: UIViewController {
         //check turn
         if(turn == 1)
         {
-            
+            playCard(currPlayer: player1, nextPlayer: player2)
         }
         else if(turn == 2)
         {
-            
+            playCard(currPlayer: player2, nextPlayer: player1)
         }
         else
         {
             print("error in playCardPress")
         }
         
-        //check stamina
-        if(player1.currStamina >= 2)
-        {
-            //decrease stamina
-            player1.currStamina -= 2
-            //check card played and update
-            
-            var currCard = player1.currDeck[0]
-            var selfDamage = false
-            
-            //Test print
-            print(player1.currStamina)
-            
-            //FIX THIS remove print statements
-            switch currCard
-            {
-            
-            //buffs (INFINITE)
-                
-            case "mSteel", "wSteel":
-                print("Steel")
-            case "mDark", "wDark":
-                print("Dark")
-            case "mPlasma", "wPlasma":
-                print("Plasma")
-            
-            //debuff (LASTS 2 TURNS)
-            
-            //subtract 2 ATK from opponent for 1st attack each turn
-            case "mGrass":
-                player1.debuff = "mGrass"
-                player1.debuffTime = 0
-                print("Grass")
-            case "wGrass":
-                player1.debuff = "wGrass"
-                player1.debuffTime = 0
-                print("Grass")
-            
-            //Stops Opponent from healing
-            case "mWater":
-                player1.debuff = "mWater"
-                player1.debuffTime = 0
-                print("Water")
-            case "wWater":
-                player1.debuff = "wWater"
-                player1.debuffTime = 0
-                print("Water")
-                
-            //1 damage to opponent
-            //mage: Opponent cannot use move card option
-            //warrior: Opponent takes 2 damage per turn
-            case "mPsychic":
-                player1.debuff = "mPsychic"
-                player1.debuffTime = 0
-                print("mPsychic")
-            case "wPsychic":
-                player1.debuff = "wPsychic"
-                player1.debuffTime = 0
-                print("wPsychic")
-                
-            // single turn
-            case "mFairy", "wFairy":
-                //call on function from button to move to bottom
-                print("Fairy")
-            case "mLightning", "wLightning":
-                player1.health -= player1.attack
-                player2.health -= ((player1.attack * 2) + 2)
-                selfDamage = true
-                print("Lightning")
-            case "mFire", "wFire":
-                player2.health -= (player1.attack + 2)
-                print("Fire")
-            case "mFighting":
-                player1.health += 3
-                player2.health -= 1
-                /*
-                print("mFighting")
-                print(player1.health)
-                print(player2.health)
-                print(player1.currStamina)
-                 */
-            case "wFighting":
-                player1.currStamina += 2
-                player2.health -= 1
-                print("wFighting")
-
-            default: //Necessary
-                print("Error in card selection switch case")
-             
-            //FOR TESTING
-            addToBack(arr: &player1.currDeck)
-            }
-            
-        }
-        else
-        {
-            print("NOT ENOUGH STAMINA HONEY!")
-        }
-        
-        //check to see if player has lost
-        //check if self damage occured and check attacking player health first
-        
     }
     @IBAction func placeBottomPress(_ sender: Any) {
         
         if (turn == 1)
         {
-            if (player1.currStamina >= 1)
-            {
-                //TODO: check if mage debuff is active
-                player1.currStamina -= 1
-                print(player1.currDeck)
-                addToBack(arr: &player1.currDeck)
-                print(player1.currDeck)
-            }
-            else
-            {
-                print("NOT ENOUGH STAMINA HONEY!")
-            }
+            placeBottom(currPlayer: player1)
         }
         else if (turn == 2)
         {
-            if (player2.currStamina >= 1)
-            {
-                //TODO: check if mage debuff is active
-                player2.currStamina -= 1
-                print(player2.currDeck)
-                addToBack(arr: &player2.currDeck)
-                print(player2.currDeck)
-            }
-            else
-            {
-                print("NOT ENOUGH STAMINA HONEY!")
-            }
+            placeBottom(currPlayer: player1)
         }
         else
         {
@@ -257,12 +262,9 @@ class ViewPlayGame: UIViewController {
         if(turn == 1)
         {
             turn = 2
-            if(player1.totalStamina != 10)
-            {
-                player1.totalStamina += 2
-            }
-            player1.currStamina = player1.totalStamina
+            endTurn(currPlayer: player1)
             
+            //TEST PRINTS
             print ("Player 2's turn. Player 2's current stamina: ")
             print (player2.currStamina)
             print (player2.totalStamina)
@@ -274,22 +276,20 @@ class ViewPlayGame: UIViewController {
         else if(turn == 2)
         {
             turn = 1
-            if(player2.totalStamina != 10)
-            {
-                player2.totalStamina += 2
-            }
-            player2.currStamina = player2.totalStamina
+            endTurn(currPlayer: player2)
             
+            //TEST PRINTS
             print ("Player 1's turn. Player 1's current stamina: ")
             print (player1.currStamina)
             print (player1.totalStamina)
+            
             print ("Player 2's stamina has been updated:")
             print (player2.currStamina)
             print (player2.totalStamina)
         }
         else
         {
-        print("Error inside endTurnPress!")
+            print("Error inside endTurnPress!")
         }
     }
     
@@ -297,27 +297,11 @@ class ViewPlayGame: UIViewController {
     @IBAction func shufflePress(_ sender: Any) {
         if (turn == 1)
         {
-            if (player1.shuffleCount > 0)
-            {
-                player1.shuffleCount -= 1
-                player1.currDeck.shuffle()
-            }
-            else
-            {
-                print("No more shuffles!")
-            }
+            shuffleCards(currPlayer: player1)
         }
         else if (turn == 2)
         {
-            if (player2.shuffleCount > 0)
-            {
-                player2.shuffleCount -= 1
-                player2.currDeck.shuffle()
-            }
-            else
-            {
-                print("No more shuffles!")
-            }
+            shuffleCards(currPlayer: player2)
         }
         else
         {
