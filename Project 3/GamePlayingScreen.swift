@@ -220,7 +220,7 @@ class ViewPlayGame: UIViewController {
             if (player1.currStamina >= 1)
             {
                 //TODO: check if mage debuff is active
-                player2.currStamina -= 1
+                player1.currStamina -= 1
                 print(player1.currDeck)
                 addToBack(arr: &player1.currDeck)
                 print(player1.currDeck)
@@ -263,7 +263,11 @@ class ViewPlayGame: UIViewController {
             }
             player1.currStamina = player1.totalStamina
             
-            print ("player 1")
+            print ("Player 2's turn. Player 2's current stamina: ")
+            print (player2.currStamina)
+            print (player2.totalStamina)
+                
+            print ("Player 1's stamina has been updated:")
             print (player1.currStamina)
             print (player1.totalStamina)
         }
@@ -275,7 +279,11 @@ class ViewPlayGame: UIViewController {
                 player2.totalStamina += 2
             }
             player2.currStamina = player2.totalStamina
-            print ("player 2")
+            
+            print ("Player 1's turn. Player 1's current stamina: ")
+            print (player1.currStamina)
+            print (player1.totalStamina)
+            print ("Player 2's stamina has been updated:")
             print (player2.currStamina)
             print (player2.totalStamina)
         }
