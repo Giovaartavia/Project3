@@ -77,6 +77,7 @@ class ViewPlayGame: UIViewController {
             var selfDamage = false
             
             //Test print
+            print ("Current stamina: ")
             print(currPlayer.currStamina)
             
             //FIX THIS remove print statements
@@ -208,6 +209,40 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    //TEST PRINTS. Prints all stats
+    func printStats()
+    {
+        print("*********STATS*********")
+        print ("Player 1's current stats: ")
+        print ("Current Stamina: \(player1.currStamina)")
+        print ("Total Stamina: \(player1.totalStamina)")
+        print ("HP: \(player1.health)")
+        print ("Attack: \(player1.attack)")
+        print ("Buffs: \(player1.buffArr)")
+        print ("Debuff: \(player1.debuff)")
+        print ("Shuffles: \(player1.shuffleCount)")
+        
+        print("========================")
+        
+        print ("Player 2's current stats: ")
+        print ("Current Stamina: \(player2.currStamina)")
+        print ("Total Stamina: \(player2.totalStamina)")
+        print ("HP: \(player2.health)")
+        print ("Attack: \(player2.attack)")
+        print ("Buffs: \(player2.buffArr)")
+        print ("Debuff: \(player2.debuff)")
+        print ("Shuffles: \(player2.shuffleCount)")
+        print ("******END OF STATS*****")
+        
+        printTopCard()
+    }
+    
+    func printTopCard()
+    {
+        print ("Player 1's current top card: \(player1.currDeck[0])")
+        print ("Player 2's current top card: \(player2.currDeck[0])")
+    }
+    
     // END OF FUNCTIONS
     
     let player1 = Player()
@@ -239,6 +274,9 @@ class ViewPlayGame: UIViewController {
             print("error in playCardPress")
         }
         
+        //TEST. Show stats
+        printStats()
+        
     }
     @IBAction func placeBottomPress(_ sender: Any) {
         
@@ -254,6 +292,9 @@ class ViewPlayGame: UIViewController {
         {
             print("Error inside placeButtomPress")
         }
+        
+        //TEST. Show stats
+        printStats()
     }
     
     //Changes whose turn it is. 1 is player 1. 2 is player 2.
@@ -263,34 +304,19 @@ class ViewPlayGame: UIViewController {
         {
             turn = 2
             endTurn(currPlayer: player1)
-            
-            //TEST PRINTS
-            print ("Player 2's turn. Player 2's current stamina: ")
-            print (player2.currStamina)
-            print (player2.totalStamina)
-                
-            print ("Player 1's stamina has been updated:")
-            print (player1.currStamina)
-            print (player1.totalStamina)
         }
         else if(turn == 2)
         {
             turn = 1
             endTurn(currPlayer: player2)
-            
-            //TEST PRINTS
-            print ("Player 1's turn. Player 1's current stamina: ")
-            print (player1.currStamina)
-            print (player1.totalStamina)
-            
-            print ("Player 2's stamina has been updated:")
-            print (player2.currStamina)
-            print (player2.totalStamina)
         }
         else
         {
             print("Error inside endTurnPress!")
         }
+        
+        //TEST. Show stats
+        printStats()
     }
     
     //Shuffles current player's deck if they have shuffles left
@@ -307,6 +333,9 @@ class ViewPlayGame: UIViewController {
         {
             print ("Error inside shufflePress!")
         }
+        
+        //TEST. Show stats
+        printStats()
     }
     @IBAction func surrenderPress(_ sender: Any) {
     }
