@@ -80,17 +80,22 @@ class ViewPlayGame: UIViewController {
             print ("Current stamina: ")
             print(currPlayer.currStamina)
             
-            //FIX THIS remove print statements
+            //TODO: remove print statements 
             switch currCard
             {
                 
-                //buffs (INFINITE)
-                
+                //buffs (INFINITE)  
+            //+1 attack per turn      
             case "mSteel", "wSteel":
+            addBuff(currCard, currPlayer)
                 print("Steel")
+            //+3 attack once while active
             case "mDark", "wDark":
+            addBuff(currCard, currPlayer)
                 print("Dark")
+            //+2 health per turn
             case "mPlasma", "wPlasma":
+            addBuff(currCard, currPlayer)
                 print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
@@ -115,9 +120,9 @@ class ViewPlayGame: UIViewController {
                 currPlayer.debuffTime = 0
                 print("Water")
                 
-                //1 damage to opponent
+            //1 damage to opponent
                 //mage: Opponent cannot use move card option
-            //warrior: Opponent takes 2 damage per turn
+                //warrior: Opponent takes 2 damage per turn
             case "mPsychic":
                 currPlayer.debuff = "mPsychic"
                 currPlayer.debuffTime = 0
@@ -127,9 +132,9 @@ class ViewPlayGame: UIViewController {
                 currPlayer.debuffTime = 0
                 print("wPsychic")
                 
-            // single turn
+                // single turn
             case "mFairy", "wFairy":
-                //call on function from button to move to bottom
+                addToBack(arr: &currPlayer.currDeck)
                 print("Fairy")
             case "mLightning", "wLightning":
                 currPlayer.health -= currPlayer.attack
@@ -142,12 +147,7 @@ class ViewPlayGame: UIViewController {
             case "mFighting":
                 currPlayer.health += 3
                 nextPlayer.health -= 1
-                /*
-                 print("mFighting")
-                 print(player1.health)
-                 print(player2.health)
-                 print(player1.currStamina)
-                 */
+                print("mFighting")
             case "wFighting":
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
@@ -167,7 +167,48 @@ class ViewPlayGame: UIViewController {
         //check to see if player has lost
         //check if self damage occured and check attacking player health first
     }
-    
+
+    func addBuff(newBuff: string, currPlayer: Player)
+    {
+        //check buff array
+        if(currPlayer.buffArr.count == 3)
+        {
+            //change front 
+            currPlayer.buffArr[0] = newBuff
+            //move to back 
+            addToBack(arr: &currPlayer.currDeck)         
+        }
+        else if(currPlayer.buffArr.count >= 0 && currPlayer.buffArr.count < 3)
+        {
+            //append to end
+            currPlayer.buffArr.append(newBuff)
+        }
+        else
+        {
+            print("error in add buff")
+        }
+    } 
+
+    //TODO: Complete function check for these cards existing in the player buff array
+    func checkBuffs(currPlayer: Player)
+    {
+
+            switch buffCard
+            {
+            case "mSteel", "wSteel":
+            addBuff(currCard, currPlayer)
+                print("Steel")
+            //+3 attack once while active
+            case "mDark", "wDark":
+            addBuff(currCard, currPlayer)
+                print("Dark")
+            //+2 health per turn
+            case "mPlasma", "wPlasma":
+            addBuff(currCard, currPlayer)
+                print("Plasma")
+            }
+    }
+
     // Place card to bottom and updates stamina
     func placeBottom(currPlayer: Player)
     {
@@ -251,6 +292,8 @@ class ViewPlayGame: UIViewController {
     //turn for testing always starts on player 1
     var turn = 1;
 
+
+    //Button Press Actions
     @IBOutlet weak var playCardButton: UIButton!
     @IBOutlet weak var placeBottomButton: UIButton!
     @IBOutlet weak var endTurnButton: UIButton!
