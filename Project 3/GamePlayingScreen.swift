@@ -47,8 +47,8 @@ class ViewPlayGame: UIViewController {
         var totalStamina = 2
         var health = 20
         var attack = 0
-        var buffArr: [String]?
-        var debuff: String?
+        var buffArr: [String] = []
+        var debuff = ""
         var debuffTime = 0
         var shuffleCount = 2
         
@@ -87,15 +87,15 @@ class ViewPlayGame: UIViewController {
                 //buffs (INFINITE)  
             //+1 attack per turn      
             case "mSteel", "wSteel":
-            addBuff(currCard, currPlayer)
+                addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Steel")
             //+3 attack once while active
             case "mDark", "wDark":
-            addBuff(currCard, currPlayer)
+            addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
             //+2 health per turn
             case "mPlasma", "wPlasma":
-            addBuff(currCard, currPlayer)
+            addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
@@ -168,7 +168,7 @@ class ViewPlayGame: UIViewController {
         //check if self damage occured and check attacking player health first
     }
 
-    func addBuff(newBuff: string, currPlayer: Player)
+    func addBuff(newBuff: String, currPlayer: Player)
     {
         //check buff array
         if(currPlayer.buffArr.count == 3)
@@ -192,21 +192,23 @@ class ViewPlayGame: UIViewController {
     //TODO: Complete function check for these cards existing in the player buff array
     func checkBuffs(currPlayer: Player)
     {
-
+        for i in 0...(currPlayer.buffArr.count-1)
+        {
+            let buffCard = currPlayer.buffArr[i]
             switch buffCard
             {
             case "mSteel", "wSteel":
-            addBuff(currCard, currPlayer)
                 print("Steel")
             //+3 attack once while active
             case "mDark", "wDark":
-            addBuff(currCard, currPlayer)
                 print("Dark")
             //+2 health per turn
             case "mPlasma", "wPlasma":
-            addBuff(currCard, currPlayer)
                 print("Plasma")
+            default:
+                print("Error inside checkBuffs")
             }
+        }
     }
 
     // Place card to bottom and updates stamina
