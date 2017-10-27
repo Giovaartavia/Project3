@@ -37,14 +37,6 @@
                                     <action selector="endTurnPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="DDR-Q1-5fb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Def-X2-aX8">
-                                <rect key="frame" x="39" y="425" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Surrender"/>
-                                <connections>
-                                    <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="Y2B-ad-CIX"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-l8-LYj">
                                 <rect key="frame" x="145" y="468" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,6 +51,14 @@
                                 <state key="normal" title="Add to back"/>
                                 <connections>
                                     <action selector="placeBottomPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="b0r-3H-HrL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjR-JQ-JKg">
+                                <rect key="frame" x="38" y="468" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Options"/>
+                                <connections>
+                                    <segue destination="frs-eG-eK9" kind="show" animates="NO" id="653-fJ-1kn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,7 +76,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRv-rd-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="185"/>
+            <point key="canvasLocation" x="-71.200000000000003" y="184.85757121439281"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wM4-oa-4A0">
+            <objects>
+                <viewController id="frs-eG-eK9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xef-R5-krI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Def-X2-aX8">
+                                <rect key="frame" x="153" y="318" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Surrender"/>
+                                <connections>
+                                    <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="Y2B-ad-CIX"/>
+                                    <segue destination="LxY-3i-Ugb" kind="show" animates="NO" id="L3i-vJ-MpA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="2tN-Nf-Tzf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AuZ-hW-zwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663" y="185"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UeW-lc-ojX">
+            <objects>
+                <viewController id="LxY-3i-Ugb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TFz-hf-D3y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-7m-xTJ">
+                                <rect key="frame" x="142" y="180" width="91" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play Again?"/>
+                                <connections>
+                                    <segue destination="24N-ot-kXG" kind="show" animates="NO" id="4aY-tY-Aue"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57V-3G-7VD">
+                                <rect key="frame" x="164" y="242" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Quit"/>
+                                <connections>
+                                    <segue destination="fBc-NP-3ja" kind="show" animates="NO" id="PKJ-GY-ymy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="zda-AX-QL5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8R8-1j-16j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71.200000000000003" y="954.87256371814101"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="BeN-t6-Bft">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="fBc-NP-3ja" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTy-WO-kJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="936"/>
+        </scene>
+        <!--Build Screen-->
+        <scene sceneID="ePf-GG-6R9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="Build Screen" id="24N-ot-kXG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQl-5w-M1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="973"/>
         </scene>
     </scenes>
     <resources>
