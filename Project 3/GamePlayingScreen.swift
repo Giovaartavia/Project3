@@ -108,37 +108,50 @@ class ViewPlayGame: UIViewController {
             //Stops Opponent from healing
             case "Bad Medicine":
                 currPlayer.debuff = "Bad Medicine"
-                currPlayer.debuffTime = 0
-                print("Water")
+                currPlayer.debuffTime = 4
+                print("Bad Medicine")
                 
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
-                //warrior: Opponent takes 2 damage per turn
             case "Voodoo Doll":
                 currPlayer.debuff = "Voodoo Doll"
                 currPlayer.debuffTime = 0
                 print("Voodoo Doll")
+                //warrior: Opponent takes 2 damage per turn
             case "Brass Knuckles":
                 currPlayer.debuff = "Brass Knuckles"
-                currPlayer.debuffTime = 0
+                currPlayer.debuffTime = 4
                 print("Brass Knuckles")
                 
                 // single turn
+            //Places top card of opponents deck on the bottom
             case "Smoke Bomb":
-                addToBack(arr: &currPlayer.currDeck)
-                print("Fairy")
+                addToBack(arr: &nextPlayer.currDeck)
+                print("Smoke Bomb")
+            //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane Burst", "Double Edge":
                 currPlayer.health -= currPlayer.attack
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
-                print("Lightning")
+                print("Arcane Burst/Double Edge")
+            //Does atk + 2 to opponent.
             case "Magical Bolt", "Sword Strike":
                 nextPlayer.health -= (currPlayer.attack + 2)
-                print("Fire")
+                print("Magical Bolt/Sword Strike")
+            //Do 1 damage, regain 3 hp.
             case "Lifesteal":
-                currPlayer.health += 3
-                nextPlayer.health -= 1
-                print("Lifesteal")
+                if(currPlayer.debuff == "Bad Medicine")
+                {
+                    currPlayer.health += 3
+                    nextPlayer.health -= 1
+                    print("Lifesteal")
+                }
+                else
+                {
+                    print("Effect did not happen because debuff was active")
+                }
+
+            //Do 1 damage, regain 2 stamina.
             case "Throwing Knife":
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
@@ -219,14 +232,19 @@ class ViewPlayGame: UIViewController {
         }
     }
     
-    //Updates player's stamina upon ending turn
-    func endTurn(currPlayer: Player)
+    //Updates player's stamina upon ending turn. Checks buffs and debuffs.
+    func endTurn(currPlayer: Player, nextPlayer: Player)
     {
         if(currPlayer.totalStamina != 10)
         {
             currPlayer.totalStamina += 2
         }
         currPlayer.currStamina = currPlayer.totalStamina
+        
+        if(nextPlayer.debuff == "Brass Knuckes")
+        {
+            nextPlayer.health -= 2
+        }
     }
     
     //Shuffles current deck if applicable
@@ -339,16 +357,34 @@ class ViewPlayGame: UIViewController {
         if(turn == 1)
         {
             turn = 2
-            endTurn(currPlayer: player1)
+            endTurn(currPlayer: player1, nextPlayer: player2)
         }
         else if(turn == 2)
         {
             turn = 1
-            endTurn(currPlayer: player2)
+            endTurn(currPlayer: player2, nextPlayer: player2)
         }
         else
         {
             print("Error inside endTurnPress!")
+        }
+        
+        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
+        if(player1.debuff != "")
+        {
+            player1.debuffTime -= 1
+            if (player1.debuffTime == 0)
+            {
+                player1.debuff = ""
+            }
+        }
+        else if(player2.debuff != "")
+        {
+            player2.debuffTime -= 1
+            if (player2.debuffTime == 0)
+            {
+                player2.debuff = ""
+            }
         }
         
         //TEST. Show stats
