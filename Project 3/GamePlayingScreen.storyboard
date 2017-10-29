@@ -17,10 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Metal" translatesAutoresizingMaskIntoConstraints="NO" id="zCj-Ca-vOr">
-                                <rect key="frame" x="67" y="20" width="240" height="301"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3Z-2I-Ytw">
                                 <rect key="frame" x="38" y="551" width="71" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,7 +63,6 @@
                     </view>
                     <connections>
                         <outlet property="endTurnButton" destination="qdF-M5-EJc" id="5uB-Ls-nmd"/>
-                        <outlet property="metal" destination="zCj-Ca-vOr" id="GCn-cC-XUj"/>
                         <outlet property="placeBottomButton" destination="Lt6-be-Xp8" id="FBD-Q7-xub"/>
                         <outlet property="playCardButton" destination="w3Z-2I-Ytw" id="8nY-dI-8Oq"/>
                         <outlet property="shuffleButton" destination="nLw-l8-LYj" id="djc-uj-EMF"/>
@@ -154,7 +149,4 @@
             <point key="canvasLocation" x="494" y="973"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Metal" width="214" height="300"/>
-    </resources>
 </document>

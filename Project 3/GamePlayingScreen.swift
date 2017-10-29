@@ -37,12 +37,11 @@ extension Sequence {
 
 class ViewPlayGame: UIViewController {
     
-    @IBOutlet weak var metal: UIImageView!
     class Player
     {
         //fighting and psychic are different for class
-        let mageDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"]
-        var currDeck = ["mFighting", "mFighting","mSteel","mSteel","mSteel","mPsychic", "mPsychic", "mGrass", "mGrass", "mDark", "mFairy", "mFairy", "mLightning", "mPlasma", "mPlasma", "mWater", "mWater", "mFire", "mFire", "mFire"].shuffled()
+        let mageDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"]
+        var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
         var currStamina = 2
         var totalStamina = 2
         var health = 20
@@ -86,72 +85,64 @@ class ViewPlayGame: UIViewController {
                 
                 //buffs (INFINITE)  
             //+1 attack per turn      
-            case "mSteel", "wSteel":
+            case "Mana Potion", "Liquid Courage":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Steel")
             //+3 attack once while active
-            case "mDark", "wDark":
+            case "Spell Tome", "Blacksmith":
             addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
             //+2 health per turn
-            case "mPlasma", "wPlasma":
+            case "Health Potion":
             addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
                 
             //subtract 2 ATK from opponent for 1st attack each turn
-            case "mGrass":
-                currPlayer.debuff = "mGrass"
-                currPlayer.debuffTime = 0
-                print("Grass")
-            case "wGrass":
-                currPlayer.debuff = "wGrass"
+            case "Disarm":
+                currPlayer.debuff = "Disarm"
                 currPlayer.debuffTime = 0
                 print("Grass")
                 
             //Stops Opponent from healing
-            case "mWater":
-                currPlayer.debuff = "mWater"
-                currPlayer.debuffTime = 0
-                print("Water")
-            case "wWater":
-                currPlayer.debuff = "wWater"
+            case "Bad Medicine":
+                currPlayer.debuff = "Bad Medicine"
                 currPlayer.debuffTime = 0
                 print("Water")
                 
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
                 //warrior: Opponent takes 2 damage per turn
-            case "mPsychic":
-                currPlayer.debuff = "mPsychic"
+            case "Voodoo Doll":
+                currPlayer.debuff = "Voodoo Doll"
                 currPlayer.debuffTime = 0
-                print("mPsychic")
-            case "wPsychic":
-                currPlayer.debuff = "wPsychic"
+                print("Voodoo Doll")
+            case "Brass Knuckles":
+                currPlayer.debuff = "Brass Knuckles"
                 currPlayer.debuffTime = 0
-                print("wPsychic")
+                print("Brass Knuckles")
                 
                 // single turn
-            case "mFairy", "wFairy":
+            case "Smoke Bomb":
                 addToBack(arr: &currPlayer.currDeck)
                 print("Fairy")
-            case "mLightning", "wLightning":
+            case "Arcane Burst", "Double Edge":
                 currPlayer.health -= currPlayer.attack
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
                 print("Lightning")
-            case "mFire", "wFire":
+            case "Magical Bolt", "Sword Strike":
                 nextPlayer.health -= (currPlayer.attack + 2)
                 print("Fire")
-            case "mFighting":
+            case "Lifesteal":
                 currPlayer.health += 3
                 nextPlayer.health -= 1
-                print("mFighting")
-            case "wFighting":
+                print("Lifesteal")
+            case "Throwing Knife":
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
-                print("wFighting")
+                print("Throwing Knife")
                 
             default: //Necessary
                 print("Error in card selection switch case")
@@ -197,13 +188,13 @@ class ViewPlayGame: UIViewController {
             let buffCard = currPlayer.buffArr[i]
             switch buffCard
             {
-            case "mSteel", "wSteel":
+            case "Mana Potion", "Liquid Courage":
                 print("Steel")
             //+3 attack once while active
-            case "mDark", "wDark":
+            case "Spell Tome", "Blacksmith":
                 print("Dark")
             //+2 health per turn
-            case "mPlasma", "wPlasma":
+            case "Health Potion":
                 print("Plasma")
             default:
                 print("Error inside checkBuffs")
