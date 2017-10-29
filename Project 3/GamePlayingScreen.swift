@@ -90,7 +90,8 @@ class ViewPlayGame: UIViewController {
                 print("Steel")
             //+3 attack once while active
             case "Spell Tome", "Blacksmith":
-            addBuff(newBuff: currCard, currPlayer: currPlayer)
+                addBuff(newBuff: currCard, currPlayer: currPlayer)
+                currPlayer.attack += 3
                 print("Dark")
             //+2 health per turn
             case "Health Potion":
@@ -177,6 +178,12 @@ class ViewPlayGame: UIViewController {
         //check buff array
         if(currPlayer.buffArr.count == 3)
         {
+            //check if replaced is "Spell Tome" or "Blacksmith"
+            if(currPlayer.buffArr[0] == "Spell Tome" || currPlayer.buffArr[0] == "Blacksmith")
+            {
+                currPlayer.attack -= 3
+            }
+
             //change front 
             currPlayer.buffArr[0] = newBuff
             //move to back 
@@ -202,13 +209,16 @@ class ViewPlayGame: UIViewController {
             switch buffCard
             {
             case "Mana Potion", "Liquid Courage":
-                print("Steel")
+                currPlayer.attack += 1 
+                print("buff add attack")
             //+3 attack once while active
             case "Spell Tome", "Blacksmith":
-                print("Dark")
+                //does not take place per turn 
+                print("buff add attack once")
             //+2 health per turn
             case "Health Potion":
-                print("Plasma")
+                currPlayer.health += 2
+                print("buff add health")
             default:
                 print("Error inside checkBuffs")
             }
