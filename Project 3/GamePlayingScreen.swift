@@ -90,8 +90,8 @@ class ViewPlayGame: UIViewController {
                 print("Steel")
             //+3 attack once while active
             case "Spell Tome", "Blacksmith":
-                addBuff(newBuff: currCard, currPlayer: currPlayer)
                 currPlayer.attack += 3
+                addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
             //+2 health per turn
             case "Health Potion":
@@ -198,6 +198,11 @@ class ViewPlayGame: UIViewController {
         {
             print("error in add buff")
         }
+
+        if currPlayer.attack > 10
+        {
+        currPlayer.attack = 10
+        }
     } 
 
     //TODO: Complete function check for these cards existing in the player buff array
@@ -222,6 +227,11 @@ class ViewPlayGame: UIViewController {
             default:
                 print("Error inside checkBuffs")
             }
+        }
+        
+        if currPlayer.attack > 10
+        {
+        currPlayer.attack = 10
         }
     }
 
@@ -255,6 +265,8 @@ class ViewPlayGame: UIViewController {
         {
             nextPlayer.health -= 2
         }
+
+        checkBuffs(currPlayer: nextPlayer)
     }
     
     //Shuffles current deck if applicable
