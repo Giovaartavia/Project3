@@ -314,7 +314,6 @@ class ViewPlayGame: UIViewController {
     
     func printTopCard()
     {
-        
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
@@ -324,9 +323,11 @@ class ViewPlayGame: UIViewController {
     let player1 = Player()
     let player2 = Player()
 
+    @IBOutlet weak var topCard1: UIImageView!
+    @IBOutlet weak var topCard2: UIImageView!
+    
     //turn for testing always starts on player 1
     var turn = 1;
-
 
     //Button Press Actions
     @IBOutlet weak var playCardButton: UIButton!
@@ -336,16 +337,28 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var surrenderButton: UIButton!
     
     
+    func revealTopCard1(currPlayer: Player)
+    {
+        topCard1.image = UIImage(named: player1.currDeck[0])
+    }
+    
+    func revealTopCard2(currPlayer: Player)
+    {
+        topCard2.image = UIImage(named: player2.currDeck[0])
+    }
+    
     @IBAction func playCardPress(_ sender: Any) {
         
         //check turn
         if(turn == 1)
         {
             playCard(currPlayer: player1, nextPlayer: player2)
+            revealTopCard1(currPlayer: player1)
         }
         else if(turn == 2)
         {
             playCard(currPlayer: player2, nextPlayer: player1)
+            revealTopCard2(currPlayer: player2)
         }
         else
         {
@@ -361,10 +374,12 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             placeBottom(currPlayer: player1)
+            revealTopCard1(currPlayer: player1)
         }
         else if (turn == 2)
         {
-            placeBottom(currPlayer: player1)
+            placeBottom(currPlayer: player2) //player1 was here
+            revealTopCard2(currPlayer: player2)
         }
         else
         {
@@ -420,10 +435,12 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             shuffleCards(currPlayer: player1)
+            revealTopCard1(currPlayer: player1)
         }
         else if (turn == 2)
         {
             shuffleCards(currPlayer: player2)
+            revealTopCard2(currPlayer: player2)
         }
         else
         {

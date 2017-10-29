@@ -108,6 +108,8 @@
                         <outlet property="playCardButton" destination="w3Z-2I-Ytw" id="8nY-dI-8Oq"/>
                         <outlet property="shuffleButton" destination="nLw-l8-LYj" id="djc-uj-EMF"/>
                         <outlet property="surrenderButton" destination="Def-X2-aX8" id="8av-Ck-p84"/>
+                        <outlet property="topCard1" destination="sxJ-ap-xQB" id="rui-hX-uio"/>
+                        <outlet property="topCard2" destination="rgA-T6-moJ" id="neo-Uc-D0K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRv-rd-YkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
