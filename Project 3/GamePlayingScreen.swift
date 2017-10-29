@@ -41,7 +41,8 @@ class ViewPlayGame: UIViewController {
     {
         //fighting and psychic are different for class
         let mageDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"]
-        var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
+        //var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
+        var currDeck = ["Brass Knuckles", "Lifesteal", "Voodoo Doll", "Lifesteal", "Bad Medicine", "Lifesteal" ]
         var currStamina = 2
         var totalStamina = 2
         var health = 20
@@ -51,6 +52,11 @@ class ViewPlayGame: UIViewController {
         var debuffTime = 0
         var shuffleCount = 2
         
+        //debuffs
+        var canHeal = true
+        var hasAttacked = false
+        var canAddBack = true
+        var bloodThinner = false
     }
     
     //START OF FUNCTIONS
@@ -101,26 +107,30 @@ class ViewPlayGame: UIViewController {
                 
             //subtract 2 ATK from opponent for 1st attack each turn
             case "Disarm":
-                currPlayer.debuff = "Disarm"
-                currPlayer.debuffTime = 0
+                nextPlayer.debuff = "Disarm"
+                nextPlayer.debuffTime = 2
                 print("Grass")
                 
             //Stops Opponent from healing
             case "Bad Medicine":
-                currPlayer.debuff = "Bad Medicine"
-                currPlayer.debuffTime = 4
+                nextPlayer.debuff = "Bad Medicine"
+                nextPlayer.debuffTime = 2
                 print("Bad Medicine")
                 
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
             case "Voodoo Doll":
-                currPlayer.debuff = "Voodoo Doll"
-                currPlayer.debuffTime = 0
+                nextPlayer.debuff = "Voodoo Doll"
+                nextPlayer.debuffTime = 2
+                nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
                 print("Voodoo Doll")
                 //warrior: Opponent takes 2 damage per turn
             case "Brass Knuckles":
-                currPlayer.debuff = "Brass Knuckles"
-                currPlayer.debuffTime = 4
+                nextPlayer.debuff = "Brass Knuckles"
+                nextPlayer.debuffTime = 2
+                nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
                 print("Brass Knuckles")
                 
                 // single turn
@@ -131,35 +141,38 @@ class ViewPlayGame: UIViewController {
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane Burst", "Double Edge":
                 currPlayer.health -= currPlayer.attack
+                currPlayer.hasAttacked = true
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
                 print("Arcane Burst/Double Edge")
             //Does atk + 2 to opponent.
             case "Magical Bolt", "Sword Strike":
                 nextPlayer.health -= (currPlayer.attack + 2)
+                currPlayer.hasAttacked = true
                 print("Magical Bolt/Sword Strike")
+                currPlayer.hasAttacked = true
             //Do 1 damage, regain 3 hp.
             case "Lifesteal":
-                if(currPlayer.debuff == "Bad Medicine")
+                if(currPlayer.canHeal)
                 {
                     currPlayer.health += 3
-                    nextPlayer.health -= 1
                     print("Lifesteal")
                 }
-                else
-                {
-                    print("Effect did not happen because debuff was active")
-                }
+                nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
+                print("Healing did not happen because debuff was active")
 
             //Do 1 damage, regain 2 stamina.
             case "Throwing Knife":
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
                 print("Throwing Knife")
                 
             default: //Necessary
                 print("Error in card selection switch case")
             }
+            checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
             addToBack(arr: &currPlayer.currDeck)
             
         }
@@ -189,7 +202,7 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
-            print("error in add buff")
+            print("Error in add buff")
         }
     } 
 
@@ -214,17 +227,47 @@ class ViewPlayGame: UIViewController {
             }
         }
     }
+    
+    func checkDebuff(currPlayer: Player, nextPlayer: Player)
+    {
+        if(currPlayer.debuff == "Disarm")
+        {
+            if(!currPlayer.hasAttacked)
+            {
+                currPlayer.attack -= 2
+            }
+        }
+        else if(currPlayer.debuff == "Bad Medicine")
+        {
+            currPlayer.canHeal = false
+        }
+        else if(currPlayer.debuff == "Voodoo Doll")
+        {
+            currPlayer.canAddBack = false
+        }
+        else if(currPlayer.debuff == "Brass Knuckles")
+        {
+            currPlayer.bloodThinner = true
+        }
+    }
 
     // Place card to bottom and updates stamina
     func placeBottom(currPlayer: Player)
     {
         if (currPlayer.currStamina >= 1)
         {
-            //TODO: check if mage debuff is active
-            currPlayer.currStamina -= 1
-            print(currPlayer.currDeck)
-            addToBack(arr: &currPlayer.currDeck)
-            print(currPlayer.currDeck)
+            checkDebuff(currPlayer: currPlayer, nextPlayer: currPlayer)
+            if(currPlayer.canAddBack)
+            {
+                currPlayer.currStamina -= 1
+                print(currPlayer.currDeck)
+                addToBack(arr: &currPlayer.currDeck)
+                print(currPlayer.currDeck)
+            }
+            else
+            {
+                print("Action not performed because Voodoo Doll debuff is active")
+            }
         }
         else
         {
@@ -241,10 +284,26 @@ class ViewPlayGame: UIViewController {
         }
         currPlayer.currStamina = currPlayer.totalStamina
         
-        if(nextPlayer.debuff == "Brass Knuckes")
+        checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
+        
+        if(nextPlayer.bloodThinner)
         {
             nextPlayer.health -= 2
         }
+        
+        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
+        if(nextPlayer.debuff != "")
+        {
+            nextPlayer.debuffTime -= 1
+            if (nextPlayer.debuffTime == 0)
+            {
+                nextPlayer.debuff = ""
+                nextPlayer.bloodThinner = false
+                nextPlayer.canHeal = true
+                nextPlayer.canAddBack = true
+            }
+        }
+        currPlayer.hasAttacked = false
     }
     
     //Shuffles current deck if applicable
@@ -260,7 +319,7 @@ class ViewPlayGame: UIViewController {
             print("No more shuffles!")
         }
     }
-    
+
     //TEST PRINTS. Prints all stats
     func printStats()
     {
@@ -362,29 +421,11 @@ class ViewPlayGame: UIViewController {
         else if(turn == 2)
         {
             turn = 1
-            endTurn(currPlayer: player2, nextPlayer: player2)
+            endTurn(currPlayer: player2, nextPlayer: player1)
         }
         else
         {
             print("Error inside endTurnPress!")
-        }
-        
-        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
-        if(player1.debuff != "")
-        {
-            player1.debuffTime -= 1
-            if (player1.debuffTime == 0)
-            {
-                player1.debuff = ""
-            }
-        }
-        else if(player2.debuff != "")
-        {
-            player2.debuffTime -= 1
-            if (player2.debuffTime == 0)
-            {
-                player2.debuff = ""
-            }
         }
         
         //TEST. Show stats
