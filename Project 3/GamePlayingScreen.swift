@@ -41,8 +41,8 @@ class ViewPlayGame: UIViewController {
     {
         //fighting and psychic are different for class
         let mageDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"]
-        //var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
-        var currDeck = ["Brass Knuckles", "Lifesteal", "Voodoo Doll", "Lifesteal", "Bad Medicine", "Lifesteal" ]
+        var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
+        
         var currStamina = 2
         var totalStamina = 2
         var health = 20
@@ -96,7 +96,8 @@ class ViewPlayGame: UIViewController {
                 print("Steel")
             //+3 attack once while active
             case "Spell Tome", "Blacksmith":
-            addBuff(newBuff: currCard, currPlayer: currPlayer)
+                currPlayer.attack += 3
+                addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
             //+2 health per turn
             case "Health Potion":
@@ -190,6 +191,12 @@ class ViewPlayGame: UIViewController {
         //check buff array
         if(currPlayer.buffArr.count == 3)
         {
+            //check if replaced is "Spell Tome" or "Blacksmith"
+            if(currPlayer.buffArr[0] == "Spell Tome" || currPlayer.buffArr[0] == "Blacksmith")
+            {
+                currPlayer.attack -= 3
+            }
+
             //change front 
             currPlayer.buffArr[0] = newBuff
             //move to back 
@@ -204,27 +211,42 @@ class ViewPlayGame: UIViewController {
         {
             print("Error in add buff")
         }
+
+        if currPlayer.attack > 10
+        {
+        currPlayer.attack = 10
+        }
     } 
 
     //TODO: Complete function check for these cards existing in the player buff array
     func checkBuffs(currPlayer: Player)
     {
-        for i in 0...(currPlayer.buffArr.count-1)
+        if currPlayer.buffArr.count > 0
         {
-            let buffCard = currPlayer.buffArr[i]
-            switch buffCard
+            for i in 0...(currPlayer.buffArr.count - 1)
             {
-            case "Mana Potion", "Liquid Courage":
-                print("Steel")
-            //+3 attack once while active
-            case "Spell Tome", "Blacksmith":
-                print("Dark")
-            //+2 health per turn
-            case "Health Potion":
-                print("Plasma")
-            default:
-                print("Error inside checkBuffs")
+                let buffCard = currPlayer.buffArr[i]
+                switch buffCard
+                {
+                case "Mana Potion", "Liquid Courage":
+                    currPlayer.attack += 1 
+                    print("buff add attack")
+                //+3 attack once while active
+                case "Spell Tome", "Blacksmith":
+                    //does not take place per turn 
+                    print("buff add attack once")
+                //+2 health per turn
+                case "Health Potion":
+                    currPlayer.health += 2
+                    print("buff add health")
+                default:
+                    print("Error inside checkBuffs")
+                }
             }
+        }
+        if currPlayer.attack > 10
+        {
+        currPlayer.attack = 10
         }
     }
     
@@ -304,6 +326,8 @@ class ViewPlayGame: UIViewController {
             }
         }
         currPlayer.hasAttacked = false
+
+        checkBuffs(currPlayer: nextPlayer)
     }
     
     //Shuffles current deck if applicable
@@ -350,6 +374,7 @@ class ViewPlayGame: UIViewController {
     
     func printTopCard()
     {
+        
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
