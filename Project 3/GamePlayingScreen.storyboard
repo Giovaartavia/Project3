@@ -101,10 +101,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
-                        <connections>
-                            <outlet property="topCard1" destination="sxJ-ap-xQB" id="wUH-7w-zbe"/>
-                            <outlet property="topCard2" destination="rgA-T6-moJ" id="s34-qG-Jff"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="endTurnButton" destination="qdF-M5-EJc" id="5uB-Ls-nmd"/>
