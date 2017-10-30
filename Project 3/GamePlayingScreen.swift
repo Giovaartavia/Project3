@@ -52,6 +52,12 @@ class ViewPlayGame: UIViewController {
         var debuffTime = 0
         var shuffleCount = 2
         
+        //debuffs
+        var canHeal = true
+        var shouldAddAttack = true
+        var hasAttacked = false
+        var canAddBack = true
+        var bloodThinner = false
     }
     
     //START OF FUNCTIONS
@@ -121,8 +127,11 @@ class ViewPlayGame: UIViewController {
                 print("Voodoo-Doll-Deck")
                 //warrior: Opponent takes 2 damage per turn
             case "Brass Knuckles":
-                currPlayer.debuff = "Brass Knuckles"
-                currPlayer.debuffTime = 4
+                nextPlayer.debuff = "Brass Knuckles"
+                nextPlayer.debuffTime = 2
+                nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 print("Brass Knuckles")
                 
                 // single turn
@@ -133,6 +142,9 @@ class ViewPlayGame: UIViewController {
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane-Burst-Deck", "Double Edge":
                 currPlayer.health -= currPlayer.attack
+                currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
+                checkHealth(currPlayer: currPlayer)
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
                 print("Arcane-Burst-Deck/Double Edge")
@@ -148,21 +160,26 @@ class ViewPlayGame: UIViewController {
                     nextPlayer.health -= 1
                     print("Life-Steal-Deck")
                 }
-                else
-                {
-                    print("Effect did not happen because debuff was active")
-                }
+                nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
+                print("Healing did not happen because debuff was active")
 
             //Do 1 damage, regain 2 stamina.
             case "Throwing Knife":
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 print("Throwing Knife")
                 
             default: //Necessary
                 print("Error in card selection switch case")
             }
+            checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
             addToBack(arr: &currPlayer.currDeck)
+            checkHealth(currPlayer: nextPlayer)
+            checkHealth(currPlayer: currPlayer)
             
         }
         else
@@ -197,7 +214,7 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
-            print("error in add buff")
+            print("Error in add buff")
         }
 
         if currPlayer.attack > 10
@@ -206,7 +223,7 @@ class ViewPlayGame: UIViewController {
         }
     } 
 
-    //TODO: Complete function check for these cards existing in the player buff array
+    
     func checkBuffs(currPlayer: Player)
     {
         if currPlayer.buffArr.count > 0
@@ -236,6 +253,49 @@ class ViewPlayGame: UIViewController {
         {
         currPlayer.attack = 10
         }
+        checkHealth(currPlayer: currPlayer)
+        
+    }
+    
+    //check if health goes above cap (10) and set to cap if it does
+    //check if health drops to 0
+    func checkHealth(currPlayer: Player)
+    {
+        //cap player health
+        if currPlayer.health > 20
+        {
+            currPlayer.health = 20
+        }
+        //player has lost
+        if currPlayer.health <= 0
+        {
+            print("GAME OVER! Player has died ):")
+            
+        }
+    }
+
+    func checkDebuff(currPlayer: Player, nextPlayer: Player)
+    {
+        if(currPlayer.debuff == "Disarm")
+        {
+            if(currPlayer.shouldAddAttack)
+            {
+                currPlayer.attack += 2
+                currPlayer.shouldAddAttack = false
+            }
+        }
+        if(currPlayer.debuff == "Bad Medicine")
+        {
+            currPlayer.canHeal = false
+        }
+        else if(currPlayer.debuff == "Voodoo Doll")
+        {
+            currPlayer.canAddBack = false
+        }
+        else if(nextPlayer.debuff == "Brass Knuckles")
+        {
+            nextPlayer.bloodThinner = true
+        }
     }
 
     // Place card to bottom and updates stamina
@@ -243,11 +303,18 @@ class ViewPlayGame: UIViewController {
     {
         if (currPlayer.currStamina >= 1)
         {
-            //TODO: check if mage debuff is active
-            currPlayer.currStamina -= 1
-            print(currPlayer.currDeck)
-            addToBack(arr: &currPlayer.currDeck)
-            print(currPlayer.currDeck)
+            checkDebuff(currPlayer: currPlayer, nextPlayer: currPlayer)
+            if(currPlayer.canAddBack)
+            {
+                currPlayer.currStamina -= 1
+                print(currPlayer.currDeck)
+                addToBack(arr: &currPlayer.currDeck)
+                print(currPlayer.currDeck)
+            }
+            else
+            {
+                print("Action not performed because Voodoo Doll debuff is active")
+            }
         }
         else
         {
@@ -264,10 +331,39 @@ class ViewPlayGame: UIViewController {
         }
         currPlayer.currStamina = currPlayer.totalStamina
         
-        if(nextPlayer.debuff == "Brass Knuckes")
+        checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
+        
+        if(nextPlayer.bloodThinner)
         {
             nextPlayer.health -= 2
+            checkHealth(currPlayer: nextPlayer)
         }
+        if(nextPlayer.debuff == "Disarm")
+        {
+            nextPlayer.attack -= 2
+        }
+        if(currPlayer.debuff == "Disarm")
+        {
+            if(currPlayer.shouldAddAttack)
+            {
+                currPlayer.attack += 2
+            }
+        }
+        
+        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
+        if(nextPlayer.debuff != "")
+        {
+            nextPlayer.debuffTime -= 1
+            if (nextPlayer.debuffTime == 0)
+            {
+                nextPlayer.debuff = ""
+                nextPlayer.bloodThinner = false
+                nextPlayer.canHeal = true
+                nextPlayer.canAddBack = true
+                nextPlayer.shouldAddAttack = true
+            }
+        }
+        currPlayer.hasAttacked = false
 
         checkBuffs(currPlayer: nextPlayer)
     }
@@ -285,7 +381,7 @@ class ViewPlayGame: UIViewController {
             print("No more shuffles!")
         }
     }
-    
+
     //TEST PRINTS. Prints all stats
     func printStats()
     {
@@ -403,29 +499,11 @@ class ViewPlayGame: UIViewController {
         else if(turn == 2)
         {
             turn = 1
-            endTurn(currPlayer: player2, nextPlayer: player2)
+            endTurn(currPlayer: player2, nextPlayer: player1)
         }
         else
         {
             print("Error inside endTurnPress!")
-        }
-        
-        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
-        if(player1.debuff != "")
-        {
-            player1.debuffTime -= 1
-            if (player1.debuffTime == 0)
-            {
-                player1.debuff = ""
-            }
-        }
-        else if(player2.debuff != "")
-        {
-            player2.debuffTime -= 1
-            if (player2.debuffTime == 0)
-            {
-                player2.debuff = ""
-            }
         }
         
         //TEST. Show stats
