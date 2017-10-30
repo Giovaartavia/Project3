@@ -302,6 +302,7 @@ class ViewPlayGame: UIViewController {
             else
             {
                 nextPlayer.health -= (damage-2)
+                currPlayer.hasAttacked = true
             }
         }
         else
@@ -363,7 +364,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.canAddBack = true
             }
         }
-
+        nextPlayer.hasAttacked = false
         checkBuffs(currPlayer: nextPlayer)
     }
     
