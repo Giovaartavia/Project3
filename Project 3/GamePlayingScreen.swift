@@ -147,8 +147,10 @@ class ViewPlayGame: UIViewController {
                 currPlayer.health -= currPlayer.attack
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
+                checkHealth(currPlayer: currPlayer)
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
+                checkHealth(currPlayer: nextPlayer)
                 print("Arcane Burst/Double Edge")
             //Does atk + 2 to opponent.
             case "Magical Bolt", "Sword Strike":
@@ -182,6 +184,8 @@ class ViewPlayGame: UIViewController {
             }
             checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
             addToBack(arr: &currPlayer.currDeck)
+            checkHealth(currPlayer: nextPlayer)
+            checkHealth(currPlayer: currPlayer)
             
         }
         else
@@ -225,7 +229,7 @@ class ViewPlayGame: UIViewController {
         }
     } 
 
-    //TODO: Complete function check for these cards existing in the player buff array
+    
     func checkBuffs(currPlayer: Player)
     {
         if currPlayer.buffArr.count > 0
@@ -253,6 +257,8 @@ class ViewPlayGame: UIViewController {
                     {
                         print("Did not heal because Bad Medicine debuff is active")
                     }
+
+                    print("buff add health")
                 default:
                     print("Error inside checkBuffs")
                 }
@@ -262,8 +268,27 @@ class ViewPlayGame: UIViewController {
         {
         currPlayer.attack = 10
         }
+        checkHealth(currPlayer: currPlayer)
+        
     }
     
+    //check if health goes above cap (10) and set to cap if it does
+    //check if health drops to 0
+    func checkHealth(currPlayer: Player)
+    {
+        //cap player health
+        if currPlayer.health > 20
+        {
+            currPlayer.health = 20
+        }
+        //player has lost
+        if currPlayer.health <= 0
+        {
+            print("GAME OVER! Player has died ):")
+            
+        }
+    }
+
     func checkDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(currPlayer.debuff == "Disarm")
@@ -326,6 +351,7 @@ class ViewPlayGame: UIViewController {
         if(nextPlayer.bloodThinner)
         {
             nextPlayer.health -= 2
+            checkHealth(currPlayer: nextPlayer)
         }
         if(nextPlayer.debuff == "Disarm")
         {
