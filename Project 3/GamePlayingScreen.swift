@@ -41,8 +41,8 @@ class ViewPlayGame: UIViewController {
     {
         //fighting and psychic are different for class
         let mageDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"]
+        //var currDeck = ["Disarm", "Sword Strike"]
         var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
-        
         var currStamina = 2
         var totalStamina = 2
         var health = 20
@@ -54,6 +54,7 @@ class ViewPlayGame: UIViewController {
         
         //debuffs
         var canHeal = true
+        var shouldAddAttack = true
         var hasAttacked = false
         var canAddBack = true
         var bloodThinner = false
@@ -101,7 +102,7 @@ class ViewPlayGame: UIViewController {
                 print("Dark")
             //+2 health per turn
             case "Health Potion":
-            addBuff(newBuff: currCard, currPlayer: currPlayer)
+                addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
@@ -115,7 +116,7 @@ class ViewPlayGame: UIViewController {
             //Stops Opponent from healing
             case "Bad Medicine":
                 nextPlayer.debuff = "Bad Medicine"
-                nextPlayer.debuffTime = 2
+                nextPlayer.debuffTime = 3
                 print("Bad Medicine")
                 
             //1 damage to opponent
@@ -125,6 +126,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 print("Voodoo Doll")
                 //warrior: Opponent takes 2 damage per turn
             case "Brass Knuckles":
@@ -132,6 +134,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 print("Brass Knuckles")
                 
                 // single turn
@@ -143,6 +146,7 @@ class ViewPlayGame: UIViewController {
             case "Arcane Burst", "Double Edge":
                 currPlayer.health -= currPlayer.attack
                 currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
                 print("Arcane Burst/Double Edge")
@@ -150,8 +154,9 @@ class ViewPlayGame: UIViewController {
             case "Magical Bolt", "Sword Strike":
                 nextPlayer.health -= (currPlayer.attack + 2)
                 currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
+                checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
                 print("Magical Bolt/Sword Strike")
-                currPlayer.hasAttacked = true
             //Do 1 damage, regain 3 hp.
             case "Lifesteal":
                 if(currPlayer.canHeal)
@@ -161,6 +166,7 @@ class ViewPlayGame: UIViewController {
                 }
                 nextPlayer.health -= 1
                 currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 print("Healing did not happen because debuff was active")
 
             //Do 1 damage, regain 2 stamina.
@@ -168,6 +174,7 @@ class ViewPlayGame: UIViewController {
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
                 currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
                 print("Throwing Knife")
                 
             default: //Necessary
@@ -237,8 +244,15 @@ class ViewPlayGame: UIViewController {
                     print("buff add attack once")
                 //+2 health per turn
                 case "Health Potion":
-                    currPlayer.health += 2
-                    print("buff add health")
+                    if(currPlayer.canHeal)
+                    {
+                        currPlayer.health += 2
+                        print("buff add health")
+                    }
+                    else
+                    {
+                        print("Did not heal because Bad Medicine debuff is active")
+                    }
                 default:
                     print("Error inside checkBuffs")
                 }
@@ -254,12 +268,13 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.debuff == "Disarm")
         {
-            if(!currPlayer.hasAttacked)
+            if(currPlayer.shouldAddAttack)
             {
-                currPlayer.attack -= 2
+                currPlayer.attack += 2
+                currPlayer.shouldAddAttack = false
             }
         }
-        else if(currPlayer.debuff == "Bad Medicine")
+        if(currPlayer.debuff == "Bad Medicine")
         {
             currPlayer.canHeal = false
         }
@@ -267,9 +282,9 @@ class ViewPlayGame: UIViewController {
         {
             currPlayer.canAddBack = false
         }
-        else if(currPlayer.debuff == "Brass Knuckles")
+        else if(nextPlayer.debuff == "Brass Knuckles")
         {
-            currPlayer.bloodThinner = true
+            nextPlayer.bloodThinner = true
         }
     }
 
@@ -312,6 +327,17 @@ class ViewPlayGame: UIViewController {
         {
             nextPlayer.health -= 2
         }
+        if(nextPlayer.debuff == "Disarm")
+        {
+            nextPlayer.attack -= 2
+        }
+        if(currPlayer.debuff == "Disarm")
+        {
+            if(currPlayer.shouldAddAttack)
+            {
+                currPlayer.attack += 2
+            }
+        }
         
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
         if(nextPlayer.debuff != "")
@@ -323,6 +349,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
+                nextPlayer.shouldAddAttack = true
             }
         }
         currPlayer.hasAttacked = false
@@ -424,7 +451,7 @@ class ViewPlayGame: UIViewController {
         }
         else if (turn == 2)
         {
-            placeBottom(currPlayer: player1)
+            placeBottom(currPlayer: player2)
         }
         else
         {
