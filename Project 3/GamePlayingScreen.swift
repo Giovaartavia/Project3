@@ -213,19 +213,23 @@ class ViewPlayGame: UIViewController {
         {
             for i in 0...(currPlayer.buffArr.count - 1)
             {
-            case "Mana-Potion-Deck", "Liquid Courage":
-                currPlayer.attack += 1 
-                print("buff add attack")
-            //+3 attack once while active
-            case "Spell-Tome-Deck", "Blacksmith":
-                //does not take place per turn 
-                print("buff add attack once")
-            //+2 health per turn
-            case "Health-Potion-Deck":
-                currPlayer.health += 2
-                print("buff add health")
-            default:
-                print("Error inside checkBuffs")
+                let buffCard = currPlayer.buffArr[i]
+                switch buffCard
+                {
+                case "Mana-Potion-Deck", "Liquid-Courage-Deck":
+                    currPlayer.attack += 1 
+                    print("buff add attack")
+                //+3 attack once while active
+                case "Spell-Tome-Deck", "Blacksmith-Deck":
+                    //does not take place per turn 
+                    print("buff add attack once")
+                //+2 health per turn
+                case "Health-Potion-Deck":
+                    currPlayer.health += 2
+                    print("buff add health")
+                default:
+                    print("Error inside checkBuffs")
+                }
             }
         }
         if currPlayer.attack > 10
