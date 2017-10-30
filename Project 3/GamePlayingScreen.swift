@@ -40,11 +40,11 @@ class ViewPlayGame: UIViewController {
     class Player
     {
         //fighting and psychic are different for class
-        let mageDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"]
-        var currDeck = ["Disarm", "Sword Strike"]
-        //var currDeck = ["Lifesteal", "Lifesteal","Mana Potion","Mana Potion","Mana Potion","Voodoo Doll", "Voodoo Doll", "Disarm", "Disarm", "Spell Tome", "Smoke Bomb", "Smoke Bomb", "Arcane Burst", "Health Potion", "Health Potion", "Bad Medicine", "Bad Medicine", "Magical Bolt", "Magical Bolt", "Magical Bolt"].shuffled()
-        var currStamina = 10
-        var totalStamina = 10
+        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+        var currDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"].shuffled()
+        
+        var currStamina = 2
+        var totalStamina = 2
         var health = 20
         var attack = 0
         var buffArr: [String] = []
@@ -91,76 +91,76 @@ class ViewPlayGame: UIViewController {
                 
                 //buffs (INFINITE)  
             //+1 attack per turn      
-            case "Mana Potion", "Liquid Courage":
+            case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Steel")
             //+3 attack once while active
-            case "Spell Tome", "Blacksmith":
+            case "Spell-Tome-Deck", "Blacksmith-Deck":
                 currPlayer.attack += 3
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
             //+2 health per turn
-            case "Health Potion":
-                addBuff(newBuff: currCard, currPlayer: currPlayer)
+            case "Health-Potion-Deck":
+            addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
                 
             //subtract 2 ATK from opponent for 1st attack each turn
-            case "Disarm":
-                nextPlayer.debuff = "Disarm"
+            case "Disarm-Deck":
+                nextPlayer.debuff = "Disarm-Deck"
                 nextPlayer.debuffTime = 2
                 print("Grass")
                 
             //Stops Opponent from healing
-            case "Bad Medicine":
-                nextPlayer.debuff = "Bad Medicine"
+            case "Bad-Medicine-Deck":
+                nextPlayer.debuff = "Bad-Medicine-Deck"
                 nextPlayer.debuffTime = 3
-                print("Bad Medicine")
+                print("Bad-Medicine-Deck")
                 
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
-            case "Voodoo Doll":
-                nextPlayer.debuff = "Voodoo Doll"
+            case "Voodoo-Doll-Deck":
+                nextPlayer.debuff = "Voodoo-Doll-Deck"
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 print("Voodoo Doll")
                 //warrior: Opponent takes 2 damage per turn
-            case "Brass Knuckles":
-                nextPlayer.debuff = "Brass Knuckles"
+            case "Brass-Knuckles-Deck":
+                nextPlayer.debuff = "Brass-Knuckles-Deck"
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 print("Brass Knuckles")
                 
                 // single turn
             //Places top card of opponents deck on the bottom
-            case "Smoke Bomb":
+            case "Smoke-Bomb-Deck":
                 addToBack(arr: &nextPlayer.currDeck)
-                print("Smoke Bomb")
+                print("Smoke-Bomb-Deck")
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
-            case "Arcane Burst", "Double Edge":
-                currPlayer.health -= currPlayer.attack
+            case "Arcane-Burst-Deck", "Double-Edge-Deck":
+                attackDamage(currPlayer: currPlayer, nextPlayer: currPlayer, damage: currPlayer.attack)
                 checkHealth(currPlayer: currPlayer)
-                nextPlayer.health -= ((currPlayer.attack * 2) + 2)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: (currPlayer.attack * 2) + 2)
                 selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
-                print("Arcane Burst/Double Edge")
+                print("Arcane-Burst-Deck/Double-Edge-Deck")
             //Does atk + 2 to opponent.
-            case "Magical Bolt", "Sword Strike":
+            case "Magical-Bolt-Deck", "Sword-Strike-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: currPlayer.attack + 2)
                 print("Magical Bolt/Sword Strike")
             //Do 1 damage, regain 3 hp.
-            case "Lifesteal":
+            case "Life-Steal-Deck":
                 if(currPlayer.canHeal)
                 {
                     currPlayer.health += 3
-                    print("Lifesteal")
+                    print("Life-Steal-Deck")
                 }
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
                 print("Healing did not happen because debuff was active")
 
             //Do 1 damage, regain 2 stamina.
-            case "Throwing Knife":
+            case "Throwing-Knife-Deck":
                 currPlayer.currStamina += 2
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
                 print("Throwing Knife")
@@ -188,8 +188,8 @@ class ViewPlayGame: UIViewController {
         //check buff array
         if(currPlayer.buffArr.count == 3)
         {
-            //check if replaced is "Spell Tome" or "Blacksmith"
-            if(currPlayer.buffArr[0] == "Spell Tome" || currPlayer.buffArr[0] == "Blacksmith")
+            //check if replaced is "Spell-Tome-Deck" or "Blacksmith-Deck"
+            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck")
             {
                 currPlayer.attack -= 3
             }
@@ -225,15 +225,15 @@ class ViewPlayGame: UIViewController {
                 let buffCard = currPlayer.buffArr[i]
                 switch buffCard
                 {
-                case "Mana Potion", "Liquid Courage":
+                case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                     currPlayer.attack += 1 
                     print("buff add attack")
                 //+3 attack once while active
-                case "Spell Tome", "Blacksmith":
+                case "Spell-Tome-Deck", "Blacksmith-Deck":
                     //does not take place per turn 
                     print("buff add attack once")
                 //+2 health per turn
-                case "Health Potion":
+                case "Health-Potion-Deck":
                     if(currPlayer.canHeal)
                     {
                         currPlayer.health += 2
@@ -241,7 +241,7 @@ class ViewPlayGame: UIViewController {
                     }
                     else
                     {
-                        print("Did not heal because Bad Medicine debuff is active")
+                        print("Did not heal because Bad-Medicine-Deck debuff is active")
                     }
 
                     print("buff add health")
@@ -277,15 +277,15 @@ class ViewPlayGame: UIViewController {
 
     func checkDebuff(currPlayer: Player, nextPlayer: Player)
     {
-        if(currPlayer.debuff == "Bad Medicine")
+        if(currPlayer.debuff == "Bad-Medicine-Deck")
         {
             currPlayer.canHeal = false
         }
-        else if(currPlayer.debuff == "Voodoo Doll")
+        else if(currPlayer.debuff == "Voodoo-Doll-Deck")
         {
             currPlayer.canAddBack = false
         }
-        else if(nextPlayer.debuff == "Brass Knuckles")
+        else if(nextPlayer.debuff == "Brass-Knuckles-Deck")
         {
             nextPlayer.bloodThinner = true
         }
@@ -325,7 +325,7 @@ class ViewPlayGame: UIViewController {
             }
             else
             {
-                print("Action not performed because Voodoo Doll debuff is active")
+                print("Action not performed because Voodoo-Doll-Deck debuff is active")
             }
         }
         else
@@ -411,7 +411,6 @@ class ViewPlayGame: UIViewController {
     
     func printTopCard()
     {
-        
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
@@ -421,9 +420,11 @@ class ViewPlayGame: UIViewController {
     let player1 = Player()
     let player2 = Player()
 
+    @IBOutlet weak var topCard1: UIImageView!
+    @IBOutlet weak var topCard2: UIImageView!
+    
     //turn for testing always starts on player 1
     var turn = 1;
-
 
     //Button Press Actions
     @IBOutlet weak var playCardButton: UIButton!
@@ -433,16 +434,28 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var surrenderButton: UIButton!
     
     
+    func revealTopCard1(currPlayer: Player)
+    {
+        topCard1.image = UIImage(named: player1.currDeck[0])
+    }
+    
+    func revealTopCard2(currPlayer: Player)
+    {
+        topCard2.image = UIImage(named: player2.currDeck[0])
+    }
+    
     @IBAction func playCardPress(_ sender: Any) {
         
         //check turn
         if(turn == 1)
         {
             playCard(currPlayer: player1, nextPlayer: player2)
+            revealTopCard1(currPlayer: player1)
         }
         else if(turn == 2)
         {
             playCard(currPlayer: player2, nextPlayer: player1)
+            revealTopCard2(currPlayer: player2)
         }
         else
         {
@@ -458,10 +471,12 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             placeBottom(currPlayer: player1)
+            revealTopCard1(currPlayer: player1)
         }
         else if (turn == 2)
         {
-            placeBottom(currPlayer: player2)
+            placeBottom(currPlayer: player2) //player1 was here
+            revealTopCard2(currPlayer: player2)
         }
         else
         {
@@ -499,10 +514,12 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             shuffleCards(currPlayer: player1)
+            revealTopCard1(currPlayer: player1)
         }
         else if (turn == 2)
         {
             shuffleCards(currPlayer: player2)
+            revealTopCard2(currPlayer: player2)
         }
         else
         {
