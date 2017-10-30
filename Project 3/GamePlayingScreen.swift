@@ -92,11 +92,11 @@ class ViewPlayGame: UIViewController {
                 
                 //buffs (INFINITE)  
             //+1 attack per turn      
-            case "Mana-Potion-Deck", "Liquid Courage":
+            case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Steel")
             //+3 attack once while active
-            case "Spell-Tome-Deck", "Blacksmith":
+            case "Spell-Tome-Deck", "Blacksmith-Deck":
                 currPlayer.attack += 3
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
@@ -109,30 +109,33 @@ class ViewPlayGame: UIViewController {
                 
             //subtract 2 ATK from opponent for 1st attack each turn
             case "Disarm-Deck":
-                currPlayer.debuff = "Disarm-Deck"
-                currPlayer.debuffTime = 0
+                nextPlayer.debuff = "Disarm-Deck"
+                nextPlayer.debuffTime = 2
                 print("Grass")
                 
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
-                currPlayer.debuff = "Bad-Medicine-Deck"
-                currPlayer.debuffTime = 4
+                nextPlayer.debuff = "Bad-Medicine-Deck"
+                nextPlayer.debuffTime = 3
                 print("Bad-Medicine-Deck")
                 
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
-                currPlayer.debuff = "Voodoo-Doll-Deck"
-                currPlayer.debuffTime = 0
-                print("Voodoo-Doll-Deck")
-                //warrior: Opponent takes 2 damage per turn
-            case "Brass Knuckles":
-                nextPlayer.debuff = "Brass Knuckles"
+                nextPlayer.debuff = "Voodoo-Doll-Deck"
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
-                print("Brass Knuckles")
+                print("Voodoo-Doll-Deck")
+                //warrior: Opponent takes 2 damage per turn
+            case "Brass-Knuckles-Deck":
+                nextPlayer.debuff = "Brass-Knuckles-Deck"
+                nextPlayer.debuffTime = 2
+                nextPlayer.health -= 1
+                currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
+                print("Brass-Knuckles-Deck")
                 
                 // single turn
             //Places top card of opponents deck on the bottom
@@ -140,24 +143,27 @@ class ViewPlayGame: UIViewController {
                 addToBack(arr: &nextPlayer.currDeck)
                 print("Smoke-Bomb-Deck")
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
-            case "Arcane-Burst-Deck", "Double Edge":
+            case "Arcane-Burst-Deck", "Double-Edge-Deck":
                 currPlayer.health -= currPlayer.attack
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 checkHealth(currPlayer: currPlayer)
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
                 selfDamage = true
-                print("Arcane-Burst-Deck/Double Edge")
+                checkHealth(currPlayer: nextPlayer)
+                print("Arcane-Burst-Deck/Double-Edge-Deck")
             //Does atk + 2 to opponent.
-            case "Magical-Bolt-Deck", "Sword Strike":
+            case "Magical-Bolt-Deck", "Sword-Strike-Deck":
                 nextPlayer.health -= (currPlayer.attack + 2)
-                print("Magical-Bolt-Deck/Sword Strike")
+                currPlayer.hasAttacked = true
+                currPlayer.shouldAddAttack = false
+                checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
+                print("Magical-Bolt-Deck/Sword-Strike-Deck")
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
-                if(currPlayer.debuff == "Bad-Medicine-Deck")
+                if(currPlayer.canHeal)
                 {
                     currPlayer.health += 3
-                    nextPlayer.health -= 1
                     print("Life-Steal-Deck")
                 }
                 nextPlayer.health -= 1
@@ -166,12 +172,12 @@ class ViewPlayGame: UIViewController {
                 print("Healing did not happen because debuff was active")
 
             //Do 1 damage, regain 2 stamina.
-            case "Throwing Knife":
+            case "Throwing-Knife-Deck":
                 currPlayer.currStamina += 2
                 nextPlayer.health -= 1
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
-                print("Throwing Knife")
+                print("Throwing-Knife-Deck")
                 
             default: //Necessary
                 print("Error in card selection switch case")
@@ -196,8 +202,8 @@ class ViewPlayGame: UIViewController {
         //check buff array
         if(currPlayer.buffArr.count == 3)
         {
-            //check if replaced is "Spell-Tome-Deck" or "Blacksmith"
-            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith")
+            //check if replaced is "Spell-Tome-Deck" or "Blacksmith-Deck"
+            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck")
             {
                 currPlayer.attack -= 3
             }
@@ -242,7 +248,16 @@ class ViewPlayGame: UIViewController {
                     print("buff add attack once")
                 //+2 health per turn
                 case "Health-Potion-Deck":
-                    currPlayer.health += 2
+                    if(currPlayer.canHeal)
+                    {
+                        currPlayer.health += 2
+                        print("buff add health")
+                    }
+                    else
+                    {
+                        print("Did not heal because Bad-Medicine-Deck debuff is active")
+                    }
+
                     print("buff add health")
                 default:
                     print("Error inside checkBuffs")
@@ -276,7 +291,7 @@ class ViewPlayGame: UIViewController {
 
     func checkDebuff(currPlayer: Player, nextPlayer: Player)
     {
-        if(currPlayer.debuff == "Disarm")
+        if(currPlayer.debuff == "Disarm-Deck")
         {
             if(currPlayer.shouldAddAttack)
             {
@@ -284,15 +299,15 @@ class ViewPlayGame: UIViewController {
                 currPlayer.shouldAddAttack = false
             }
         }
-        if(currPlayer.debuff == "Bad Medicine")
+        if(currPlayer.debuff == "Bad-Medicine-Deck")
         {
             currPlayer.canHeal = false
         }
-        else if(currPlayer.debuff == "Voodoo Doll")
+        else if(currPlayer.debuff == "Voodoo-Doll-Deck")
         {
             currPlayer.canAddBack = false
         }
-        else if(nextPlayer.debuff == "Brass Knuckles")
+        else if(nextPlayer.debuff == "Brass-Knuckles-Deck")
         {
             nextPlayer.bloodThinner = true
         }
@@ -313,7 +328,7 @@ class ViewPlayGame: UIViewController {
             }
             else
             {
-                print("Action not performed because Voodoo Doll debuff is active")
+                print("Action not performed because Voodoo-Doll-Deck debuff is active")
             }
         }
         else
@@ -338,11 +353,11 @@ class ViewPlayGame: UIViewController {
             nextPlayer.health -= 2
             checkHealth(currPlayer: nextPlayer)
         }
-        if(nextPlayer.debuff == "Disarm")
+        if(nextPlayer.debuff == "Disarm-Deck")
         {
             nextPlayer.attack -= 2
         }
-        if(currPlayer.debuff == "Disarm")
+        if(currPlayer.debuff == "Disarm-Deck")
         {
             if(currPlayer.shouldAddAttack)
             {
