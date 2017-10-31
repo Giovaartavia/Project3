@@ -131,18 +131,14 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
-                currPlayer.hasAttacked = true
-                currPlayer.shouldAddAttack = false
-                print("Voodoo-Doll-Deck")
+                print("Voodoo Doll")
                 //warrior: Opponent takes 2 damage per turn
             case "Brass-Knuckles-Deck":
                 nextPlayer.debuff = "Brass-Knuckles-Deck"
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
-                updateAttackBar(currPlayer: nextPlayer)
-                currPlayer.hasAttacked = true
-                currPlayer.shouldAddAttack = false
-                print("Brass-Knuckles-Deck")
+                updateHealthBar(currPlayer: nextPlayer)
+                print("Brass Knuckles")
                 
                 // single turn
             //Places top card of opponents deck on the bottom
@@ -152,24 +148,19 @@ class ViewPlayGame: UIViewController {
                 print("Smoke-Bomb-Deck")
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane-Burst-Deck", "Double-Edge-Deck":
-                currPlayer.health -= currPlayer.attack
-                updateHealthBar(currPlayer: currPlayer)
-                currPlayer.hasAttacked = true
-                currPlayer.shouldAddAttack = false
+                attackDamage(currPlayer: currPlayer, nextPlayer: currPlayer, damage: currPlayer.attack)
                 checkHealth(currPlayer: currPlayer)
-                nextPlayer.health -= ((currPlayer.attack * 2) + 2)
-                updateHealthBar(currPlayer: nextPlayer)
+                updateHealthBar(currPlayer: currPlayer)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: (currPlayer.attack * 2) + 2)
                 selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
+                updateHealthBar(currPlayer: nextPlayer)
                 print("Arcane-Burst-Deck/Double-Edge-Deck")
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck":
-                nextPlayer.health -= (currPlayer.attack + 2)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: currPlayer.attack + 2)
                 updateHealthBar(currPlayer: nextPlayer)
-                currPlayer.hasAttacked = true
-                currPlayer.shouldAddAttack = false
-                checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
-                print("Magical-Bolt-Deck/Sword-Strike-Deck")
+                print("Magical Bolt/Sword Strike")
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
                 if(currPlayer.canHeal)
@@ -178,21 +169,17 @@ class ViewPlayGame: UIViewController {
                     updateHealthBar(currPlayer: currPlayer)
                     print("Life-Steal-Deck")
                 }
-                nextPlayer.health -= 1
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
                 updateHealthBar(currPlayer: nextPlayer)
-                currPlayer.hasAttacked = true
-                currPlayer.shouldAddAttack = false
                 print("Healing did not happen because debuff was active")
 
             //Do 1 damage, regain 2 stamina.
             case "Throwing-Knife-Deck":
                 currPlayer.currStamina += 2
                 updateStaminaBar(currPlayer: currPlayer)
-                nextPlayer.health -= 1
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
                 updateHealthBar(currPlayer: nextPlayer)
-                currPlayer.hasAttacked = true
-                currPlayer.shouldAddAttack = false
-                print("Throwing-Knife-Deck")
+                print("Throwing Knife")
                 
             default: //Necessary
                 print("Error in card selection switch case")
@@ -221,7 +208,7 @@ class ViewPlayGame: UIViewController {
             if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck")
             {
                 currPlayer.attack -= 3
-                updateHealthBar(currPlayer: currPlayer)
+                updateAttackBar(currPlayer: currPlayer)
             }
 
             //change front 
@@ -394,11 +381,8 @@ class ViewPlayGame: UIViewController {
         }
         if(currPlayer.debuff == "Disarm-Deck")
         {
-            if(currPlayer.shouldAddAttack)
-            {
-                currPlayer.attack += 2
-                updateAttackBar(currPlayer: currPlayer)
-            }
+            currPlayer.attack += 2
+            updateAttackBar(currPlayer: currPlayer)
         }
         
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
@@ -480,6 +464,8 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var attackBar2: UIImageView!
     @IBOutlet weak var staminaBar2: UIImageView!
     
+    //Player Turn Header
+    @IBOutlet weak var playerTurn: UILabel!
     
     //turn for testing always starts on player 1
     var turn = 1;
@@ -579,22 +565,33 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            if(currPlayer.attack > 10)
+            if(currPlayer.currStamina > 10)
             {
                 staminaBar1.image = UIImage(named: staminaBarImages[10])
             }
-            else if(currPlayer.attack < 0)
+            else if(currPlayer.currStamina < 0)
             {
                 staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
             }
             else
             {
-                attackBar1.image = UIImage(named: attackBarImages[currPlayer.attack])
+                staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
             }
         }
         else
         {
-            staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+            if(currPlayer.currStamina > 10)
+            {
+                staminaBar2.image = UIImage(named: staminaBarImages[10])
+            }
+            else if(currPlayer.currStamina < 0)
+            {
+                staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+            }
+            else
+            {
+                staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+            }
         }
     }
     
@@ -648,11 +645,14 @@ class ViewPlayGame: UIViewController {
         {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
+            playerTurn.text = "Player 2's Turn"
+            
         }
         else if(turn == 2)
         {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
+            playerTurn.text = "Player 1's Turn"
         }
         else
         {

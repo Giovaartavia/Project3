@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840A720F1FA8FCFF005A99B3 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 840A720E1FA8FCFF005A99B3 /* Fonts */; };
 		AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */; };
 		AC0C0BE61F9BFBD70026A225 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0BE51F9BFBD70026A225 /* ViewController.swift */; };
 		AC0C0BE91F9BFBD70026A225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0C0BE71F9BFBD70026A225 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840A720E1FA8FCFF005A99B3 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = SOURCE_ROOT; };
 		AC0C0BE01F9BFBD70026A225 /* Project 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC0C0BE51F9BFBD70026A225 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		AC0C0BE21F9BFBD70026A225 /* Project 3 */ = {
 			isa = PBXGroup;
 			children = (
+				840A720E1FA8FCFF005A99B3 /* Fonts */,
 				AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */,
 				AC0C0BE51F9BFBD70026A225 /* ViewController.swift */,
 				AC0C0BE71F9BFBD70026A225 /* Main.storyboard */,
@@ -238,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840A720F1FA8FCFF005A99B3 /* Fonts in Resources */,
 				AC0C0BEE1F9BFBD70026A225 /* LaunchScreen.storyboard in Resources */,
 				AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */,
 				AC0C0BEB1F9BFBD70026A225 /* Assets.xcassets in Resources */,
