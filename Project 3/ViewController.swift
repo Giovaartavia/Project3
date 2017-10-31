@@ -27,13 +27,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var optionsButton: UIButton!
     //@IBOutlet weak var electric: UIImageView!
     
+    @IBAction func CoinFlip() {
+        print("jhbscjhavsjhcvajkhs")
+    }
     
+    @IBAction func FlipCoin(_ sender: Any) {
+        print("print this")
+    }
     override func viewDidLoad() { //Runs when screen is loaded
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //self.electric.isHidden = true //Hides the electric pokemon card at startup
-        self.startButton.isHidden = false
+        //self.startButton.isHidden = false
         self.optionsButton.isHidden = false
     }
 
@@ -42,6 +48,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    
+    
 }
 

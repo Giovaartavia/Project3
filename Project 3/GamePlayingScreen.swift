@@ -58,7 +58,6 @@ class ViewPlayGame: UIViewController {
         
         //debuffs
         var canHeal = true
-        var shouldAddAttack = true
         var hasAttacked = false
         var canAddBack = true
         var bloodThinner = false
@@ -310,14 +309,6 @@ class ViewPlayGame: UIViewController {
 
     func checkDebuff(currPlayer: Player, nextPlayer: Player)
     {
-        if(currPlayer.debuff == "Disarm-Deck")
-        {
-            if(currPlayer.shouldAddAttack)
-            {
-                currPlayer.attack += 2
-                currPlayer.shouldAddAttack = false
-            }
-        }
         if(currPlayer.debuff == "Bad-Medicine-Deck")
         {
             currPlayer.canHeal = false
@@ -332,6 +323,26 @@ class ViewPlayGame: UIViewController {
         }
     }
 
+    func attackDamage(currPlayer: Player, nextPlayer: Player, damage: Int)
+    {
+        if(currPlayer.debuff == "Disarm")
+        {
+            if(currPlayer.hasAttacked)
+            {
+                nextPlayer.health -= damage
+            }
+            else
+            {
+                nextPlayer.health -= (damage-2)
+                currPlayer.hasAttacked = true
+            }
+        }
+        else
+        {
+            nextPlayer.health -= damage
+        }
+    }
+    
     // Place card to bottom and updates stamina
     func placeBottom(currPlayer: Player)
     {
@@ -400,11 +411,9 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
-                nextPlayer.shouldAddAttack = true
             }
         }
-        currPlayer.hasAttacked = false
-
+        nextPlayer.hasAttacked = false
         checkBuffs(currPlayer: nextPlayer)
     }
     
