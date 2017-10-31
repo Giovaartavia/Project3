@@ -576,27 +576,16 @@ class ViewPlayGame: UIViewController {
             }
             else if(currPlayer.attack < 0)
             {
-                staminaBar1.image = UIImage(named: staminaBarImages[0])
+                staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
             }
             else
             {
-                staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                attackBar1.image = UIImage(named: attackBarImages[currPlayer.attack])
             }
         }
         else
         {
-            if(currPlayer.attack > 10)
-            {
-                staminaBar2.image = UIImage(named: staminaBarImages[10])
-            }
-            else if(currPlayer.attack < 0)
-            {
-                staminaBar2.image = UIImage(named: staminaBarImages[0])
-            }
-            else
-            {
-                staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
-            }
+            staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
         }
     }
     
