@@ -103,10 +103,16 @@
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
                     </view>
                     <connections>
+                        <outlet property="attackBar1" destination="anN-dO-x1f" id="EHS-AV-i8d"/>
+                        <outlet property="attackBar2" destination="SN3-YR-f3I" id="PFN-F8-7MQ"/>
                         <outlet property="endTurnButton" destination="qdF-M5-EJc" id="5uB-Ls-nmd"/>
+                        <outlet property="healthBar1" destination="370-jY-6Qk" id="HR0-Gy-GJQ"/>
+                        <outlet property="healthBar2" destination="LqV-Ax-udT" id="vmH-Ub-5pr"/>
                         <outlet property="placeBottomButton" destination="Lt6-be-Xp8" id="FBD-Q7-xub"/>
                         <outlet property="playCardButton" destination="w3Z-2I-Ytw" id="8nY-dI-8Oq"/>
                         <outlet property="shuffleButton" destination="nLw-l8-LYj" id="djc-uj-EMF"/>
+                        <outlet property="staminaBar1" destination="FCt-C4-mL4" id="jFd-ok-tak"/>
+                        <outlet property="staminaBar2" destination="UGa-YP-sSC" id="keO-vJ-oSr"/>
                         <outlet property="surrenderButton" destination="Def-X2-aX8" id="8av-Ck-p84"/>
                         <outlet property="topCard1" destination="sxJ-ap-xQB" id="rui-hX-uio"/>
                         <outlet property="topCard2" destination="rgA-T6-moJ" id="neo-Uc-D0K"/>

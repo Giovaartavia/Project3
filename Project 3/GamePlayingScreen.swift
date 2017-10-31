@@ -39,6 +39,10 @@ class ViewPlayGame: UIViewController {
     
     class Player
     {
+        var name: String
+        init(name: String) {
+            self.name = name
+        }
         //fighting and psychic are different for class
         let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
         var currDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"].shuffled()
@@ -77,6 +81,7 @@ class ViewPlayGame: UIViewController {
         {
             //decrease stamina
             currPlayer.currStamina -= 2
+            updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
             var currCard = currPlayer.currDeck[0]
@@ -98,11 +103,12 @@ class ViewPlayGame: UIViewController {
             //+3 attack once while active
             case "Spell-Tome-Deck", "Blacksmith-Deck":
                 currPlayer.attack += 3
+                updateAttackBar(currPlayer: currPlayer)
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Dark")
             //+2 health per turn
             case "Health-Potion-Deck":
-            addBuff(newBuff: currCard, currPlayer: currPlayer)
+                addBuff(newBuff: currCard, currPlayer: currPlayer)
                 print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
@@ -125,6 +131,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
+                updateHealthBar(currPlayer: nextPlayer)
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 print("Voodoo-Doll-Deck")
@@ -133,6 +140,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuff = "Brass-Knuckles-Deck"
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
+                updateAttackBar(currPlayer: nextPlayer)
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 print("Brass-Knuckles-Deck")
@@ -141,20 +149,24 @@ class ViewPlayGame: UIViewController {
             //Places top card of opponents deck on the bottom
             case "Smoke-Bomb-Deck":
                 addToBack(arr: &nextPlayer.currDeck)
+                revealTopCard(currPlayer: nextPlayer)
                 print("Smoke-Bomb-Deck")
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane-Burst-Deck", "Double-Edge-Deck":
                 currPlayer.health -= currPlayer.attack
+                updateHealthBar(currPlayer: currPlayer)
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 checkHealth(currPlayer: currPlayer)
                 nextPlayer.health -= ((currPlayer.attack * 2) + 2)
+                updateHealthBar(currPlayer: nextPlayer)
                 selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 print("Arcane-Burst-Deck/Double-Edge-Deck")
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck":
                 nextPlayer.health -= (currPlayer.attack + 2)
+                updateHealthBar(currPlayer: nextPlayer)
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
@@ -164,9 +176,11 @@ class ViewPlayGame: UIViewController {
                 if(currPlayer.canHeal)
                 {
                     currPlayer.health += 3
+                    updateHealthBar(currPlayer: currPlayer)
                     print("Life-Steal-Deck")
                 }
                 nextPlayer.health -= 1
+                updateHealthBar(currPlayer: nextPlayer)
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 print("Healing did not happen because debuff was active")
@@ -174,7 +188,9 @@ class ViewPlayGame: UIViewController {
             //Do 1 damage, regain 2 stamina.
             case "Throwing-Knife-Deck":
                 currPlayer.currStamina += 2
+                updateStaminaBar(currPlayer: currPlayer)
                 nextPlayer.health -= 1
+                updateHealthBar(currPlayer: nextPlayer)
                 currPlayer.hasAttacked = true
                 currPlayer.shouldAddAttack = false
                 print("Throwing-Knife-Deck")
@@ -206,6 +222,7 @@ class ViewPlayGame: UIViewController {
             if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck")
             {
                 currPlayer.attack -= 3
+                updateHealthBar(currPlayer: currPlayer)
             }
 
             //change front 
@@ -225,7 +242,7 @@ class ViewPlayGame: UIViewController {
 
         if currPlayer.attack > 10
         {
-        currPlayer.attack = 10
+            currPlayer.attack = 10
         }
     } 
 
@@ -240,7 +257,8 @@ class ViewPlayGame: UIViewController {
                 switch buffCard
                 {
                 case "Mana-Potion-Deck", "Liquid-Courage-Deck":
-                    currPlayer.attack += 1 
+                    currPlayer.attack += 1
+                    updateAttackBar(currPlayer: currPlayer)
                     print("buff add attack")
                 //+3 attack once while active
                 case "Spell-Tome-Deck", "Blacksmith-Deck":
@@ -251,6 +269,7 @@ class ViewPlayGame: UIViewController {
                     if(currPlayer.canHeal)
                     {
                         currPlayer.health += 2
+                        updateHealthBar(currPlayer: currPlayer)
                         print("buff add health")
                     }
                     else
@@ -322,6 +341,7 @@ class ViewPlayGame: UIViewController {
             if(currPlayer.canAddBack)
             {
                 currPlayer.currStamina -= 1
+                updateStaminaBar(currPlayer: currPlayer)
                 print(currPlayer.currDeck)
                 addToBack(arr: &currPlayer.currDeck)
                 print(currPlayer.currDeck)
@@ -345,23 +365,28 @@ class ViewPlayGame: UIViewController {
             currPlayer.totalStamina += 2
         }
         currPlayer.currStamina = currPlayer.totalStamina
+        updateStaminaBar(currPlayer: currPlayer)
+        updateStaminaBar(currPlayer: nextPlayer)
         
         checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
         
         if(nextPlayer.bloodThinner)
         {
             nextPlayer.health -= 2
+            updateHealthBar(currPlayer: nextPlayer)
             checkHealth(currPlayer: nextPlayer)
         }
         if(nextPlayer.debuff == "Disarm-Deck")
         {
             nextPlayer.attack -= 2
+            updateAttackBar(currPlayer: nextPlayer)
         }
         if(currPlayer.debuff == "Disarm-Deck")
         {
             if(currPlayer.shouldAddAttack)
             {
                 currPlayer.attack += 2
+                updateAttackBar(currPlayer: currPlayer)
             }
         }
         
@@ -433,11 +458,19 @@ class ViewPlayGame: UIViewController {
     
     // END OF FUNCTIONS
     
-    let player1 = Player()
-    let player2 = Player()
-
+    let player1 = Player(name: "player1")
+    let player2 = Player(name: "player2")
+    
+    //dynamic UI images
     @IBOutlet weak var topCard1: UIImageView!
     @IBOutlet weak var topCard2: UIImageView!
+    @IBOutlet weak var healthBar1: UIImageView!
+    @IBOutlet weak var attackBar1: UIImageView!
+    @IBOutlet weak var staminaBar1: UIImageView!
+    @IBOutlet weak var healthBar2: UIImageView!
+    @IBOutlet weak var attackBar2: UIImageView!
+    @IBOutlet weak var staminaBar2: UIImageView!
+    
     
     //turn for testing always starts on player 1
     var turn = 1;
@@ -449,15 +482,122 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var surrenderButton: UIButton!
     
+    var staminaBarImages = ["Stamina-Bar0","Stamina-Bar1","Stamina-Bar2","Stamina-Bar3","Stamina-Bar4","Stamina-Bar5","Stamina-Bar6","Stamina-Bar7","Stamina-Bar8","Stamina-Bar9","Stamina-Bar10"]
+    var attackBarImages = ["Attack-Bar0","Attack-Bar1","Attack-Bar2","Attack-Bar3","Attack-Bar4","Attack-Bar5","Attack-Bar6","Attack-Bar7","Attack-Bar8","Attack-Bar9","Attack-Bar10"]
+    var healthBarImages = ["Health-Bar0","Health-Bar1","Health-Bar2","Health-Bar3","Health-Bar4","Health-Bar5","Health-Bar6","Health-Bar7","Health-Bar8","Health-Bar9","Health-Bar10","Health-Bar11","Health-Bar12","Health-Bar13","Health-Bar14","Health-Bar15","Health-Bar16","Health-Bar17","Health-Bar18","Health-Bar19","Health-Bar20"]
     
-    func revealTopCard1(currPlayer: Player)
+    func revealTopCard(currPlayer: Player)
     {
-        topCard1.image = UIImage(named: player1.currDeck[0])
+        if(currPlayer.name == "player1")
+        {
+            topCard1.image = UIImage(named: player1.currDeck[0])
+        }
+        else
+        {
+            topCard2.image = UIImage(named: player2.currDeck[0])
+        }
     }
     
-    func revealTopCard2(currPlayer: Player)
+    func updateHealthBar(currPlayer: Player)
     {
-        topCard2.image = UIImage(named: player2.currDeck[0])
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.health > 20)
+            {
+                healthBar1.image = UIImage(named: healthBarImages[20])
+            }
+            else if(currPlayer.health < 0)
+            {
+                healthBar1.image = UIImage(named: healthBarImages[0])
+            }
+            else
+            {
+                healthBar1.image = UIImage(named: healthBarImages[currPlayer.health])
+            }
+        }
+        else
+        {
+            if(currPlayer.health > 20)
+            {
+                healthBar2.image = UIImage(named: healthBarImages[20])
+            }
+            else if(currPlayer.health < 0)
+            {
+                healthBar2.image = UIImage(named: healthBarImages[0])
+            }
+            else
+            {
+                healthBar2.image = UIImage(named: healthBarImages[currPlayer.health])
+            }
+        }
+    }
+    
+    func updateAttackBar(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.attack > 10)
+            {
+                attackBar1.image = UIImage(named: attackBarImages[10])
+            }
+            else if(currPlayer.attack < 0)
+            {
+                attackBar1.image = UIImage(named: attackBarImages[0])
+            }
+            else
+            {
+                attackBar1.image = UIImage(named: attackBarImages[currPlayer.attack])
+            }
+        }
+        else
+        {
+            if(currPlayer.attack > 10)
+            {
+                attackBar2.image = UIImage(named: attackBarImages[10])
+            }
+            else if(currPlayer.attack < 0)
+            {
+                attackBar2.image = UIImage(named: attackBarImages[0])
+            }
+            else
+            {
+                attackBar2.image = UIImage(named: attackBarImages[currPlayer.attack])
+            }
+        }
+    }
+    
+    func updateStaminaBar(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.attack > 10)
+            {
+                staminaBar1.image = UIImage(named: staminaBarImages[10])
+            }
+            else if(currPlayer.attack < 0)
+            {
+                staminaBar1.image = UIImage(named: staminaBarImages[0])
+            }
+            else
+            {
+                staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+            }
+        }
+        else
+        {
+            if(currPlayer.attack > 10)
+            {
+                staminaBar2.image = UIImage(named: staminaBarImages[10])
+            }
+            else if(currPlayer.attack < 0)
+            {
+                staminaBar2.image = UIImage(named: staminaBarImages[0])
+            }
+            else
+            {
+                staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+            }
+        }
     }
     
     @IBAction func playCardPress(_ sender: Any) {
@@ -466,12 +606,12 @@ class ViewPlayGame: UIViewController {
         if(turn == 1)
         {
             playCard(currPlayer: player1, nextPlayer: player2)
-            revealTopCard1(currPlayer: player1)
+            revealTopCard(currPlayer: player1)
         }
         else if(turn == 2)
         {
             playCard(currPlayer: player2, nextPlayer: player1)
-            revealTopCard2(currPlayer: player2)
+            revealTopCard(currPlayer: player2)
         }
         else
         {
@@ -487,12 +627,12 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             placeBottom(currPlayer: player1)
-            revealTopCard1(currPlayer: player1)
+            revealTopCard(currPlayer: player1)
         }
         else if (turn == 2)
         {
             placeBottom(currPlayer: player2) //player1 was here
-            revealTopCard2(currPlayer: player2)
+            revealTopCard(currPlayer: player2)
         }
         else
         {
@@ -530,12 +670,12 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             shuffleCards(currPlayer: player1)
-            revealTopCard1(currPlayer: player1)
+            revealTopCard(currPlayer: player1)
         }
         else if (turn == 2)
         {
             shuffleCards(currPlayer: player2)
-            revealTopCard2(currPlayer: player2)
+            revealTopCard(currPlayer: player2)
         }
         else
         {
