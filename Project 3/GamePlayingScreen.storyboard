@@ -72,27 +72,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Health-Bar20" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="370-jY-6Qk">
-                                <rect key="frame" x="20" y="293" width="170" height="18"/>
+                                <rect key="frame" x="20" y="290" width="170" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Attack-Bar0" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anN-dO-x1f">
-                                <rect key="frame" x="20" y="319" width="170" height="18"/>
+                                <rect key="frame" x="20" y="316" width="170" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Stamina-Bar0" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCt-C4-mL4">
-                                <rect key="frame" x="20" y="345" width="170" height="18"/>
+                                <rect key="frame" x="20" y="342" width="170" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Attack-Bar0" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SN3-YR-f3I">
-                                <rect key="frame" x="222" y="319" width="170" height="18"/>
+                                <rect key="frame" x="222" y="316" width="170" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Stamina-Bar0" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-YP-sSC">
-                                <rect key="frame" x="222" y="345" width="170" height="18"/>
+                                <rect key="frame" x="222" y="342" width="170" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Health-Bar20" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LqV-Ax-udT">
-                                <rect key="frame" x="222" y="293" width="170" height="18"/>
+                                <rect key="frame" x="222" y="290" width="170" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Life-Steal-Deck" translatesAutoresizingMaskIntoConstraints="NO" id="rgA-T6-moJ">
@@ -110,6 +110,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0B-J6-cHQ">
+                                <rect key="frame" x="157" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4f-3T-qpt">
+                                <rect key="frame" x="83" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCT-R2-v5u">
+                                <rect key="frame" x="52" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o38-Rd-x0S">
+                                <rect key="frame" x="21" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kvs-Ti-Bg3">
+                                <rect key="frame" x="360" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-0X-X9G">
+                                <rect key="frame" x="287" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-pR-JOg">
+                                <rect key="frame" x="256" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-oX-yvX">
+                                <rect key="frame" x="225" y="248" width="32" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
@@ -117,6 +149,14 @@
                     <connections>
                         <outlet property="attackBar1" destination="anN-dO-x1f" id="EHS-AV-i8d"/>
                         <outlet property="attackBar2" destination="SN3-YR-f3I" id="PFN-F8-7MQ"/>
+                        <outlet property="buffIcon1_1" destination="o38-Rd-x0S" id="OkU-aR-gtU"/>
+                        <outlet property="buffIcon1_2" destination="oCT-R2-v5u" id="X6C-t8-gAH"/>
+                        <outlet property="buffIcon1_3" destination="N4f-3T-qpt" id="5Ae-NZ-B2K"/>
+                        <outlet property="buffIcon2_1" destination="Erm-oX-yvX" id="ai3-tg-7jI"/>
+                        <outlet property="buffIcon2_2" destination="dxO-pR-JOg" id="IfU-Ai-EaP"/>
+                        <outlet property="buffIcon2_3" destination="7cm-0X-X9G" id="2F8-ex-Qyr"/>
+                        <outlet property="debuffIcon1" destination="b0B-J6-cHQ" id="RcK-lu-Icz"/>
+                        <outlet property="debuffIcon2" destination="kvs-Ti-Bg3" id="R1V-wJ-EQk"/>
                         <outlet property="endTurnButton" destination="qdF-M5-EJc" id="5uB-Ls-nmd"/>
                         <outlet property="healthBar1" destination="370-jY-6Qk" id="HR0-Gy-GJQ"/>
                         <outlet property="healthBar2" destination="LqV-Ax-udT" id="vmH-Ub-5pr"/>

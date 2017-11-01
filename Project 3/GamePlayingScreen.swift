@@ -213,6 +213,7 @@ class ViewPlayGame: UIViewController {
 
             //change front 
             currPlayer.buffArr[0] = newBuff
+            updateBuffBar(currPlayer: currPlayer)
             //move to back 
             addToBack(arr: &currPlayer.currDeck)         
         }
@@ -220,6 +221,7 @@ class ViewPlayGame: UIViewController {
         {
             //append to end
             currPlayer.buffArr.append(newBuff)
+            updateBuffBar(currPlayer: currPlayer)
         }
         else
         {
@@ -464,6 +466,16 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var attackBar2: UIImageView!
     @IBOutlet weak var staminaBar2: UIImageView!
     
+    //buff and debuff images
+    @IBOutlet weak var debuffIcon1: UIImageView!
+    @IBOutlet weak var debuffIcon2: UIImageView!
+    @IBOutlet weak var buffIcon1_1: UIImageView!
+    @IBOutlet weak var buffIcon1_2: UIImageView!
+    @IBOutlet weak var buffIcon1_3: UIImageView!
+    @IBOutlet weak var buffIcon2_1: UIImageView!
+    @IBOutlet weak var buffIcon2_2: UIImageView!
+    @IBOutlet weak var buffIcon2_3: UIImageView!
+    
     //Player Turn Header
     @IBOutlet weak var playerTurn: UILabel!
     
@@ -490,6 +502,54 @@ class ViewPlayGame: UIViewController {
         else
         {
             topCard2.image = UIImage(named: player2.currDeck[0])
+        }
+    }
+    
+    func updateBuffBar(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.buffArr.count == 1)
+            {
+                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 2)
+            {
+                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 3)
+            {
+                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                buffIcon1_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
+            }
+            else
+            {
+                print("Can't show buffs!")
+            }
+        }
+        else
+        {
+            if(currPlayer.buffArr.count == 1)
+            {
+                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 2)
+            {
+                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 3)
+            {
+                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                buffIcon2_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
+            }
+            else
+            {
+                print("Can't show buffs!")
+            }
         }
     }
     
