@@ -238,8 +238,17 @@
                                 <rect key="frame" x="216" y="368" width="183" height="234"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
+                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="t0J-Ge-Ktt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
-                                <rect key="frame" x="10" y="51" width="393" height="551"/>
+                                <rect key="frame" x="10" y="92" width="393" height="551"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -249,6 +258,7 @@
                     <connections>
                         <outlet property="attackBar1" destination="anN-dO-x1f" id="EHS-AV-i8d"/>
                         <outlet property="attackBar2" destination="SN3-YR-f3I" id="PFN-F8-7MQ"/>
+                        <outlet property="blurTopCard" destination="Gga-Ub-72V" id="9sN-ik-NkU"/>
                         <outlet property="buffIcon1_1" destination="o38-Rd-x0S" id="OkU-aR-gtU"/>
                         <outlet property="buffIcon1_2" destination="oCT-R2-v5u" id="X6C-t8-gAH"/>
                         <outlet property="buffIcon1_3" destination="N4f-3T-qpt" id="5Ae-NZ-B2K"/>

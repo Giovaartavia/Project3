@@ -42,6 +42,7 @@ class ViewPlayGame: UIViewController {
         topCard1Button.addGestureRecognizer(holdDeck1)
         let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
         topCard2Button.addGestureRecognizer(holdDeck2)
+        blurTopCard.isHidden = true;
     }
     
     class Player
@@ -489,8 +490,11 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var buffIcon2_2: UIImageView!
     @IBOutlet weak var buffIcon2_3: UIImageView!
     
-    //Player Turn Header
+    //Player Turn Header Label
     @IBOutlet weak var playerTurn: UILabel!
+    
+    //Blur on Top Card Hold
+    @IBOutlet weak var blurTopCard: UIVisualEffectView!
     
     //turn for testing always starts on player 1
     var turn = 1;
@@ -509,24 +513,28 @@ class ViewPlayGame: UIViewController {
     @objc func holdTopCard1(_ sender: UIGestureRecognizer){
         if sender.state == .ended {
             infoCard.image = UIImage(named: "")
+            blurTopCard.isHidden = true;
         }
         else if sender.state == .began {
             let cardName = player1.currDeck[0]
             let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
             let truncate = cardName.substring(to: postfix)
             infoCard.image = UIImage(named: truncate+"-Single")
+            blurTopCard.isHidden = false;
         }
     }
     
     @objc func holdTopCard2(_ sender: UIGestureRecognizer){
         if sender.state == .ended {
             infoCard.image = UIImage(named: "")
+            blurTopCard.isHidden = true;
         }
         else if sender.state == .began {
             let cardName = player2.currDeck[0]
             let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
             let truncate = cardName.substring(to: postfix)
             infoCard.image = UIImage(named: truncate+"-Single")
+            blurTopCard.isHidden = false;
         }
     }
     
