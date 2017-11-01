@@ -36,6 +36,13 @@ extension Sequence {
 //end of adapted code
 
 class ViewPlayGame: UIViewController {
+    override func viewDidLoad() 
+    {
+        let holdDeck1 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard1(_:)))
+        topCard1Button.addGestureRecognizer(holdDeck1)
+        let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
+        topCard2Button.addGestureRecognizer(holdDeck2)
+    }
     
     class Player
     {
@@ -470,6 +477,7 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var healthBar2: UIImageView!
     @IBOutlet weak var attackBar2: UIImageView!
     @IBOutlet weak var staminaBar2: UIImageView!
+    @IBOutlet weak var infoCard: UIImageView!
     
     //buff and debuff images
     @IBOutlet weak var debuffIcon1: UIImageView!
@@ -493,6 +501,34 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var endTurnButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var surrenderButton: UIButton!
+    @IBOutlet weak var topCard1Button: UIButton!
+    @IBOutlet weak var topCard2Button: UIButton!
+    
+    //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
+    
+    @objc func holdTopCard1(_ sender: UIGestureRecognizer){
+        if sender.state == .ended {
+            infoCard.image = UIImage(named: "")
+        }
+        else if sender.state == .began {
+            let cardName = player1.currDeck[0]
+            let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
+            let truncate = cardName.substring(to: postfix)
+            infoCard.image = UIImage(named: truncate+"-Single")
+        }
+    }
+    
+    @objc func holdTopCard2(_ sender: UIGestureRecognizer){
+        if sender.state == .ended {
+            infoCard.image = UIImage(named: "")
+        }
+        else if sender.state == .began {
+            let cardName = player2.currDeck[0]
+            let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
+            let truncate = cardName.substring(to: postfix)
+            infoCard.image = UIImage(named: truncate+"-Single")
+        }
+    }
     
     var staminaBarImages = ["Stamina-Bar0","Stamina-Bar1","Stamina-Bar2","Stamina-Bar3","Stamina-Bar4","Stamina-Bar5","Stamina-Bar6","Stamina-Bar7","Stamina-Bar8","Stamina-Bar9","Stamina-Bar10"]
     var attackBarImages = ["Attack-Bar0","Attack-Bar1","Attack-Bar2","Attack-Bar3","Attack-Bar4","Attack-Bar5","Attack-Bar6","Attack-Bar7","Attack-Bar8","Attack-Bar9","Attack-Bar10"]
@@ -507,6 +543,18 @@ class ViewPlayGame: UIViewController {
         else
         {
             topCard2.image = UIImage(named: player2.currDeck[0])
+        }
+    }
+    
+    func revealInfoCard(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            infoCard.image = UIImage(named: player1.currDeck[0])
+        }
+        else
+        {
+            infoCard.image = UIImage(named: player2.currDeck[0])
         }
     }
     
@@ -756,18 +804,21 @@ class ViewPlayGame: UIViewController {
     //Changes whose turn it is. 1 is player 1. 2 is player 2.
     //Also replenishes stamina, updates total stamina, and checks for buffs/debuffs
     @IBAction func endTurnPress(_ sender: Any) {
+        /*UIView.animate(withDuration: 1, animations: {
+            self.center = CGPointMake(playerTurn.center.x, playerTurn.center.y+400)
+        })*/
         if(turn == 1)
         {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
-            playerTurn.text = "Player 2's Turn"
+            playerTurn.text = "PLAYER 2's Turn"
             
         }
         else if(turn == 2)
         {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
-            playerTurn.text = "Player 1's Turn"
+            playerTurn.text = "PLAYER 1's Turn"
         }
         else
         {
