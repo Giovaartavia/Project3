@@ -115,12 +115,14 @@ class ViewPlayGame: UIViewController {
             //subtract 2 ATK from opponent for 1st attack each turn
             case "Disarm-Deck":
                 nextPlayer.debuff = "Disarm-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 2
                 print("Grass")
                 
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 3
                 print("Bad-Medicine-Deck")
                 
@@ -128,6 +130,7 @@ class ViewPlayGame: UIViewController {
                 //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
@@ -135,6 +138,7 @@ class ViewPlayGame: UIViewController {
                 //warrior: Opponent takes 2 damage per turn
             case "Brass-Knuckles-Deck":
                 nextPlayer.debuff = "Brass-Knuckles-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
@@ -394,6 +398,7 @@ class ViewPlayGame: UIViewController {
             if (nextPlayer.debuffTime == 0)
             {
                 nextPlayer.debuff = ""
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
@@ -502,6 +507,56 @@ class ViewPlayGame: UIViewController {
         else
         {
             topCard2.image = UIImage(named: player2.currDeck[0])
+        }
+    }
+    
+    func updateDebuffBar(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.debuff == "Disarm-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Disarm-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Bad-Medicine-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Bad-Medicine-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Voodoo-Doll-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Brass-Knuckles-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+            }
+            else
+            {
+                debuffIcon1.image = UIImage(named: "")
+            }
+        }
+        else
+        {
+            if(currPlayer.debuff == "Disarm-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Disarm-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Bad-Medicine-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Bad-Medicine-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Voodoo-Doll-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Brass-Knuckles-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+            }
+            else
+            {
+                debuffIcon2.image = UIImage(named: "")
+            }
         }
     }
     
