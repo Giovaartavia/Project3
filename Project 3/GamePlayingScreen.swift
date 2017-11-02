@@ -112,8 +112,6 @@ class ViewPlayGame: UIViewController {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
-        //player1.currDeck = Selection().getDeck()
-        //player2.currDeck = Selection().getDeck()
         
         revealTopCard(currPlayer: player1)
         revealTopCard(currPlayer: player2)
@@ -124,16 +122,6 @@ class ViewPlayGame: UIViewController {
         let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
         topCard2Button.addGestureRecognizer(holdDeck2)
         blurTopCard.isHidden = true;
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        /*UIView.animate(withDuration: 2, animations: {
-            var newCenter = self.topCard1.center
-            newCenter.y -= 100
-            self.topCard1.center = newCenter
-        }, completion: { finished in
-            print("Animate")
-        })*/
     }
     
     class Player
@@ -536,13 +524,7 @@ class ViewPlayGame: UIViewController {
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
-    
-    
-    
     // END OF FUNCTIONS
-    
-    //let player1 = Player(name: "player1", currDeck: Selection().getDeck())
-    //let player2 = Player(name: "player2", currDeck: Selection().getDeck())
     
     //dynamic UI images
     @IBOutlet weak var topCard1: UIImageView!
@@ -589,6 +571,7 @@ class ViewPlayGame: UIViewController {
     
     func animateDiscard(currPlayer: Player)
     {
+        //disables buttons for animation duration
         playCardButton.isEnabled = false
         placeBottomButton.isEnabled = false
         shuffleButton.isEnabled = false
@@ -657,6 +640,7 @@ class ViewPlayGame: UIViewController {
     
     func animateShuffle(currPlayer: Player)
     {
+        //disables buttons for animation duration
         playCardButton.isEnabled = false
         placeBottomButton.isEnabled = false
         shuffleButton.isEnabled = false
@@ -706,10 +690,12 @@ class ViewPlayGame: UIViewController {
     }
     
     @objc func holdTopCard1(_ sender: UIGestureRecognizer){
+        //button released
         if sender.state == .ended {
             infoCard.image = UIImage(named: "")
             blurTopCard.isHidden = true;
         }
+        //button pushed down
         else if sender.state == .began {
             infoCard.layer.zPosition = 4
             blurTopCard.layer.zPosition = 3
@@ -722,10 +708,12 @@ class ViewPlayGame: UIViewController {
     }
     
     @objc func holdTopCard2(_ sender: UIGestureRecognizer){
+        //button released
         if sender.state == .ended {
             infoCard.image = UIImage(named: "")
             blurTopCard.isHidden = true;
         }
+        //button pushed down
         else if sender.state == .began {
             infoCard.layer.zPosition = 4
             blurTopCard.layer.zPosition = 3
@@ -1130,9 +1118,8 @@ class ViewPlayGame: UIViewController {
     @IBAction func testPress(_ sender: Any) {
         //runTestAddBuff1()
     }
-    
-
 }
+
 class CoinFlip: UIViewController {
 
     @IBOutlet weak var coinImage: UIImageView!
