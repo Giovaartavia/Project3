@@ -368,6 +368,9 @@ class ViewPlayGame: UIViewController {
     
     //check if health goes above cap (10) and set to cap if it does
     //check if health drops to 0
+    
+    //Delay function obtained from https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
+    //Change storyboards function obtained from https://stackoverflow.com/questions/39776929/swift-3-xcode-8-instantiate-view-controller-is-not-working
     func checkHealth(currPlayer: Player)
     {
         //cap player health
@@ -379,7 +382,18 @@ class ViewPlayGame: UIViewController {
         if currPlayer.health <= 0
         {
             print("GAME OVER HONEY! Player has died ):")
+
+            lockButtons()
+
+            let when = DispatchTime.now() + 0.5 // change 2 to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when)
+            {
+                let storyboard = UIStoryboard(name: "GamePlayingScreen", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier : ("\(currPlayer.name)Loses")) //Using loses instead of wins so that we don't need to send extra parameters to checkHealth function
+                self.present(viewController, animated: true)
+            }
             
+            unlockButtons()
         }
     }
 
@@ -503,6 +517,26 @@ class ViewPlayGame: UIViewController {
         {
             print("No more shuffles!")
         }
+    }
+    
+    func lockButtons()
+    {
+        playCardButton.isEnabled = true
+        placeBottomButton.isEnabled = true
+        endTurnButton.isEnabled = true
+        shuffleButton.isEnabled = true
+        topCard1Button.isEnabled = true
+        topCard2Button.isEnabled = true
+    }
+    
+    func unlockButtons()
+    {
+        playCardButton.isEnabled = false
+        placeBottomButton.isEnabled = false
+        endTurnButton.isEnabled = false
+        shuffleButton.isEnabled = false
+        topCard1Button.isEnabled = false
+        topCard2Button.isEnabled = false
     }
     
     //TEST PRINTS. Prints all stats

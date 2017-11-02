@@ -377,7 +377,7 @@
         <!--View Controller-->
         <scene sceneID="dBN-BF-TVn">
             <objects>
-                <viewController id="9bO-r0-EY0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="player2Loses" id="9bO-r0-EY0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="soy-X2-Fwi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,7 +491,7 @@
         <!--View Controller-->
         <scene sceneID="jPa-j9-lKS">
             <objects>
-                <viewController id="ama-0r-wW6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="player1Loses" id="ama-0r-wW6" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6t-AN-ENw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -576,7 +576,7 @@
         <image name="Warrior" width="215" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="St8-Sz-glj"/>
-        <segue reference="uOl-Um-as8"/>
+        <segue reference="Vba-G8-nyL"/>
+        <segue reference="qkZ-MX-dFA"/>
     </inferredMetricsTieBreakers>
 </document>
