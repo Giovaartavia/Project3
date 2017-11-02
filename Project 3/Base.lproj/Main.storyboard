@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="33.423913043478265"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial-->
         <scene sceneID="Dbu-Ka-KhB">
             <objects>
-                <viewController id="9Gc-lV-jRo" sceneMemberID="viewController">
+                <viewController id="9Gc-lV-jRo" customClass="Tutorial" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5k-ST-uWQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
