@@ -426,8 +426,7 @@ class ViewPlayGame: UIViewController {
                 //else do damage - 2
                 if damage < 2
                 {
-                    damage = 0
-                    nextPlayer.health -= (damage)
+                    nextPlayer.health -= (0)
                     currPlayer.hasAttacked = true
                 }
                 else
