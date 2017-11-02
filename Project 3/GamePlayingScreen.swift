@@ -415,6 +415,9 @@ class ViewPlayGame: UIViewController {
         }
     }
 
+    
+    
+    
     //TEST PRINTS. Prints all stats
     func printStats()
     {
