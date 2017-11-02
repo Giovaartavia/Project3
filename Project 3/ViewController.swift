@@ -26,14 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var optionsButton: UIButton!
     //@IBOutlet weak var electric: UIImageView!
-    
-    @IBAction func CoinFlip() {
-        print("jhbscjhavsjhcvajkhs")
-    }
-    
-    @IBAction func FlipCoin(_ sender: Any) {
-        print("print this")
-    }
+
     override func viewDidLoad() { //Runs when screen is loaded
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -47,7 +40,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @IBAction func TutorialNext(_ sender: Any) {
+        
+    }
+    @IBAction func TutorialPrevious(_ sender: Any) {
+    }
+    
     
     
 }

@@ -93,7 +93,6 @@
         <!--Class Selection2-->
         <scene sceneID="NWY-Yz-SwH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Trk-zS-DFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WKX-5b-pMc" customClass="ClassSelection2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UYG-Hn-7dx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -118,6 +117,7 @@
                         <viewLayoutGuide key="safeArea" id="ZXg-nf-BMv"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Trk-zS-DFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-72.463768115942031" y="-708.42391304347836"/>
         </scene>
