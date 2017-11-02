@@ -35,6 +35,8 @@ extension Sequence {
 
 //end of adapted code
 
+var playerStart = 0;
+
 class ViewPlayGame: UIViewController {
     override func viewDidLoad() 
     {
@@ -862,5 +864,40 @@ class ViewPlayGame: UIViewController {
     }
     @IBAction func surrenderPress(_ sender: Any) {
     }
+    
+
 }
+class CoinFlip: UIViewController {
+
+    @IBOutlet weak var coinImage: UIImageView!
+    @IBOutlet weak var playerStartText: UILabel!
+    @IBOutlet weak var flipVisibility: UIButton!
+    @IBOutlet weak var nextVisibility: UIButton!
+    //nextVisibility.isHidden = true;
+    
+    @IBAction func flipCoin(_ sender: Any) {
+        let coinFlip = Int(arc4random_uniform(2))
+        print ("Coin Result: \(coinFlip)")
+        
+        if(coinFlip == 1)
+        {
+        coinImage.image = UIImage(named: "Heads");
+            playerStartText.text="Player 1 Starts!";
+            flipVisibility.isHidden = true;
+            nextVisibility.isHidden = false;
+            playerStart = 1;
+        }
+        else
+        {
+            coinImage.image = UIImage(named: "Tails");
+            playerStartText.text="Player 2 Starts!";
+            flipVisibility.isHidden = true;
+            nextVisibility.isHidden = false;
+            playerStart = 2;
+        }
+        
+    }
+}
+
+
 

@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brh-2F-u25">
-                                <rect key="frame" x="80" y="563" width="255" height="105"/>
+                                <rect key="frame" x="80" y="527" width="255" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Next-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,18 +33,38 @@
                                     <segue destination="axY-S5-ml4" kind="show" id="beb-6R-bB2"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjh-w5-hGe">
+                                <rect key="frame" x="85" y="111" width="250" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Who will go first?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2A-iR-N0f">
+                                <rect key="frame" x="11" y="351" width="393" height="148"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtO-L5-Pxr">
-                                <rect key="frame" x="80" y="449" width="255" height="106"/>
+                                <rect key="frame" x="80" y="519" width="255" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Flip-Coin-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="Flip-Coin-Down"/>
+                                <connections>
+                                    <action selector="flipCoin:" destination="trm-yg-oo9" eventType="touchUpInside" id="2eo-Ff-NeF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="48Z-rV-25s"/>
                     </view>
+                    <connections>
+                        <outlet property="coinImage" destination="hjh-w5-hGe" id="pDz-Tj-ZEu"/>
+                        <outlet property="flipVisibility" destination="TtO-L5-Pxr" id="69P-5U-pWA"/>
+                        <outlet property="nextVisibility" destination="brh-2F-u25" id="A8J-Yo-kiU"/>
+                        <outlet property="playerStartText" destination="R2A-iR-N0f" id="2na-Ci-XB6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nbw-zj-OLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,7 +93,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="266-zr-XdP">
-                                <rect key="frame" x="147" y="426" width="121" height="29"/>
+                                <rect key="frame" x="78" y="426" width="258" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Warrior"/>
@@ -81,6 +101,14 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Warrior" translatesAutoresizingMaskIntoConstraints="NO" id="DFm-Op-Srr">
+                                <rect key="frame" x="78" y="216" width="130" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mage" translatesAutoresizingMaskIntoConstraints="NO" id="EqG-QS-crK">
+                                <rect key="frame" x="206" y="216" width="130" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="oad-2f-ARd"/>
@@ -307,6 +335,52 @@
             </objects>
             <point key="canvasLocation" x="-72.463768115942031" y="184.23913043478262"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="dBN-BF-TVn">
+            <objects>
+                <viewController id="9bO-r0-EY0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="soy-X2-Fwi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6f-8g-XU1">
+                                <rect key="frame" x="51" y="565" width="310" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Back-to-home-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Back-to-home-Down"/>
+                                <connections>
+                                    <segue destination="fBc-NP-3ja" kind="show" id="St8-Sz-glj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbD-eN-hPD">
+                                <rect key="frame" x="51" y="420" width="311" height="133"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play Again?" image="Play-Again-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Play-Again-Down"/>
+                                <connections>
+                                    <segue destination="trm-yg-oo9" kind="show" id="uOl-Um-as8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PLAYER 1 WINS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67k-iW-C0n">
+                                <rect key="frame" x="20" y="151" width="374" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="nVp-dO-9iS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mjc-3q-poW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="721.73913043478262" y="-28.532608695652176"/>
+        </scene>
         <!--Surrender-->
         <scene sceneID="wM4-oa-4A0">
             <objects>
@@ -375,6 +449,52 @@
             </objects>
             <point key="canvasLocation" x="-865.21739130434787" y="978.26086956521749"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="jPa-j9-lKS">
+            <objects>
+                <viewController id="ama-0r-wW6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z6t-AN-ENw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZx-ga-jsR">
+                                <rect key="frame" x="52" y="522" width="310" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Back-to-home-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Back-to-home-Down"/>
+                                <connections>
+                                    <segue destination="fBc-NP-3ja" kind="show" id="Vba-G8-nyL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgd-bq-GhS">
+                                <rect key="frame" x="52" y="374" width="311" height="133"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play Again?" image="Play-Again-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Play-Again-Down"/>
+                                <connections>
+                                    <segue destination="trm-yg-oo9" kind="show" id="qkZ-MX-dFA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PLAYER 2 WINS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4f-DJ-Rt9">
+                                <rect key="frame" x="20" y="138" width="374" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Ueh-Ny-qky"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jjp-6C-vvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="675"/>
+        </scene>
         <!--Main-->
         <scene sceneID="BeN-t6-Bft">
             <objects>
@@ -396,6 +516,7 @@
         <image name="Health-Potion-Deck" width="487" height="651"/>
         <image name="InterfaceBackDrop" width="1028" height="504"/>
         <image name="Life-Steal-Deck" width="487" height="651"/>
+        <image name="Mage" width="215" height="200"/>
         <image name="MenuButton-Down" width="337" height="101"/>
         <image name="MenuButton-Up" width="337" height="101"/>
         <image name="Next-Down" width="445" height="185"/>
@@ -413,5 +534,10 @@
         <image name="Stamina-Bar0" width="443" height="45"/>
         <image name="Surrender-Down" width="445" height="185"/>
         <image name="Surrender-Up" width="445" height="185"/>
+        <image name="Warrior" width="215" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="St8-Sz-glj"/>
+        <segue reference="uOl-Um-as8"/>
+    </inferredMetricsTieBreakers>
 </document>
