@@ -214,6 +214,7 @@
                                 <rect key="frame" x="12" y="609" width="131" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play Card" image="PlayCardButton-Up"/>
+                                <state key="disabled" image="PlayCardButton-Up"/>
                                 <state key="highlighted" image="PlayCardButton-Down"/>
                                 <connections>
                                     <action selector="playCardPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="MGc-vs-2ww"/>
@@ -223,6 +224,7 @@
                                 <rect key="frame" x="12" y="686" width="391" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="End Turn" image="EndTurnButton-Up"/>
+                                <state key="disabled" image="EndTurnButton-Up"/>
                                 <state key="highlighted" image="EndTurnButton-Down"/>
                                 <connections>
                                     <action selector="endTurnPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="DDR-Q1-5fb"/>
@@ -232,6 +234,7 @@
                                 <rect key="frame" x="333" y="609" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Shuffle" image="ShuffleButton-Up-2"/>
+                                <state key="disabled" image="ShuffleButton-Up"/>
                                 <state key="highlighted" image="ShuffleButton-Down-2"/>
                                 <connections>
                                     <action selector="shufflePress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="gVY-Ue-umi"/>
@@ -241,6 +244,7 @@
                                 <rect key="frame" x="150" y="609" width="176" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to back" image="PlaceBottom-Up"/>
+                                <state key="disabled" image="PlaceBottom-Up"/>
                                 <state key="highlighted" image="PlaceBottom-Down"/>
                                 <connections>
                                     <action selector="placeBottomPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="b0r-3H-HrL"/>
@@ -338,7 +342,15 @@
                                 <rect key="frame" x="216" y="368" width="183" height="234"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
-                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7W-pj-coE">
+                                <rect key="frame" x="20" y="373" width="168" height="224"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-Ho-o45">
+                                <rect key="frame" x="224" y="373" width="168" height="224"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="t0J-Ge-Ktt">
@@ -347,7 +359,7 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
                                 <rect key="frame" x="10" y="92" width="393" height="551"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -362,12 +374,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Gga-Ub-72V"/>
-                                <exclude reference="jOn-F1-w22"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="attackBar1" destination="anN-dO-x1f" id="EHS-AV-i8d"/>
@@ -381,6 +387,8 @@
                         <outlet property="buffIcon2_3" destination="7cm-0X-X9G" id="2F8-ex-Qyr"/>
                         <outlet property="debuffIcon1" destination="b0B-J6-cHQ" id="RcK-lu-Icz"/>
                         <outlet property="debuffIcon2" destination="kvs-Ti-Bg3" id="R1V-wJ-EQk"/>
+                        <outlet property="discard1" destination="e7W-pj-coE" id="82j-nc-UGu"/>
+                        <outlet property="discard2" destination="O5c-Ho-o45" id="XTX-HS-Gtz"/>
                         <outlet property="endTurnButton" destination="qdF-M5-EJc" id="5uB-Ls-nmd"/>
                         <outlet property="healthBar1" destination="370-jY-6Qk" id="HR0-Gy-GJQ"/>
                         <outlet property="healthBar2" destination="LqV-Ax-udT" id="vmH-Ub-5pr"/>
@@ -597,6 +605,7 @@
         <image name="Select-Class-Down" width="445" height="185"/>
         <image name="Select-Class-Up" width="445" height="185"/>
         <image name="ShuffleButton-Down-2" width="183" height="185"/>
+        <image name="ShuffleButton-Up" width="183" height="185"/>
         <image name="ShuffleButton-Up-2" width="183" height="185"/>
         <image name="Stamina-Bar0" width="443" height="45"/>
         <image name="Surrender-Down" width="445" height="185"/>

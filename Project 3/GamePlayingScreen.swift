@@ -126,8 +126,6 @@ class ViewPlayGame: UIViewController {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
-        //player1.currDeck = Selection().getDeck()
-        //player2.currDeck = Selection().getDeck()
         
         revealTopCard(currPlayer: player1)
         revealTopCard(currPlayer: player2)
@@ -278,7 +276,7 @@ class ViewPlayGame: UIViewController {
             addToBack(arr: &currPlayer.currDeck)
             checkHealth(currPlayer: nextPlayer)
             checkHealth(currPlayer: currPlayer)
-            
+            animateDiscard(currPlayer: currPlayer)
         }
         else
         {
@@ -415,6 +413,7 @@ class ViewPlayGame: UIViewController {
 
     func attackDamage(currPlayer: Player, nextPlayer: Player, damage: Int)
     {
+        
         if(currPlayer.debuff == "Disarm")
         {
             if(currPlayer.hasAttacked)
@@ -423,8 +422,20 @@ class ViewPlayGame: UIViewController {
             }
             else
             {
-                nextPlayer.health -= (damage-2)
-                currPlayer.hasAttacked = true
+                //if damage is under 2 then no damage
+                //else do damage - 2
+                if damage < 2
+                {
+                    damage = 0
+                    nextPlayer.health -= (damage)
+                    currPlayer.hasAttacked = true
+                }
+                else
+                {
+                    nextPlayer.health -= (damage-2)
+                    currPlayer.hasAttacked = true
+                }
+               
             }
         }
         else
@@ -446,6 +457,7 @@ class ViewPlayGame: UIViewController {
                 print(currPlayer.currDeck)
                 addToBack(arr: &currPlayer.currDeck)
                 print(currPlayer.currDeck)
+                animateDiscard(currPlayer: currPlayer)
             }
             else
             {
@@ -512,6 +524,7 @@ class ViewPlayGame: UIViewController {
         {
             currPlayer.shuffleCount -= 1
             currPlayer.currDeck.shuffle()
+            animateShuffle(currPlayer: currPlayer)
         }
         else
         {
@@ -572,13 +585,7 @@ class ViewPlayGame: UIViewController {
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
-    
-    
-    
     // END OF FUNCTIONS
-    
-    //let player1 = Player(name: "player1", currDeck: Selection().getDeck())
-    //let player2 = Player(name: "player2", currDeck: Selection().getDeck())
     
     //dynamic UI images
     @IBOutlet weak var topCard1: UIImageView!
@@ -590,6 +597,8 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var attackBar2: UIImageView!
     @IBOutlet weak var staminaBar2: UIImageView!
     @IBOutlet weak var infoCard: UIImageView!
+    @IBOutlet weak var discard1: UIImageView!
+    @IBOutlet weak var discard2: UIImageView!
     
     //buff and debuff images
     @IBOutlet weak var debuffIcon1: UIImageView!
@@ -621,12 +630,136 @@ class ViewPlayGame: UIViewController {
     
     //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
     
+    func animateDiscard(currPlayer: Player)
+    {
+        //disables buttons for animation duration
+        playCardButton.isEnabled = false
+        placeBottomButton.isEnabled = false
+        shuffleButton.isEnabled = false
+        
+        if(currPlayer.name == "player1")
+        {
+            self.discard1.layer.zPosition = 2
+            self.topCard1.layer.zPosition = 1
+            let discardName = currPlayer.currDeck[19]
+            let postfix = discardName.index(discardName.endIndex, offsetBy: -5)
+            let truncate = discardName.substring(to: postfix)
+            discard1.image = UIImage(named: truncate+"-Single")
+            revealTopCard(currPlayer: currPlayer)
+            UIView.animate(withDuration: 0.5, animations: {
+                var newCenter = self.discard1.center
+                newCenter.x -= 300
+                self.discard1.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                self.discard1.layer.zPosition = 1
+                self.topCard1.layer.zPosition = 2
+                UIView.animate(withDuration: 0.5, animations: {
+                    var newCenter = self.discard1.center
+                    newCenter.x += 300
+                    self.discard1.center = newCenter
+                }, completion: { finished in
+                    print("Discard Animation Complete")
+                    self.discard1.image = UIImage(named: "")
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+        else
+        {
+            self.discard2.layer.zPosition = 2
+            self.topCard2.layer.zPosition = 1
+            let discardName = currPlayer.currDeck[19]
+            let postfix = discardName.index(discardName.endIndex, offsetBy: -5)
+            let truncate = discardName.substring(to: postfix)
+            discard2.image = UIImage(named: truncate+"-Single")
+            revealTopCard(currPlayer: currPlayer)
+            UIView.animate(withDuration: 0.5, animations: {
+                var newCenter = self.discard2.center
+                newCenter.x += 300
+                self.discard2.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                self.discard2.layer.zPosition = 1
+                self.topCard2.layer.zPosition = 2
+                UIView.animate(withDuration: 0.5, animations: {
+                    var newCenter = self.discard2.center
+                    newCenter.x -= 300
+                    self.discard2.center = newCenter
+                }, completion: { finished in
+                    print("Discard Animation Complete")
+                    self.discard2.image = UIImage(named: "")
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+    }
+    
+    func animateShuffle(currPlayer: Player)
+    {
+        //disables buttons for animation duration
+        playCardButton.isEnabled = false
+        placeBottomButton.isEnabled = false
+        shuffleButton.isEnabled = false
+        
+        if(currPlayer.name == "player1")
+        {
+            UIView.animate(withDuration: 0.75, animations: {
+             var newCenter = self.topCard1.center
+             newCenter.x -= 300
+             self.topCard1.center = newCenter
+             }, completion: { finished in
+             print("Off Screen")
+                self.revealTopCard(currPlayer: currPlayer)
+                UIView.animate(withDuration: 0.75, animations: {
+                    var newCenter = self.topCard1.center
+                    newCenter.x += 300
+                    self.topCard1.center = newCenter
+                }, completion: { finished in
+                    print("Shuffle Animation Complete")
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+             })
+        }
+        else
+        {
+            UIView.animate(withDuration: 1, animations: {
+                var newCenter = self.topCard2.center
+                newCenter.x += 300
+                self.topCard2.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                self.revealTopCard(currPlayer: currPlayer)
+                UIView.animate(withDuration: 1, animations: {
+                    var newCenter = self.topCard2.center
+                    newCenter.x -= 300
+                    self.topCard2.center = newCenter
+                }, completion: { finished in
+                    print("Shuffle Animation Complete")
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+    }
+    
     @objc func holdTopCard1(_ sender: UIGestureRecognizer){
+        //button released
         if sender.state == .ended {
             infoCard.image = UIImage(named: "")
             blurTopCard.isHidden = true;
         }
+        //button pushed down
         else if sender.state == .began {
+            infoCard.layer.zPosition = 4
+            blurTopCard.layer.zPosition = 3
             let cardName = player1.currDeck[0]
             let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
             let truncate = cardName.substring(to: postfix)
@@ -636,11 +769,15 @@ class ViewPlayGame: UIViewController {
     }
     
     @objc func holdTopCard2(_ sender: UIGestureRecognizer){
+        //button released
         if sender.state == .ended {
             infoCard.image = UIImage(named: "")
             blurTopCard.isHidden = true;
         }
+        //button pushed down
         else if sender.state == .began {
+            infoCard.layer.zPosition = 4
+            blurTopCard.layer.zPosition = 3
             let cardName = player2.currDeck[0]
             let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
             let truncate = cardName.substring(to: postfix)
@@ -952,12 +1089,10 @@ class ViewPlayGame: UIViewController {
         if(turn == 1)
         {
             playCard(currPlayer: player1, nextPlayer: player2)
-            revealTopCard(currPlayer: player1)
         }
         else if(turn == 2)
         {
             playCard(currPlayer: player2, nextPlayer: player1)
-            revealTopCard(currPlayer: player2)
         }
         else
         {
@@ -973,12 +1108,10 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             placeBottom(currPlayer: player1)
-            revealTopCard(currPlayer: player1)
         }
         else if (turn == 2)
         {
             placeBottom(currPlayer: player2) //player1 was here
-            revealTopCard(currPlayer: player2)
         }
         else
         {
@@ -1079,7 +1212,6 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             shuffleCards(currPlayer: player1)
-            revealTopCard(currPlayer: player1)
             
             //check the number of shuffles a player has and update the image
             if(player1.shuffleCount == 2)
@@ -1104,7 +1236,6 @@ class ViewPlayGame: UIViewController {
 
             
             shuffleCards(currPlayer: player2)
-            revealTopCard(currPlayer: player2)
             
             if(player2.shuffleCount == 2)
             {
@@ -1136,9 +1267,8 @@ class ViewPlayGame: UIViewController {
     @IBAction func testPress(_ sender: Any) {
         //runTestAddBuff1()
     }
-    
-
 }
+
 class CoinFlip: UIViewController {
 
     @IBOutlet weak var coinImage: UIImageView!
