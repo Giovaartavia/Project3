@@ -35,17 +35,105 @@ extension Sequence {
 
 //end of adapted code
 
+
+//TODO: Coin flip interaction with player 1 and player 2 in-game
+
+var playerStart = 0;
+
+class SelectionDeck1: UIViewController {
+    var currDeck = ["Initial"];
+    override func viewDidLoad() {
+        //Nothing yet :)
+    }
+    @IBOutlet weak var segmentSelect: UISegmentedControl!
+    
+    let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+    
+    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+    
+    @IBAction func confirmSelection(_ sender: Any) {
+        switch segmentSelect.selectedSegmentIndex
+        {
+        case 0:
+            let defaults = UserDefaults.standard
+            currDeck = warriorDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck1")
+        case 1:
+            let defaults = UserDefaults.standard
+            currDeck = mageDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck1")
+        default:
+            currDeck = ["ERROR"]
+            break
+        }
+    }
+}
+
+class SelectionDeck2: UIViewController {
+    var currDeck = ["Initial"];
+    override func viewDidLoad() {
+        //Nothing yet :)
+    }
+    @IBOutlet weak var segmentSelect: UISegmentedControl!
+    
+    let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+    
+    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+    
+    @IBAction func confirmSelection(_ sender: Any) {
+        switch segmentSelect.selectedSegmentIndex
+        {
+        case 0:
+            let defaults = UserDefaults.standard
+            currDeck = warriorDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck2")
+        case 1:
+            let defaults = UserDefaults.standard
+            currDeck = mageDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck2")
+        default:
+            currDeck = ["ERROR"]
+            break
+        }
+    }
+}
+
 class ViewPlayGame: UIViewController {
+    var player1 = Player(name: "player1", currDeck: ["Empty"])
+    var player2 = Player(name: "player2", currDeck: ["Empty"])
+    
+    override func viewDidLoad()
+    {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
+            let selectedDeck : [NSString] = test as! [NSString]
+            player1.currDeck = selectedDeck as [String]
+        }
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as AnyObject {
+            let selectedDeck : [NSString] = test as! [NSString]
+            player2.currDeck = selectedDeck as [String]
+        }
+        //player1.currDeck = Selection().getDeck()
+        //player2.currDeck = Selection().getDeck()
+        
+        revealTopCard(currPlayer: player1)
+        revealTopCard(currPlayer: player2)
+        updateStaminaBar(currPlayer: player1)
+        updateStaminaBar(currPlayer: player2)
+        let holdDeck1 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard1(_:)))
+        topCard1Button.addGestureRecognizer(holdDeck1)
+        let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
+        topCard2Button.addGestureRecognizer(holdDeck2)
+        blurTopCard.isHidden = true;
+    }
     
     class Player
     {
         var name: String
-        init(name: String) {
+        var currDeck: [String]
+        init(name: String, currDeck: [String]) {
             self.name = name
+            self.currDeck = currDeck
         }
-        //fighting and psychic are different for class
-        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
-        var currDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"].shuffled()
         
         var currStamina = 2
         var totalStamina = 2
@@ -83,7 +171,7 @@ class ViewPlayGame: UIViewController {
             updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
-            var currCard = currPlayer.currDeck[0]
+            let currCard = currPlayer.currDeck[0]
             var selfDamage = false
             
             //Test print
@@ -219,7 +307,6 @@ class ViewPlayGame: UIViewController {
         }
     } 
 
-    
     func checkBuffs(currPlayer: Player)
     {
         if currPlayer.buffArr.count > 0
@@ -402,7 +489,7 @@ class ViewPlayGame: UIViewController {
             print("No more shuffles!")
         }
     }
-
+    
     //TEST PRINTS. Prints all stats
     func printStats()
     {
@@ -437,10 +524,82 @@ class ViewPlayGame: UIViewController {
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
     
+    func testBrassKnuckles()
+    {
+        var testPlayer1 = Player(name: "testplayer1", currDeck: ["Brass-Knuckles-Deck"])
+        var testPlayer2 = Player(name: "testplayer2", currDeck: ["Empty"])
+        
+        print("\n *****BRASS KNUCKLES TESTS****** \n")
+        
+        playCard(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+        
+        if(testPlayer2.debuff == "Brass-Knuckles-Deck")
+        {
+            print("Correct debuff displayed: Passed! \n")
+        }
+        else
+        {
+            print("Correct debuff displayed: Failed \n")
+        }
+        
+        if(testPlayer2.health == 19)
+        {
+            print("Initial Brass Knuckles damage: Passed! \n")
+            endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+            if (testPlayer2.health == 17)
+            {
+                print("First turn Brass Knuckles damage: Passed! \n")
+                
+                //Pass one turn
+                endTurn(currPlayer: testPlayer2, nextPlayer: testPlayer1)
+                endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+                
+                if(testPlayer2.health == 15)
+                {
+                    print("Second turn Brass Knuckles damage: Passed! \n")
+                    
+                    //Pass one turn
+                    endTurn(currPlayer: testPlayer2, nextPlayer: testPlayer1)
+                    endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+                    
+                    if(testPlayer2.debuff == "Brass-Knuckles-Deck")
+                    {
+                        print("Correct debuff displayed after 2 turns: Passed! \n")
+                    }
+                    else
+                    {
+                        print("Correct debuff displayed after 2 turns: Failed \n")
+                    }
+                    if(testPlayer2.health == 15)
+                    {
+                        print("Brass Knuckles stops doing damage after 2 turns: Passed! \n")
+                    }
+                    else
+                    {
+                        print("Brass Knuckles stops doing damage after 2 turns: Failed \n")
+                    }
+                    
+                }
+                else
+                {
+                    print("Second turn Brass Knuckles damage: Failed! \n")
+                }
+            }
+            else
+            {
+                print("First turn Brass Knuckles damage: Failed \n")
+            }
+        }
+        else
+        {
+            print("Initial Brass Knuckles damage: Failed \n")
+        }
+    }
+    
     // END OF FUNCTIONS
     
-    let player1 = Player(name: "player1")
-    let player2 = Player(name: "player2")
+    //let player1 = Player(name: "player1", currDeck: Selection().getDeck())
+    //let player2 = Player(name: "player2", currDeck: Selection().getDeck())
     
     //dynamic UI images
     @IBOutlet weak var topCard1: UIImageView!
@@ -451,6 +610,7 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var healthBar2: UIImageView!
     @IBOutlet weak var attackBar2: UIImageView!
     @IBOutlet weak var staminaBar2: UIImageView!
+    @IBOutlet weak var infoCard: UIImageView!
     
     //buff and debuff images
     @IBOutlet weak var debuffIcon1: UIImageView!
@@ -462,8 +622,11 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var buffIcon2_2: UIImageView!
     @IBOutlet weak var buffIcon2_3: UIImageView!
     
-    //Player Turn Header
+    //Player Turn Header Label
     @IBOutlet weak var playerTurn: UILabel!
+    
+    //Blur on Top Card Hold
+    @IBOutlet weak var blurTopCard: UIVisualEffectView!
     
     //turn for testing always starts on player 1
     var turn = 1;
@@ -474,6 +637,38 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var endTurnButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var surrenderButton: UIButton!
+    @IBOutlet weak var topCard1Button: UIButton!
+    @IBOutlet weak var topCard2Button: UIButton!
+    
+    //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
+    
+    @objc func holdTopCard1(_ sender: UIGestureRecognizer){
+        if sender.state == .ended {
+            infoCard.image = UIImage(named: "")
+            blurTopCard.isHidden = true;
+        }
+        else if sender.state == .began {
+            let cardName = player1.currDeck[0]
+            let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
+            let truncate = cardName.substring(to: postfix)
+            infoCard.image = UIImage(named: truncate+"-Single")
+            blurTopCard.isHidden = false;
+        }
+    }
+    
+    @objc func holdTopCard2(_ sender: UIGestureRecognizer){
+        if sender.state == .ended {
+            infoCard.image = UIImage(named: "")
+            blurTopCard.isHidden = true;
+        }
+        else if sender.state == .began {
+            let cardName = player2.currDeck[0]
+            let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
+            let truncate = cardName.substring(to: postfix)
+            infoCard.image = UIImage(named: truncate+"-Single")
+            blurTopCard.isHidden = false;
+        }
+    }
     
     var staminaBarImages = ["Stamina-Bar0","Stamina-Bar1","Stamina-Bar2","Stamina-Bar3","Stamina-Bar4","Stamina-Bar5","Stamina-Bar6","Stamina-Bar7","Stamina-Bar8","Stamina-Bar9","Stamina-Bar10"]
     var attackBarImages = ["Attack-Bar0","Attack-Bar1","Attack-Bar2","Attack-Bar3","Attack-Bar4","Attack-Bar5","Attack-Bar6","Attack-Bar7","Attack-Bar8","Attack-Bar9","Attack-Bar10"]
@@ -488,6 +683,18 @@ class ViewPlayGame: UIViewController {
         else
         {
             topCard2.image = UIImage(named: player2.currDeck[0])
+        }
+    }
+    
+    func revealInfoCard(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            infoCard.image = UIImage(named: player1.currDeck[0])
+        }
+        else
+        {
+            infoCard.image = UIImage(named: player2.currDeck[0])
         }
     }
     
@@ -767,18 +974,20 @@ class ViewPlayGame: UIViewController {
     //Changes whose turn it is. 1 is player 1. 2 is player 2.
     //Also replenishes stamina, updates total stamina, and checks for buffs/debuffs
     @IBAction func endTurnPress(_ sender: Any) {
+        /*UIView.animate(withDuration: 1, animations: {
+            self.center = CGPointMake(playerTurn.center.x, playerTurn.center.y+400)
+        })*/
         if(turn == 1)
         {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
-            playerTurn.text = "Player 2's Turn"
-            
+            playerTurn.text = "PLAYER 2's Turn"
         }
         else if(turn == 2)
         {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
-            playerTurn.text = "Player 1's Turn"
+            playerTurn.text = "PLAYER 1's Turn"
         }
         else
         {
@@ -816,5 +1025,39 @@ class ViewPlayGame: UIViewController {
         runTestAddBuff1()
     }
     
+
 }
+class CoinFlip: UIViewController {
+
+    @IBOutlet weak var coinImage: UIImageView!
+    @IBOutlet weak var playerStartText: UILabel!
+    @IBOutlet weak var flipVisibility: UIButton!
+    @IBOutlet weak var nextVisibility: UIButton!
+    //nextVisibility.isHidden = true;
+    
+    @IBAction func flipCoin(_ sender: Any) {
+        let coinFlip = Int(arc4random_uniform(2))
+        print ("Coin Result: \(coinFlip)")
+        
+        if(coinFlip == 1)
+        {
+        coinImage.image = UIImage(named: "Heads");
+            playerStartText.text="Player 1 Starts!";
+            flipVisibility.isHidden = true;
+            nextVisibility.isHidden = false;
+            playerStart = 1;
+        }
+        else
+        {
+            coinImage.image = UIImage(named: "Tails");
+            playerStartText.text="Player 2 Starts!";
+            flipVisibility.isHidden = true;
+            nextVisibility.isHidden = false;
+            playerStart = 2;
+        }
+        
+    }
+}
+
+
 

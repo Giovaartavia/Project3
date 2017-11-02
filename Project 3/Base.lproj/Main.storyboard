@@ -15,7 +15,7 @@
                 <viewControllerPlaceholder storyboardName="GamePlayingScreen" id="TD2-Yn-bIE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlV-g3-WbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="526"/>
+            <point key="canvasLocation" x="884" y="33"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -30,31 +30,43 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.38695454379151956" green="0.57230675220489502" blue="0.36082418439118635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-Q0-aHJ">
-                                <rect key="frame" x="101" y="558" width="34" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Av7-zU-OKL">
+                                <rect key="frame" x="45" y="203" width="324" height="185"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qCo-lD-l1F">
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="185"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="TopDeck-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aAu-RK-sfD">
+                                                <rect key="frame" x="0.0" y="0.0" width="324" height="185"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-Q0-aHJ">
+                                <rect key="frame" x="32" y="596" width="172" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Start-Game-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="Start-Game-Down"/>
                                 <connections>
                                     <segue destination="TD2-Yn-bIE" kind="show" id="dVS-VT-MW0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVj-15-Xyx">
-                                <rect key="frame" x="253" y="543" width="97" height="59"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVj-15-Xyx">
+                                <rect key="frame" x="212" y="596" width="171" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Turorial">
+                                <state key="normal" image="Tutorial-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="Tutorial-Down"/>
                                 <connections>
                                     <action selector="options:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pf4-OQ-B07"/>
-                                    <segue destination="9Gc-lV-jRo" kind="show" animates="NO" id="Eqc-En-cyq"/>
+                                    <segue destination="9Gc-lV-jRo" kind="show" id="we8-ig-DQR"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopDeck-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aAu-RK-sfD">
-                                <rect key="frame" x="45" y="203" width="324" height="185"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -65,44 +77,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96.799999999999997" y="33.733133433283363"/>
+            <point key="canvasLocation" x="95.652173913043484" y="33.423913043478265"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutorial-->
         <scene sceneID="Dbu-Ka-KhB">
             <objects>
-                <viewController id="9Gc-lV-jRo" sceneMemberID="viewController">
+                <viewController id="9Gc-lV-jRo" customClass="Tutorial" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5k-ST-uWQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K5-Uz-BNp">
-                                <rect key="frame" x="121" y="575" width="133" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovb-7Z-8vb">
+                                <rect key="frame" x="209" y="601" width="188" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back To Start">
+                                <state key="normal" image="Tutorial-Next-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="Tutorial-Next-Down"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" animates="NO" id="sbo-Uu-gjI"/>
+                                    <action selector="NextScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="7MA-vN-ZWO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This will be your tutorial screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1p-M9-Tza">
-                                <rect key="frame" x="69" y="109" width="237" height="68"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b67-DP-fbw">
+                                <rect key="frame" x="16" y="601" width="186" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" image="Tutorial-Previous-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Tutorial-Previous-Down"/>
+                                <connections>
+                                    <action selector="PrevScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="SOe-9h-go2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K5-Uz-BNp">
+                                <rect key="frame" x="16" y="681" width="382" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Tutorial-Home-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Tutorial-Home-Down"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="BSU-BI-90b"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tutorial1" translatesAutoresizingMaskIntoConstraints="NO" id="wQm-HZ-IqO">
+                                <rect key="frame" x="16" y="28" width="381" height="557"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="axT-4B-kMv"/>
                     </view>
+                    <connections>
+                        <outlet property="TutorialImage" destination="wQm-HZ-IqO" id="OOg-BE-B7z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cki-7l-4mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="797"/>
+            <point key="canvasLocation" x="95.652173913043484" y="866.57608695652186"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Start-Game-Down" width="445" height="185"/>
+        <image name="Start-Game-Up" width="445" height="185"/>
         <image name="TopDeck-logo" width="324" height="185"/>
+        <image name="Tutorial-Down" width="445" height="185"/>
+        <image name="Tutorial-Home-Down" width="1008" height="101"/>
+        <image name="Tutorial-Home-Up" width="1008" height="101"/>
+        <image name="Tutorial-Next-Down" width="493" height="185"/>
+        <image name="Tutorial-Next-Up" width="493" height="185"/>
+        <image name="Tutorial-Previous-Down" width="493" height="185"/>
+        <image name="Tutorial-Previous-Up" width="493" height="185"/>
+        <image name="Tutorial-Up" width="445" height="185"/>
+        <image name="Tutorial1" width="1008" height="1501"/>
     </resources>
 </document>
