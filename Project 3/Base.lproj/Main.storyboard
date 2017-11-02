@@ -54,7 +54,7 @@
                                 <state key="highlighted" image="Tutorial-Down"/>
                                 <connections>
                                     <action selector="options:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pf4-OQ-B07"/>
-                                    <segue destination="9Gc-lV-jRo" kind="show" animates="NO" id="Eqc-En-cyq"/>
+                                    <segue destination="9Gc-lV-jRo" kind="show" id="we8-ig-DQR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,6 +83,7 @@
                                 <state key="normal" image="Tutorial-Next-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="Tutorial-Next-Down"/>
                                 <connections>
                                     <action selector="NextScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="7MA-vN-ZWO"/>
                                 </connections>
@@ -93,6 +94,7 @@
                                 <state key="normal" image="Tutorial-Previous-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="Tutorial-Previous-Down"/>
                                 <connections>
                                     <action selector="PrevScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="SOe-9h-go2"/>
                                 </connections>
@@ -103,8 +105,9 @@
                                 <state key="normal" image="Tutorial-Home-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="Tutorial-Home-Down"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" animates="NO" id="sbo-Uu-gjI"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="BSU-BI-90b"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tutorial1" translatesAutoresizingMaskIntoConstraints="NO" id="wQm-HZ-IqO">
@@ -126,8 +129,11 @@
         <image name="Start-Game-Up" width="445" height="185"/>
         <image name="TopDeck-logo" width="324" height="185"/>
         <image name="Tutorial-Down" width="445" height="185"/>
+        <image name="Tutorial-Home-Down" width="1008" height="101"/>
         <image name="Tutorial-Home-Up" width="1008" height="101"/>
+        <image name="Tutorial-Next-Down" width="493" height="185"/>
         <image name="Tutorial-Next-Up" width="493" height="185"/>
+        <image name="Tutorial-Previous-Down" width="493" height="185"/>
         <image name="Tutorial-Previous-Up" width="493" height="185"/>
         <image name="Tutorial-Up" width="445" height="185"/>
         <image name="Tutorial1" width="1008" height="1501"/>

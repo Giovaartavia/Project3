@@ -11,7 +11,11 @@ import UIKit
 
 class Tutorial: UIViewController {
     
+    @IBOutlet weak var TutorialImage: UIImageView!
     let tutorialArray = ["Tutorial1","Tutorial2","Tutorial3","Tutorial4","Tutorial5","Tutorial6","Tutorial7"];
+    var loc = 0;
+    
+    
     
     @IBAction func PrevScreen(_ sender: Any) {
         print("PREV")
