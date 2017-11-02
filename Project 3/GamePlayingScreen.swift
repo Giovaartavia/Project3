@@ -98,34 +98,26 @@ class ViewPlayGame: UIViewController {
             //+1 attack per turn      
             case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
-                print("Steel")
             //+3 attack once while active
             case "Spell-Tome-Deck", "Blacksmith-Deck":
                 currPlayer.attack += 3
                 updateAttackBar(currPlayer: currPlayer)
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
-                print("Dark")
             //+2 health per turn
             case "Health-Potion-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
-                print("Plasma")
                 
                 //debuff (LASTS 2 TURNS)
-                
             //subtract 2 ATK from opponent for 1st attack each turn
             case "Disarm-Deck":
                 nextPlayer.debuff = "Disarm-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2
-                print("Grass")
-                
+                nextPlayer.debuffTime = 2 
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 3
-                print("Bad-Medicine-Deck")
-                
+                nextPlayer.debuffTime = 3      
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
@@ -134,7 +126,6 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
-                print("Voodoo Doll")
                 //warrior: Opponent takes 2 damage per turn
             case "Brass-Knuckles-Deck":
                 nextPlayer.debuff = "Brass-Knuckles-Deck"
@@ -142,14 +133,12 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
-                print("Brass Knuckles")
                 
                 // single turn
             //Places top card of opponents deck on the bottom
             case "Smoke-Bomb-Deck":
                 addToBack(arr: &nextPlayer.currDeck)
                 revealTopCard(currPlayer: nextPlayer)
-                print("Smoke-Bomb-Deck")
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane-Burst-Deck", "Double-Edge-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: currPlayer, damage: currPlayer.attack)
@@ -159,31 +148,25 @@ class ViewPlayGame: UIViewController {
                 selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
-                print("Arcane-Burst-Deck/Double-Edge-Deck")
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: currPlayer.attack + 2)
                 updateHealthBar(currPlayer: nextPlayer)
-                print("Magical Bolt/Sword Strike")
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
                 if(currPlayer.canHeal)
                 {
                     currPlayer.health += 3
                     updateHealthBar(currPlayer: currPlayer)
-                    print("Life-Steal-Deck")
                 }
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
                 updateHealthBar(currPlayer: nextPlayer)
-                print("Healing did not happen because debuff was active")
-
             //Do 1 damage, regain 2 stamina.
             case "Throwing-Knife-Deck":
                 currPlayer.currStamina += 2
                 updateStaminaBar(currPlayer: currPlayer)
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
                 updateHealthBar(currPlayer: nextPlayer)
-                print("Throwing Knife")
                 
             default: //Necessary
                 print("Error in card selection switch case")
@@ -198,9 +181,7 @@ class ViewPlayGame: UIViewController {
         {
             print("NOT ENOUGH STAMINA HONEY!")
         }
-        
-        //check to see if player has lost
-        //check if self damage occured and check attacking player health first
+
     }
 
     func addBuff(newBuff: String, currPlayer: Player)
@@ -219,7 +200,7 @@ class ViewPlayGame: UIViewController {
             currPlayer.buffArr[0] = newBuff
             updateBuffBar(currPlayer: currPlayer)
             //move to back 
-            addToBack(arr: &currPlayer.currDeck)         
+            addToBack(arr: &currPlayer.buffArr)         
         }
         else if(currPlayer.buffArr.count >= 0 && currPlayer.buffArr.count < 3)
         {
@@ -295,7 +276,7 @@ class ViewPlayGame: UIViewController {
         //player has lost
         if currPlayer.health <= 0
         {
-            print("GAME OVER! Player has died ):")
+            print("GAME OVER HONEY! Player has died ):")
             
         }
     }
@@ -709,6 +690,36 @@ class ViewPlayGame: UIViewController {
             }
         }
     }
+
+
+    // TEST SUITE
+
+    //Check for function adding in appropriate order
+    func runTestAddBuff1()
+    {
+        let player = Player(name: "Player1")
+
+        addBuff(newBuff: "1", currPlayer: player)
+        addBuff(newBuff: "2", currPlayer: player)
+        addBuff(newBuff: "3", currPlayer: player)
+        addBuff(newBuff: "4", currPlayer: player)
+        addBuff(newBuff: "5", currPlayer: player)
+        addBuff(newBuff: "6", currPlayer: player)
+
+        let result = player.buffArr
+        let expected = ["4", "5", "6"]
+
+        if result == expected
+        {
+        print("AddBuff1 Test Pass!")
+        }
+        else
+        {
+        print("AddBuff1 Test Failed!")
+        }
+    }
+
+    //END TEST SUITE
     
     @IBAction func playCardPress(_ sender: Any) {
         
@@ -800,5 +811,10 @@ class ViewPlayGame: UIViewController {
     }
     @IBAction func surrenderPress(_ sender: Any) {
     }
+    
+    @IBAction func testPress(_ sender: Any) {
+        runTestAddBuff1()
+    }
+    
 }
 
