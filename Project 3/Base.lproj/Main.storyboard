@@ -85,7 +85,7 @@
                                 </state>
                                 <state key="highlighted" image="Tutorial-Next-Down"/>
                                 <connections>
-                                    <action selector="NextScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="i1h-eN-HpA"/>
+                                    <action selector="NextScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="7MA-vN-ZWO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b67-DP-fbw">
@@ -96,7 +96,7 @@
                                 </state>
                                 <state key="highlighted" image="Tutorial-Previous-Down"/>
                                 <connections>
-                                    <action selector="PrevScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="znd-Il-ApU"/>
+                                    <action selector="PrevScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="SOe-9h-go2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K5-Uz-BNp">

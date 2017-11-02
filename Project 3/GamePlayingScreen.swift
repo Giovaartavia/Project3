@@ -37,9 +37,85 @@ extension Sequence {
 
 var playerStart = 0;
 
+class SelectionDeck1: UIViewController {
+    var currDeck = ["Initial"];
+    override func viewDidLoad() {
+        //Nothing yet :)
+    }
+    @IBOutlet weak var segmentSelect: UISegmentedControl!
+    
+    let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+    
+    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+    
+    @IBAction func confirmSelection(_ sender: Any) {
+        switch segmentSelect.selectedSegmentIndex
+        {
+        case 0:
+            let defaults = UserDefaults.standard
+            currDeck = warriorDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck1")
+        case 1:
+            let defaults = UserDefaults.standard
+            currDeck = mageDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck1")
+        default:
+            currDeck = ["ERROR"]
+            break
+        }
+    }
+}
+
+class SelectionDeck2: UIViewController {
+    var currDeck = ["Initial"];
+    override func viewDidLoad() {
+        //Nothing yet :)
+    }
+    @IBOutlet weak var segmentSelect: UISegmentedControl!
+    
+    let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+    
+    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+    
+    @IBAction func confirmSelection(_ sender: Any) {
+        switch segmentSelect.selectedSegmentIndex
+        {
+        case 0:
+            let defaults = UserDefaults.standard
+            currDeck = warriorDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck2")
+        case 1:
+            let defaults = UserDefaults.standard
+            currDeck = mageDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck2")
+        default:
+            currDeck = ["ERROR"]
+            break
+        }
+    }
+}
+
 class ViewPlayGame: UIViewController {
-    override func viewDidLoad() 
+    var player1 = Player(name: "player1", currDeck: ["Empty"])
+    var player2 = Player(name: "player2", currDeck: ["Empty"])
+    
+    override func viewDidLoad()
     {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
+            let selectedDeck : [NSString] = test as! [NSString]
+            player1.currDeck = selectedDeck as [String]
+        }
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as AnyObject {
+            let selectedDeck : [NSString] = test as! [NSString]
+            player2.currDeck = selectedDeck as [String]
+        }
+        //player1.currDeck = Selection().getDeck()
+        //player2.currDeck = Selection().getDeck()
+        
+        revealTopCard(currPlayer: player1)
+        revealTopCard(currPlayer: player2)
+        updateStaminaBar(currPlayer: player1)
+        updateStaminaBar(currPlayer: player2)
         let holdDeck1 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard1(_:)))
         topCard1Button.addGestureRecognizer(holdDeck1)
         let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
@@ -50,12 +126,11 @@ class ViewPlayGame: UIViewController {
     class Player
     {
         var name: String
-        init(name: String) {
+        var currDeck: [String]
+        init(name: String, currDeck: [String]) {
             self.name = name
+            self.currDeck = currDeck
         }
-        //fighting and psychic are different for class
-        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
-        var currDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"].shuffled()
         
         var currStamina = 2
         var totalStamina = 2
@@ -431,9 +506,6 @@ class ViewPlayGame: UIViewController {
             print("No more shuffles!")
         }
     }
-
-    
-    
     
     //TEST PRINTS. Prints all stats
     func printStats()
@@ -471,8 +543,8 @@ class ViewPlayGame: UIViewController {
     
     // END OF FUNCTIONS
     
-    let player1 = Player(name: "player1")
-    let player2 = Player(name: "player2")
+    //let player1 = Player(name: "player1", currDeck: Selection().getDeck())
+    //let player2 = Player(name: "player2", currDeck: Selection().getDeck())
     
     //dynamic UI images
     @IBOutlet weak var topCard1: UIImageView!
@@ -825,7 +897,6 @@ class ViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
-            
         }
         else if(turn == 2)
         {
