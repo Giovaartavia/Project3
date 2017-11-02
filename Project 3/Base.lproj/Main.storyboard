@@ -84,7 +84,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="NextScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="i1h-eN-HpA"/>
+                                    <action selector="NextScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="7MA-vN-ZWO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b67-DP-fbw">
@@ -94,8 +94,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="PrevScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="znd-Il-ApU"/>
-                                    <action selector="TutorialPrevious:" destination="AYz-5e-fkU" eventType="touchUpInside" id="oJf-Gw-CsJ"/>
+                                    <action selector="PrevScreen:" destination="9Gc-lV-jRo" eventType="touchUpInside" id="SOe-9h-go2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K5-Uz-BNp">
@@ -116,12 +115,8 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="axT-4B-kMv"/>
                     </view>
-                    <connections>
-                        <outlet property="NextScreen" destination="ovb-7Z-8vb" id="sU7-S2-NDF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cki-7l-4mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="AYz-5e-fkU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="866.57608695652186"/>
         </scene>

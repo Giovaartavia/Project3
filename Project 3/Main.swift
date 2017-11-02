@@ -14,11 +14,11 @@ class Tutorial: UIViewController {
     let tutorialArray = ["Tutorial1","Tutorial2","Tutorial3","Tutorial4","Tutorial5","Tutorial6","Tutorial7"];
     
     @IBAction func PrevScreen(_ sender: Any) {
-        
+        print("PREV")
     }
     
     @IBAction func NextScreen(_ sender: Any) {
-        
+        print("NEXT")
     }
     
 }

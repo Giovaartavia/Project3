@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="-865.21739130434787" y="-708.42391304347836"/>
         </scene>
-        <!--Class Selection2-->
+        <!--Selection-->
         <scene sceneID="NWY-Yz-SwH">
             <objects>
-                <viewController id="WKX-5b-pMc" customClass="ClassSelection2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WKX-5b-pMc" customClass="Selection" customModule="Project_3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UYG-Hn-7dx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +100,7 @@
                                 </state>
                                 <state key="highlighted" image="Select-Class-Down"/>
                                 <connections>
+                                    <action selector="confirmSelection:" destination="WKX-5b-pMc" eventType="touchUpInside" id="Hz4-Wr-iDv"/>
                                     <segue destination="jsl-U6-zg7" kind="show" id="KSd-jl-MeL"/>
                                 </connections>
                             </button>
@@ -116,6 +117,9 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ZXg-nf-BMv"/>
                     </view>
+                    <connections>
+                        <outlet property="segmentSelect" destination="266-zr-XdP" id="UxW-pt-QhI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Trk-zS-DFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
