@@ -171,7 +171,7 @@ class ViewPlayGame: UIViewController {
             updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
-            let currCard = currPlayer.currDeck[0]
+            var currCard = currPlayer.currDeck[0]
             var selfDamage = false
             
             //Test print
@@ -524,77 +524,7 @@ class ViewPlayGame: UIViewController {
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
     
-    func testBrassKnuckles()
-    {
-        var testPlayer1 = Player(name: "testplayer1", currDeck: ["Brass-Knuckles-Deck"])
-        var testPlayer2 = Player(name: "testplayer2", currDeck: ["Empty"])
-        
-        print("\n *****BRASS KNUCKLES TESTS****** \n")
-        
-        playCard(currPlayer: testPlayer1, nextPlayer: testPlayer2)
-        
-        if(testPlayer2.debuff == "Brass-Knuckles-Deck")
-        {
-            print("Correct debuff displayed: Passed! \n")
-        }
-        else
-        {
-            print("Correct debuff displayed: Failed \n")
-        }
-        
-        if(testPlayer2.health == 19)
-        {
-            print("Initial Brass Knuckles damage: Passed! \n")
-            endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
-            if (testPlayer2.health == 17)
-            {
-                print("First turn Brass Knuckles damage: Passed! \n")
-                
-                //Pass one turn
-                endTurn(currPlayer: testPlayer2, nextPlayer: testPlayer1)
-                endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
-                
-                if(testPlayer2.health == 15)
-                {
-                    print("Second turn Brass Knuckles damage: Passed! \n")
-                    
-                    //Pass one turn
-                    endTurn(currPlayer: testPlayer2, nextPlayer: testPlayer1)
-                    endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
-                    
-                    if(testPlayer2.debuff == "Brass-Knuckles-Deck")
-                    {
-                        print("Correct debuff displayed after 2 turns: Passed! \n")
-                    }
-                    else
-                    {
-                        print("Correct debuff displayed after 2 turns: Failed \n")
-                    }
-                    if(testPlayer2.health == 15)
-                    {
-                        print("Brass Knuckles stops doing damage after 2 turns: Passed! \n")
-                    }
-                    else
-                    {
-                        print("Brass Knuckles stops doing damage after 2 turns: Failed \n")
-                    }
-                    
-                }
-                else
-                {
-                    print("Second turn Brass Knuckles damage: Failed! \n")
-                }
-            }
-            else
-            {
-                print("First turn Brass Knuckles damage: Failed \n")
-            }
-        }
-        else
-        {
-            print("Initial Brass Knuckles damage: Failed \n")
-        }
-    }
+    
     
     // END OF FUNCTIONS
     
@@ -678,23 +608,32 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            topCard1.image = UIImage(named: player1.currDeck[0])
+            if(topCard1 != nil)
+            {
+                topCard1.image = UIImage(named: player1.currDeck[0])
+            }
         }
         else
         {
-            topCard2.image = UIImage(named: player2.currDeck[0])
+            if(topCard2 != nil)
+            {
+                topCard2.image = UIImage(named: player2.currDeck[0])
+            }
         }
     }
     
     func revealInfoCard(currPlayer: Player)
     {
-        if(currPlayer.name == "player1")
+        if(infoCard != nil)
         {
-            infoCard.image = UIImage(named: player1.currDeck[0])
-        }
-        else
-        {
-            infoCard.image = UIImage(named: player2.currDeck[0])
+            if(currPlayer.name == "player1")
+            {
+                infoCard.image = UIImage(named: player1.currDeck[0])
+            }
+            else
+            {
+                infoCard.image = UIImage(named: player2.currDeck[0])
+            }
         }
     }
     
@@ -702,48 +641,54 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            if(currPlayer.debuff == "Disarm-Deck")
+            if(debuffIcon1 != nil)
             {
-                debuffIcon1.image = UIImage(named: "Disarm-Deck-Icon")
-            }
-            else if(currPlayer.debuff == "Bad-Medicine-Deck")
-            {
-                debuffIcon1.image = UIImage(named: "Bad-Medicine-Deck-Icon")
-            }
-            else if(currPlayer.debuff == "Voodoo-Doll-Deck")
-            {
-                debuffIcon1.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
-            }
-            else if(currPlayer.debuff == "Brass-Knuckles-Deck")
-            {
-                debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
-            }
-            else
-            {
-                debuffIcon1.image = UIImage(named: "")
+                if(currPlayer.debuff == "Disarm-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Disarm-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Bad-Medicine-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Bad-Medicine-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Voodoo-Doll-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Brass-Knuckles-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+                }
+                else
+                {
+                    debuffIcon1.image = UIImage(named: "")
+                }
             }
         }
         else
         {
-            if(currPlayer.debuff == "Disarm-Deck")
+            if(debuffIcon2 != nil)
             {
-                debuffIcon2.image = UIImage(named: "Disarm-Deck-Icon")
-            }
-            else if(currPlayer.debuff == "Bad-Medicine-Deck")
-            {
-                debuffIcon2.image = UIImage(named: "Bad-Medicine-Deck-Icon")
-            }
-            else if(currPlayer.debuff == "Voodoo-Doll-Deck")
-            {
-                debuffIcon2.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
-            }
-            else if(currPlayer.debuff == "Brass-Knuckles-Deck")
-            {
-                debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
-            }
-            else
-            {
-                debuffIcon2.image = UIImage(named: "")
+                if(currPlayer.debuff == "Disarm-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Disarm-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Bad-Medicine-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Bad-Medicine-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Voodoo-Doll-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Brass-Knuckles-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+                }
+                else
+                {
+                    debuffIcon2.image = UIImage(named: "")
+                }
             }
         }
     }
@@ -752,46 +697,52 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            if(currPlayer.buffArr.count == 1)
+            if(buffIcon1_1 != nil && buffIcon1_2 != nil && buffIcon1_3 != nil)
             {
-                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
-            }
-            else if(currPlayer.buffArr.count == 2)
-            {
-                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
-                buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
-            }
-            else if(currPlayer.buffArr.count == 3)
-            {
-                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
-                buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
-                buffIcon1_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
-            }
-            else
-            {
-                print("Can't show buffs!")
+                if(currPlayer.buffArr.count == 1)
+                {
+                    buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                }
+                else if(currPlayer.buffArr.count == 2)
+                {
+                    buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                    buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                }
+                else if(currPlayer.buffArr.count == 3)
+                {
+                    buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                    buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                    buffIcon1_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
+                }
+                else
+                {
+                    print("Can't show buffs!")
+                }
             }
         }
         else
         {
-            if(currPlayer.buffArr.count == 1)
+            if(buffIcon2_1 != nil && buffIcon2_2 != nil && buffIcon2_3 != nil)
             {
-                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
-            }
-            else if(currPlayer.buffArr.count == 2)
-            {
-                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
-                buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
-            }
-            else if(currPlayer.buffArr.count == 3)
-            {
-                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
-                buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
-                buffIcon2_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
-            }
-            else
-            {
-                print("Can't show buffs!")
+                if(currPlayer.buffArr.count == 1)
+                {
+                    buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                }
+                else if(currPlayer.buffArr.count == 2)
+                {
+                    buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                    buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                }
+                else if(currPlayer.buffArr.count == 3)
+                {
+                    buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                    buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                    buffIcon2_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
+                }
+                else
+                {
+                    print("Can't show buffs!")
+                }
             }
         }
     }
@@ -800,32 +751,38 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            if(currPlayer.health > 20)
+            if(healthBar1 != nil)
             {
-                healthBar1.image = UIImage(named: healthBarImages[20])
-            }
-            else if(currPlayer.health < 0)
-            {
-                healthBar1.image = UIImage(named: healthBarImages[0])
-            }
-            else
-            {
-                healthBar1.image = UIImage(named: healthBarImages[currPlayer.health])
+                if(currPlayer.health > 20)
+                {
+                    healthBar1.image = UIImage(named: healthBarImages[20])
+                }
+                else if(currPlayer.health < 0)
+                {
+                    healthBar1.image = UIImage(named: healthBarImages[0])
+                }
+                else
+                {
+                    healthBar1.image = UIImage(named: healthBarImages[currPlayer.health])
+                }
             }
         }
         else
         {
-            if(currPlayer.health > 20)
+            if(healthBar2 != nil)
             {
-                healthBar2.image = UIImage(named: healthBarImages[20])
-            }
-            else if(currPlayer.health < 0)
-            {
-                healthBar2.image = UIImage(named: healthBarImages[0])
-            }
-            else
-            {
-                healthBar2.image = UIImage(named: healthBarImages[currPlayer.health])
+                if(currPlayer.health > 20)
+                {
+                    healthBar2.image = UIImage(named: healthBarImages[20])
+                }
+                else if(currPlayer.health < 0)
+                {
+                    healthBar2.image = UIImage(named: healthBarImages[0])
+                }
+                else
+                {
+                    healthBar2.image = UIImage(named: healthBarImages[currPlayer.health])
+                }
             }
         }
     }
@@ -834,32 +791,38 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            if(currPlayer.attack > 10)
+            if(attackBar1 != nil)
             {
-                attackBar1.image = UIImage(named: attackBarImages[10])
-            }
-            else if(currPlayer.attack < 0)
-            {
-                attackBar1.image = UIImage(named: attackBarImages[0])
-            }
-            else
-            {
-                attackBar1.image = UIImage(named: attackBarImages[currPlayer.attack])
+                if(currPlayer.attack > 10)
+                {
+                    attackBar1.image = UIImage(named: attackBarImages[10])
+                }
+                else if(currPlayer.attack < 0)
+                {
+                    attackBar1.image = UIImage(named: attackBarImages[0])
+                }
+                else
+                {
+                    attackBar1.image = UIImage(named: attackBarImages[currPlayer.attack])
+                }
             }
         }
         else
         {
-            if(currPlayer.attack > 10)
+            if(attackBar2 != nil)
             {
-                attackBar2.image = UIImage(named: attackBarImages[10])
-            }
-            else if(currPlayer.attack < 0)
-            {
-                attackBar2.image = UIImage(named: attackBarImages[0])
-            }
-            else
-            {
-                attackBar2.image = UIImage(named: attackBarImages[currPlayer.attack])
+                if(currPlayer.attack > 10)
+                {
+                    attackBar2.image = UIImage(named: attackBarImages[10])
+                }
+                else if(currPlayer.attack < 0)
+                {
+                    attackBar2.image = UIImage(named: attackBarImages[0])
+                }
+                else
+                {
+                    attackBar2.image = UIImage(named: attackBarImages[currPlayer.attack])
+                }
             }
         }
     }
@@ -868,32 +831,38 @@ class ViewPlayGame: UIViewController {
     {
         if(currPlayer.name == "player1")
         {
-            if(currPlayer.currStamina > 10)
+            if(staminaBar1 != nil)
             {
-                staminaBar1.image = UIImage(named: staminaBarImages[10])
-            }
-            else if(currPlayer.currStamina < 0)
-            {
-                staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
-            }
-            else
-            {
-                staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                if(currPlayer.currStamina > 10)
+                {
+                    staminaBar1.image = UIImage(named: staminaBarImages[10])
+                }
+                else if(currPlayer.currStamina < 0)
+                {
+                    staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                }
+                else
+                {
+                    staminaBar1.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                }
             }
         }
         else
         {
-            if(currPlayer.currStamina > 10)
+            if(staminaBar2 != nil)
             {
-                staminaBar2.image = UIImage(named: staminaBarImages[10])
-            }
-            else if(currPlayer.currStamina < 0)
-            {
-                staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
-            }
-            else
-            {
-                staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                if(currPlayer.currStamina > 10)
+                {
+                    staminaBar2.image = UIImage(named: staminaBarImages[10])
+                }
+                else if(currPlayer.currStamina < 0)
+                {
+                    staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                }
+                else
+                {
+                    staminaBar2.image = UIImage(named: staminaBarImages[currPlayer.currStamina])
+                }
             }
         }
     }
@@ -902,7 +871,7 @@ class ViewPlayGame: UIViewController {
     // TEST SUITE
 
     //Check for function adding in appropriate order
-    func runTestAddBuff1()
+    /*func runTestAddBuff1()
     {
         let player = Player(name: "Player1")
 
@@ -924,7 +893,7 @@ class ViewPlayGame: UIViewController {
         {
         print("AddBuff1 Test Failed!")
         }
-    }
+    }*/
 
     //END TEST SUITE
     
@@ -1022,7 +991,7 @@ class ViewPlayGame: UIViewController {
     }
     
     @IBAction func testPress(_ sender: Any) {
-        runTestAddBuff1()
+        //runTestAddBuff1()
     }
     
 

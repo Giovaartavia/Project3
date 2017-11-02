@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project 3/ViewController.swift"
-            timestampString = "530763596.149878"
+            timestampString = "531345356.439402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44">
+            startingLineNumber = "30"
+            endingLineNumber = "30">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -24,12 +24,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project 3/GamePlayingScreen.swift"
-            timestampString = "531334940.198202"
+            timestampString = "531345430.740194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "322"
             endingLineNumber = "322"
-            landmarkName = "addBuff(newBuff:currPlayer:)"
+            landmarkName = "checkBuffs(currPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
