@@ -35,6 +35,9 @@ extension Sequence {
 
 //end of adapted code
 
+
+//TODO: Coin flip interaction with player 1 and player 2 in-game
+
 var playerStart = 0;
 
 class SelectionDeck1: UIViewController {
@@ -168,7 +171,7 @@ class ViewPlayGame: UIViewController {
             updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
-            var currCard = currPlayer.currDeck[0]
+            let currCard = currPlayer.currDeck[0]
             var selfDamage = false
             
             //Test print
@@ -323,7 +326,6 @@ class ViewPlayGame: UIViewController {
         }
     } 
 
-    
     func checkBuffs(currPlayer: Player)
     {
         if currPlayer.buffArr.count > 0
@@ -539,6 +541,78 @@ class ViewPlayGame: UIViewController {
     {
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
+    }
+    
+    func testBrassKnuckles()
+    {
+        var testPlayer1 = Player(name: "testplayer1", currDeck: ["Brass-Knuckles-Deck"])
+        var testPlayer2 = Player(name: "testplayer2", currDeck: ["Empty"])
+        
+        print("\n *****BRASS KNUCKLES TESTS****** \n")
+        
+        playCard(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+        
+        if(testPlayer2.debuff == "Brass-Knuckles-Deck")
+        {
+            print("Correct debuff displayed: Passed! \n")
+        }
+        else
+        {
+            print("Correct debuff displayed: Failed \n")
+        }
+        
+        if(testPlayer2.health == 19)
+        {
+            print("Initial Brass Knuckles damage: Passed! \n")
+            endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+            if (testPlayer2.health == 17)
+            {
+                print("First turn Brass Knuckles damage: Passed! \n")
+                
+                //Pass one turn
+                endTurn(currPlayer: testPlayer2, nextPlayer: testPlayer1)
+                endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+                
+                if(testPlayer2.health == 15)
+                {
+                    print("Second turn Brass Knuckles damage: Passed! \n")
+                    
+                    //Pass one turn
+                    endTurn(currPlayer: testPlayer2, nextPlayer: testPlayer1)
+                    endTurn(currPlayer: testPlayer1, nextPlayer: testPlayer2)
+                    
+                    if(testPlayer2.debuff == "Brass-Knuckles-Deck")
+                    {
+                        print("Correct debuff displayed after 2 turns: Passed! \n")
+                    }
+                    else
+                    {
+                        print("Correct debuff displayed after 2 turns: Failed \n")
+                    }
+                    if(testPlayer2.health == 15)
+                    {
+                        print("Brass Knuckles stops doing damage after 2 turns: Passed! \n")
+                    }
+                    else
+                    {
+                        print("Brass Knuckles stops doing damage after 2 turns: Failed \n")
+                    }
+                    
+                }
+                else
+                {
+                    print("Second turn Brass Knuckles damage: Failed! \n")
+                }
+            }
+            else
+            {
+                print("First turn Brass Knuckles damage: Failed \n")
+            }
+        }
+        else
+        {
+            print("Initial Brass Knuckles damage: Failed \n")
+        }
     }
     
     // END OF FUNCTIONS
