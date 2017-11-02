@@ -36,8 +36,7 @@ extension Sequence {
 //end of adapted code
 
 
-//TODO: Coin flip interaction with player 1 and player 2 in-game
-
+//Assigned by the coin flip
 var playerStart = 0;
 
 class SelectionDeck1: UIViewController {
@@ -104,6 +103,21 @@ class ViewPlayGame: UIViewController {
     
     override func viewDidLoad()
     {
+        if(playerStart == 1)
+        {
+            playerTurn.text = "PLAYER 1's Turn"
+            
+        }
+        else if(playerStart == 2)
+        {
+            playerTurn.text = "PLAYER 2's Turn"
+        }
+        else
+        {
+            print("ERROR PICKING TURN")
+        }
+        
+        
         if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
             let selectedDeck : [NSString] = test as! [NSString]
             player1.currDeck = selectedDeck as [String]
@@ -589,8 +603,8 @@ class ViewPlayGame: UIViewController {
     //Blur on Top Card Hold
     @IBOutlet weak var blurTopCard: UIVisualEffectView!
     
-    //turn for testing always starts on player 1
-    var turn = 1;
+    //turn for starts based on flipped coin
+    var turn = playerStart;
 
     //Button Press Actions
     @IBOutlet weak var playCardButton: UIButton!
@@ -1110,12 +1124,70 @@ class ViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
+            
+            if(player2.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
+            
+            
+            //disable the place bottom button
+            if(player2.debuff == "Voodoo-Doll-Deck")
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+            }
+            else
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+            }
         }
         else if(turn == 2)
         {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
             playerTurn.text = "PLAYER 1's Turn"
+            
+            if(player1.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
+            
+            
+            //disable the place bottom button
+            if(player1.debuff == "Voodoo-Doll-Deck")
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+            }
+            else
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+            }
         }
         else
         {
@@ -1135,6 +1207,9 @@ class ViewPlayGame: UIViewController {
         }
         else if (turn == 2)
         {
+            //check the number of shuffles a player has and update the image
+
+            
             shuffleCards(currPlayer: player2)
             //revealTopCard(currPlayer: player2)
         }
@@ -1168,7 +1243,7 @@ class CoinFlip: UIViewController {
         
         if(coinFlip == 1)
         {
-        coinImage.image = UIImage(named: "Heads");
+            coinImage.image = UIImage(named: "Heads");
             playerStartText.text="Player 1 Starts!";
             flipVisibility.isHidden = true;
             nextVisibility.isHidden = false;

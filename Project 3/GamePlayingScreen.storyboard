@@ -331,7 +331,7 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
                                 <rect key="frame" x="10" y="92" width="393" height="551"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -346,6 +346,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Gga-Ub-72V"/>
+                                <exclude reference="jOn-F1-w22"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="attackBar1" destination="anN-dO-x1f" id="EHS-AV-i8d"/>
@@ -365,7 +371,7 @@
                         <outlet property="healthBar1" destination="370-jY-6Qk" id="HR0-Gy-GJQ"/>
                         <outlet property="healthBar2" destination="LqV-Ax-udT" id="vmH-Ub-5pr"/>
                         <outlet property="infoCard" destination="jOn-F1-w22" id="7NW-N3-iec"/>
-                        <outlet property="placeBottomButton" destination="Lt6-be-Xp8" id="FBD-Q7-xub"/>
+                        <outlet property="placeBottomButton" destination="Lt6-be-Xp8" id="s15-ri-yTh"/>
                         <outlet property="playCardButton" destination="w3Z-2I-Ytw" id="8nY-dI-8Oq"/>
                         <outlet property="playerTurn" destination="n8O-IS-bRb" id="m2R-YZ-DHW"/>
                         <outlet property="shuffleButton" destination="nLw-l8-LYj" id="djc-uj-EMF"/>
@@ -576,8 +582,8 @@
         <image name="PlayCardButton-Up" width="337" height="185"/>
         <image name="Select-Class-Down" width="445" height="185"/>
         <image name="Select-Class-Up" width="445" height="185"/>
-        <image name="ShuffleButton-Down" width="183" height="185"/>
-        <image name="ShuffleButton-Up" width="183" height="185"/>
+        <image name="ShuffleButton-Down-2" width="183" height="185"/>
+        <image name="ShuffleButton-Up-2" width="183" height="185"/>
         <image name="Stamina-Bar0" width="443" height="45"/>
         <image name="Surrender-Down" width="445" height="185"/>
         <image name="Surrender-Up" width="445" height="185"/>
