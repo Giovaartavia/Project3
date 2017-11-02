@@ -413,6 +413,7 @@ class ViewPlayGame: UIViewController {
 
     func attackDamage(currPlayer: Player, nextPlayer: Player, damage: Int)
     {
+        
         if(currPlayer.debuff == "Disarm")
         {
             if(currPlayer.hasAttacked)
@@ -421,8 +422,20 @@ class ViewPlayGame: UIViewController {
             }
             else
             {
-                nextPlayer.health -= (damage-2)
-                currPlayer.hasAttacked = true
+                //if damage is under 2 then no damage
+                //else do damage - 2
+                if damage < 2
+                {
+                    damage = 0
+                    nextPlayer.health -= (damage)
+                    currPlayer.hasAttacked = true
+                }
+                else
+                {
+                    nextPlayer.health -= (damage-2)
+                    currPlayer.hasAttacked = true
+                }
+               
             }
         }
         else
