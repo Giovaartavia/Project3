@@ -1076,12 +1076,10 @@ class ViewPlayGame: UIViewController {
         if(turn == 1)
         {
             playCard(currPlayer: player1, nextPlayer: player2)
-            //revealTopCard(currPlayer: player1)
         }
         else if(turn == 2)
         {
             playCard(currPlayer: player2, nextPlayer: player1)
-            //revealTopCard(currPlayer: player2)
         }
         else
         {
@@ -1097,12 +1095,10 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             placeBottom(currPlayer: player1)
-            //revealTopCard(currPlayer: player1)
         }
         else if (turn == 2)
         {
             placeBottom(currPlayer: player2) //player1 was here
-            //revealTopCard(currPlayer: player2)
         }
         else
         {
@@ -1203,7 +1199,23 @@ class ViewPlayGame: UIViewController {
         if (turn == 1)
         {
             shuffleCards(currPlayer: player1)
-            //revealTopCard(currPlayer: player1)
+            
+            //check the number of shuffles a player has and update the image
+            if(player1.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
         }
         else if (turn == 2)
         {
@@ -1211,7 +1223,22 @@ class ViewPlayGame: UIViewController {
 
             
             shuffleCards(currPlayer: player2)
-            //revealTopCard(currPlayer: player2)
+            
+            if(player2.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
         }
         else
         {
