@@ -35,7 +35,7 @@ extension Sequence {
 
 //end of adapted code
 
-class Selection: UIViewController {
+class SelectionDeck1: UIViewController {
     var currDeck = ["Initial"];
     override func viewDidLoad() {
         //Nothing yet :)
@@ -64,6 +64,35 @@ class Selection: UIViewController {
     }
 }
 
+class SelectionDeck2: UIViewController {
+    var currDeck = ["Initial"];
+    override func viewDidLoad() {
+        //Nothing yet :)
+    }
+    @IBOutlet weak var segmentSelect: UISegmentedControl!
+    
+    let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+    
+    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+    
+    @IBAction func confirmSelection(_ sender: Any) {
+        switch segmentSelect.selectedSegmentIndex
+        {
+        case 0:
+            let defaults = UserDefaults.standard
+            currDeck = warriorDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck2")
+        case 1:
+            let defaults = UserDefaults.standard
+            currDeck = mageDeck.shuffled()
+            defaults.set(currDeck, forKey: "deck2")
+        default:
+            currDeck = ["ERROR"]
+            break
+        }
+    }
+}
+
 class ViewPlayGame: UIViewController {
     var player1 = Player(name: "player1", currDeck: ["Empty"])
     var player2 = Player(name: "player2", currDeck: ["Empty"])
@@ -72,8 +101,10 @@ class ViewPlayGame: UIViewController {
     {
         if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
             let selectedDeck : [NSString] = test as! [NSString]
-            //print(readArray)
             player1.currDeck = selectedDeck as [String]
+        }
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as AnyObject {
+            let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
         //player1.currDeck = Selection().getDeck()
@@ -864,7 +895,6 @@ class ViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
-            
         }
         else if(turn == 2)
         {

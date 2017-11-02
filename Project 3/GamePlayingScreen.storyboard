@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="-1659.4202898550725" y="-708.42391304347836"/>
         </scene>
-        <!--Class Selection1-->
+        <!--Selection Deck1-->
         <scene sceneID="AVN-qi-4Op">
             <objects>
-                <viewController id="axY-S5-ml4" customClass="ClassSelection1" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="axY-S5-ml4" customClass="SelectionDeck1" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HTe-Zb-Lq2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,28 +69,41 @@
                                 </state>
                                 <state key="highlighted" image="Select-Class-Down"/>
                                 <connections>
+                                    <action selector="confirmSelection:" destination="axY-S5-ml4" eventType="touchUpInside" id="YJ3-gz-xs7"/>
                                     <segue destination="WKX-5b-pMc" kind="show" id="19S-0K-bVM"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WoS-su-xZn">
+                                <rect key="frame" x="147" y="452" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Warrior"/>
+                                    <segment title="Mage"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="oad-2f-ARd"/>
                     </view>
+                    <connections>
+                        <outlet property="segmentSelect" destination="WoS-su-xZn" id="8Jj-aQ-sdc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcK-zD-TeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-865.21739130434787" y="-708.42391304347836"/>
         </scene>
-        <!--Selection-->
+        <!--Selection Deck2-->
         <scene sceneID="NWY-Yz-SwH">
             <objects>
-                <viewController id="WKX-5b-pMc" customClass="Selection" customModule="Project_3" sceneMemberID="viewController">
+                <viewController id="WKX-5b-pMc" customClass="SelectionDeck2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UYG-Hn-7dx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQb-Du-vry">
-                                <rect key="frame" x="78" y="565" width="258" height="105"/>
+                                <rect key="frame" x="78" y="568" width="258" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
@@ -105,7 +118,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="266-zr-XdP">
-                                <rect key="frame" x="147" y="447" width="121" height="29"/>
+                                <rect key="frame" x="147" y="452" width="121" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Warrior"/>
@@ -118,7 +131,7 @@
                         <viewLayoutGuide key="safeArea" id="ZXg-nf-BMv"/>
                     </view>
                     <connections>
-                        <outlet property="segmentSelect" destination="266-zr-XdP" id="UxW-pt-QhI"/>
+                        <outlet property="segmentSelect" destination="266-zr-XdP" id="Ddb-d3-BQW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Trk-zS-DFC" userLabel="First Responder" sceneMemberID="firstResponder"/>

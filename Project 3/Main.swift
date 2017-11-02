@@ -18,11 +18,29 @@ class Tutorial: UIViewController {
     
     
     @IBAction func PrevScreen(_ sender: Any) {
-        print("PREV")
+        //print("PREV")
+        if(loc == 0)
+        {
+            loc = 6;
+        }
+        else
+        {
+            loc = loc-1;
+        }
+        TutorialImage.image = UIImage(named: tutorialArray[loc]);
     }
     
     @IBAction func NextScreen(_ sender: Any) {
-        print("NEXT")
+        //print("NEXT")
+        if(loc == 6)
+        {
+            loc = 0;
+        }
+        else
+        {
+            loc = loc+1;
+        }
+        TutorialImage.image = UIImage(named: tutorialArray[loc]);
     }
     
 }

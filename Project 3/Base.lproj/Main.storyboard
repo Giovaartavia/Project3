@@ -118,6 +118,9 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="axT-4B-kMv"/>
                     </view>
+                    <connections>
+                        <outlet property="TutorialImage" destination="wQm-HZ-IqO" id="OOg-BE-B7z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cki-7l-4mB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
