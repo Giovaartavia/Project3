@@ -36,6 +36,14 @@ extension Sequence {
 //end of adapted code
 
 class ViewPlayGame: UIViewController {
+    override func viewDidLoad() 
+    {
+        let holdDeck1 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard1(_:)))
+        topCard1Button.addGestureRecognizer(holdDeck1)
+        let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
+        topCard2Button.addGestureRecognizer(holdDeck2)
+        blurTopCard.isHidden = true;
+    }
     
     class Player
     {
@@ -115,12 +123,14 @@ class ViewPlayGame: UIViewController {
             //subtract 2 ATK from opponent for 1st attack each turn
             case "Disarm-Deck":
                 nextPlayer.debuff = "Disarm-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 2
                 print("Grass")
                 
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 3
                 print("Bad-Medicine-Deck")
                 
@@ -128,6 +138,7 @@ class ViewPlayGame: UIViewController {
                 //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
@@ -135,6 +146,7 @@ class ViewPlayGame: UIViewController {
                 //warrior: Opponent takes 2 damage per turn
             case "Brass-Knuckles-Deck":
                 nextPlayer.debuff = "Brass-Knuckles-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
@@ -213,6 +225,7 @@ class ViewPlayGame: UIViewController {
 
             //change front 
             currPlayer.buffArr[0] = newBuff
+            updateBuffBar(currPlayer: currPlayer)
             //move to back 
             addToBack(arr: &currPlayer.currDeck)         
         }
@@ -220,6 +233,7 @@ class ViewPlayGame: UIViewController {
         {
             //append to end
             currPlayer.buffArr.append(newBuff)
+            updateBuffBar(currPlayer: currPlayer)
         }
         else
         {
@@ -392,6 +406,7 @@ class ViewPlayGame: UIViewController {
             if (nextPlayer.debuffTime == 0)
             {
                 nextPlayer.debuff = ""
+                updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
@@ -466,9 +481,23 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var healthBar2: UIImageView!
     @IBOutlet weak var attackBar2: UIImageView!
     @IBOutlet weak var staminaBar2: UIImageView!
+    @IBOutlet weak var infoCard: UIImageView!
     
-    //Player Turn Header
+    //buff and debuff images
+    @IBOutlet weak var debuffIcon1: UIImageView!
+    @IBOutlet weak var debuffIcon2: UIImageView!
+    @IBOutlet weak var buffIcon1_1: UIImageView!
+    @IBOutlet weak var buffIcon1_2: UIImageView!
+    @IBOutlet weak var buffIcon1_3: UIImageView!
+    @IBOutlet weak var buffIcon2_1: UIImageView!
+    @IBOutlet weak var buffIcon2_2: UIImageView!
+    @IBOutlet weak var buffIcon2_3: UIImageView!
+    
+    //Player Turn Header Label
     @IBOutlet weak var playerTurn: UILabel!
+    
+    //Blur on Top Card Hold
+    @IBOutlet weak var blurTopCard: UIVisualEffectView!
     
     //turn for testing always starts on player 1
     var turn = 1;
@@ -479,6 +508,38 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var endTurnButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var surrenderButton: UIButton!
+    @IBOutlet weak var topCard1Button: UIButton!
+    @IBOutlet weak var topCard2Button: UIButton!
+    
+    //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
+    
+    @objc func holdTopCard1(_ sender: UIGestureRecognizer){
+        if sender.state == .ended {
+            infoCard.image = UIImage(named: "")
+            blurTopCard.isHidden = true;
+        }
+        else if sender.state == .began {
+            let cardName = player1.currDeck[0]
+            let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
+            let truncate = cardName.substring(to: postfix)
+            infoCard.image = UIImage(named: truncate+"-Single")
+            blurTopCard.isHidden = false;
+        }
+    }
+    
+    @objc func holdTopCard2(_ sender: UIGestureRecognizer){
+        if sender.state == .ended {
+            infoCard.image = UIImage(named: "")
+            blurTopCard.isHidden = true;
+        }
+        else if sender.state == .began {
+            let cardName = player2.currDeck[0]
+            let postfix = cardName.index(cardName.endIndex, offsetBy: -5)
+            let truncate = cardName.substring(to: postfix)
+            infoCard.image = UIImage(named: truncate+"-Single")
+            blurTopCard.isHidden = false;
+        }
+    }
     
     var staminaBarImages = ["Stamina-Bar0","Stamina-Bar1","Stamina-Bar2","Stamina-Bar3","Stamina-Bar4","Stamina-Bar5","Stamina-Bar6","Stamina-Bar7","Stamina-Bar8","Stamina-Bar9","Stamina-Bar10"]
     var attackBarImages = ["Attack-Bar0","Attack-Bar1","Attack-Bar2","Attack-Bar3","Attack-Bar4","Attack-Bar5","Attack-Bar6","Attack-Bar7","Attack-Bar8","Attack-Bar9","Attack-Bar10"]
@@ -493,6 +554,116 @@ class ViewPlayGame: UIViewController {
         else
         {
             topCard2.image = UIImage(named: player2.currDeck[0])
+        }
+    }
+    
+    func revealInfoCard(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            infoCard.image = UIImage(named: player1.currDeck[0])
+        }
+        else
+        {
+            infoCard.image = UIImage(named: player2.currDeck[0])
+        }
+    }
+    
+    func updateDebuffBar(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.debuff == "Disarm-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Disarm-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Bad-Medicine-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Bad-Medicine-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Voodoo-Doll-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Brass-Knuckles-Deck")
+            {
+                debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+            }
+            else
+            {
+                debuffIcon1.image = UIImage(named: "")
+            }
+        }
+        else
+        {
+            if(currPlayer.debuff == "Disarm-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Disarm-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Bad-Medicine-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Bad-Medicine-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Voodoo-Doll-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Voodoo-Doll-Deck-Icon")
+            }
+            else if(currPlayer.debuff == "Brass-Knuckles-Deck")
+            {
+                debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+            }
+            else
+            {
+                debuffIcon2.image = UIImage(named: "")
+            }
+        }
+    }
+    
+    func updateBuffBar(currPlayer: Player)
+    {
+        if(currPlayer.name == "player1")
+        {
+            if(currPlayer.buffArr.count == 1)
+            {
+                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 2)
+            {
+                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 3)
+            {
+                buffIcon1_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon1_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                buffIcon1_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
+            }
+            else
+            {
+                print("Can't show buffs!")
+            }
+        }
+        else
+        {
+            if(currPlayer.buffArr.count == 1)
+            {
+                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 2)
+            {
+                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+            }
+            else if(currPlayer.buffArr.count == 3)
+            {
+                buffIcon2_1.image = UIImage(named: currPlayer.buffArr[0]+"-Icon")
+                buffIcon2_2.image = UIImage(named: currPlayer.buffArr[1]+"-Icon")
+                buffIcon2_3.image = UIImage(named: currPlayer.buffArr[2]+"-Icon")
+            }
+            else
+            {
+                print("Can't show buffs!")
+            }
         }
     }
     
@@ -644,18 +815,21 @@ class ViewPlayGame: UIViewController {
     //Changes whose turn it is. 1 is player 1. 2 is player 2.
     //Also replenishes stamina, updates total stamina, and checks for buffs/debuffs
     @IBAction func endTurnPress(_ sender: Any) {
+        /*UIView.animate(withDuration: 1, animations: {
+            self.center = CGPointMake(playerTurn.center.x, playerTurn.center.y+400)
+        })*/
         if(turn == 1)
         {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
-            playerTurn.text = "Player 2's Turn"
+            playerTurn.text = "PLAYER 2's Turn"
             
         }
         else if(turn == 2)
         {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
-            playerTurn.text = "Player 1's Turn"
+            playerTurn.text = "PLAYER 1's Turn"
         }
         else
         {
