@@ -36,8 +36,12 @@ extension Sequence {
 //end of adapted code
 
 class ViewPlayGame: UIViewController {
-    override func viewDidLoad() 
+    override func viewDidLoad()
     {
+        revealTopCard(currPlayer: player1)
+        revealTopCard(currPlayer: player2)
+        updateStaminaBar(currPlayer: player1)
+        updateStaminaBar(currPlayer: player2)
         let holdDeck1 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard1(_:)))
         topCard1Button.addGestureRecognizer(holdDeck1)
         let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
@@ -429,9 +433,6 @@ class ViewPlayGame: UIViewController {
             print("No more shuffles!")
         }
     }
-
-    
-    
     
     //TEST PRINTS. Prints all stats
     func printStats()
