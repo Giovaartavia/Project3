@@ -211,7 +211,7 @@ class ViewPlayGame: UIViewController {
             case "Voodoo-Doll-Deck":
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2
+                nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
                 //warrior: Opponent takes 2 damage per turn
@@ -242,6 +242,7 @@ class ViewPlayGame: UIViewController {
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
+                checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
                 if(currPlayer.canHeal)
                 {
                     currPlayer.health += 3
