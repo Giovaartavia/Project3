@@ -55,11 +55,14 @@ class SelectionDeck1: UIViewController {
         {
         case 0:
             let defaults = UserDefaults.standard
-            currDeck = warriorDeck.shuffled()
+            //currDeck = warriorDeck.shuffled()
+            currDeck = warriorDeck
             defaults.set(currDeck, forKey: "deck1")
+            
         case 1:
             let defaults = UserDefaults.standard
-            currDeck = mageDeck.shuffled()
+            //currDeck = mageDeck.shuffled()
+            currDeck = mageDeck
             defaults.set(currDeck, forKey: "deck1")
         default:
             currDeck = ["ERROR"]
@@ -84,11 +87,13 @@ class SelectionDeck2: UIViewController {
         {
         case 0:
             let defaults = UserDefaults.standard
-            currDeck = warriorDeck.shuffled()
+            //currDeck = warriorDeck.shuffled()
+            currDeck = warriorDeck
             defaults.set(currDeck, forKey: "deck2")
         case 1:
             let defaults = UserDefaults.standard
-            currDeck = mageDeck.shuffled()
+            //currDeck = mageDeck.shuffled()
+            currDeck = mageDeck
             defaults.set(currDeck, forKey: "deck2")
         default:
             currDeck = ["ERROR"]
@@ -98,8 +103,8 @@ class SelectionDeck2: UIViewController {
 }
 
 class ViewPlayGame: UIViewController {
-    var player1 = Player(name: "player1", currDeck: ["Empty"])
-    var player2 = Player(name: "player2", currDeck: ["Empty"])
+    var player1 = Player(name: "player1", currDeck: ["Empty"], deck: "None")
+    var player2 = Player(name: "player2", currDeck: ["Empty"], deck: "None")
     
     override func viewDidLoad()
     {
@@ -117,6 +122,9 @@ class ViewPlayGame: UIViewController {
             print("ERROR PICKING TURN")
         }
         
+        let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+        
+        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
         
         if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
             let selectedDeck : [NSString] = test as! [NSString]
@@ -126,6 +134,28 @@ class ViewPlayGame: UIViewController {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
+        if(player1.currDeck == warriorDeck)
+        {
+            player1.deck = "Warrior"
+            player1Class.image = UIImage(named: "Warrior-Icon")
+        }
+        else
+        {
+            player1.deck = "Mage"
+            player1Class.image = UIImage(named: "Mage-Icon")
+        }
+        if(player2.currDeck == warriorDeck)
+        {
+            player2.deck = "Warrior"
+            player2Class.image = UIImage(named: "Warrior-Icon")
+        }
+        else
+        {
+            player2.deck = "Mage"
+            player2Class.image = UIImage(named: "Mage-Icon")
+        }
+        player1.currDeck = player1.currDeck.shuffled()
+        player2.currDeck = player2.currDeck.shuffled()
         
         revealTopCard(currPlayer: player1)
         revealTopCard(currPlayer: player2)
@@ -142,9 +172,11 @@ class ViewPlayGame: UIViewController {
     {
         var name: String
         var currDeck: [String]
-        init(name: String, currDeck: [String]) {
+        var deck: String
+        init(name: String, currDeck: [String], deck: String) {
             self.name = name
             self.currDeck = currDeck
+            self.deck = deck
         }
         
         var currStamina = 2
@@ -608,6 +640,10 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var buffIcon2_1: UIImageView!
     @IBOutlet weak var buffIcon2_2: UIImageView!
     @IBOutlet weak var buffIcon2_3: UIImageView!
+    
+    //class images
+    @IBOutlet weak var player1Class: UIImageView!
+    @IBOutlet weak var player2Class: UIImageView!
     
     //Player Turn Header Label
     @IBOutlet weak var playerTurn: UILabel!
