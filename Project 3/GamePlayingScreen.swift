@@ -50,6 +50,7 @@ class SelectionDeck1: UIViewController {
     
     let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
     
+    //function adapted from https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
     @IBAction func confirmSelection(_ sender: Any) {
         switch segmentSelect.selectedSegmentIndex
         {
@@ -82,6 +83,7 @@ class SelectionDeck2: UIViewController {
     
     let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
     
+    //function adapted from https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
     @IBAction func confirmSelection(_ sender: Any) {
         switch segmentSelect.selectedSegmentIndex
         {
@@ -718,8 +720,8 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var topCard1Button: UIButton!
     @IBOutlet weak var topCard2Button: UIButton!
     
-    //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
-    
+    //function adapted from https://stackoverflow.com/questions/40028035/remove-last-two-characters-in-a-string-swift-3-0
+    //function adapted from https://www.appcoda.com/view-animation-in-swift/
     func animateDiscard(currPlayer: Player)
     {
         //disables buttons for animation duration
@@ -840,6 +842,7 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
     @objc func holdTopCard1(_ sender: UIGestureRecognizer){
         //button released
         if sender.state == .ended {
