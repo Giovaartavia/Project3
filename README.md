@@ -37,10 +37,25 @@ Source for learning how to use multiple view controllers:
 * @link https://stackoverflow.com/questions/39776929/swift-3-xcode-8-instantiate-view-controller-is-not-working
 * @DateAccessed 10/29/17
 
+Source for learning how to subtract characters from strings:
+* @author Naveen Ramanathan 
+* @link https://stackoverflow.com/questions/40028035/remove-last-two-characters-in-a-string-swift-3-0
+* @DateAccessed 10/30/17
+
+Source for learning how to animate UI Assets:
+* @author Joyce Echessa
+* @link https://www.appcoda.com/view-animation-in-swift/
+* @DateAccessed 10/30/17
+
 Source for learning how to use long press gestures:
 * @author Rashwan L
 * @link https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
 * @DateAccessed 11/01/17
+
+Source for learning how to send data from one view controller to another:
+* @author Dharmesh Kheni
+* @link https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
+* @DateAccessed 11/02/17
 
 UIKit Library:
 * @author Apple Inc.
