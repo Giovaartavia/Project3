@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Class for view controllers. Handles some warnings. Mainly used when we were learning swift.
 class ViewController: UIViewController {
     
     @IBAction func options(_ sender: Any) {
