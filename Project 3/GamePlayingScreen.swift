@@ -907,7 +907,7 @@ class ViewPlayGame: UIViewController {
     }
     
     ///Function that is called once a player presses and holds Player 1's deck.
-    ///This reveal the Info Card and Blur effect.
+    ///This reveals the Info Card and Blur effect.
     /// - Sources:
     ///     - function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
     /// - Parameters:
@@ -931,7 +931,7 @@ class ViewPlayGame: UIViewController {
     }
     
     ///Function that is called once a player presses and holds Player 2's deck.
-    ///This reveal the Info Card and Blur effect.
+    ///This reveals the Info Card and Blur effect.
     /// - Sources:
     ///     - function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
     /// - Parameters:
