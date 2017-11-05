@@ -1,8 +1,8 @@
 //
-//  PlsWork.swift
+//  GamePlayingScreen.swift
 //  Project 3
 //
-//  Created by Giovanni on 10/24/17.
+//  Created by Giovanni, Brandon, Dylan, James on 10/24/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 
@@ -168,6 +168,8 @@ class ViewPlayGame: UIViewController {
         blurTopCard.isHidden = true;
     }
     
+    /// Player Object
+    /// Object includes a deckArray along wiht various stats used for gameplay
     class Player
     {
         var name: String
@@ -204,7 +206,13 @@ class ViewPlayGame: UIViewController {
         arr.append(tempFirstElement)
     }
     
-    //Contains all cards and their interactions
+    
+    /// Plays card at the front of currPlayer's array of cards
+    /// Modifies both players stats depending on card type played
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Player Object who is executing their turn
+    ///   - nextPlayer: Player Object who is not executing their turn
     func playCard(currPlayer: Player, nextPlayer: Player)
     {
         //check stamina
@@ -318,6 +326,14 @@ class ViewPlayGame: UIViewController {
 
     }
 
+    
+    /// Adds a buff card parameter to a players buffArr in appropriate order
+    /// Checks to determine if card being replaced is SpellTome/ Blacksmith,
+    /// if so undo changes done by SpellTome/ Blacksmith
+    ///
+    /// - Parameters:
+    ///   - newBuff: String representing a buff card
+    ///   - currPlayer: Player Object being modified to add buff to buffArr
     func addBuff(newBuff: String, currPlayer: Player)
     {
         //check buff array
@@ -353,6 +369,9 @@ class ViewPlayGame: UIViewController {
         }
     } 
 
+    /// Check players buffArr and player modify stats based on buff type
+    ///
+    /// - Parameter currPlayer: PLayer object currently executing turn
     func checkBuffs(currPlayer: Player)
     {
         if currPlayer.buffArr.count > 0
@@ -397,11 +416,15 @@ class ViewPlayGame: UIViewController {
         
     }
     
-    //check if health goes above cap (10) and set to cap if it does
-    //check if health drops to 0
     
-    //Delay function obtained from https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
-    //Change storyboards function obtained from https://stackoverflow.com/questions/39776929/swift-3-xcode-8-instantiate-view-controller-is-not-working
+    /// Check health to determine
+    /// if health goes above cap - reduce to cap
+    /// if health drops to 0 - end game
+    /// Sources:
+    /// Delay function obtained from https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
+    /// Change view controller function obtained from https://stackoverflow.com/questions/39776929/swift-3-xcode-8-instantiate-view-controller-is-not-working
+    ///
+    /// - Parameter currPlayer: Player object currently being modified
     func checkHealth(currPlayer: Player)
     {
         //cap player health
@@ -428,6 +451,12 @@ class ViewPlayGame: UIViewController {
         }
     }
 
+    /// Checks current players debuffs and modifies stats of players
+    /// dependent on debuff
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Current Player Object executing turn
+    ///   - nextPlayer: Next Player Object to exceute turn
     func checkDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(currPlayer.debuff == "Bad-Medicine-Deck")
@@ -444,6 +473,13 @@ class ViewPlayGame: UIViewController {
         }
     }
 
+    /// Updates players hp stat dependent on damage parameter
+    /// Checks for negative attack and modifies to 0
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Current Player object attacking
+    ///   - nextPlayer: Next Player Object recieving damage
+    ///   - damage: integer damage stat
     func attackDamage(currPlayer: Player, nextPlayer: Player, damage: Int)
     {
         
@@ -476,7 +512,12 @@ class ViewPlayGame: UIViewController {
         }
     }
     
-    // Place card to bottom and updates stamina
+    
+    /// Modify deck array moving first element to end of array
+    /// Check and update stamina
+    /// Check for debuff preventing change
+    ///
+    /// - Parameter currPlayer: Player Object whose deck is modified
     func placeBottom(currPlayer: Player)
     {
         if (currPlayer.currStamina >= 1)
@@ -502,7 +543,14 @@ class ViewPlayGame: UIViewController {
         }
     }
     
-    //Updates player's stamina upon ending turn. Checks buffs and debuffs.
+    
+    /// Update and stats from various card effects
+    /// Reload stats for change of turn
+    /// Change turn to next player
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Player object ending turn
+    ///   - nextPlayer: Player object beginning turn
     func endTurn(currPlayer: Player, nextPlayer: Player)
     {
         if(currPlayer.totalStamina != 10)
@@ -549,7 +597,11 @@ class ViewPlayGame: UIViewController {
         checkBuffs(currPlayer: nextPlayer)
     }
     
-    //Shuffles current deck if applicable
+   
+    /// Randomize player deck array
+    /// Check and update Stamina
+    ///
+    /// - Parameter currPlayer: Player Object shuffling deck
     func shuffleCards(currPlayer: Player)
     {
         if (currPlayer.shuffleCount > 0)
@@ -585,6 +637,7 @@ class ViewPlayGame: UIViewController {
     }
     
     //TEST PRINTS. Prints all stats
+    /*
     func printStats()
     {
         print("*********STATS*********")
@@ -617,6 +670,7 @@ class ViewPlayGame: UIViewController {
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
+ */
     // END OF FUNCTIONS
     
     //dynamic UI images
@@ -1119,6 +1173,9 @@ class ViewPlayGame: UIViewController {
 
     //END TEST SUITE
     
+    /// Call on playCard function
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func playCardPress(_ sender: Any) {
         
         //check turn
@@ -1136,9 +1193,13 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
         
     }
+    
+    /// Call on placeBottom function
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func placeBottomPress(_ sender: Any) {
         
         if (turn == 1)
@@ -1155,11 +1216,15 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
     }
     
-    //Changes whose turn it is. 1 is player 1. 2 is player 2.
-    //Also replenishes stamina, updates total stamina, and checks for buffs/debuffs
+
+    /// Calls on endTurn function
+    /// Replenishes stamina, updates total stamina, and checks for buffs/debuffs
+    /// Chenges turn
+    ///
+    /// - Parameter sender: PLayer pressing button
     @IBAction func endTurnPress(_ sender: Any) {
         /*UIView.animate(withDuration: 1, animations: {
             self.center = CGPointMake(playerTurn.center.x, playerTurn.center.y+400)
@@ -1240,10 +1305,13 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
     }
     
-    //Shuffles current player's deck if they have shuffles left
+    
+    /// Call on shuffleCards function and update players shuffleCount stat
+    ///
+    /// - Parameter sender: PLayer pressing button
     @IBAction func shufflePress(_ sender: Any) {
         if (turn == 1)
         {
@@ -1295,7 +1363,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
     }
     @IBAction func surrenderPress(_ sender: Any) {
     }

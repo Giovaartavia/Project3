@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Project 3
 //
-//  Created by Giovanni on 10/21/17.
+//  Created by Giovanni, Brandon, Dylan, James on 10/24/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 
