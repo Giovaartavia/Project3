@@ -270,7 +270,8 @@ class ViewPlayGame: UIViewController {
             //Places top card of opponents deck on the bottom
             case "Smoke-Bomb-Deck":
                 addToBack(arr: &nextPlayer.currDeck)
-                revealTopCard(currPlayer: nextPlayer)
+                animateDiscard(currPlayer: nextPlayer)
+                //revealTopCard(currPlayer: nextPlayer)
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane-Burst-Deck", "Double-Edge-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: currPlayer, damage: currPlayer.attack)
