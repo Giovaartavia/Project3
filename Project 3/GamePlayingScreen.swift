@@ -36,9 +36,10 @@ extension Sequence {
 //end of adapted code
 
 
-//Assigned by the coin flip
+///Assigned by the coin flip
 var playerStart = 0;
 
+/// Class that handles player 1's class/deck selection
 class SelectionDeck1: UIViewController {
     var currDeck = ["Initial"];
     override func viewDidLoad() {
@@ -50,7 +51,12 @@ class SelectionDeck1: UIViewController {
     
     let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
     
-    //function adapted from https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
+    ///Function that is called once Player 1 presses the Select Class button to confirm their class.
+    ///This sets which deck Player 1 will use.
+    /// - Sources:
+    ///     - function adapted from https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
+    /// - Parameters:
+    ///   - sender: function called when button is pressed
     @IBAction func confirmSelection(_ sender: Any) {
         switch segmentSelect.selectedSegmentIndex
         {
@@ -72,6 +78,7 @@ class SelectionDeck1: UIViewController {
     }
 }
 
+/// Class that handles player 2's class/deck selection
 class SelectionDeck2: UIViewController {
     var currDeck = ["Initial"];
     override func viewDidLoad() {
@@ -83,7 +90,12 @@ class SelectionDeck2: UIViewController {
     
     let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
     
-    //function adapted from https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
+    ///Function that is called once Player 2 presses the Select Class button to confirm their class.
+    ///This sets which deck Player 2 will use.
+    /// - Sources:
+    ///     - function adapted from https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
+    /// - Parameters:
+    ///   - sender: function called when button is pressed
     @IBAction func confirmSelection(_ sender: Any) {
         switch segmentSelect.selectedSegmentIndex
         {
@@ -104,10 +116,14 @@ class SelectionDeck2: UIViewController {
     }
 }
 
+///Class that contains the entire game playing screen.
 class ViewPlayGame: UIViewController {
+    ///This is the Player 1 Object
     var player1 = Player(name: "player1", currDeck: ["Empty"], deck: "None")
+    ///This is the Player 1 Object
     var player2 = Player(name: "player2", currDeck: ["Empty"], deck: "None")
     
+    ///This function is called once the View Play Game Screen is loaded
     override func viewDidLoad()
     {
         if(playerStart == 1)
@@ -171,7 +187,12 @@ class ViewPlayGame: UIViewController {
     }
     
     /// Player Object
-    /// Object includes a deckArray along wiht various stats used for gameplay
+    /// Object includes a deckArray along with various stats used for gameplay
+    ///
+    /// - Parameters:
+    ///   - name: Player's name. For now just "player1" or "player2"
+    ///   - currDeck: Stores which deck the player is using
+    ///   - deck: Stores the name of the player's deck "Warrior" or "Mage"
     class Player
     {
         var name: String
@@ -201,7 +222,10 @@ class ViewPlayGame: UIViewController {
     
     //START OF FUNCTIONS
     
-    //Adds first element from array to back of array
+    ///Adds first element from array to back of array
+    ///
+    /// - Parameters:
+    ///   - arr: Player's deck that is moving a card to the back of the deck
     func addToBack(arr: inout [String]){
         let tempFirstElement = arr[0]
         arr.remove(at: 0)
@@ -422,7 +446,7 @@ class ViewPlayGame: UIViewController {
     /// Check health to determine
     /// if health goes above cap - reduce to cap
     /// if health drops to 0 - end game
-    /// Sources:
+    /// - Sources:
     /// Delay function obtained from https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
     /// Change view controller function obtained from https://stackoverflow.com/questions/39776929/swift-3-xcode-8-instantiate-view-controller-is-not-working
     ///
@@ -618,6 +642,7 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Locks all of the buttons on the view play game screen except the Menu button
     func lockButtons()
     {
         playCardButton.isEnabled = true
@@ -628,6 +653,7 @@ class ViewPlayGame: UIViewController {
         topCard2Button.isEnabled = true
     }
     
+    ///Unlocks all of the buttons on the view play game screen except the Menu button
     func unlockButtons()
     {
         playCardButton.isEnabled = false
@@ -676,52 +702,84 @@ class ViewPlayGame: UIViewController {
     // END OF FUNCTIONS
     
     //dynamic UI images
+    ///Image used for Player 1's Top Card
     @IBOutlet weak var topCard1: UIImageView!
+    ///Image used for Player 2's Top Card
     @IBOutlet weak var topCard2: UIImageView!
+    ///Image used for Player 1's Health Bar
     @IBOutlet weak var healthBar1: UIImageView!
+    ///Image used for Player 1's Attack Bar
     @IBOutlet weak var attackBar1: UIImageView!
+    ///Image used for Player 1's Stamina Bar
     @IBOutlet weak var staminaBar1: UIImageView!
+    ///Image used for Player 2's Health Bar
     @IBOutlet weak var healthBar2: UIImageView!
+    ///Image used for Player 2's Attack Bar
     @IBOutlet weak var attackBar2: UIImageView!
+    ///Image used for Player 2's Stamina Bar
     @IBOutlet weak var staminaBar2: UIImageView!
+    ///Image used when a Player presses and hold on a top card
     @IBOutlet weak var infoCard: UIImageView!
+    ///Image used for when Player 1 discards a card
     @IBOutlet weak var discard1: UIImageView!
+    ///Image used for when Player 2 discards a card
     @IBOutlet weak var discard2: UIImageView!
     
     //buff and debuff images
+    ///Image used for Player 1's debuff
     @IBOutlet weak var debuffIcon1: UIImageView!
+    ///Image used for Player 2's debuff
     @IBOutlet weak var debuffIcon2: UIImageView!
+    ///Image used for Player 1's first buff
     @IBOutlet weak var buffIcon1_1: UIImageView!
+    ///Image used for Player 1's second buff
     @IBOutlet weak var buffIcon1_2: UIImageView!
+    ///Image used for Player 1's third buff
     @IBOutlet weak var buffIcon1_3: UIImageView!
+    ///Image used for Player 2's first buff
     @IBOutlet weak var buffIcon2_1: UIImageView!
+    ///Image used for Player 2's second buff
     @IBOutlet weak var buffIcon2_2: UIImageView!
+    ///Image used for Player 2's third buff
     @IBOutlet weak var buffIcon2_3: UIImageView!
     
     //class images
+    ///Image used for Player 1's Class Icon
     @IBOutlet weak var player1Class: UIImageView!
+    ///Image used for Player 2's Class Icon
     @IBOutlet weak var player2Class: UIImageView!
     
-    //Player Turn Header Label
+    ///Image used for the Player Turn Header Label
     @IBOutlet weak var playerTurn: UILabel!
     
-    //Blur on Top Card Hold
+    ///Blur effect used when a Top Card  is held
     @IBOutlet weak var blurTopCard: UIVisualEffectView!
     
-    //turn for starts based on flipped coin
+    ///turn for starts based on flipped coin
     var turn = playerStart;
 
     //Button Press Actions
+    ///Button used for playing a card
     @IBOutlet weak var playCardButton: UIButton!
+    ///Button used for placing a card at the bottom of a deck
     @IBOutlet weak var placeBottomButton: UIButton!
+    ///Button used for ending the current player's turn
     @IBOutlet weak var endTurnButton: UIButton!
+    ///Button used for shuffling the current player's deck
     @IBOutlet weak var shuffleButton: UIButton!
+    ///Button used for ending the match
     @IBOutlet weak var surrenderButton: UIButton!
+    ///Button used for viewing the Info Card
     @IBOutlet weak var topCard1Button: UIButton!
+    ///Button used for viewing the Info Card
     @IBOutlet weak var topCard2Button: UIButton!
     
-    //function adapted from https://stackoverflow.com/questions/40028035/remove-last-two-characters-in-a-string-swift-3-0
-    //function adapted from https://www.appcoda.com/view-animation-in-swift/
+    ///Function that is called once a player plays a card or moves a card to the bottom of a deck
+    /// - Sources:
+    ///     - function adapted from https://www.appcoda.com/view-animation-in-swift/
+    ///     - function adapted from https://stackoverflow.com/questions/40028035/remove-last-two-characters-in-a-string-swift-3-0
+    /// - Parameters:
+    ///   - currPlayer: The current Player who is moving their cards
     func animateDiscard(currPlayer: Player)
     {
         //disables buttons for animation duration
@@ -791,6 +849,12 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that is called once a player shuffles their deck
+    /// - Sources:
+    ///     - function adapted from https://www.appcoda.com/view-animation-in-swift/
+    ///     - function adapted from https://stackoverflow.com/questions/40028035/remove-last-two-characters-in-a-string-swift-3-0
+    /// - Parameters:
+    ///   - currPlayer: The current Player who is shuffling their cards
     func animateShuffle(currPlayer: Player)
     {
         //disables buttons for animation duration
@@ -842,7 +906,12 @@ class ViewPlayGame: UIViewController {
         }
     }
     
-    //function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
+    ///Function that is called once a player presses and holds Player 1's deck.
+    ///This reveal the Info Card and Blur effect.
+    /// - Sources:
+    ///     - function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
+    /// - Parameters:
+    ///   - sender: Button that is being pressed
     @objc func holdTopCard1(_ sender: UIGestureRecognizer){
         //button released
         if sender.state == .ended {
@@ -861,6 +930,12 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that is called once a player presses and holds Player 2's deck.
+    ///This reveal the Info Card and Blur effect.
+    /// - Sources:
+    ///     - function adapted from https://stackoverflow.com/questions/34548263/button-tap-and-long-press-gesture
+    /// - Parameters:
+    ///   - sender: Button that is being pressed
     @objc func holdTopCard2(_ sender: UIGestureRecognizer){
         //button released
         if sender.state == .ended {
@@ -879,10 +954,16 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Array containing strings of all of the possible stamina bars/values
     var staminaBarImages = ["Stamina-Bar0","Stamina-Bar1","Stamina-Bar2","Stamina-Bar3","Stamina-Bar4","Stamina-Bar5","Stamina-Bar6","Stamina-Bar7","Stamina-Bar8","Stamina-Bar9","Stamina-Bar10"]
+    ///Array containing strings of all of the possible attack bars/values
     var attackBarImages = ["Attack-Bar0","Attack-Bar1","Attack-Bar2","Attack-Bar3","Attack-Bar4","Attack-Bar5","Attack-Bar6","Attack-Bar7","Attack-Bar8","Attack-Bar9","Attack-Bar10"]
+    ///Array containing strings of all of the possible health bars/values
     var healthBarImages = ["Health-Bar0","Health-Bar1","Health-Bar2","Health-Bar3","Health-Bar4","Health-Bar5","Health-Bar6","Health-Bar7","Health-Bar8","Health-Bar9","Health-Bar10","Health-Bar11","Health-Bar12","Health-Bar13","Health-Bar14","Health-Bar15","Health-Bar16","Health-Bar17","Health-Bar18","Health-Bar19","Health-Bar20"]
     
+    ///Function that updates the current Player's top card
+    /// - Parameters:
+    ///   - currPlayer: The current player whose deck needs to be updated
     func revealTopCard(currPlayer: Player)
     {
         if(currPlayer.name == "player1")
@@ -901,6 +982,9 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that sets the info card image to whichever card that needs to be expanded
+    /// - Parameters:
+    ///   - currPlayer: The current player whose top card needs to be displayed as the info card
     func revealInfoCard(currPlayer: Player)
     {
         if(infoCard != nil)
@@ -916,6 +1000,9 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that updates the current Player's debuff icon
+    /// - Parameters:
+    ///   - currPlayer: The current player whose gaining a debuff
     func updateDebuffBar(currPlayer: Player)
     {
         if(currPlayer.name == "player1")
@@ -972,6 +1059,9 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that updates the current Player's buff icons
+    /// - Parameters:
+    ///   - currPlayer: The current player whose gaining a buff
     func updateBuffBar(currPlayer: Player)
     {
         if(currPlayer.name == "player1")
@@ -1026,6 +1116,9 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that updates the current Player's health
+    /// - Parameters:
+    ///   - currPlayer: The current player whose gaining or losing health
     func updateHealthBar(currPlayer: Player)
     {
         if(currPlayer.name == "player1")
@@ -1066,6 +1159,9 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that updates the current Player's attack
+    /// - Parameters:
+    ///   - currPlayer: The current player whose gaining or losing attack
     func updateAttackBar(currPlayer: Player)
     {
         if(currPlayer.name == "player1")
@@ -1106,6 +1202,9 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    ///Function that updates the current Player's stamina
+    /// - Parameters:
+    ///   - currPlayer: The current player whose gaining or losing stamina
     func updateStaminaBar(currPlayer: Player)
     {
         if(currPlayer.name == "player1")
@@ -1314,7 +1413,7 @@ class ViewPlayGame: UIViewController {
     
     /// Call on shuffleCards function and update players shuffleCount stat
     ///
-    /// - Parameter sender: PLayer pressing button
+    /// - Parameter sender: Player pressing button
     @IBAction func shufflePress(_ sender: Any) {
         if (turn == 1)
         {
@@ -1368,22 +1467,35 @@ class ViewPlayGame: UIViewController {
         //TEST. Show stats
         //printStats()
     }
+    ///Function that ends the game
+    /// - Parameters:
+    ///   - sender: Surrender button is pressed
     @IBAction func surrenderPress(_ sender: Any) {
     }
-    
+    ///Function that tests different aspects of the game
+    /// - Parameters:
+    ///   - sender: Test button is pressed
     @IBAction func testPress(_ sender: Any) {
         //runTestAddBuff1()
     }
 }
 
+///Class that contains the coin flip screen.
 class CoinFlip: UIViewController {
-
+    
+    ///Image used for the coin. Either Heads or Tails
     @IBOutlet weak var coinImage: UIImageView!
+    ///Label used for indicating which player starts based of the coin flip
     @IBOutlet weak var playerStartText: UILabel!
+    ///Button that hides the flip coin button
     @IBOutlet weak var flipVisibility: UIButton!
+    ///Button that shows the next button
     @IBOutlet weak var nextVisibility: UIButton!
     //nextVisibility.isHidden = true;
     
+    /// Function that flips a coin
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func flipCoin(_ sender: Any) {
         let coinFlip = Int(arc4random_uniform(2))
         print ("Coin Result: \(coinFlip)")
