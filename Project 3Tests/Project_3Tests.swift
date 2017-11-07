@@ -23,6 +23,8 @@ class Project_3Tests: XCTestCase {
         super.tearDown()
     }
     
+    //  ***** TEST DEBUFFS *****
+    
     func testBrassKnuckles()
     {
         let player1 = viewGame.player1
@@ -597,6 +599,217 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.health == 19)
         XCTAssertTrue(player2.attack == 1)
     }
+    
+    // ***** END OF DEBUFFS *****
+    
+    // ***** TEST ATTACK CARDS *****
+    
+    func testMagicalBolt()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Magical-Bolt-Deck"]
+        player2.currDeck = ["Magical-Bolt-Deck"]
+        player2.attack = 3 //To check Magical Bolt with and without extra attack in the same test
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 attacks player 2 with Magical Bolt and 0 extra attack.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check Player 2's Health.
+        XCTAssertTrue(player2.health == 18)
+        
+        //Check Player 1's Attack.
+        XCTAssertTrue(player1.attack == 0)
+        
+        //Pass the turn and player 2 attacks player 1 with Magical Bolt and 1 extra attack.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check Player 1's Health.
+        XCTAssertTrue(player1.health == 15)
+        
+        //Check Player 2's Attack.
+        XCTAssertTrue(player2.attack == 3)
+        
+    }
+    
+    func testSwordStrike()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Sword-Strike-Deck"]
+        player2.currDeck = ["Sword-Strike-Deck"]
+        player2.attack = 3 //To check Magical Bolt with and without extra attack in the same test
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 attacks player 2 with Magical Bolt and 0 extra attack.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check Player 2's Health.
+        XCTAssertTrue(player2.health == 18)
+        
+        //Check Player 1's Attack.
+        XCTAssertTrue(player1.attack == 0)
+        
+        //Pass the turn and player 2 attacks player 1 with Magical Bolt and 3 extra attack.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check Player 1's Health.
+        XCTAssertTrue(player1.health == 15)
+        
+        //Check Player 2's Attack.
+        XCTAssertTrue(player2.attack == 3)
+    }
+    
+    func testArcaneBurst()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Arcane-Burst-Deck"]
+        player2.currDeck = ["Arcane-Burst-Deck"]
+        player2.attack = 3 //To check Arcane Burst with and without extra attack in the same test
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 attacks player 2 with Arcane Burst and 0 extra attack.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check Player 1's Health
+        XCTAssertTrue(player1.health == 20)
+        
+        //Check Player 2's Health.
+        XCTAssertTrue(player2.health == 18)
+        
+        //Check Player 1's Attack.
+        XCTAssertTrue(player1.attack == 0)
+        
+        //Pass the turn and player 2 attacks player 1 with Arcane Burst and 3 extra attack.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check Player 2's Health
+        XCTAssertTrue(player2.health == 15)
+        
+        //Check Player 1's Health.
+        XCTAssertTrue(player1.health == 12)
+        
+        //Check Player 2's Attack.
+        XCTAssertTrue(player2.attack == 3)
+    }
+    
+    
+    func testDoubleEdge()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Double-Edge-Deck"]
+        player2.currDeck = ["Double-Edge-Deck"]
+        player2.attack = 3 //To check Arcane Burst with and without extra attack in the same test
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 attacks player 2 with Arcane Burst and 0 extra attack.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check Player 1's Health
+        XCTAssertTrue(player1.health == 20)
+        
+        //Check Player 2's Health.
+        XCTAssertTrue(player2.health == 18)
+        
+        //Check Player 1's Attack.
+        XCTAssertTrue(player1.attack == 0)
+        
+        //Pass the turn and player 2 attacks player 1 with Arcane Burst and 3 extra attack.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check Player 2's Health
+        XCTAssertTrue(player2.health == 15)
+        
+        //Check Player 1's Health.
+        XCTAssertTrue(player1.health == 12)
+        
+        //Check Player 2's Attack.
+        XCTAssertTrue(player2.attack == 3)
+    }
+    
+    
+    func testThrowingKnife()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Throwing-Knife-Deck"]
+        player2.currDeck = ["Throwing-Knife-Deck"]
+        player1.attack = 3
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 attacks player 2 with throwing knife. Extra attack should not matter.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check Player 2's Health
+        XCTAssertTrue(player2.health == 19)
+        
+        //Check Player 1's Attack
+        XCTAssertTrue(player1.attack == 3)
+        
+        //Check Player 1's Currens Stamina
+        XCTAssertTrue(player1.currStamina == 2)
+        
+        //Check Player 1's Total Stamina
+        XCTAssertTrue(player1.totalStamina == 2)
+    }
+    
+    
+    func testLifeSteal()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Life-Steal-Deck"]
+        player2.currDeck = ["Life-Steal-Deck"]
+        player1.attack = 3
+        player1.health = 15
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 attacks player 2 with Life Steal. Extra attack should not matter.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check Player 1's Health
+        XCTAssertTrue(player1.health == 18)
+        
+        //Check Player 2's Health
+        XCTAssertTrue(player2.health == 19)
+        
+        //Check Player 1's Attack
+        XCTAssertTrue(player1.attack == 3)
+        
+        //Pass the turn to player 2 and play Life Steal
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check Player 1's Health
+        XCTAssertTrue(player1.health == 17)
+        
+        //Check Player 2's Health
+        XCTAssertTrue(player2.health == 20)
+    }
+    
+    // ***** END OF ATTACK CARDS *****
+    
+    
+    
     
     /*func testPerformanceExample() {
         // This is an example of a performance test case.
