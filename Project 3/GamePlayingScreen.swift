@@ -253,10 +253,9 @@ class ViewPlayGame: UIViewController {
             var selfDamage = false
             
             //Test print
-            print ("Current stamina: ")
-            print(currPlayer.currStamina)
+            //print ("Current stamina: ")
+            //print(currPlayer.currStamina)
             
-            //TODO: remove print statements 
             switch currCard
             {
                 
@@ -278,7 +277,7 @@ class ViewPlayGame: UIViewController {
             case "Disarm-Deck":
                 nextPlayer.debuff = "Disarm-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2 
+                nextPlayer.debuffTime = 3
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
@@ -509,7 +508,7 @@ class ViewPlayGame: UIViewController {
     func attackDamage(currPlayer: Player, nextPlayer: Player, damage: Int)
     {
         
-        if(currPlayer.debuff == "Disarm")
+        if(currPlayer.debuff == "Disarm-Deck")
         {
             if(currPlayer.hasAttacked)
             {
@@ -595,7 +594,7 @@ class ViewPlayGame: UIViewController {
             updateHealthBar(currPlayer: nextPlayer)
             checkHealth(currPlayer: nextPlayer)
         }
-        if(nextPlayer.debuff == "Disarm-Deck")
+        /*if(nextPlayer.debuff == "Disarm-Deck")
         {
             nextPlayer.attack -= 2
             updateAttackBar(currPlayer: nextPlayer)
@@ -604,7 +603,7 @@ class ViewPlayGame: UIViewController {
         {
             currPlayer.attack += 2
             updateAttackBar(currPlayer: currPlayer)
-        }
+        }*/
         
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
         if(nextPlayer.debuff != "")
@@ -783,9 +782,18 @@ class ViewPlayGame: UIViewController {
     func animateDiscard(currPlayer: Player)
     {
         //disables buttons for animation duration
-        playCardButton.isEnabled = false
-        placeBottomButton.isEnabled = false
-        shuffleButton.isEnabled = false
+        if(playCardButton != nil)
+        {
+            playCardButton.isEnabled = false
+        }
+        if(placeBottomButton != nil)
+        {
+            placeBottomButton.isEnabled = false
+        }
+        if(shuffleButton != nil)
+        {
+            shuffleButton.isEnabled = false
+        }
         
         if(currPlayer.name == "player1")
         {
@@ -816,6 +824,9 @@ class ViewPlayGame: UIViewController {
                     self.shuffleButton.isEnabled = true
                 })
             })
+        }
+        else if (currPlayer.name == "testPlayer1" || currPlayer.name == "testPlayer2") //Added for code testing purposes. No animations tested in code testing
+        {
         }
         else
         {
@@ -1498,7 +1509,7 @@ class CoinFlip: UIViewController {
     /// - Parameter sender: Player pressing button
     @IBAction func flipCoin(_ sender: Any) {
         let coinFlip = Int(arc4random_uniform(2))
-        print ("Coin Result: \(coinFlip)")
+        //print ("Coin Result: \(coinFlip)")
         
         if(coinFlip == 1)
         {

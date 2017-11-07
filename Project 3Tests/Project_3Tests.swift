@@ -29,6 +29,8 @@ class Project_3Tests: XCTestCase {
         let player2 = viewGame.player2
         
         player1.currDeck = ["Brass-Knuckles-Deck"]
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
         
         print("\n *****BRASS KNUCKLES TESTS****** \n")
         
@@ -112,6 +114,8 @@ class Project_3Tests: XCTestCase {
         player1.currDeck = ["Voodoo-Doll-Deck"]
         //Set a random deck for player 2 to check that placeBottom does not happen
         player2.currDeck = ["Life-Steal-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Disarm-Deck"]
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
         
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
@@ -157,6 +161,8 @@ class Project_3Tests: XCTestCase {
         player1.currDeck = ["Bad-Medicine-Deck"]
         player2.currDeck = ["Life-Steal-Deck"]
         player2.health = 15 //Used to check if health goes up
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
         
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
@@ -195,6 +201,8 @@ class Project_3Tests: XCTestCase {
         player1.currDeck = ["Bad-Medicine-Deck"]
         player2.currDeck = ["Health-Potion-Deck"]
         player2.health = 15 //Used to check if health goes up
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
         
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
@@ -217,6 +225,377 @@ class Project_3Tests: XCTestCase {
         
         //Check that debuff is gone
         XCTAssertTrue(player2.debuff == "")
+    }
+    
+    func testDisarmWithMagicalBoltOneAttackPerTurn()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Magical-Bolt-Deck"]
+        player2.attack = 3 //Used to check if damage is being mitigated
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Magical Bolt.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 17)
+        
+        //Pass one full turn and make player 2 attack again
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check debuff is still active.
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 14)
+        
+        //Pass one more full turn and make player 2 attack again.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check that debuff is gone.
+        XCTAssertTrue(player2.debuff == "")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 9)
+    }
+    
+    func testDisarmWithSwordStrikeOneAttackPerTurn()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Sword-Strike-Deck"]
+        player2.attack = 3 //Used to check if damage is being mitigated
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Magical Bolt.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 17)
+        
+        //Pass one full turn and make player 2 attack again
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check debuff is still active.
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 14)
+        
+        //Pass one more full turn and make player 2 attack again.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check that debuff is gone.
+        XCTAssertTrue(player2.debuff == "")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 9)
+    }
+    
+    func testDisarmWithMagicalBoltTwoAttacksPerTurn()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Magical-Bolt-Deck"]
+        player2.attack = 2 //Used to check if damage is being mitigated
+        player2.totalStamina = 10
+        player2.currStamina = 10 //Used to attack several times per turn
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Magical Bolt.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 18)
+        
+        //Attack again and check that damage mitigation is no longer taking effect.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player1.health == 14)
+        
+        //Pass one full turn and make player 2 attack again
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check debuff is still active.
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 12)
+        
+        //Attack again and check that damage mitigation is no longer taking effect.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player1.health == 8)
+        
+        //Pass one more full turn and make player 2 attack again.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check that debuff is gone.
+        XCTAssertTrue(player2.debuff == "")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 4)
+    }
+    
+    func testDisarmWithSwordStrikeTwoAttacksPerTurn()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Sword-Strike-Deck"]
+        player2.attack = 2 //Used to check if damage is being mitigated
+        player2.totalStamina = 10
+        player2.currStamina = 10 //Used to attack several times per turn
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Sword Strike.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 18)
+        
+        //Attack again and check that damage mitigation is no longer taking effect.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player1.health == 14)
+        
+        //Pass one full turn and make player 2 attack again
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check debuff is still active.
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 12)
+        
+        //Attack again and check that damage mitigation is no longer taking effect.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player1.health == 8)
+        
+        //Pass one more full turn and make player 2 attack again.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check that debuff is gone.
+        XCTAssertTrue(player2.debuff == "")
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 4)
+    }
+    
+    func testDisarmWithArcaneBurst()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Arcane-Burst-Deck"]
+        player2.attack = 3 //Done to check if debuff is mitigating attack
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Arcane Burst.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 2 receives the correct amount of damage.
+        XCTAssertTrue(player2.health == 19)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 12)
+        
+    }
+    
+    func testDisarmWithDoubleEdge()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Double-Edge-Deck"]
+        player2.attack = 3 //Done to check if debuff is mitigating attack
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Double Edge.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 2 receives the correct amount of damage.
+        XCTAssertTrue(player2.health == 19)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 12)
+    }
+    
+    func testDisarmWithThrowingKnife()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Throwing-Knife-Deck"]
+        player1.health = 15 //Used to check that health is not being added
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Throwing Knife.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 15)
+        print("\n\nPlayer 1's health: \(player1.health)")
+    }
+    
+    func testDisarmWithLifeSteal()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Life-Steal-Deck"]
+        player1.health = 15 //Used to check that health is not being added
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //End turn to make it player 2's turn. Player 2 now plays Throwing Knife.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check if player 1 receives the correct amount of damage.
+        XCTAssertTrue(player1.health == 15)
+    }
+    
+    func testDisarmWithNoAttacking()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Sword-Strike-Deck"]
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Skip two turns and check that neither health nor attack were modified.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        XCTAssertTrue(player2.debuff == "")
+        XCTAssertTrue(player1.health == 20)
+        XCTAssertTrue(player2.attack == 0)
+    }
+    
+    func testDisarmWithNoAttackingFirstTurnAndAttackingSecondTurn()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Disarm-Deck"]
+        player2.currDeck = ["Sword-Strike-Deck"]
+        player2.attack = 1
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that debuff was added succesfully
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Skip one turn and attack on second turn.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check that debuff is still active.
+        XCTAssertTrue(player2.debuff == "Disarm-Deck")
+        
+        //Skip one more turn.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check that debuff is no longer active
+        XCTAssertTrue(player2.debuff == "")
+        
+        //Check attack and health stats and see if they match with the predicted values.
+        XCTAssertTrue(player1.health == 19)
+        XCTAssertTrue(player2.attack == 1)
     }
     
     /*func testPerformanceExample() {
