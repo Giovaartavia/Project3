@@ -307,16 +307,16 @@ class ViewPlayGame: UIViewController {
                 //revealTopCard(currPlayer: nextPlayer)
             //Does your own atk stat damage to yourself, then (atk * 2) + 2 to opponent.
             case "Arcane-Burst-Deck", "Double-Edge-Deck":
-                attackDamage(currPlayer: currPlayer, nextPlayer: currPlayer, damage: currPlayer.attack)
+                attackDamage(currPlayer: currPlayer, nextPlayer: currPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack))
                 checkHealth(currPlayer: currPlayer)
                 updateHealthBar(currPlayer: currPlayer)
-                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: (currPlayer.attack * 2) + 2)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: (currPlayer.attack * 2) + 2))
                 selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck":
-                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: currPlayer.attack + 2)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
@@ -326,13 +326,13 @@ class ViewPlayGame: UIViewController {
                     currPlayer.health += 3
                     updateHealthBar(currPlayer: currPlayer)
                 }
-                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 1))
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, regain 2 stamina.
             case "Throwing-Knife-Deck":
                 currPlayer.currStamina += 2
                 updateStaminaBar(currPlayer: currPlayer)
-                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: 1)
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 1))
                 updateHealthBar(currPlayer: nextPlayer)
                 
             default: //Necessary
@@ -387,11 +387,6 @@ class ViewPlayGame: UIViewController {
         {
             print("Error in add buff")
         }
-
-        if currPlayer.attack > 10
-        {
-            currPlayer.attack = 10
-        }
     } 
 
     /// Check players buffArr and player modify stats based on buff type
@@ -409,6 +404,10 @@ class ViewPlayGame: UIViewController {
                 case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                     currPlayer.attack += 1
                     updateAttackBar(currPlayer: currPlayer)
+                    if currPlayer.attack > 10
+                    {
+                        currPlayer.attack = 10
+                    }
                     print("buff add attack")
                 //+3 attack once while active
                 case "Spell-Tome-Deck", "Blacksmith-Deck":
@@ -432,10 +431,6 @@ class ViewPlayGame: UIViewController {
                     print("Error inside checkBuffs")
                 }
             }
-        }
-        if currPlayer.attack > 10
-        {
-        currPlayer.attack = 10
         }
         checkHealth(currPlayer: currPlayer)
         
@@ -661,6 +656,40 @@ class ViewPlayGame: UIViewController {
         shuffleButton.isEnabled = false
         topCard1Button.isEnabled = false
         topCard2Button.isEnabled = false
+    }
+    
+    func checkAttack(currPlayer: Player, damage: Int) -> Int
+    {
+        var hasBlacksmith = false
+        if (currPlayer.buffArr.count > 0)
+        {
+            for i in 0...(currPlayer.buffArr.count - 1)
+            {
+                if(currPlayer.buffArr[i] == "Blacksmith-Deck")
+                {
+                    hasBlacksmith = true
+                }
+            }
+        }
+        
+        if (currPlayer.buffArr[0] == "Blacksmith-Deck")
+        {
+            hasBlacksmith = true
+        }
+
+        if(!hasBlacksmith)
+        {
+            if (currPlayer.attack > 10)
+            {
+                currPlayer.attack = 10
+                return 10
+            }
+        }
+        if(currPlayer.attack > 10)
+        {
+            return 10
+        }
+        return damage
     }
     
     //TEST PRINTS. Prints all stats

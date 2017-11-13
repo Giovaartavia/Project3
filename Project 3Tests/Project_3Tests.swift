@@ -625,7 +625,7 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 0)
         
         //Pass the turn and player 2 attacks player 1 with Magical Bolt and 1 extra attack.
-        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check Player 1's Health.
@@ -657,7 +657,7 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 0)
         
         //Pass the turn and player 2 attacks player 1 with Magical Bolt and 3 extra attack.
-        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check Player 1's Health.
@@ -691,7 +691,7 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 0)
         
         //Pass the turn and player 2 attacks player 1 with Arcane Burst and 3 extra attack.
-        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check Player 2's Health
@@ -729,7 +729,7 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 0)
         
         //Pass the turn and player 2 attacks player 1 with Arcane Burst and 3 extra attack.
-        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check Player 2's Health
@@ -796,7 +796,7 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 3)
         
         //Pass the turn to player 2 and play Life Steal
-        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check Player 1's Health
@@ -808,8 +808,327 @@ class Project_3Tests: XCTestCase {
     
     // ***** END OF ATTACK CARDS *****
     
+    // ***** START OF EXTRA CARDS *****
     
+    func testSmokeBomb()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Smoke-Bomb-Deck"]
+        player2.currDeck = ["Life-Steal-Deck", "Mana-Potion-Deck", "Smoke-Bomb-Deck"]
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Smoke Bomb. Player 2's deck is modified appropriately.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that player 2's deck has been modified.
+        XCTAssertTrue(player2.currDeck == ["Mana-Potion-Deck", "Smoke-Bomb-Deck", "Life-Steal-Deck"])
+        
+        //Pass the turn and check that player 2's deck hasn't been modified.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        XCTAssertTrue(player2.currDeck == ["Mana-Potion-Deck", "Smoke-Bomb-Deck", "Life-Steal-Deck"])
+    }
     
+    // ***** END OF EXTRA CARDS *****
+    
+    // ***** START OF BUFF CARDS *****
+    
+    func testBuffArray()
+    {
+        let player1 = viewGame.player1
+        
+        player1.name = "testPlayer1"
+        
+        //Add 3 buffs to buff array
+        viewGame.addBuff(newBuff: "1", currPlayer: player1)
+        viewGame.addBuff(newBuff: "2", currPlayer: player1)
+        viewGame.addBuff(newBuff: "3", currPlayer: player1)
+        
+        //Check that buffs were added in the expected order.
+        XCTAssertTrue(player1.buffArr == ["1", "2", "3"])
+        
+        //Add one more buff and check if buff array behaves in expected order.
+        viewGame.addBuff(newBuff: "4", currPlayer: player1)
+        XCTAssertTrue(player1.buffArr == ["2", "3", "4"])
+        
+        //Add one more buff and check if buff array behaves in expected order.
+        viewGame.addBuff(newBuff: "5", currPlayer: player1)
+        XCTAssertTrue(player1.buffArr == ["3", "4", "5"])
+    }
+    
+    //Tests liquid courage card and makes sure that buffs stop working once they leave the buff array
+    func testLiquidCourage()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Liquid-Courage-Deck"]
+        player2.currDeck = ["Liquid-Courage-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
+        player1.attack = 3
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Liquid Courage.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check if buff was correctly added to buffs array
+        XCTAssertTrue(player1.buffArr == ["Liquid-Courage-Deck"])
+        
+        //Check that attack is not changed yet.
+        XCTAssertTrue(player1.attack == 3)
+        
+        //Pass the turn to player 2. Player 2 plays Liquid Courage
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack after 1 turn.
+        XCTAssertTrue(player1.attack == 4)
+        
+        //Player 1 plays another Liquid Courage buff.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's buff array.
+        XCTAssertTrue(player1.buffArr == ["Liquid-Courage-Deck", "Liquid-Courage-Deck"])
+        
+        //Pass the turn to player 2. Player 2 plays two Health Potions.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Liquid-Courage-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Check player 2's attack stat.
+        XCTAssertTrue(player2.attack == 1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack.
+        XCTAssertTrue(player1.attack == 6)
+        
+        //Pass the turn to player 2.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 2's attack.
+        XCTAssertTrue(player2.attack == 2)
+        
+        //Player 2 playes one more Health Potion.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Pass one full turn.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that player 2's attack did not change
+        XCTAssertTrue(player2.attack == 2)
+    }
+    
+    func testManaPotion()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Mana-Potion-Deck"]
+        player2.currDeck = ["Mana-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
+        player1.attack = 3
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Mana Potion.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check if buff was correctly added to buffs array
+        XCTAssertTrue(player1.buffArr == ["Mana-Potion-Deck"])
+        
+        //Check that attack is not changed yet.
+        XCTAssertTrue(player1.attack == 3)
+        
+        //Pass the turn to player 2. Player 2 plays Mana Potion
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack after 1 turn.
+        XCTAssertTrue(player1.attack == 4)
+        
+        //Player 1 plays another Mana Potion buff.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's buff array.
+        XCTAssertTrue(player1.buffArr == ["Mana-Potion-Deck", "Mana-Potion-Deck"])
+        
+        //Pass the turn to player 2. Player 2 plays two Health Potions.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Mana-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Check player 2's attack stat.
+        XCTAssertTrue(player2.attack == 1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack.
+        XCTAssertTrue(player1.attack == 6)
+        
+        //Pass the turn to player 2.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 2's attack.
+        XCTAssertTrue(player2.attack == 2)
+        
+        //Player 2 playes one more Health Potion.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Pass one full turn.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that player 2's attack did not change
+        XCTAssertTrue(player2.attack == 2)
+    }
+    
+    //Test LiquidCourage with more than 10 attack
+    
+    //NOTE: ASK IF BUFF SHOULD BE EXECUTED IMMEDIATELY OR UNTIL NEXT TURN
+    func testBlackSmith()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Blacksmith-Deck"]
+        player2.currDeck = ["Blacksmith-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
+        player1.attack = 3
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays BlackSmith.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check if buff was correctly added to buffs array
+        XCTAssertTrue(player1.buffArr == ["Blacksmith-Deck"])
+        
+        //Check that attack is not changed yet.
+        XCTAssertTrue(player1.attack == 3)
+        
+        //Pass the turn to player 2. Player 2 plays BlackSmith
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack after 1 turn.
+        XCTAssertTrue(player1.attack == 6)
+        
+        //Player 1 plays another BlackSmith buff.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's buff array.
+        XCTAssertTrue(player1.buffArr == ["Blacksmith-Deck", "Blacksmith-Deck"])
+        
+        //Pass the turn to player 2. Player 2 plays two Health Potions.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Blacksmith-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Check player 2's attack stat.
+        XCTAssertTrue(player2.attack == 3)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack.
+        XCTAssertTrue(player1.attack == 9)
+        
+        //Pass the turn to player 2.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 2's attack.
+        XCTAssertTrue(player2.attack == 3)
+        
+        //Player 2 playes one more Health Potion.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Check that buff hasn't been removed yet
+        XCTAssertTrue(player2.attack == 3)
+        
+        //Pass one full turn.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that player 2's attack did not change
+        XCTAssertTrue(player2.attack == 0)
+
+    }
+    
+    func testBlackSmithWithOverTenAttack()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Blacksmith-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"]
+        player1.attack = 9
+        player1.currStamina = 10
+        player1.totalStamina = 10
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays BlackSmith.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Pass one full turn.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's attack.
+        XCTAssertTrue(player1.attack == 12)
+        
+        //Add three Health Potion buffs
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that buff hasn't been removed yet
+        XCTAssertTrue(player1.attack == 12)
+        print("\n\n\n \(player1.attack) \n\n\n")
+        
+        //Pas one more full turn
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Make sure that health is 3 less than it was at the beginning
+        XCTAssertTrue(player1.attack == 9)
+    }
+    
+    // ***** END OF BUFF CARDS *****
+    
+    //Test attack cap
+    //Test hp cap
+    //Test stamina cap
     
     /*func testPerformanceExample() {
         // This is an example of a performance test case.
