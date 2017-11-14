@@ -404,10 +404,10 @@ class ViewPlayGame: UIViewController {
                 case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                     currPlayer.attack += 1
                     updateAttackBar(currPlayer: currPlayer)
-                    if currPlayer.attack > 10
+                    /*if currPlayer.attack > 10
                     {
                         currPlayer.attack = 10
-                    }
+                    }*/
                     print("buff add attack")
                 //+3 attack once while active
                 case "Spell-Tome-Deck", "Blacksmith-Deck":
@@ -589,17 +589,7 @@ class ViewPlayGame: UIViewController {
             updateHealthBar(currPlayer: nextPlayer)
             checkHealth(currPlayer: nextPlayer)
         }
-        /*if(nextPlayer.debuff == "Disarm-Deck")
-        {
-            nextPlayer.attack -= 2
-            updateAttackBar(currPlayer: nextPlayer)
-        }
-        if(currPlayer.debuff == "Disarm-Deck")
-        {
-            currPlayer.attack += 2
-            updateAttackBar(currPlayer: currPlayer)
-        }*/
-        
+
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
         if(nextPlayer.debuff != "")
         {
@@ -665,17 +655,17 @@ class ViewPlayGame: UIViewController {
         {
             for i in 0...(currPlayer.buffArr.count - 1)
             {
-                if(currPlayer.buffArr[i] == "Blacksmith-Deck")
+                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck")
                 {
                     hasBlacksmith = true
                 }
             }
         }
         
-        if (currPlayer.buffArr[0] == "Blacksmith-Deck")
+        /*if (currPlayer.buffArr[0] == "Blacksmith-Deck")
         {
             hasBlacksmith = true
-        }
+        }*/
 
         if(!hasBlacksmith)
         {
