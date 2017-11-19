@@ -140,6 +140,10 @@ class ViewPlayGame: UIViewController {
         var hasAttacked = false
         var canAddBack = true
         var bloodThinner = false
+        var hasSabotage = false
+        
+        //Extra booleans for cards execution
+        var hasGoblinGreed = false
     }
     
     //START OF FUNCTIONS
@@ -220,6 +224,13 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
+            //Do 1 damage, opponent has -2 stamina (Goblin)
+            case "Sabotage-Deck":
+                nextPlayer.debuff = "Sabotage-Deck"
+                updateDebuffBar(currPlayer: nextPlayer)
+                nextPlayer.debuffTime = 3
+                nextPlayer.health -= 1
+                updateHealthBar(currPlayer: nextPlayer)
                 
                 // single turn
             //Places top card of opponents deck on the bottom
@@ -237,9 +248,14 @@ class ViewPlayGame: UIViewController {
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
             //Does atk + 2 to opponent.
-            case "Magical-Bolt-Deck", "Sword-Strike-Deck":
+            case "Magical-Bolt-Deck", "Sword-Strike-Deck", "Horde-Ransack-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
                 updateHealthBar(currPlayer: nextPlayer)
+            //Do 2 damage. Plays top card of opponents deck on bottom
+            case "Barbaric-Burglary-Deck":
+                attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 2))
+                addToBack(arr: &nextPlayer.currDeck)
+                animateDiscard(currPlayer: nextPlayer)
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
                 checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
@@ -256,6 +272,21 @@ class ViewPlayGame: UIViewController {
                 updateStaminaBar(currPlayer: currPlayer)
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 1))
                 updateHealthBar(currPlayer: nextPlayer)
+            // Goblin: gain 4 stamina this turn but lose 2 stamina next turn
+            case "Goblin-Greed-Deck":
+                currPlayer.currStamina += 4
+                //Check stamina cap
+                checkStaminaCap(currPlayer: currPlayer, nextPlayer: nextPlayer)
+                currPlayer.hasGoblinGreed = true
+                updateStaminaBar(currPlayer: currPlayer)
+
+            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Theft card at the bottom of your opponents deck
+            case "Theft-Deck":
+                currPlayer.currStamina += 2
+                nextPlayer.currDeck.append(currPlayer.currDeck[0])
+                nextPlayer.currDeck.remove(at: 0)
+                currPlayer.currDeck.insert(nextPlayer.currDeck[0], at: 0)
+                currPlayer.currDeck.remove(at: 1)
                 
             default: //Necessary
                 print("Error in card selection switch case")
@@ -287,7 +318,7 @@ class ViewPlayGame: UIViewController {
         if(currPlayer.buffArr.count == 3)
         {
             //check if replaced is "Spell-Tome-Deck" or "Blacksmith-Deck"
-            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck")
+            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Call-The-Horde-Deck")
             {
                 currPlayer.attack -= 3
                 updateAttackBar(currPlayer: currPlayer)
@@ -332,7 +363,7 @@ class ViewPlayGame: UIViewController {
                     }*/
                     print("buff add attack")
                 //+3 attack once while active
-                case "Spell-Tome-Deck", "Blacksmith-Deck":
+                case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
                     //does not take place per turn 
                     print("buff add attack once")
                 //+2 health per turn
@@ -413,6 +444,10 @@ class ViewPlayGame: UIViewController {
         {
             nextPlayer.bloodThinner = true
         }
+        else if (nextPlayer.debuff == "Sabotage-Deck")
+        {
+            nextPlayer.hasSabotage = true
+        }
     }
 
     /// Updates players hp stat dependent on damage parameter
@@ -485,6 +520,53 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    /// Caps the stamina at 10
+    /// - Parameters:
+    ///   - currPlayer: Player object whose both stamina and stamina asset are being modified
+    ///   - nextPlayer: Player object whose staminina asset only is being modified
+    func checkStaminaCap(currPlayer: Player, nextPlayer: Player)
+    {
+        if(currPlayer.totalStamina >= 10)
+        {
+            currPlayer.totalStamina = 10
+            currPlayer.currStamina = 10
+        }
+    }
+    
+    func applyDebuff(currPlayer: Player, nextPlayer: Player)
+    {
+        if(nextPlayer.bloodThinner)
+        {
+            nextPlayer.health -= 2
+            updateHealthBar(currPlayer: nextPlayer)
+            checkHealth(currPlayer: nextPlayer)
+        }
+        else if(nextPlayer.hasGoblinGreed)
+        {
+            nextPlayer.currStamina -= 2
+            nextPlayer.hasGoblinGreed = false
+        }
+        else if(currPlayer.hasSabotage)
+        {
+            currPlayer.currStamina -= 2
+            updateStaminaBar(currPlayer: currPlayer)
+        }
+        
+        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
+        if(nextPlayer.debuff != "")
+        {
+            nextPlayer.debuffTime -= 1
+            if (nextPlayer.debuffTime == 0)
+            {
+                nextPlayer.debuff = ""
+                updateDebuffBar(currPlayer: nextPlayer)
+                nextPlayer.bloodThinner = false
+                nextPlayer.canHeal = true
+                nextPlayer.canAddBack = true
+                nextPlayer.hasSabotage = false
+            }
+        }
+    }
     
     /// Update and stats from various card effects
     /// Reload stats for change of turn
@@ -504,27 +586,8 @@ class ViewPlayGame: UIViewController {
         updateStaminaBar(currPlayer: nextPlayer)
         
         checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
+        applyDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
         
-        if(nextPlayer.bloodThinner)
-        {
-            nextPlayer.health -= 2
-            updateHealthBar(currPlayer: nextPlayer)
-            checkHealth(currPlayer: nextPlayer)
-        }
-
-        //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
-        if(nextPlayer.debuff != "")
-        {
-            nextPlayer.debuffTime -= 1
-            if (nextPlayer.debuffTime == 0)
-            {
-                nextPlayer.debuff = ""
-                updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.bloodThinner = false
-                nextPlayer.canHeal = true
-                nextPlayer.canAddBack = true
-            }
-        }
         nextPlayer.hasAttacked = false
         checkBuffs(currPlayer: nextPlayer)
     }
@@ -577,7 +640,7 @@ class ViewPlayGame: UIViewController {
         {
             for i in 0...(currPlayer.buffArr.count - 1)
             {
-                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck")
+                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Call-The-Horde-Deck")
                 {
                     hasBlacksmith = true
                 }
@@ -605,7 +668,7 @@ class ViewPlayGame: UIViewController {
     }
     
     //TEST PRINTS. Prints all stats
-    /*
+    
     func printStats()
     {
         print("*********STATS*********")
@@ -638,7 +701,7 @@ class ViewPlayGame: UIViewController {
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
     }
- */
+ 
     // END OF FUNCTIONS
     
     //dynamic UI images
@@ -1247,7 +1310,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        //printStats()
+        printStats()
         
     }
     
@@ -1270,7 +1333,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        //printStats()
+        printStats()
     }
     
 
@@ -1359,7 +1422,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        //printStats()
+        printStats()
     }
     
     
@@ -1417,7 +1480,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        //printStats()
+        printStats()
     }
     ///Function that ends the game
     /// - Parameters:
