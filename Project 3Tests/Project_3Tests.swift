@@ -1014,8 +1014,8 @@ class Project_3Tests: XCTestCase {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Theft-Deck", "Life-Steal-Deck", "Mana-Potion-Deck", "Smoke-Bomb-Deck"]
-        player2.currDeck = ["Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"]
+        player1.currDeck = ["Theft-Deck", "a", "b", "c", "d"]
+        player2.currDeck = ["v" ,"w", "x", "y", "z"]
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
         
@@ -1026,16 +1026,10 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.currStamina == 2)
         
         //Check player 1's deck.
-        XCTAssertTrue(player1.currDeck == ["Health-Potion-Deck", "Life-Steal-Deck", "Mana-Potion-Deck", "Smoke-Bomb-Deck"])
-        for i in player1.currDeck
-        {
-            //print('\n')
-            print (i)
-            //print('\n')
-        }
+        XCTAssertTrue(player1.currDeck == ["v", "a", "b", "c", "d"])
         
         //Check player 2's deck.
-        XCTAssertTrue(player2.currDeck == ["Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Theft-Deck"])
+        XCTAssertTrue(player2.currDeck == ["w","x","y", "z", "Theft-Deck"])
     }
     // ***** END OF EXTRA CARDS *****
     
@@ -1435,7 +1429,7 @@ class Project_3Tests: XCTestCase {
         let player2 = viewGame.player2
         
         player1.currDeck = ["Call-The-Horde-Deck"]
-        player2.currDeck = ["Spell-Tome-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
+        player2.currDeck = ["Call-The-Horde-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
         player1.attack = 3
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
@@ -1444,7 +1438,7 @@ class Project_3Tests: XCTestCase {
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
         //Check if buff was correctly added to buffs array
-        XCTAssertTrue(player1.buffArr == ["Spell-Tome-Deck"])
+        XCTAssertTrue(player1.buffArr == ["Call-The-Horde-Deck"])
         
         //Check that attack has changed.
         XCTAssertTrue(player1.attack == 6)
@@ -1471,7 +1465,7 @@ class Project_3Tests: XCTestCase {
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check player 2's buff array.
-        XCTAssertTrue(player2.buffArr == ["Call-The-Horde-Deck", "Call-The-Horde-Deck", "Call-The-Horde-Deck"])
+        XCTAssertTrue(player2.buffArr == ["Call-The-Horde-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
         
         //Check player 2's attack stat.
         XCTAssertTrue(player2.attack == 3)

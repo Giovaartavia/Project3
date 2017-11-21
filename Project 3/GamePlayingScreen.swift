@@ -190,7 +190,7 @@ class ViewPlayGame: UIViewController {
             case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
-            case "Spell-Tome-Deck", "Blacksmith-Deck":
+            case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
                 currPlayer.attack += 3
                 updateAttackBar(currPlayer: currPlayer)
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
@@ -284,9 +284,14 @@ class ViewPlayGame: UIViewController {
             case "Theft-Deck":
                 currPlayer.currStamina += 2
                 nextPlayer.currDeck.append(currPlayer.currDeck[0])
-                nextPlayer.currDeck.remove(at: 0)
+                //Note that we add back after a card is being played so we need to set up the array in such a way that it has the wanted order after an add back.
                 currPlayer.currDeck.insert(nextPlayer.currDeck[0], at: 0)
+                nextPlayer.currDeck.remove(at: 0)
                 currPlayer.currDeck.remove(at: 1)
+                //Put the last element to the beginning of array so that addback will give us the final array we want
+                let currDeckSize = currPlayer.currDeck.count - 1
+                currPlayer.currDeck.insert(currPlayer.currDeck[currDeckSize], at: 0)
+                currPlayer.currDeck.remove(at: currDeckSize + 1)
                 
             default: //Necessary
                 print("Error in card selection switch case")
