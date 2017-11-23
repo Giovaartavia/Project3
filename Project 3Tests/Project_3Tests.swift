@@ -634,11 +634,14 @@ class Project_3Tests: XCTestCase {
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
         
+        XCTAssertTrue(player2.hasSabotage == false)
+        
         //Player 1 plays Sabotage debuff.
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
         //Check that debuff was added succesfully
         XCTAssertTrue(player2.debuff == "Sabotage-Deck")
+        XCTAssertTrue(player2.hasSabotage == true)
         
         //Check player 2's health.
         XCTAssertTrue(player2.health == 19)
@@ -646,12 +649,13 @@ class Project_3Tests: XCTestCase {
         //Pass the turn to Player 2. Check Player 2's stamina.
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         XCTAssertTrue(player2.hasSabotage == true)
-        XCTAssertTrue(player2.currStamina == 0)
-        print("\n\n\n \(player2.currStamina) \n\n\n")
+        XCTAssertTrue(player2.currStamina == 0) //2 - 2 = 0
+        //print("\n\n\n \(player2.currStamina) \n\n\n")
         
         //Pass one full turn and check Player 2's stamina.
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        XCTAssertTrue(player2.hasSabotage == true)
         XCTAssertTrue(player2.currStamina == 2)
         XCTAssertTrue(player2.debuff == "Sabotage-Deck")
         
@@ -661,9 +665,17 @@ class Project_3Tests: XCTestCase {
         
         //Check that debuff is gone
         XCTAssertTrue(player2.debuff == "")
+        XCTAssertTrue(player2.hasSabotage == false)
         
         //Check that Player 2's stamina is back to normal.
         XCTAssertTrue(player2.currStamina == 6)
+
+        //One more check is done due to the way stamina is added back.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 2's stamina one final time.
+        XCTAssertTrue(player2.currStamina == 8)
     }
     
     func testSabotageWith10Stamina()
@@ -1175,6 +1187,79 @@ class Project_3Tests: XCTestCase {
         
         //Check player 2's buff array.
         XCTAssertTrue(player2.buffArr == ["Mana-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Check player 2's attack stat.
+        XCTAssertTrue(player2.attack == 1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack.
+        XCTAssertTrue(player1.attack == 6)
+        
+        //Pass the turn to player 2.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 2's attack.
+        XCTAssertTrue(player2.attack == 2)
+        
+        //Player 2 playes one more Health Potion.
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        
+        //Pass one full turn.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        
+        //Check that player 2's attack did not change
+        XCTAssertTrue(player2.attack == 2)
+    }
+    
+    func testCoinCraze()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Coin-Craze-Deck"]
+        player2.currDeck = ["Coin-Craze-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
+        player1.attack = 3
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Coin Craze.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check if buff was correctly added to buffs array
+        XCTAssertTrue(player1.buffArr == ["Coin-Craze-Deck"])
+        
+        //Check that attack is not changed yet.
+        XCTAssertTrue(player1.attack == 3)
+        
+        //Pass the turn to player 2. Player 2 plays Coin Craze
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Pass the turn to player 1.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 1's attack after 1 turn.
+        XCTAssertTrue(player1.attack == 4)
+        
+        //Player 1 plays another Coin Craze buff.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's buff array.
+        XCTAssertTrue(player1.buffArr == ["Coin-Craze-Deck", "Coin-Craze-Deck"])
+        
+        //Pass the turn to player 2. Player 2 plays two Health Potions.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        viewGame.playCard(currPlayer: player2, nextPlayer: player1)
+        
+        //Check player 2's buff array.
+        XCTAssertTrue(player2.buffArr == ["Coin-Craze-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
         
         //Check player 2's attack stat.
         XCTAssertTrue(player2.attack == 1)
@@ -1719,6 +1804,36 @@ class Project_3Tests: XCTestCase {
     }
     
     // ***** END OF CAP TESTS
+    
+    func testStamina()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Throwing-Knife-Deck"]
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Check both player's stamina.
+        XCTAssertTrue(player1.currStamina == 2)
+        XCTAssertTrue(player1.totalStamina == 2)
+        XCTAssertTrue(player2.currStamina == 2)
+        XCTAssertTrue(player2.totalStamina == 2)
+        
+        //Pass a turn to player 2. Check both player's stamina.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        XCTAssertTrue(player1.currStamina == 4)
+        XCTAssertTrue(player1.totalStamina == 4)
+        XCTAssertTrue(player2.currStamina == 2)
+        XCTAssertTrue(player2.totalStamina == 2)
+        
+        //Pass a turn to player 1. Check both player's stamina.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player1.currStamina == 4)
+        XCTAssertTrue(player1.totalStamina == 4)
+        XCTAssertTrue(player2.currStamina == 4)
+        XCTAssertTrue(player2.totalStamina == 4)
+    }
     
     /*func testPerformanceExample() {
         // This is an example of a performance test case.

@@ -175,7 +175,7 @@ class ViewPlayGame: UIViewController {
             updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
-            var currCard = currPlayer.currDeck[0]
+            let currCard = currPlayer.currDeck[0]
             var selfDamage = false
             
             //Test print
@@ -187,7 +187,7 @@ class ViewPlayGame: UIViewController {
                 
                 //buffs (INFINITE)  
             //+1 attack per turn      
-            case "Mana-Potion-Deck", "Liquid-Courage-Deck":
+            case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
             case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
@@ -231,6 +231,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
+                //applyDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
                 
                 // single turn
             //Places top card of opponents deck on the bottom
@@ -359,7 +360,7 @@ class ViewPlayGame: UIViewController {
                 let buffCard = currPlayer.buffArr[i]
                 switch buffCard
                 {
-                case "Mana-Potion-Deck", "Liquid-Courage-Deck":
+                case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                     currPlayer.attack += 1
                     updateAttackBar(currPlayer: currPlayer)
                     /*if currPlayer.attack > 10
@@ -509,9 +510,9 @@ class ViewPlayGame: UIViewController {
             {
                 currPlayer.currStamina -= 1
                 updateStaminaBar(currPlayer: currPlayer)
-                print(currPlayer.currDeck)
+                //print(currPlayer.currDeck)
                 addToBack(arr: &currPlayer.currDeck)
-                print(currPlayer.currDeck)
+                //print(currPlayer.currDeck)
                 animateDiscard(currPlayer: currPlayer)
             }
             else
@@ -551,10 +552,12 @@ class ViewPlayGame: UIViewController {
             nextPlayer.currStamina -= 2
             nextPlayer.hasGoblinGreed = false
         }
-        else if(currPlayer.hasSabotage)
+        else if(nextPlayer.hasSabotage)
         {
-            currPlayer.currStamina -= 2
-            updateStaminaBar(currPlayer: currPlayer)
+            //print ("\n\n\n\(nextPlayer.currStamina)\n\n\n")
+            nextPlayer.currStamina -= 2
+            //print ("\n\n\n\(currPlayer.currStamina)\n\n\n")
+            updateStaminaBar(currPlayer: nextPlayer)
         }
         
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
@@ -568,7 +571,11 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
-                nextPlayer.hasSabotage = false
+                if(nextPlayer.hasSabotage)
+                {
+                    nextPlayer.hasSabotage = false
+                    nextPlayer.currStamina += 2
+                }
             }
         }
     }
