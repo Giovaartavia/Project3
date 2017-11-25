@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840731681FC217B20025C1A8 /* iCarousel.m */; };
+		8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407316C1FC2185F0025C1A8 /* QuartzCore.framework */; };
 		84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */; };
 		84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */; };
+		84BD688D1FC763EE00F93C90 /* deckPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD688C1FC763EE00F93C90 /* deckPopup.swift */; };
 		84BFF5B51FAA3E5B00AB0B3F /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF5B41FAA3E5B00AB0B3F /* Fonts */; };
 		84BFF5B71FAA3ED500AB0B3F /* MADE Waffle Soft.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF5B61FAA3ED500AB0B3F /* MADE Waffle Soft.otf */; };
 		84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2DEE31FAA9EEB006D2E2D /* Main.swift */; };
 		84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2DEE51FAAA054006D2E2D /* ViewController.swift */; };
+		84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D9F5471FC1D21C00C733C5 /* CardDraft.swift */; };
 		AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */; };
 		AC0C0BE91F9BFBD70026A225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0C0BE71F9BFBD70026A225 /* Main.storyboard */; };
 		AC0C0BEB1F9BFBD70026A225 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0C0BEA1F9BFBD70026A225 /* Assets.xcassets */; };
@@ -41,12 +45,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840731671FC217B10025C1A8 /* Project 3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project 3-Bridging-Header.h"; sourceTree = "<group>"; };
+		840731681FC217B20025C1A8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		840731691FC217B20025C1A8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
+		8407316C1FC2185F0025C1A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFlip.swift; sourceTree = "<group>"; };
 		84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
+		84BD688C1FC763EE00F93C90 /* deckPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deckPopup.swift; sourceTree = "<group>"; };
 		84BFF5B41FAA3E5B00AB0B3F /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = SOURCE_ROOT; };
 		84BFF5B61FAA3ED500AB0B3F /* MADE Waffle Soft.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MADE Waffle Soft.otf"; path = "Fonts/MADE Waffle Soft.otf"; sourceTree = "<group>"; };
 		84C2DEE31FAA9EEB006D2E2D /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		84C2DEE51FAAA054006D2E2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84D9F5471FC1D21C00C733C5 /* CardDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDraft.swift; sourceTree = "<group>"; };
 		AC0C0BE01F9BFBD70026A225 /* Project 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC0C0BE81F9BFBD70026A225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8407316B1FC2185F0025C1A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8407316C1FC2185F0025C1A8 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AC0C0BD71F9BFBD70026A225 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +115,7 @@
 				AC0C0BF71F9BFBD70026A225 /* Project 3Tests */,
 				AC0C0C021F9BFBD70026A225 /* Project 3UITests */,
 				AC0C0BE11F9BFBD70026A225 /* Products */,
+				8407316B1FC2185F0025C1A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +132,7 @@
 		AC0C0BE21F9BFBD70026A225 /* Project 3 */ = {
 			isa = PBXGroup;
 			children = (
+				84BD688C1FC763EE00F93C90 /* deckPopup.swift */,
 				AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */,
 				84BFF5B41FAA3E5B00AB0B3F /* Fonts */,
 				AC0C0BE71F9BFBD70026A225 /* Main.storyboard */,
@@ -121,9 +142,13 @@
 				AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */,
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
 				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
+				840731691FC217B20025C1A8 /* iCarousel.h */,
+				840731681FC217B20025C1A8 /* iCarousel.m */,
+				84D9F5471FC1D21C00C733C5 /* CardDraft.swift */,
 				AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */,
 				84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */,
 				84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */,
+				840731671FC217B10025C1A8 /* Project 3-Bridging-Header.h */,
 			);
 			path = "Project 3";
 			sourceTree = "<group>";
@@ -214,6 +239,7 @@
 				TargetAttributes = {
 					AC0C0BDF1F9BFBD70026A225 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 					AC0C0BF31F9BFBD70026A225 = {
@@ -286,7 +312,10 @@
 				84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */,
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
+				84BD688D1FC763EE00F93C90 /* deckPopup.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
+				84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */,
+				8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */,
 				84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
 			);
@@ -454,12 +483,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76W897MPSS;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TopDeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -469,12 +501,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76W897MPSS;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TopDeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -32,7 +32,7 @@ class CoinFlip: UIViewController {
         if(coinFlip == 1)
         {
             coinImage.image = UIImage(named: "Heads");
-            playerStartText.text="Player 1 Starts!";
+            playerStartText.text="Player 2 Starts!"; //changed this from 1. Player 1 starts the game but Player 2 starts the card draft
             flipVisibility.isHidden = true;
             nextVisibility.isHidden = false;
             playerStart = 1;
@@ -40,7 +40,7 @@ class CoinFlip: UIViewController {
         else
         {
             coinImage.image = UIImage(named: "Tails");
-            playerStartText.text="Player 2 Starts!";
+            playerStartText.text="Player 1 Starts!"; //changed this from 2. Player 2 starts the game but Player 1 starts the card draft
             flipVisibility.isHidden = true;
             nextVisibility.isHidden = false;
             playerStart = 2;
