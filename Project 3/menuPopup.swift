@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class deckPopup: UIViewController {
+class menuPopup: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)

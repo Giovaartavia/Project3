@@ -240,7 +240,7 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     
     @IBAction func viewDeckPressed(_ sender: Any) {
-        let popup = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "deckPopupID") as! deckPopup
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
         self.view.addSubview(popup.view)

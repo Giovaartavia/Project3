@@ -1494,6 +1494,15 @@ class ViewPlayGame: UIViewController {
         //TEST. Show stats
         printStats()
     }
+    
+    @IBAction func viewDeckPressed(_ sender: Any) {
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
+    }
+    
     ///Function that ends the game
     /// - Parameters:
     ///   - sender: Surrender button is pressed
