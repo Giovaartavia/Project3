@@ -906,7 +906,7 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Life Steal attack card under normal circumstances. Life Steal should
+    // Check Life Steal attack card under normal circumstances. Life Steal should reduce opponent's health by 1 and give player 1 3 health back.
     //
     func testLifeSteal()
     {
@@ -947,6 +947,9 @@ class Project_3Tests: XCTestCase {
     
     // ***** START OF EXTRA CARDS *****
     
+    //
+    // 
+    //
     func testSmokeBomb()
     {
         let player1 = viewGame.player1
