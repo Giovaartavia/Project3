@@ -21,6 +21,11 @@
 		AC0C0C041F9BFBD70026A225 /* Project_3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C031F9BFBD70026A225 /* Project_3UITests.swift */; };
 		AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */; };
 		AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */; };
+		CB304B0B1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB304B0A1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard */; };
+		CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B121FC74C8B0046EF77 /* OnlineCoinFlip.swift */; };
+		CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B141FC74CD20046EF77 /* OnlineSelectDeck.swift */; };
+		CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */; };
+		CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		AC0C0C051F9BFBD70026A225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamePlayingScreen.storyboard; sourceTree = "<group>"; };
 		AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayingScreen.swift; sourceTree = "<group>"; };
+		CB304B0A1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnlineGamePlayingScreen.storyboard; sourceTree = "<group>"; };
+		CB304B121FC74C8B0046EF77 /* OnlineCoinFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineCoinFlip.swift; sourceTree = "<group>"; };
+		CB304B141FC74CD20046EF77 /* OnlineSelectDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineSelectDeck.swift; sourceTree = "<group>"; };
+		CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineGamePlayingScreen.swift; sourceTree = "<group>"; };
+		CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineServiceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +128,14 @@
 				84C2DEE51FAAA054006D2E2D /* ViewController.swift */,
 				84C2DEE31FAA9EEB006D2E2D /* Main.swift */,
 				AC0C0BEA1F9BFBD70026A225 /* Assets.xcassets */,
+				CB304B0A1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard */,
 				AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */,
+				CB304B121FC74C8B0046EF77 /* OnlineCoinFlip.swift */,
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
 				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
+				CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */,
+				CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */,
+				CB304B141FC74CD20046EF77 /* OnlineSelectDeck.swift */,
 				AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */,
 				84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */,
 				84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */,
@@ -254,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BFF5B71FAA3ED500AB0B3F /* MADE Waffle Soft.otf in Resources */,
+				CB304B0B1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard in Resources */,
 				84BFF5B51FAA3E5B00AB0B3F /* Fonts in Resources */,
 				AC0C0BEE1F9BFBD70026A225 /* LaunchScreen.storyboard in Resources */,
 				AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */,
@@ -285,8 +301,12 @@
 			files = (
 				84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */,
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
+				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
+				CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
+				CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */,
+				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
 				84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
 			);
@@ -455,10 +475,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 76W897MPSS;
+				DEVELOPMENT_TEAM = A8KBK4EBEM;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = ".com-MemoryLeeks.TopDeck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,10 +490,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 76W897MPSS;
+				DEVELOPMENT_TEAM = A8KBK4EBEM;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = ".com-MemoryLeeks.TopDeck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
