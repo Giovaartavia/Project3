@@ -329,17 +329,13 @@
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
 				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
-<<<<<<< HEAD
 				CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */,
-				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
 				CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */,
 				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
-=======
 				84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
 				84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */,
 				8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */,
->>>>>>> origin/Project4
 				84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
 			);
