@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Online Coin Flip-->
+        <!--Coin Flip-->
         <scene sceneID="v3m-dw-OuX">
             <objects>
-                <viewController id="trm-yg-oo9" customClass="OnlineCoinFlip" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="trm-yg-oo9" customClass="CoinFlip" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCd-dt-bhK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                                 </state>
                                 <state key="highlighted" image="Next-Down"/>
                                 <connections>
-                                    <segue destination="jsl-U6-zg7" kind="show" id="uV5-Ct-nWg"/>
+                                    <segue destination="Qyn-u6-q8H" kind="show" id="Y9n-kM-TtK"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjh-w5-hGe">
@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="-72" y="-708"/>
         </scene>
-        <!--Online Selection Deck1-->
+        <!--Selection Deck1-->
         <scene sceneID="AVN-qi-4Op">
             <objects>
-                <viewController id="axY-S5-ml4" customClass="OnlineSelectionDeck1" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="axY-S5-ml4" customClass="SelectionDeck1" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HTe-Zb-Lq2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +121,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mage-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EqG-QS-crK">
-                                <rect key="frame" x="172" y="245" width="189" height="180"/>
+                                <rect key="frame" x="211" y="275" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -136,10 +136,10 @@
             </objects>
             <point key="canvasLocation" x="-1833.3333333333335" y="-708.42391304347836"/>
         </scene>
-        <!--Online Selection Deck2-->
+        <!--Selection Deck2-->
         <scene sceneID="NWY-Yz-SwH">
             <objects>
-                <viewController id="WKX-5b-pMc" customClass="OnlineSelectionDeck2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WKX-5b-pMc" customClass="SelectionDeck2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UYG-Hn-7dx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="-997.10144927536237" y="-708.42391304347836"/>
         </scene>
-        <!--Online View Play Game-->
+        <!--View Play Game-->
         <scene sceneID="f82-Xl-fcl">
             <objects>
-                <viewController id="jsl-U6-zg7" customClass="OnlineViewPlayGame" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jsl-U6-zg7" customClass="ViewPlayGame" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f7N-b1-qJp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,7 +256,7 @@
                                 <state key="normal" title="Options" image="MenuButton-Up"/>
                                 <state key="highlighted" image="MenuButton-Down"/>
                                 <connections>
-                                    <segue destination="frs-eG-eK9" kind="show" animates="NO" id="653-fJ-1kn"/>
+                                    <action selector="viewDeckPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="h8R-Vy-Lu5"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InterfaceBackDrop" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-Rh-KhR">
@@ -432,7 +432,6 @@
                         <outlet property="shuffleButton" destination="nLw-l8-LYj" id="djc-uj-EMF"/>
                         <outlet property="staminaBar1" destination="FCt-C4-mL4" id="jFd-ok-tak"/>
                         <outlet property="staminaBar2" destination="UGa-YP-sSC" id="keO-vJ-oSr"/>
-                        <outlet property="surrenderButton" destination="Def-X2-aX8" id="8av-Ck-p84"/>
                         <outlet property="topCard1" destination="sxJ-ap-xQB" id="rui-hX-uio"/>
                         <outlet property="topCard1Button" destination="eFt-I7-NgU" id="kS2-ci-ceL"/>
                         <outlet property="topCard2" destination="rgA-T6-moJ" id="neo-Uc-D0K"/>
@@ -489,34 +488,209 @@
             </objects>
             <point key="canvasLocation" x="721.73913043478262" y="-28.532608695652176"/>
         </scene>
-        <!--Surrender-->
-        <scene sceneID="wM4-oa-4A0">
+        <!--Menu Popup-->
+        <scene sceneID="OGW-bR-9nf">
             <objects>
-                <viewController id="frs-eG-eK9" customClass="Surrender" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xef-R5-krI">
+                <viewController storyboardIdentifier="menuPopupID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mtJ-4L-pKb" customClass="menuPopup" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J0L-vc-jn7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Def-X2-aX8">
-                                <rect key="frame" x="48" y="288" width="318" height="132"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-wr-l8T">
+                                <rect key="frame" x="20" y="40" width="374" height="676"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Surrender-Up">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gg-dy-PJm">
+                                        <rect key="frame" x="164" y="551" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="mtJ-4L-pKb" eventType="touchUpInside" id="ICL-Rc-J7Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R17-1g-r5e">
+                                        <rect key="frame" x="28" y="272" width="318" height="132"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Surrender-Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="Surrender-Down"/>
+                                        <connections>
+                                            <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="yrv-bb-K0b"/>
+                                            <segue destination="LxY-3i-Ugb" kind="show" id="PWd-Y4-F04"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="l8w-CS-geN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QZF-uk-Pg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718.84057971014499" y="-1394.021739130435"/>
+        </scene>
+        <!--Data Source-->
+        <scene sceneID="Vks-hQ-0tk">
+            <objects>
+                <viewController id="Qyn-u6-q8H" customClass="CardDraft" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AD4-rS-urG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dbz-5h-LLB">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-3o-Gfh" customClass="iCarousel">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                        <viewLayoutGuide key="safeArea" id="Tij-4h-XjU"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Qyn-u6-q8H" id="9sd-Nh-7Ww"/>
+                                            <outlet property="delegate" destination="Qyn-u6-q8H" id="evV-px-DtY"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdU-Ba-zRn">
+                                <rect key="frame" x="214" y="599" width="188" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Tutorial-Next-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="Surrender-Down"/>
+                                <state key="highlighted" image="Tutorial-Next-Down"/>
                                 <connections>
-                                    <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="Y2B-ad-CIX"/>
-                                    <segue destination="LxY-3i-Ugb" kind="show" animates="NO" id="L3i-vJ-MpA"/>
+                                    <action selector="removeButtonPress:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="G8O-jw-dPl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdH-NT-ldZ">
+                                <rect key="frame" x="12" y="599" width="188" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Tutorial-Previous-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Tutorial-Previous-Down"/>
+                                <connections>
+                                    <action selector="addButtonPress:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="NkI-Kk-mQK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4b-1r-iqp">
+                                <rect key="frame" x="13" y="20" width="131" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Options" image="MenuButton-Up"/>
+                                <state key="highlighted" image="MenuButton-Down"/>
+                                <connections>
+                                    <action selector="viewDeckPressed:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="VUu-co-VoV"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Turn-Bar" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-bJ-z8G">
+                                <rect key="frame" x="-5" y="66" width="425" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PLAYER 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-we-NcA">
+                                <rect key="frame" x="129" y="71" width="156" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CU-nG-62d">
+                                <rect key="frame" x="11" y="676" width="391" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="End Turn" image="EndTurnButton-Up"/>
+                                <state key="disabled" image="EndTurnButton-Up"/>
+                                <state key="highlighted" image="EndTurnButton-Down"/>
+                                <connections>
+                                    <action selector="endTurnButtonPress:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="vAO-D9-ZIa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLU-TR-mIb">
+                                <rect key="frame" x="131" y="161" width="151" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 Selected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB7-yk-d8T">
+                                <rect key="frame" x="134" y="555" width="159" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PICK TWO CARDS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAF-hm-5W0">
+                                <rect key="frame" x="23" y="106" width="369" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="MMc-7d-mn6"/>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="CdH-NT-ldZ" id="xhV-Nw-bu6"/>
+                        <outlet property="availableLabel" destination="gLU-TR-mIb" id="FsJ-SN-jAn"/>
+                        <outlet property="endTurnButton" destination="3CU-nG-62d" id="6Dp-Zd-Dqj"/>
+                        <outlet property="howManyLabel" destination="ZAF-hm-5W0" id="0CJ-Qz-IuB"/>
+                        <outlet property="playerLabel" destination="YtN-we-NcA" id="fY1-Wa-1qM"/>
+                        <outlet property="removeButton" destination="BdU-Ba-zRn" id="K4n-GK-eel"/>
+                        <outlet property="selectLabel" destination="VB7-yk-d8T" id="ao2-XA-9qY"/>
+                        <outlet property="viewCaro" destination="nC3-3o-Gfh" id="5mM-Gt-Wgr"/>
+                        <segue destination="r8O-qm-vLI" kind="modal" identifier="completeDraft" id="aww-kI-A3j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qg7-cx-S1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="721.73913043478262" y="-708.42391304347836"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Wi5-W0-YQ0">
+            <objects>
+                <viewController id="r8O-qm-vLI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OBt-Gu-lAL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CARD DRAFT COMPLETE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1C-YN-SVz">
+                                <rect key="frame" x="23" y="54" width="369" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PRESS THE NEXT BUTTON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anT-nI-Zge">
+                                <rect key="frame" x="25" y="109" width="369" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfi-VD-s7w">
+                                <rect key="frame" x="38" y="577" width="338" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Tutorial-Next-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Tutorial-Next-Down"/>
+                                <connections>
+                                    <action selector="removeButtonPress:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="CHZ-KP-Ub0"/>
+                                    <segue destination="jsl-U6-zg7" kind="show" id="pEe-if-GLZ"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="2tN-Nf-Tzf"/>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="mOl-XO-FAS"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AuZ-hW-zwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IPO-ug-Ltt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-865.21739130434787" y="183.42391304347828"/>
+            <point key="canvasLocation" x="1434.7826086956522" y="-708.42391304347836"/>
         </scene>
         <!--Play Again-->
         <scene sceneID="UeW-lc-ojX">
@@ -527,7 +701,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-7m-xTJ">
-                                <rect key="frame" x="52" y="212" width="311" height="133"/>
+                                <rect key="frame" x="52" y="232" width="311" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play Again?" image="Play-Again-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -538,7 +712,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57V-3G-7VD">
-                                <rect key="frame" x="52" y="356" width="310" height="128"/>
+                                <rect key="frame" x="52" y="376" width="310" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Back-to-home-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -555,7 +729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8R8-1j-16j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1661" y="1189"/>
+            <point key="canvasLocation" x="-997" y="184"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="jPa-j9-lKS">
@@ -645,10 +819,14 @@
         <image name="Surrender-Down" width="445" height="185"/>
         <image name="Surrender-Up" width="445" height="185"/>
         <image name="Turn-Bar" width="1028" height="147"/>
+        <image name="Tutorial-Next-Down" width="493" height="185"/>
+        <image name="Tutorial-Next-Up" width="493" height="185"/>
+        <image name="Tutorial-Previous-Down" width="493" height="185"/>
+        <image name="Tutorial-Previous-Up" width="493" height="185"/>
         <image name="Warrior-Icon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vba-G8-nyL"/>
-        <segue reference="yKp-vI-ekm"/>
+        <segue reference="PKJ-GY-ymy"/>
+        <segue reference="kte-D9-BjL"/>
     </inferredMetricsTieBreakers>
 </document>
