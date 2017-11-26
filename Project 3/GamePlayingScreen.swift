@@ -51,11 +51,13 @@ class ViewPlayGame: UIViewController {
         if(playerStart == 1)
         {
             playerTurn.text = "PLAYER 1's Turn"
+            Player2Indicator.isHidden = true;
             
         }
         else if(playerStart == 2)
         {
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
         }
         else
         {
@@ -268,6 +270,8 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
+            //endTurnButton.setImage(UIImage(named: "endTurnFlash"), for:.normal);
+           //player1Class.loadGif(name:"endTurnFlash" )
             print("NOT ENOUGH STAMINA HONEY!")
         }
 
@@ -664,6 +668,11 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var discard1: UIImageView!
     ///Image used for when Player 2 discards a card
     @IBOutlet weak var discard2: UIImageView!
+    
+    ///Image used to indicate player 1's turn
+    @IBOutlet weak var Player1Indicator: UIImageView!
+    ///Image used to indicate player 2's turn
+    @IBOutlet weak var Player2Indicator: UIImageView!
     
     //buff and debuff images
     ///Image used for Player 1's debuff
@@ -1288,21 +1297,26 @@ class ViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
+            Player2Indicator.isHidden = false;
             
             if(player2.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1311,33 +1325,43 @@ class ViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
+                
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else if(turn == 2)
         {
             turn = 1
+            
             endTurn(currPlayer: player2, nextPlayer: player1)
             playerTurn.text = "PLAYER 1's Turn"
+            Player1Indicator.isHidden = false;
+            Player2Indicator.isHidden = true;
             
             if(player1.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1346,11 +1370,13 @@ class ViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else
@@ -1376,16 +1402,19 @@ class ViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else if (turn == 2)
@@ -1399,16 +1428,19 @@ class ViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else

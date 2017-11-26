@@ -20,12 +20,13 @@ class CoinFlip: UIViewController {
     @IBOutlet weak var flipVisibility: UIButton!
     ///Button that shows the next button
     @IBOutlet weak var nextVisibility: UIButton!
-    //nextVisibility.isHidden = true;
+    
     
     /// Function that flips a coin
     ///
     /// - Parameter sender: Player pressing button
     @IBAction func flipCoin(_ sender: Any) {
+        nextVisibility.isHidden = true;
         let coinFlip = Int(arc4random_uniform(2))
         //print ("Coin Result: \(coinFlip)")
         

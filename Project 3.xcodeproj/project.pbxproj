@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */; };
 		84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */; };
 		84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */; };
 		84BFF5B51FAA3E5B00AB0B3F /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 84BFF5B41FAA3E5B00AB0B3F /* Fonts */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFANIMATE.swift; sourceTree = "<group>"; };
 		84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFlip.swift; sourceTree = "<group>"; };
 		84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
 		84BFF5B41FAA3E5B00AB0B3F /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = SOURCE_ROOT; };
@@ -91,6 +93,7 @@
 		AC0C0BD71F9BFBD70026A225 = {
 			isa = PBXGroup;
 			children = (
+				62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */,
 				84BFF5B61FAA3ED500AB0B3F /* MADE Waffle Soft.otf */,
 				AC0C0BE21F9BFBD70026A225 /* Project 3 */,
 				AC0C0BF71F9BFBD70026A225 /* Project 3Tests */,
@@ -285,6 +288,7 @@
 			files = (
 				84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */,
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
+				62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
 				84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */,

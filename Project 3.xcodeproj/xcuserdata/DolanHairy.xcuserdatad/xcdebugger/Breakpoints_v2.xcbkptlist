@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project 3/Main.swift"
-            timestampString = "531297499.180465"
+            timestampString = "533403926.210574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "NextScreen(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Project 3/Main.swift"
-            timestampString = "531297499.180544"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
             landmarkName = "Tutorial"
             landmarkType = "3">
          </BreakpointContent>
@@ -41,13 +25,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project 3/GamePlayingScreen.swift"
-            timestampString = "531609682.935947"
+            filePath = "Project 3/Main.swift"
+            timestampString = "533403926.2107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
-            landmarkName = "checkHealth(currPlayer:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "PrevScreen(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project 3/GamePlayingScreen.swift"
+            timestampString = "533403926.21077"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
+            landmarkName = "placeBottom(currPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project 3/Main.swift"
-            timestampString = "531297499.182704"
+            timestampString = "533403926.211999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project 3/GamePlayingScreen.swift"
-            timestampString = "531609682.939014"
+            timestampString = "533403926.212065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "885"
-            endingLineNumber = "885"
-            landmarkName = "animateShuffle(currPlayer:)"
-            landmarkType = "7">
+            startingLineNumber = "894"
+            endingLineNumber = "894"
+            landmarkName = "ViewPlayGame"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project 3/GamePlayingScreen.swift"
-            timestampString = "531609682.9417"
+            timestampString = "533403926.213045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "997"
-            endingLineNumber = "997"
-            landmarkName = "revealInfoCard(currPlayer:)"
+            startingLineNumber = "1006"
+            endingLineNumber = "1006"
+            landmarkName = "updateDebuffBar(currPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
