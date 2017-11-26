@@ -31,6 +31,7 @@
 		CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B141FC74CD20046EF77 /* OnlineSelectDeck.swift */; };
 		CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */; };
 		CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */; };
+		CB658A2D1FCB4BF100AA6A37 /* OnlineCardDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB658A2C1FCB4BF100AA6A37 /* OnlineCardDraft.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-
 		62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFANIMATE.swift; sourceTree = "<group>"; };
 		840731671FC217B10025C1A8 /* Project 3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project 3-Bridging-Header.h"; sourceTree = "<group>"; };
 		840731681FC217B20025C1A8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 		CB304B141FC74CD20046EF77 /* OnlineSelectDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineSelectDeck.swift; sourceTree = "<group>"; };
 		CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineGamePlayingScreen.swift; sourceTree = "<group>"; };
 		CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineServiceManager.swift; sourceTree = "<group>"; };
+		CB658A2C1FCB4BF100AA6A37 /* OnlineCardDraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineCardDraft.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +157,7 @@
 				CB304B0A1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard */,
 				AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */,
 				CB304B121FC74C8B0046EF77 /* OnlineCoinFlip.swift */,
+				CB658A2C1FCB4BF100AA6A37 /* OnlineCardDraft.swift */,
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
 				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
 				CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */,
@@ -335,6 +337,7 @@
 				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
 				CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */,
+				CB658A2D1FCB4BF100AA6A37 /* OnlineCardDraft.swift in Sources */,
 				CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */,
 				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
 				84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */,

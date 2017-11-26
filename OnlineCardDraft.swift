@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
+class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     var images = [String]()
     var selectArr = [Int]()
     var availableArr = [Int]()
