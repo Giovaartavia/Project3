@@ -80,11 +80,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
             print("ERROR PICKING TURN")
         }
         
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             deck1.deckArr = selectedDeck as [String]
         }
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             deck2.deckArr = selectedDeck as [String]
         }

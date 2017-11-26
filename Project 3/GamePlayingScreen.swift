@@ -565,6 +565,10 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    /// Does respective debuff action.
+    /// - Parameters:
+    ///   - currPlayer: Player object who played the debuff card
+    ///   - nextPlayer: Player object who is being affected by the debuff
     func applyDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(nextPlayer.bloodThinner)
@@ -684,11 +688,6 @@ class ViewPlayGame: UIViewController {
                 }
             }
         }
-        
-        /*if (currPlayer.buffArr[0] == "Blacksmith-Deck")
-        {
-            hasBlacksmith = true
-        }*/
 
         if(!hasBlacksmith)
         {
