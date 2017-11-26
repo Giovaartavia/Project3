@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "476"
             endingLineNumber = "476"
-            landmarkName = "placeBottom(currPlayer:)"
+            landmarkName = "attackDamage(currPlayer:nextPlayer:damage:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "894"
             endingLineNumber = "894"
-            landmarkName = "ViewPlayGame"
-            landmarkType = "3">
+            landmarkName = "animateShuffle(currPlayer:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1006"
             endingLineNumber = "1006"
-            landmarkName = "updateDebuffBar(currPlayer:)"
+            landmarkName = "revealTopCard(currPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

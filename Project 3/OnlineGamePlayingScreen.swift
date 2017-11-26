@@ -9,41 +9,17 @@
 import Foundation
 import UIKit
 
-// Beginning of code from https://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
-extension MutableCollection {
-    /// Shuffles the contents of this collection.
-    mutating func shuffle() {
-        let c = count
-        guard c > 1 else { return }
-        
-        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
-            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
-            let i = index(firstUnshuffled, offsetBy: d)
-            swapAt(firstUnshuffled, i)
-        }
-    }
-}
-
-extension Sequence {
-    /// Returns an array with the contents of this sequence, shuffled.
-    func shuffled() -> [Element] {
-        var result = Array(self)
-        result.shuffle()
-        return result
-    }
-}
-
-//end of adapted code
-
 ///Assigned by the coin flip
-var playerStart = 0;
 
 ///Class that contains the entire game playing screen.
-class ViewPlayGame: UIViewController {
+class OnlineViewPlayGame: UIViewController {
     ///This is the Player 1 Object
     var player1 = Player(name: "player1", currDeck: ["Empty"], deck: "None")
     ///This is the Player 1 Object
     var player2 = Player(name: "player2", currDeck: ["Empty"], deck: "None")
+    
+    //multipeer connectivity manager
+    let screenService = ScreenServiceManager()
     
     ///This function is called once the View Play Game Screen is loaded
     override func viewDidLoad()
@@ -51,13 +27,11 @@ class ViewPlayGame: UIViewController {
         if(playerStart == 1)
         {
             playerTurn.text = "PLAYER 1's Turn"
-            Player2Indicator.isHidden = true;
             
         }
         else if(playerStart == 2)
         {
             playerTurn.text = "PLAYER 2's Turn"
-            Player1Indicator.isHidden = true;
         }
         else
         {
@@ -68,11 +42,11 @@ class ViewPlayGame: UIViewController {
         
         let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
         
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
             let selectedDeck : [NSString] = test as! [NSString]
             player1.currDeck = selectedDeck as [String]
         }
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck2") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as AnyObject {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
@@ -108,6 +82,8 @@ class ViewPlayGame: UIViewController {
         let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
         topCard2Button.addGestureRecognizer(holdDeck2)
         blurTopCard.isHidden = true;
+        
+        screenService.delegate = self
     }
     
     /// Player Object
@@ -177,7 +153,7 @@ class ViewPlayGame: UIViewController {
             updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
-            let currCard = currPlayer.currDeck[0]
+            var currCard = currPlayer.currDeck[0]
             var selfDamage = false
             
             //Test print
@@ -189,7 +165,7 @@ class ViewPlayGame: UIViewController {
                 
                 //buffs (INFINITE)  
             //+1 attack per turn      
-            case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
+            case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
             case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
@@ -233,7 +209,6 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
-                //applyDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
                 
                 // single turn
             //Places top card of opponents deck on the bottom
@@ -307,8 +282,6 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
-            //endTurnButton.setImage(UIImage(named: "endTurnFlash"), for:.normal);
-           //player1Class.loadGif(name:"endTurnFlash" )
             print("NOT ENOUGH STAMINA HONEY!")
         }
 
@@ -364,7 +337,7 @@ class ViewPlayGame: UIViewController {
                 let buffCard = currPlayer.buffArr[i]
                 switch buffCard
                 {
-                case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
+                case "Mana-Potion-Deck", "Liquid-Courage-Deck":
                     currPlayer.attack += 1
                     updateAttackBar(currPlayer: currPlayer)
                     /*if currPlayer.attack > 10
@@ -514,9 +487,9 @@ class ViewPlayGame: UIViewController {
             {
                 currPlayer.currStamina -= 1
                 updateStaminaBar(currPlayer: currPlayer)
-                //print(currPlayer.currDeck)
+                print(currPlayer.currDeck)
                 addToBack(arr: &currPlayer.currDeck)
-                //print(currPlayer.currDeck)
+                print(currPlayer.currDeck)
                 animateDiscard(currPlayer: currPlayer)
             }
             else
@@ -556,12 +529,10 @@ class ViewPlayGame: UIViewController {
             nextPlayer.currStamina -= 2
             nextPlayer.hasGoblinGreed = false
         }
-        else if(nextPlayer.hasSabotage)
+        else if(currPlayer.hasSabotage)
         {
-            //print ("\n\n\n\(nextPlayer.currStamina)\n\n\n")
-            nextPlayer.currStamina -= 2
-            //print ("\n\n\n\(currPlayer.currStamina)\n\n\n")
-            updateStaminaBar(currPlayer: nextPlayer)
+            currPlayer.currStamina -= 2
+            updateStaminaBar(currPlayer: currPlayer)
         }
         
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
@@ -575,11 +546,7 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
-                if(nextPlayer.hasSabotage)
-                {
-                    nextPlayer.hasSabotage = false
-                    nextPlayer.currStamina += 2
-                }
+                nextPlayer.hasSabotage = false
             }
         }
     }
@@ -743,11 +710,6 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var discard1: UIImageView!
     ///Image used for when Player 2 discards a card
     @IBOutlet weak var discard2: UIImageView!
-    
-    ///Image used to indicate player 1's turn
-    @IBOutlet weak var Player1Indicator: UIImageView!
-    ///Image used to indicate player 2's turn
-    @IBOutlet weak var Player2Indicator: UIImageView!
     
     //buff and debuff images
     ///Image used for Player 1's debuff
@@ -1319,10 +1281,12 @@ class ViewPlayGame: UIViewController {
         //check turn
         if(turn == 1)
         {
+            screenService.send(screenName: "player1.playCardPress")
             playCard(currPlayer: player1, nextPlayer: player2)
         }
         else if(turn == 2)
         {
+            screenService.send(screenName: "player2.playCardPress")
             playCard(currPlayer: player2, nextPlayer: player1)
         }
         else
@@ -1334,6 +1298,22 @@ class ViewPlayGame: UIViewController {
         printStats()
         
     }
+
+    func playCardPressOnline(currTurn: String)
+    {
+        if(currTurn == "player1")
+        {
+            playCard(currPlayer: player1, nextPlayer: player2)
+        }
+        else if(currTurn == "player2")
+        {
+            playCard(currPlayer: player2, nextPlayer: player1)
+        }
+        else
+        {
+            print("error in playCardPressOnline")
+        }
+    }
     
     /// Call on placeBottom function
     ///
@@ -1342,10 +1322,12 @@ class ViewPlayGame: UIViewController {
         
         if (turn == 1)
         {
+            screenService.send(screenName: "player1.placeBottomPress")
             placeBottom(currPlayer: player1)
         }
         else if (turn == 2)
         {
+            screenService.send(screenName: "player2.placeBottomPress")
             placeBottom(currPlayer: player2) //player1 was here
         }
         else
@@ -1355,6 +1337,22 @@ class ViewPlayGame: UIViewController {
         
         //TEST. Show stats
         printStats()
+    }
+
+    func placeBottomPressOnline(currTurn: String)
+    {
+        if (currTurn == "player1")
+        {
+            placeBottom(currPlayer: player1)
+        }
+        else if (currTurn == "player2")
+        {
+            placeBottom(currPlayer: player2) //player1 was here
+        }
+        else
+        {
+            print("Error inside placeButtomPress")
+        }
     }
     
 
@@ -1369,29 +1367,25 @@ class ViewPlayGame: UIViewController {
         })*/
         if(turn == 1)
         {
+            screenService.send(screenName: "player1.endTurnPress")
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
-            Player1Indicator.isHidden = true;
-            Player2Indicator.isHidden = false;
             
             if(player2.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1400,43 +1394,34 @@ class ViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
-                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
-                
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
-                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else if(turn == 2)
         {
+            screenService.send(screenName: "player2.endTurnPress")
             turn = 1
-            
             endTurn(currPlayer: player2, nextPlayer: player1)
             playerTurn.text = "PLAYER 1's Turn"
-            Player1Indicator.isHidden = false;
-            Player2Indicator.isHidden = true;
             
             if(player1.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1445,13 +1430,11 @@ class ViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
-                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
-                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else
@@ -1462,60 +1445,142 @@ class ViewPlayGame: UIViewController {
         //TEST. Show stats
         printStats()
     }
+
+    func endTurnPressOnline(currTurn: String)
+    {
+        if(currTurn == "player1")
+        {
+            turn = 2
+            endTurn(currPlayer: player1, nextPlayer: player2)
+            playerTurn.text = "PLAYER 2's Turn"
+            
+            if(player2.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
+            
+            
+            //disable the place bottom button
+            if(player2.debuff == "Voodoo-Doll-Deck")
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+            }
+            else
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+            }
+        }
+        else if(currTurn == "player2")
+        {
+            turn = 1
+            endTurn(currPlayer: player2, nextPlayer: player1)
+            playerTurn.text = "PLAYER 1's Turn"
+            
+            if(player1.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
+            
+            
+            //disable the place bottom button
+            if(player1.debuff == "Voodoo-Doll-Deck")
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+            }
+            else
+            {
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+            }
+        }
+        else
+        {
+            print("Error inside endTurnPressOnline!")
+        }
+    }
     
     
     /// Call on shuffleCards function and update players shuffleCount stat
     ///
     /// - Parameter sender: Player pressing button
-    @IBAction func shufflePress(_ sender: Any) {
+    @IBAction func shufflePress(_ sender: Any)
+    {
+        
         if (turn == 1)
         {
+            
             shuffleCards(currPlayer: player1)
+            
+            let newDeck = "player1.shufflePress." + player1.currDeck.joined(separator: ".")
+            screenService.send(screenName: newDeck)
             
             //check the number of shuffles a player has and update the image
             if(player1.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else if (turn == 2)
         {
+            
             //check the number of shuffles a player has and update the image
 
             
             shuffleCards(currPlayer: player2)
             
+            let newDeck = "player2.shufflePress." + player2.currDeck.joined(separator: ".")
+            screenService.send(screenName: newDeck)
+            
             if(player2.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
-                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else
@@ -1526,15 +1591,92 @@ class ViewPlayGame: UIViewController {
         //TEST. Show stats
         printStats()
     }
-    
-    @IBAction func viewDeckPressed(_ sender: Any) {
-        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
-        self.addChildViewController(popup)
-        popup.view.frame = self.view.frame
-        self.view.addSubview(popup.view)
-        popup.didMove(toParentViewController: self)
+
+    func shufflePressOnline(currTurn: String)
+    {
+        var newDeckArray = currTurn.components(separatedBy: ".")
+        
+        
+        if (newDeckArray[0] == "player1")
+        {
+            newDeckArray.remove(at: 0)
+            newDeckArray.remove(at: 0)
+            player1.currDeck = newDeckArray
+            
+            if (player1.shuffleCount > 0)
+            {
+                player1.shuffleCount -= 1
+                animateShuffle(currPlayer: player1)
+            }
+            else
+            {
+                print("No more shuffles!")
+            }
+            
+            //shuffleCards(currPlayer: player1)
+            
+            //check the number of shuffles a player has and update the image
+            if(player1.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player1.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
+        }
+        else if (newDeckArray[0] == "player2")
+        {
+            newDeckArray.remove(at: 0)
+            newDeckArray.remove(at: 0)
+            player2.currDeck = newDeckArray
+            
+            if (player2.shuffleCount > 0)
+            {
+                player2.shuffleCount -= 1
+                animateShuffle(currPlayer: player2)
+            }
+            else
+            {
+                print("No more shuffles!")
+            }
+            
+            
+            //check the number of shuffles a player has and update the image
+            
+
+            //shuffleCards(currPlayer: player2)
+            
+            if(player2.shuffleCount == 2)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 1)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+            }
+            if(player2.shuffleCount == 0)
+            {
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+            }
+        }
+        else
+        {
+            print ("Error inside shufflePress!")
+        }
     }
-    
+
+
     ///Function that ends the game
     /// - Parameters:
     ///   - sender: Surrender button is pressed
@@ -1546,4 +1688,62 @@ class ViewPlayGame: UIViewController {
     @IBAction func testPress(_ sender: Any) {
         //runTestAddBuff1()
     }
+}
+
+extension OnlineViewPlayGame : ScreenServiceManagerDelegate
+{
+
+    func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])
+    {
+        OperationQueue.main.addOperation
+        {
+            //self.connectionsLabel.text = "Connections: \(connectedDevices)"
+        }
+    }
+ 
+ 
+    
+    func screenChanged(manager: ScreenServiceManager, screenString: String)
+    {
+        OperationQueue.main.addOperation
+        {
+
+            //determine which button was pressed and push changes to all screens
+            
+            if(screenString.contains("shufflePress") == true)
+            {
+                self.shufflePressOnline(currTurn: screenString)
+            }
+            else if(screenString == "player1.endTurnPress")
+            {
+                self.endTurnPressOnline(currTurn: "player1")
+            }
+            else if(screenString == "player2.endTurnPress")
+            {
+                self.endTurnPressOnline(currTurn: "player2")
+            }
+            else if(screenString == "player1.placeBottomPress")
+            {
+                self.placeBottomPressOnline(currTurn: "player1")
+            }
+            else if(screenString == "player2.placeBottomPress")
+            {
+                self.placeBottomPressOnline(currTurn: "player2")
+            }
+            else if(screenString == "player1.playCardPress")
+            {
+                self.playCardPressOnline(currTurn: "player1")
+            }
+            else if(screenString == "player2.playCardPress")
+            {
+                self.playCardPressOnline(currTurn: "player2")
+            }
+            else
+            {
+                NSLog("%@", "Unknown value received: \(screenString)")
+            }
+
+        }
+    }
+    
 }
