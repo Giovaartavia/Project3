@@ -101,7 +101,6 @@ extension ScreenServiceManager : MCNearbyServiceBrowserDelegate
         
     }
     
-    
 }
 
 extension ScreenServiceManager : MCSessionDelegate {
