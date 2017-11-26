@@ -18,12 +18,12 @@
             <point key="canvasLocation" x="1357" y="624"/>
         </scene>
         <!--OnlineGamePlayingScreen-->
-        <scene sceneID="TYv-lF-Coj">
+        <scene sceneID="Dk8-qI-Vho">
             <objects>
-                <viewControllerPlaceholder storyboardName="OnlineGamePlayingScreen" id="2LQ-BC-rbG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="19F-WP-6M8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="OnlineGamePlayingScreen" id="BUq-eK-SUN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1e-Dv-lXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="605"/>
+            <point key="canvasLocation" x="1695" y="622"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="l9a-IR-Ibg">
@@ -46,7 +46,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Online Play"/>
                                 <connections>
-                                    <segue destination="2LQ-BC-rbG" kind="show" id="1nz-eB-Nke"/>
+                                    <segue destination="BUq-eK-SUN" kind="show" id="Reg-VK-oy1"/>
                                 </connections>
                             </button>
                         </subviews>
