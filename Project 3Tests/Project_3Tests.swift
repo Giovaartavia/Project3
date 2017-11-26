@@ -948,7 +948,7 @@ class Project_3Tests: XCTestCase {
     // ***** START OF EXTRA CARDS *****
     
     //
-    // 
+    // Check Smoke Bomb extra card under normal circumstances. Smoke Bomb should take the opponent's top card and put it in the back of their deck.
     //
     func testSmokeBomb()
     {
@@ -971,6 +971,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.currDeck == ["Mana-Potion-Deck", "Smoke-Bomb-Deck", "Life-Steal-Deck"])
     }
     
+    //
+    // Check Goblin Greed extra card under normal circumstances. Goblin Greed should give player 1 4 stamina (2 extra) on the turn they are played and remove 2 stamina on the turn after.
+    //
     func testGoblinGreed()
     {
         let player1 = viewGame.player1
@@ -997,6 +1000,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.currStamina == 6)
     }
     
+    //
+    // Check Goblin Greed extra card when current player has 10 stamina. Goblin Greed should not benefit player 1 on their turn (give them only the 2 stamina from playing the card back) but the -2 stamina from the turn after still takes effect.
+    //
     func testGoblinGreedWith10Stamina()
     {
         let player1 = viewGame.player1
@@ -1020,6 +1026,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.currStamina == 8)
     }
     
+    //
+    // Check Sleight of Hand extra card under normal circumstances. Sleight of Hand should deal to damage to your opponent and place the top card of player 2's deck on the bottom of their deck.
+    //
     func testBarbaricBurglary()
     {
         let player1 = viewGame.player1
@@ -1044,6 +1053,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.currDeck == ["Mana-Potion-Deck", "Smoke-Bomb-Deck", "Life-Steal-Deck"])
     }
     
+    //
+    // Check Theft extra card under normal circumstances. Theft should restore 2 Stamina to player 1, place the top card of player 2's deck on the top of player 1's deck, and place player 1's Theft card at the bottom of player 2's deck
+    //
     func testTheft()
     {
         let player1 = viewGame.player1
@@ -1068,7 +1080,7 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Double Edge attack card both with 0 attack and with x attack. Double Edge should reduce player 1's health by player 1's current attack stat and reduce player 2's health by player 1's attack stat times 2 plus 2 (atk*2+2)
+    // Check Village Pillage extra card when both players are low on total stamina. Village Pillage should deal 5 damage to player 1 and give 5 current stamina to player 1.
     //
     func testVillagePillageWithLowStamina()
     {
@@ -1089,6 +1101,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.health == 15)
     }
     
+    //
+    // Check Village Pillage extra card when player 1 has 10 stamina and player 2 is low on stamina. Village Pillage should deal 5 damage to player 1 and remove 6 stamina from player 2 (making it zero in this case).
+    //
     func testVillagePillageWithMaxStaminaAndLowOpponentStamina()
     {
         let player1 = viewGame.player1
@@ -1118,7 +1133,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.currStamina == 4)
     }
     
-    
+    //
+    // Check Village Pillage extra card when player 1 has 10 stamina and player 2 is low on stamina. Village Pillage should deal 5 damage to player 1 and remove 6 stamina from player 2 (making it four in this case).
+    //
     func testVillagePillageWithMaxStaminaAndHighOpponentStamina()
     {
         let player1 = viewGame.player1
@@ -1150,7 +1167,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.currStamina == 10)
     }
     
-    
+    //
+    // Check Village Pillage interaction with Goblin Green when players have 8 stamina. Goblin Greed should set player 1's stamina to 10, thusm making it remove 6 stamina to opponent.
+    //
     func testVillagePillageWithGoblinGreed()
     {
         let player1 = viewGame.player1
@@ -1180,6 +1199,9 @@ class Project_3Tests: XCTestCase {
     
     // ***** START OF BUFF CARDS *****
     
+    //
+    // Test of the buff array making sure that the first buff that was put in is the first buff to go out.
+    //
     func testBuffArray()
     {
         let player1 = viewGame.player1
@@ -1203,7 +1225,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.buffArr == ["3", "4", "5"])
     }
     
-    //Tests liquid courage card and makes sure that buffs stop working once they leave the buff array
+    //
+    // Check Liquid Courage buff under normal circumstances. Liquid Courage should give 1 attack stat per turn to player until it is remved from the buff array.
+    //
     func testLiquidCourage()
     {
         let player1 = viewGame.player1
@@ -1277,6 +1301,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.attack == 2)
     }
     
+    //
+    // Check Mana Potion buff under normal circumstances. Mana Potion should give 1 attack stat per turn to player until it is remved from the buff array.
+    //
     func testManaPotion()
     {
         let player1 = viewGame.player1
@@ -1350,6 +1377,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.attack == 2)
     }
     
+    //
+    // Check Coin Craze buff under normal circumstances. Coin Craze should give 1 attack stat per turn to player until it is remved from the buff array.
+    //
     func testCoinCraze()
     {
         let player1 = viewGame.player1
@@ -1423,9 +1453,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.attack == 2)
     }
     
-    //Test LiquidCourage with more than 10 attack
-    
-    //NOTE: ASK IF BUFF SHOULD BE EXECUTED IMMEDIATELY OR UNTIL NEXT TURN
+    //
+    // Check Blacksmith buff under normal circumstances. Blacksmith should add 3 attack to player until it is removed from the buff array.
+    //
     func testBlackSmith()
     {
         let player1 = viewGame.player1
@@ -1503,6 +1533,9 @@ class Project_3Tests: XCTestCase {
 
     }
     
+    //
+    // Check Blacksmith buff when adding the buff would cause the player to have over 10 attack. Blacksmith should allow the attack stat to go over 10 so that when it is removed the attack stat return to the value it should be. Note that even though the attack stat can be more than 10, only an attack stat of 10 is reflected on the animations and ATTACKS WILL NEVER DO MORE THAN 10 DAMAGE.
+    //
     func testBlackSmithWithOverTenAttack()
     {
         let player1 = viewGame.player1
@@ -1534,6 +1567,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 9)
     }
     
+    //
+    // Check Spell Tome buff under normal circumstances. Spell Tome should add 3 attack to player until it is removed from the buff array.
+    //
     func testSpellTome()
     {
         let player1 = viewGame.player1
@@ -1610,6 +1646,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.attack == 0)
     }
     
+    //
+    // Check Spell Tome buff when adding the buff would cause the player to have over 10 attack. Spell Tome should allow the attack stat to go over 10 so that when it is removed the attack stat return to the value it should be. Note that even though the attack stat can be more than 10, only an attack stat of 10 is reflected on the animations and ATTACKS WILL NEVER DO MORE THAN 10 DAMAGE.
+    //
     func testSpellTomeWithOverTenAttack()
     {
         let player1 = viewGame.player1
@@ -1641,6 +1680,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 9)
     }
     
+    //
+    // Check Call the Horde buff under normal circumstances. Call the Horde should add 3 attack to player until it is removed from the buff array.
+    //
     func testCallTheHorde()
     {
         let player1 = viewGame.player1
@@ -1717,6 +1759,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player2.attack == 0)
     }
     
+    //
+    // Check Call the Horde buff when adding the buff would cause the player to have over 10 attack. Call the Horde should allow the attack stat to go over 10 so that when it is removed the attack stat return to the value it should be. Note that even though the attack stat can be more than 10, only an attack stat of 10 is reflected on the animations and ATTACKS WILL NEVER DO MORE THAN 10 DAMAGE.
+    //
     func testCallTheHordeWithOverTenAttack()
     {
         let player1 = viewGame.player1
@@ -1748,6 +1793,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.attack == 9)
     }
     
+    //
+    // Check Health Potion buff under normal circumstances. Health Potion should give two health to player until it is removed from the buff array.
+    //
     func testHealthPotion()
     {
         let player1 = viewGame.player1
@@ -1826,6 +1874,9 @@ class Project_3Tests: XCTestCase {
     
     // ***** START OF CAP TESTS
     
+    //
+    // Test that the attack cap is working, meaning that as long as blacksmith, spell tome, or call the horde are not in play, attack cannot go over 10.
+    //
     func testAttackCap()
     {
         let player1 = viewGame.player1
@@ -1886,7 +1937,9 @@ class Project_3Tests: XCTestCase {
         print ("\n\n\n \(player2.attack) \n\n\n")
     }
     
-    //Check that neither Health Potion nor Lifesteal can put health at more than 20.
+    //
+    // Check that neither Health Potion nor Lifesteal can put health at more than 20.
+    //
     func testHPCap()
     {
         let player1 = viewGame.player1
@@ -1911,6 +1964,9 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.health == 20)
     }
     
+    //
+    // Check that current stamina and total stamina cannot go over 10.
+    //
     func testStaminaCap()
     {
         let player1 = viewGame.player1
@@ -1938,6 +1994,9 @@ class Project_3Tests: XCTestCase {
     
     // ***** END OF CAP TESTS
     
+    //
+    // Check that correct amount of stamina (2) is given per turn to each player.
+    //
     func testStamina()
     {
         let player1 = viewGame.player1

@@ -45,7 +45,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who will go first?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2A-iR-N0f">
-                                <rect key="frame" x="49.666666666666657" y="379" width="315.33333333333337" height="48"/>
+                                <rect key="frame" x="50.333333333333343" y="379" width="315.33333333333326" height="48"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="41"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -234,7 +234,7 @@
                                 <rect key="frame" x="0.0" y="70" width="203" height="534"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TurnIncicatorBox" translatesAutoresizingMaskIntoConstraints="NO" id="8Y7-pW-fdf">
-                                <rect key="frame" x="207" y="70" width="207" height="534"/>
+                                <rect key="frame" x="206" y="70" width="208" height="534"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3Z-2I-Ytw">
                                 <rect key="frame" x="12" y="609" width="131" height="70"/>
@@ -326,28 +326,28 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Attack-Bar0" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SN3-YR-f3I">
-                                <rect key="frame" x="221.66666666666663" y="313.66666666666669" width="170" height="18"/>
+                                <rect key="frame" x="220.66666666666663" y="313.66666666666669" width="170" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="YSA-iW-jFr"/>
                                     <constraint firstAttribute="height" constant="18" id="kXU-U9-x3m"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stamina-Bar0" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-YP-sSC">
-                                <rect key="frame" x="221.66666666666663" y="339.66666666666669" width="170" height="18"/>
+                                <rect key="frame" x="220.66666666666663" y="339.66666666666669" width="170" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="LF4-CQ-7gv"/>
                                     <constraint firstAttribute="height" constant="18" id="doG-vG-CQl"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Health-Bar20" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LqV-Ax-udT">
-                                <rect key="frame" x="222" y="287.66666666666669" width="170" height="18"/>
+                                <rect key="frame" x="221" y="287.66666666666669" width="170" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="GDX-Up-yNR"/>
                                     <constraint firstAttribute="height" constant="18" id="vL8-Go-ovb"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Life-Steal-Deck" translatesAutoresizingMaskIntoConstraints="NO" id="rgA-T6-moJ">
-                                <rect key="frame" x="215.33333333333337" y="366.66666666666669" width="183" height="234.00000000000006"/>
+                                <rect key="frame" x="214.33333333333337" y="366.66666666666669" width="183" height="234.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="234" id="dxa-lb-Wux"/>
                                     <constraint firstAttribute="width" constant="183" id="z77-6x-Abj"/>
@@ -379,7 +379,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="to4-qj-TIr">
-                                <rect key="frame" x="216" y="366.66666666666669" width="183" height="234.00000000000006"/>
+                                <rect key="frame" x="215" y="366.66666666666669" width="183" height="234.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="183" id="sVm-5f-w4j"/>
                                     <constraint firstAttribute="height" constant="234" id="wVC-8U-sBW"/>
@@ -393,7 +393,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-Ho-o45">
-                                <rect key="frame" x="222.66666666666663" y="371.66666666666669" width="168" height="224.00000000000006"/>
+                                <rect key="frame" x="221.66666666666663" y="371.66666666666669" width="168" height="224.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="168" id="2Hh-gb-B73"/>
                                     <constraint firstAttribute="height" constant="224" id="PpZ-tu-Shh"/>
@@ -407,7 +407,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Buff-Debuff-Bar" translatesAutoresizingMaskIntoConstraints="NO" id="gco-KS-5tk">
-                                <rect key="frame" x="221.66666666666663" y="245.66666666666663" width="170" height="32"/>
+                                <rect key="frame" x="220.66666666666663" y="245.66666666666663" width="170" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="73E-ml-aSI"/>
                                     <constraint firstAttribute="width" constant="170" id="aXT-pH-hzz"/>
@@ -421,7 +421,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-cL-6Ei">
-                                <rect key="frame" x="263.66666666666669" y="217" width="86.666666666666686" height="22.333333333333343"/>
+                                <rect key="frame" x="263.33333333333331" y="217" width="86.666666666666686" height="22.333333333333343"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -448,28 +448,28 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kvs-Ti-Bg3">
-                                <rect key="frame" x="361" y="246.66666666666663" width="30" height="30"/>
+                                <rect key="frame" x="360" y="246.66666666666663" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="mX9-Tv-YNV"/>
                                     <constraint firstAttribute="height" constant="30" id="mgU-9t-QHm"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-0X-X9G">
-                                <rect key="frame" x="288" y="246.66666666666663" width="30" height="30"/>
+                                <rect key="frame" x="287" y="246.66666666666663" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="3Fu-gh-8YB"/>
                                     <constraint firstAttribute="height" constant="30" id="rc6-WQ-nOC"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-pR-JOg">
-                                <rect key="frame" x="255" y="246.66666666666663" width="30" height="30"/>
+                                <rect key="frame" x="254" y="246.66666666666663" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="YQf-70-oUg"/>
                                     <constraint firstAttribute="height" constant="30" id="iQA-r9-8lo"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-oX-yvX">
-                                <rect key="frame" x="224" y="246.66666666666663" width="30" height="30"/>
+                                <rect key="frame" x="223" y="246.66666666666663" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="QD5-Kj-xN2"/>
                                     <constraint firstAttribute="height" constant="30" id="e8y-kn-I6F"/>
@@ -654,7 +654,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER 1 WINS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67k-iW-C0n">
-                                <rect key="frame" x="37.666666666666657" y="155" width="340" height="53.666666666666657"/>
+                                <rect key="frame" x="37.333333333333343" y="155" width="340" height="53.666666666666657"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1064,7 +1064,7 @@
         <image name="Warrior-Icon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PKJ-GY-ymy"/>
+        <segue reference="St8-Sz-glj"/>
         <segue reference="kte-D9-BjL"/>
     </inferredMetricsTieBreakers>
 </document>
