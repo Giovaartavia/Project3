@@ -73,9 +73,6 @@ class OnlineCoinFlip: UIViewController {
             flipVisibility.isHidden = true;
             nextVisibility.isHidden = false;
             playerStart = 1;
-            let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier : ("cardDraft"))
-            self.present(viewController, animated: true)
         }
         else
         {

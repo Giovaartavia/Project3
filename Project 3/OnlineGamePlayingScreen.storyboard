@@ -33,19 +33,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtO-L5-Pxr">
-                                <rect key="frame" x="80" y="460" width="255" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Flip-Coin-Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="Flip-Coin-Down"/>
-                                <connections>
-                                    <action selector="flipCoin:" destination="trm-yg-oo9" eventType="touchUpInside" id="2eo-Ff-NeF"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brh-2F-u25">
-                                <rect key="frame" x="80" y="584" width="255" height="98"/>
+                                <rect key="frame" x="80" y="521" width="255" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Next-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,6 +43,17 @@
                                 <connections>
                                     <action selector="coinFlipNext:" destination="trm-yg-oo9" eventType="touchUpInside" id="HuX-em-4hp"/>
                                     <segue destination="Qyn-u6-q8H" kind="show" id="Y9n-kM-TtK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtO-L5-Pxr">
+                                <rect key="frame" x="80" y="517" width="255" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Flip-Coin-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Flip-Coin-Down"/>
+                                <connections>
+                                    <action selector="flipCoin:" destination="trm-yg-oo9" eventType="touchUpInside" id="2eo-Ff-NeF"/>
                                 </connections>
                             </button>
                         </subviews>
