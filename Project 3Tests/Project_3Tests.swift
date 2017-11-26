@@ -860,6 +860,114 @@ class Project_3Tests: XCTestCase {
     }
     
     
+    func testVillagePillageWithLowStamina()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Village-Pillage-Deck"]
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Village Pillage.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's current stamina. Should be -2 +5.
+        XCTAssertTrue(player1.currStamina == 5)
+        
+        //Check player 1's health. Should be 5 less.
+        XCTAssertTrue(player1.health == 15)
+    }
+    
+    func testVillagePillageWithMaxStaminaAndLowOpponentStamina()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Village-Pillage-Deck"]
+        player1.currStamina = 10
+        player1.totalStamina = 10
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Village Pillage.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's stamina. Should be current -2.
+        XCTAssertTrue(player1.currStamina == 8)
+        
+        //Check player 2's current stamina. Should be 0.
+        XCTAssertTrue(player2.currStamina == 0)
+        
+        //Pass the turn to player 2 and check that current stamina is still 0.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        XCTAssertTrue(player2.currStamina == 0)
+        
+        //Pass turn to player 1. Check player 2's stamina is back to normal.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player2.currStamina == 4)
+    }
+    
+    
+    func testVillagePillageWithMaxStaminaAndHighOpponentStamina()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Village-Pillage-Deck"]
+        player1.currStamina = 10
+        player1.totalStamina = 10
+        player2.currStamina = 10
+        player2.totalStamina = 10
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Village Pillage.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's stamina. Should be current -2.
+        XCTAssertTrue(player1.currStamina == 8)
+        
+        //Check player 2's current stamina. Should be 10 - 6 = 4.
+        XCTAssertTrue(player2.currStamina == 4)
+        
+        //Pass the turn to player 2 and check that current stamina is still 4.
+        viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
+        XCTAssertTrue(player2.currStamina == 4)
+        
+        //Pass turn to player 1. Check player 2's stamina is back to normal.
+        viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
+        XCTAssertTrue(player2.currStamina == 10)
+    }
+    
+    
+    func testVillagePillageWithGoblinGreed()
+    {
+        let player1 = viewGame.player1
+        let player2 = viewGame.player2
+        
+        player1.currDeck = ["Goblin-Greed-Deck", "Village-Pillage-Deck"]
+        player1.currStamina = 8
+        player1.totalStamina = 8
+        player2.currStamina = 8
+        player2.totalStamina = 8
+        player1.name = "testPlayer1"
+        player2.name = "testPlayer2"
+        
+        //Player 1 plays Goblin Greed.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 1's current stamina. Should be 10.
+        XCTAssertTrue(player1.currStamina == 10)
+        
+        //Player 1 now plays Village-Pillage.
+        viewGame.playCard(currPlayer: player1, nextPlayer: player2)
+        
+        //Check player 2's stamina.
+        XCTAssertTrue(player2.currStamina == 2)
+    }
+    
+    
     func testThrowingKnife()
     {
         let player1 = viewGame.player1

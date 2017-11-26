@@ -248,6 +248,28 @@ class ViewPlayGame: UIViewController {
                 selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
+            //Deal 5 damage to self and gain 5 stamina. If player is at max stamina when playing the card (10), remove 6 stamina from opponent instead.
+            case "Village-Pillage-Deck":
+                currPlayer.health -= 5
+                checkHealth(currPlayer: currPlayer)
+                updateHealthBar(currPlayer: currPlayer)
+                if(currPlayer.currStamina == 8)
+                {
+                    nextPlayer.currStamina -= 6
+                    if(nextPlayer.currStamina < 0)
+                    {
+                        nextPlayer.currStamina = 0 //This check should never happen however it is here to avoid future card addition bugs
+                    }
+                    updateStaminaBar(currPlayer: nextPlayer)
+                }
+                else
+                {
+                    currPlayer.currStamina += 5
+                    if(currPlayer.currStamina > 10)
+                    {
+                        currPlayer.currStamina = 10
+                    }
+                }
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck", "Horde-Ransack-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
