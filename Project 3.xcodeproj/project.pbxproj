@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
 		62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */; };
-=======
 		8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840731681FC217B20025C1A8 /* iCarousel.m */; };
 		8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407316C1FC2185F0025C1A8 /* QuartzCore.framework */; };
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
 		84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */; };
 		84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */; };
 		84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD688C1FC763EE00F93C90 /* menuPopup.swift */; };
@@ -54,14 +51,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
+
 		62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFANIMATE.swift; sourceTree = "<group>"; };
-=======
 		840731671FC217B10025C1A8 /* Project 3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project 3-Bridging-Header.h"; sourceTree = "<group>"; };
 		840731681FC217B20025C1A8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		840731691FC217B20025C1A8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		8407316C1FC2185F0025C1A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
 		84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFlip.swift; sourceTree = "<group>"; };
 		84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
 		84BD688C1FC763EE00F93C90 /* menuPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuPopup.swift; sourceTree = "<group>"; };
@@ -336,11 +331,8 @@
 			files = (
 				84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */,
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
-<<<<<<< HEAD
 				62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */,
-=======
 				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
 				CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */,
 				CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */,

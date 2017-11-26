@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,13 +66,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopDeck-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aAu-RK-sfD">
-                                <rect key="frame" x="18" y="170.66666666666663" width="378" height="295"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="aAu-RK-sfD" secondAttribute="height" multiplier="379:296" id="8sj-dO-Sut"/>
-                                    <constraint firstAttribute="width" secondItem="aAu-RK-sfD" secondAttribute="height" multiplier="379:296" id="Lrm-Tv-pIW"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fnf-gc-4NA">
                                 <rect key="frame" x="26" y="26" width="324" height="185"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -88,34 +80,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-<<<<<<< HEAD
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hWY-bD-rDa">
-                                <rect key="frame" x="18" y="575.66666666666663" width="378" height="90.333333333333371"/>
-                                <subviews>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-Q0-aHJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="182" height="90"/>
-                                        <state key="normal" image="Start-Game-Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="Start-Game-Down"/>
-                                        <connections>
-                                            <segue destination="TD2-Yn-bIE" kind="show" id="dVS-VT-MW0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVj-15-Xyx">
-                                        <rect key="frame" x="197" y="0.0" width="181" height="90"/>
-                                        <state key="normal" image="Tutorial-Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="Tutorial-Down"/>
-                                        <connections>
-                                            <action selector="options:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pf4-OQ-B07"/>
-                                            <segue destination="9Gc-lV-jRo" kind="show" id="we8-ig-DQR"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-=======
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-Q0-aHJ">
                                 <rect key="frame" x="32" y="596" width="172" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -139,21 +103,17 @@
                                     <segue destination="9Gc-lV-jRo" kind="show" id="we8-ig-DQR"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopDeck-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aAu-RK-sfD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TopDeck-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aAu-RK-sfD">
                                 <rect key="frame" x="18" y="148" width="379" height="296"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hWY-bD-rDa" firstAttribute="trailing" secondItem="aAu-RK-sfD" secondAttribute="trailing" id="0Nx-xI-6uT"/>
+                            <constraint firstAttribute="trailing" secondItem="aAu-RK-sfD" secondAttribute="trailing" id="0Nx-xI-6uT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aAu-RK-sfD" secondAttribute="trailing" constant="18" id="G6t-dZ-H4m"/>
-                            <constraint firstItem="hWY-bD-rDa" firstAttribute="top" secondItem="aAu-RK-sfD" secondAttribute="bottom" constant="110" id="Tfb-B5-3RY"/>
-                            <constraint firstItem="hWY-bD-rDa" firstAttribute="leading" secondItem="aAu-RK-sfD" secondAttribute="leading" id="aMF-NB-jVH"/>
-                            <constraint firstItem="aAu-RK-sfD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="fPY-nR-yj9"/>
+                            <constraint firstAttribute="top" secondItem="aAu-RK-sfD" secondAttribute="bottom" constant="110" id="Tfb-B5-3RY"/>
+                            <constraint firstAttribute="leading" secondItem="aAu-RK-sfD" secondAttribute="leading" id="aMF-NB-jVH"/>
                             <constraint firstItem="aAu-RK-sfD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="thk-pf-GOq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hWY-bD-rDa" secondAttribute="bottom" constant="70" id="uFW-Dv-orb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="axY-S5-ml4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="axY-S5-ml4">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,7 +45,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who will go first?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2A-iR-N0f">
-                                <rect key="frame" x="49.666666666666657" y="379" width="315.33333333333337" height="48"/>
+                                <rect key="frame" x="50" y="379" width="315.33333333333331" height="48"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="41"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -300,7 +300,7 @@
                                     <action selector="viewDeckPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="h8R-Vy-Lu5"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InterfaceBackDrop" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-Rh-KhR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="InterfaceBackDrop" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-Rh-KhR">
                                 <rect key="frame" x="-9" y="72" width="411" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -421,7 +421,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-cL-6Ei">
-                                <rect key="frame" x="263.33333333333331" y="217" width="86.666666666666686" height="22.333333333333343"/>
+                                <rect key="frame" x="263.66666666666669" y="217" width="86.666666666666686" height="22.333333333333343"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -603,8 +603,6 @@
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="BUP-Rh-KhR"/>
-                                <exclude reference="Gga-Ub-72V"/>
                                 <exclude reference="jOn-F1-w22"/>
                             </mask>
                         </variation>
@@ -656,7 +654,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER 1 WINS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67k-iW-C0n">
-                                <rect key="frame" x="37.333333333333343" y="155" width="340" height="53.666666666666657"/>
+                                <rect key="frame" x="37.666666666666657" y="155" width="340" height="53.666666666666657"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -713,15 +711,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Def-X2-aX8">
-                                <rect key="frame" x="57" y="305.66666666666669" width="300" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Wes-HS-GoX"/>
-                                    <constraint firstAttribute="height" constant="125" id="oV8-be-v7v"/>
-                                </constraints>
-                                <state key="normal" image="Surrender-Up">
-=======
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-wr-l8T">
                                 <rect key="frame" x="20" y="40" width="374" height="676"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -786,7 +775,6 @@
                                 <rect key="frame" x="214" y="599" width="188" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Tutorial-Next-Up">
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="Tutorial-Next-Down"/>
@@ -858,14 +846,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-<<<<<<< HEAD
-                        <constraints>
-                            <constraint firstItem="Def-X2-aX8" firstAttribute="centerX" secondItem="Xef-R5-krI" secondAttribute="centerX" id="8kV-M5-RZC"/>
-                            <constraint firstItem="Def-X2-aX8" firstAttribute="centerY" secondItem="Xef-R5-krI" secondAttribute="centerY" id="Rxf-JD-efR"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2tN-Nf-Tzf"/>
-=======
-                        <viewLayoutGuide key="safeArea" id="MMc-7d-mn6"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="CdH-NT-ldZ" id="xhV-Nw-bu6"/>
@@ -920,7 +901,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="mOl-XO-FAS"/>
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPO-ug-Ltt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -935,7 +915,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZbA-1W-gjt">
                                 <rect key="frame" x="14.666666666666657" y="205.66666666666663" width="385" height="325"/>
                                 <subviews>
@@ -965,30 +944,6 @@
                                     <constraint firstAttribute="height" constant="325" id="bjf-zA-Qjd"/>
                                 </constraints>
                             </stackView>
-=======
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-7m-xTJ">
-                                <rect key="frame" x="52" y="232" width="311" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play Again?" image="Play-Again-Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="Play-Again-Down"/>
-                                <connections>
-                                    <segue destination="axY-S5-ml4" kind="show" id="kte-D9-BjL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57V-3G-7VD">
-                                <rect key="frame" x="52" y="376" width="310" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Back-to-home-Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="Back-to-home-Down"/>
-                                <connections>
-                                    <segue destination="fBc-NP-3ja" kind="show" animates="NO" id="PKJ-GY-ymy"/>
-                                </connections>
-                            </button>
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1101,14 +1056,7 @@
         <image name="Surrender-Down" width="445" height="185"/>
         <image name="Surrender-Up" width="445" height="185"/>
         <image name="Turn-Bar" width="1028" height="147"/>
-<<<<<<< HEAD
         <image name="TurnIncicatorBox" width="558" height="1310"/>
-        <image name="Warrior-Icon" width="1024" height="1024"/>
-    </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="St8-Sz-glj"/>
-        <segue reference="wni-It-U5E"/>
-=======
         <image name="Tutorial-Next-Down" width="493" height="185"/>
         <image name="Tutorial-Next-Up" width="493" height="185"/>
         <image name="Tutorial-Previous-Down" width="493" height="185"/>
@@ -1118,6 +1066,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="PKJ-GY-ymy"/>
         <segue reference="kte-D9-BjL"/>
->>>>>>> 0013dca2078fbc1c5a7dc09a1078941c63e0b7b5
     </inferredMetricsTieBreakers>
 </document>
