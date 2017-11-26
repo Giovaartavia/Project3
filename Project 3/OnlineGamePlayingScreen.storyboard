@@ -17,22 +17,11 @@
         <!--Online Coin Flip-->
         <scene sceneID="v3m-dw-OuX">
             <objects>
-                <viewController id="trm-yg-oo9" customClass="OnlineCoinFlip" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CoinFlip" id="trm-yg-oo9" customClass="OnlineCoinFlip" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCd-dt-bhK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brh-2F-u25">
-                                <rect key="frame" x="80" y="527" width="255" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Next-Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted" image="Next-Down"/>
-                                <connections>
-                                    <segue destination="Qyn-u6-q8H" kind="show" id="Y9n-kM-TtK"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjh-w5-hGe">
                                 <rect key="frame" x="85" y="111" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -45,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtO-L5-Pxr">
-                                <rect key="frame" x="80" y="523" width="255" height="106"/>
+                                <rect key="frame" x="80" y="460" width="255" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Flip-Coin-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,6 +42,18 @@
                                 <state key="highlighted" image="Flip-Coin-Down"/>
                                 <connections>
                                     <action selector="flipCoin:" destination="trm-yg-oo9" eventType="touchUpInside" id="2eo-Ff-NeF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brh-2F-u25">
+                                <rect key="frame" x="80" y="584" width="255" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Next-Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="Next-Down"/>
+                                <connections>
+                                    <action selector="coinFlipNext:" destination="trm-yg-oo9" eventType="touchUpInside" id="HuX-em-4hp"/>
+                                    <segue destination="Qyn-u6-q8H" kind="show" id="Y9n-kM-TtK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,7 +140,7 @@
         <!--Online Selection Deck2-->
         <scene sceneID="NWY-Yz-SwH">
             <objects>
-                <viewController id="WKX-5b-pMc" customClass="OnlineSelectionDeck2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Player2Selection" id="WKX-5b-pMc" customClass="OnlineSelectionDeck2" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UYG-Hn-7dx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -537,7 +538,7 @@
         <!--Data Source-->
         <scene sceneID="Vks-hQ-0tk">
             <objects>
-                <viewController id="Qyn-u6-q8H" customClass="OnlineCardDraft" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cardDraft" id="Qyn-u6-q8H" customClass="OnlineCardDraft" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AD4-rS-urG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

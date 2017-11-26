@@ -45,7 +45,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who will go first?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2A-iR-N0f">
-                                <rect key="frame" x="49.666666666666657" y="379" width="315.33333333333337" height="48"/>
+
+                                <rect key="frame" x="50.333333333333343" y="379" width="315.33333333333326" height="48"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="41"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -300,10 +301,6 @@
                                     <action selector="viewDeckPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="h8R-Vy-Lu5"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="InterfaceBackDrop" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-Rh-KhR">
-                                <rect key="frame" x="-9" y="72" width="411" height="202"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Health-Bar20" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="370-jY-6Qk">
                                 <rect key="frame" x="17.666666666666671" y="287.66666666666669" width="170" height="18"/>
                                 <constraints>
@@ -1035,7 +1032,6 @@
         <image name="Flip-Coin-Up" width="445" height="185"/>
         <image name="Health-Bar20" width="443" height="45"/>
         <image name="Health-Potion-Deck" width="487" height="651"/>
-        <image name="InterfaceBackDrop" width="1028" height="504"/>
         <image name="Life-Steal-Deck" width="487" height="651"/>
         <image name="Mage-Icon" width="1024" height="1024"/>
         <image name="MenuButton-Down" width="337" height="101"/>

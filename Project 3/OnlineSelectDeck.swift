@@ -12,11 +12,14 @@ import UIKit
 /// Class that handles player 1's class/deck selection
 class OnlineSelectionDeck1: UIViewController {
     let screenService = ScreenServiceManager()
+
     var currDeck = ["Initial"];
     override func viewDidLoad() {
         super.viewDidLoad()
         screenService.delegate = self
     }
+    
+    
     @IBOutlet weak var segmentSelect: UISegmentedControl!
     
     /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
@@ -34,6 +37,8 @@ class OnlineSelectionDeck1: UIViewController {
     /// - Parameters:
     ///   - sender: function called when button is pressed
     @IBAction func confirmSelection(_ sender: Any) {
+        
+        
         switch segmentSelect.selectedSegmentIndex
         {
         case 0:
@@ -44,7 +49,7 @@ class OnlineSelectionDeck1: UIViewController {
             defaults.set(currDeck, forKey: "deck1")
             
         case 1:
-            screenService.send(screenName: "p1.2")
+            screenService.send(screenName: "p1.1")
             let defaults = UserDefaults.standard
             //currDeck = mageDeck.shuffled()jk
             currDeck = mageDeck
@@ -53,9 +58,16 @@ class OnlineSelectionDeck1: UIViewController {
             currDeck = ["ERROR"]
             break
         }
+        
+        //move to next view controller
+        let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
+        self.present(viewController, animated: true)
     }
     func confirmSelectionOnline1(selectedSegment: String)
     {
+
+        
         switch selectedSegment
         {
         case "0":
@@ -73,6 +85,10 @@ class OnlineSelectionDeck1: UIViewController {
             currDeck = ["ERROR"]
             break
         }
+
+        
+        //move to next view controller
+
     }
 }
 
@@ -120,6 +136,10 @@ class OnlineSelectionDeck2: UIViewController
             currDeck = ["ERROR"]
             break
         }
+        //move to next view controller
+        let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
+        self.present(viewController, animated: true)
     }
     func confirmSelectionOnline2(selectedSegment: String)
     {
@@ -140,8 +160,11 @@ class OnlineSelectionDeck2: UIViewController
             currDeck = ["ERROR"]
             break
         }
+        
     }
 }
+
+
 
 extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
 {
@@ -165,8 +188,16 @@ extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
                 {
                 case "p1.0":
                     self.confirmSelectionOnline1(selectedSegment: "0")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
+                    self.present(viewController, animated: true)
                 case "p1.1":
                     self.confirmSelectionOnline1(selectedSegment: "1")
+                    //move to next view controller 
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
+                    self.present(viewController, animated: true)
                 default:
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
@@ -193,16 +224,25 @@ extension OnlineSelectionDeck2 : ScreenServiceManagerDelegate
     {
         OperationQueue.main.addOperation
             {
-                //determine which btton was pressed and push changes to all screens
+                //determine which button was pressed and push changes to all screens
                 switch screenString
                 {
                 case "p2.0":
                     self.confirmSelectionOnline2(selectedSegment: "0")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
+                    self.present(viewController, animated: true)
                 case "p2.1":
                     self.confirmSelectionOnline2(selectedSegment: "1")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
+                    self.present(viewController, animated: true)
                 default:
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
+
                 
         }
     }
