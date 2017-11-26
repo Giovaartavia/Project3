@@ -40,13 +40,13 @@ class OnlineViewPlayGame: UIViewController {
         
         let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
         
-        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+        //let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
         
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck1") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player1.currDeck = selectedDeck as [String]
         }
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "deck2") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
@@ -153,8 +153,8 @@ class OnlineViewPlayGame: UIViewController {
             updateStaminaBar(currPlayer: currPlayer)
             //check card played and update
             
-            var currCard = currPlayer.currDeck[0]
-            var selfDamage = false
+            let currCard = currPlayer.currDeck[0]
+            //var selfDamage = false
             
             //Test print
             //print ("Current stamina: ")
@@ -165,7 +165,7 @@ class OnlineViewPlayGame: UIViewController {
                 
                 //buffs (INFINITE)  
             //+1 attack per turn      
-            case "Mana-Potion-Deck", "Liquid-Courage-Deck":
+            case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
             case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
@@ -222,9 +222,31 @@ class OnlineViewPlayGame: UIViewController {
                 checkHealth(currPlayer: currPlayer)
                 updateHealthBar(currPlayer: currPlayer)
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: (currPlayer.attack * 2) + 2))
-                selfDamage = true
+                //selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
+            //Deal 5 damage to self and gain 5 stamina. If player is at max stamina when playing the card (10), remove 6 stamina from opponent instead.
+            case "Village-Pillage-Deck":
+                currPlayer.health -= 5
+                checkHealth(currPlayer: currPlayer)
+                updateHealthBar(currPlayer: currPlayer)
+                if(currPlayer.currStamina == 8)
+                {
+                    nextPlayer.currStamina -= 6
+                    if(nextPlayer.currStamina < 0)
+                    {
+                        nextPlayer.currStamina = 0 //This check should never happen however it is here to avoid future card addition bugs
+                    }
+                    updateStaminaBar(currPlayer: nextPlayer)
+                }
+                else
+                {
+                    currPlayer.currStamina += 5
+                    if(currPlayer.currStamina > 10)
+                    {
+                        currPlayer.currStamina = 10
+                    }
+                }
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck", "Horde-Ransack-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
@@ -337,7 +359,7 @@ class OnlineViewPlayGame: UIViewController {
                 let buffCard = currPlayer.buffArr[i]
                 switch buffCard
                 {
-                case "Mana-Potion-Deck", "Liquid-Courage-Deck":
+                case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                     currPlayer.attack += 1
                     updateAttackBar(currPlayer: currPlayer)
                     /*if currPlayer.attack > 10
