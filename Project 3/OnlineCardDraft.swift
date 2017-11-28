@@ -27,6 +27,9 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     var deck1 = Deck(name: "player1", deckArr: ["Empty"])
     var deck2 = Deck(name: "player2", deckArr: ["Empty"])
     
+    //multipeer connectivity manager
+    let screenService = ScreenServiceManager()
+    
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
     }
@@ -99,6 +102,10 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         viewCaro.reloadData()
         viewCaro.type = .rotary
         //self.view bringSubviewToFront:addButton
+        
+
+        super.viewDidLoad()
+        screenService.delegate = self
     }
     
     class Deck {
@@ -198,6 +205,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     @IBOutlet weak var endTurnButton: UIButton!
     @IBAction func endTurnButtonPress(_ sender: Any) {
         if(draftTurn == 1 && selected == 2 && countTurns != 12) {
+            screenService.send(screenName: "Player1Turn")
             draftTurn = 2
             playerLabel.text = "PLAYER 1"
             //add cards from temp card array to deck
@@ -209,6 +217,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
             countTurns = countTurns + 1
         }
         else if(draftTurn == 2 && selected == 2 && countTurns != 12) {
+            screenService.send(screenName: "Player2Turn")
             draftTurn = 1
             playerLabel.text = "PLAYER 2"
             //add cards from temp card array to deck
@@ -221,9 +230,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
         else if(countTurns == 12 && selected == 2) {
             if(draftTurn % 2 == 1) {
+                screenService.send(screenName: "Player1Final")
                 addDeck(currDeck: deck1)
             }
             else {
+                screenService.send(screenName: "Player2Final")
                 addDeck(currDeck: deck2)
             }
             print("DRAFT COMPLETE")
@@ -237,6 +248,52 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
             print("Error")
         }
     }
+    func endTurnPressOnline(command: String)
+    {
+        switch command
+        {
+        case "Player1Turn":
+                draftTurn = 2
+                playerLabel.text = "PLAYER 1"
+                //add cards from temp card array to deck
+                addDeck(currDeck: deck1)
+                selected = 0
+                selectArr = [0, 0, 0, 0, 0, 0, 0, 0]
+                selectLabel.text = "0 Selected"
+                howManyLabel.text = "PICK TWO CARDS"
+                countTurns = countTurns + 1
+            
+        case "Player2Turn":
+                draftTurn = 1
+                playerLabel.text = "PLAYER 2"
+                //add cards from temp card array to deck
+                addDeck(currDeck: deck2)
+                selected = 0
+                selectArr = [0, 0, 0, 0, 0, 0, 0, 0]
+                selectLabel.text = "0 Selected"
+                howManyLabel.text = "PICK TWO CARDS"
+                countTurns = countTurns + 1
+        case "Player1Final" :
+            addDeck(currDeck: deck1)
+            print("DRAFT COMPLETE")
+            let defaults = UserDefaults.standard
+            defaults.set(deck1.deckArr, forKey: "draftedDeck1")
+            let defaults2 = UserDefaults.standard
+            defaults2.set(deck2.deckArr, forKey: "draftedDeck2")
+            performSegue(withIdentifier: "completeDraft", sender: nil)
+        case "Player2Final" :
+            addDeck(currDeck: deck2)
+            print("DRAFT COMPLETE")
+            let defaults = UserDefaults.standard
+            defaults.set(deck1.deckArr, forKey: "draftedDeck1")
+            let defaults2 = UserDefaults.standard
+            defaults2.set(deck2.deckArr, forKey: "draftedDeck2")
+            performSegue(withIdentifier: "completeDraft", sender: nil)
+
+        default:
+            NSLog("%@", "Unknown value received: \(command)")
+        }
+    }
     
     
     @IBAction func viewDeckPressed(_ sender: Any) {
@@ -245,6 +302,43 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         popup.view.frame = self.view.frame
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
+    }
+    
+}
+
+extension OnlineCardDraft : ScreenServiceManagerDelegate
+{
+    
+    func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])
+    {
+        OperationQueue.main.addOperation
+            {
+                //self.connectionsLabel.text = "Connections: \(connectedDevices)"
+        }
+    }
+    
+    
+    
+    func screenChanged(manager: ScreenServiceManager, screenString: String)
+    {
+        OperationQueue.main.addOperation
+            {
+                switch screenString
+                {
+                case "Player1Turn":
+                    self.endTurnPressOnline(command: screenString)
+                case "Player2Turn":
+                    self.endTurnPressOnline(command: screenString)
+                case "Player1Final" :
+                    self.endTurnPressOnline(command: screenString)
+                case "Player2Final" :
+                    self.endTurnPressOnline(command: screenString)
+                    
+                default:
+                    NSLog("%@", "Unknown value received: \(screenString)")
+                }
+                
+        }
     }
     
 }
