@@ -62,9 +62,9 @@ class ViewPlayGame: UIViewController {
             print("ERROR PICKING TURN")
         }
         
-        let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+        /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
         
-        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
         
         if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as AnyObject {
             let selectedDeck : [NSString] = test as! [NSString]
@@ -74,26 +74,38 @@ class ViewPlayGame: UIViewController {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
-        if(player1.currDeck == warriorDeck)
-        {
-            player1.deck = "Warrior"
-            player1Class.image = UIImage(named: "Warrior-Icon")
+        
+        var deckCheck = false
+    
+        for i in 0...19 {
+            if(player1.currDeck[i] == "Sword-Strike-Deck" && deckCheck == false) {
+                player1.deck = "Warrior"
+                player1Class.image = UIImage(named: "Warrior-Icon")
+                deckCheck = true
+            }
         }
-        else
+        if(deckCheck == false)
         {
             player1.deck = "Mage"
             player1Class.image = UIImage(named: "Mage-Icon")
         }
-        if(player2.currDeck == warriorDeck)
-        {
-            player2.deck = "Warrior"
-            player2Class.image = UIImage(named: "Warrior-Icon")
+        deckCheck = false
+        
+        for i in 0...19 {
+            if(player2.currDeck[i] == "Sword-Strike-Deck" && deckCheck == false) {
+                player2.deck = "Warrior"
+                player2Class.image = UIImage(named: "Warrior-Icon")
+                deckCheck = true
+            }
         }
-        else
+        if(deckCheck == false)
         {
             player2.deck = "Mage"
             player2Class.image = UIImage(named: "Mage-Icon")
         }
+        deckCheck = false
+        
+        
         player1.currDeck = player1.currDeck.shuffled()
         player2.currDeck = player2.currDeck.shuffled()
         
@@ -912,14 +924,14 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.75, animations: {
                 var newCenter = self.topCard2.center
                 newCenter.x += 300
                 self.topCard2.center = newCenter
             }, completion: { finished in
                 print("Off Screen")
                 self.revealTopCard(currPlayer: currPlayer)
-                UIView.animate(withDuration: 1, animations: {
+                UIView.animate(withDuration: 0.75, animations: {
                     var newCenter = self.topCard2.center
                     newCenter.x -= 300
                     self.topCard2.center = newCenter
@@ -1495,11 +1507,12 @@ class ViewPlayGame: UIViewController {
         printStats()
     }
     
-    @IBAction func viewDeckPressed(_ sender: Any) {
+    @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
         self.view.addSubview(popup.view)
+        popup.view.layer.zPosition = 3
         popup.didMove(toParentViewController: self)
     }
     

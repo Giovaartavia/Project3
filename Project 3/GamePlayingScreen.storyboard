@@ -256,7 +256,7 @@
                                 <state key="normal" title="Options" image="MenuButton-Up"/>
                                 <state key="highlighted" image="MenuButton-Down"/>
                                 <connections>
-                                    <action selector="viewDeckPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="h8R-Vy-Lu5"/>
+                                    <action selector="menuPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="fzu-BI-6aA"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InterfaceBackDrop" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-Rh-KhR">
@@ -584,7 +584,7 @@
                                 <state key="normal" title="Options" image="MenuButton-Up"/>
                                 <state key="highlighted" image="MenuButton-Down"/>
                                 <connections>
-                                    <action selector="viewDeckPressed:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="VUu-co-VoV"/>
+                                    <action selector="menuPressed:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="lJl-dY-UNY"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Turn-Bar" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-bJ-z8G">

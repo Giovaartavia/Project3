@@ -98,7 +98,6 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
         viewCaro.isUserInteractionEnabled = true;
         viewCaro.reloadData()
         viewCaro.type = .rotary
-        //self.view bringSubviewToFront:addButton
     }
     
     class Deck {
@@ -239,12 +238,11 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     }
     
     
-    @IBAction func viewDeckPressed(_ sender: Any) {
+    @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
     }
-    
 }
