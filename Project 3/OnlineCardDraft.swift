@@ -220,6 +220,16 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         default:
             NSLog("%@", "Unknown value received: \(command)")
         }
+        print("updateCardSelect")
+        print("=====================")
+        print("=====================")
+        print("=====================")
+        print(tempCardArr.joined(separator: "."))
+        print("=====================")
+        print("=====================")
+        print("=====================")
+        print("updateCardSelect")
+        
     }
     
     func updateLabels() {
