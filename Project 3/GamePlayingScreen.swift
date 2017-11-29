@@ -292,6 +292,7 @@ class ViewPlayGame: UIViewController {
                     {
                         currPlayer.currStamina = 10
                     }
+                    updateStaminaBar(currPlayer: currPlayer)
                 }
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck", "Horde-Ransack-Deck":
@@ -601,9 +602,9 @@ class ViewPlayGame: UIViewController {
     ///   - nextPlayer: Player object whose staminina asset only is being modified
     func checkStaminaCap(currPlayer: Player, nextPlayer: Player)
     {
-        if(currPlayer.totalStamina >= 10)
+        if(currPlayer.currStamina >= 10)//was totalStamina
         {
-            currPlayer.totalStamina = 10
+            //currPlayer.totalStamina = 10
             currPlayer.currStamina = 10
         }
     }
