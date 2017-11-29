@@ -27,11 +27,13 @@ class OnlineViewPlayGame: UIViewController {
         if(playerStart == 1)
         {
             playerTurn.text = "PLAYER 1's Turn"
+            Player2Indicator.isHidden = true;
             
         }
         else if(playerStart == 2)
         {
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
         }
         else
         {
@@ -711,6 +713,13 @@ class OnlineViewPlayGame: UIViewController {
     ///Image used for when Player 2 discards a card
     @IBOutlet weak var discard2: UIImageView!
     
+    ///Image used to indicate player 1's turn
+    @IBOutlet weak var Player1Indicator: UIImageView!
+    ///Image used to indicate player 2's turn
+    @IBOutlet weak var Player2Indicator: UIImageView!
+    
+    
+    
     //buff and debuff images
     ///Image used for Player 1's debuff
     @IBOutlet weak var debuffIcon1: UIImageView!
@@ -1371,21 +1380,26 @@ class OnlineViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
+            Player2Indicator.isHidden = false;
             
             if(player2.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1394,11 +1408,13 @@ class OnlineViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else if(turn == 2)
@@ -1407,21 +1423,26 @@ class OnlineViewPlayGame: UIViewController {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
             playerTurn.text = "PLAYER 1's Turn"
+            Player1Indicator.isHidden = false;
+            Player2Indicator.isHidden = true;
             
             if(player1.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1430,11 +1451,13 @@ class OnlineViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else
@@ -1453,21 +1476,26 @@ class OnlineViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
+            Player2Indicator.isHidden = false;
             
             if(player2.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1476,11 +1504,13 @@ class OnlineViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else if(currTurn == "player2")
@@ -1488,21 +1518,26 @@ class OnlineViewPlayGame: UIViewController {
             turn = 1
             endTurn(currPlayer: player2, nextPlayer: player1)
             playerTurn.text = "PLAYER 1's Turn"
+            Player1Indicator.isHidden = false;
+            Player2Indicator.isHidden = true;
             
             if(player1.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1511,11 +1546,13 @@ class OnlineViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else
@@ -1544,16 +1581,19 @@ class OnlineViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else if (turn == 2)
@@ -1571,16 +1611,19 @@ class OnlineViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else
@@ -1620,16 +1663,19 @@ class OnlineViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else if (newDeckArray[0] == "player2")
@@ -1658,16 +1704,19 @@ class OnlineViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else
