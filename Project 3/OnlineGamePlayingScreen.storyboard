@@ -276,7 +276,7 @@
                                 <state key="normal" title="Options" image="MenuButton-Up"/>
                                 <state key="highlighted" image="MenuButton-Down"/>
                                 <connections>
-                                    <action selector="viewDeckPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="h8R-Vy-Lu5"/>
+                                    <action selector="onlimeMenuButtonPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="7y8-Qk-lfx"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Health-Bar20" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="370-jY-6Qk">
@@ -400,7 +400,7 @@
                                 <rect key="frame" x="22" y="248" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
+                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="t0J-Ge-Ktt">
@@ -416,6 +416,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Gga-Ub-72V"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="Player1Indicator" destination="3RK-EM-E7j" id="24a-Yy-mAG"/>

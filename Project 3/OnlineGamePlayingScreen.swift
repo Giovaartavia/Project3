@@ -88,6 +88,16 @@ class OnlineViewPlayGame: UIViewController {
         screenService.delegate = self
     }
     
+    @IBAction func onlimeMenuButtonPressed(_ sender: Any) {
+        let popup = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+        let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) as! OnlineMenuPopup
+        self.addChildViewController(viewController)
+        viewController.view.frame = self.view.frame
+        self.view.addSubview(viewController.view)
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    
     /// Player Object
     /// Object includes a deckArray along with various stats used for gameplay
     ///

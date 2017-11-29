@@ -68,16 +68,20 @@ extension OnlineMenuPopup : ScreenServiceManagerDelegate
     {
         OperationQueue.main.addOperation
             {
+                print("********** HERE **********")
+                print("********** HERE **********")
+                print("********** HERE **********")
+                print("********** HERE **********")
+                print("********** HERE **********")
                 //determine which btton was pressed and push changes to all screens
-                switch screenString
+                if (screenString == "Surrender")
                 {
-                case "Surrender" :
                     self.onlineSurrender()
-                    
-                default:
+                }
+                else
+                {
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
-                
         }
     }
 }
