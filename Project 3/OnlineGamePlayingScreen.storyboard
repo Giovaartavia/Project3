@@ -489,10 +489,10 @@
             </objects>
             <point key="canvasLocation" x="721.73913043478262" y="-28.532608695652176"/>
         </scene>
-        <!--Menu Popup-->
+        <!--Online Menu Popup-->
         <scene sceneID="OGW-bR-9nf">
             <objects>
-                <viewController storyboardIdentifier="menuPopupID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mtJ-4L-pKb" customClass="menuPopup" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onlineMenuPopupID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mtJ-4L-pKb" customClass="OnlineMenuPopup" customModule="Project_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J0L-vc-jn7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -519,7 +519,7 @@
                                         </state>
                                         <state key="highlighted" image="Surrender-Down"/>
                                         <connections>
-                                            <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="yrv-bb-K0b"/>
+                                            <action selector="onlineSurrenderButtonPress:" destination="mtJ-4L-pKb" eventType="touchUpInside" id="HgJ-93-GFE"/>
                                             <segue destination="LxY-3i-Ugb" kind="show" id="PWd-Y4-F04"/>
                                         </connections>
                                     </button>
@@ -530,6 +530,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="l8w-CS-geN"/>
                     </view>
+                    <connections>
+                        <outlet property="onlineSurrenderButtonPress" destination="R17-1g-r5e" id="Z4e-1d-dXN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZF-uk-Pg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
