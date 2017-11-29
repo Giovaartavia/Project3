@@ -336,7 +336,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     
     @IBAction func viewDeckPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
-        let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) //as! menuPopup
+        let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) as! OnlineMenuPopup
         self.addChildViewController(viewController)
         viewController.view.frame = self.view.frame
         self.view.addSubview(viewController.view)
