@@ -226,18 +226,18 @@ class ViewPlayGame: UIViewController {
             case "Disarm-Deck":
                 nextPlayer.debuff = "Disarm-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 3
+                nextPlayer.debuffTime = 2
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 3      
+                nextPlayer.debuffTime = 2
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 3
+                nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
                 //warrior: Opponent takes 2 damage per turn
@@ -251,7 +251,7 @@ class ViewPlayGame: UIViewController {
             case "Haunt-Taunt-Deck":
                 nextPlayer.debuff = "Haunt-Taunt-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 3
+                nextPlayer.debuffTime = 2
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
                 //applyDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
@@ -482,24 +482,46 @@ class ViewPlayGame: UIViewController {
     ///
     /// - Parameters:
     ///   - currPlayer: Current Player Object executing turn
-    ///   - nextPlayer: Next Player Object to exceute turn
+    ///   - nextPlayer: Next Player Object to execute turn
     func checkDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(currPlayer.debuff == "Bad-Medicine-Deck")
         {
             currPlayer.canHeal = false
+            
+            currPlayer.canAddBack = true
+            nextPlayer.bloodThinner = false
+            nextPlayer.hasHauntTaunt = false
         }
         else if(currPlayer.debuff == "Voodoo-Doll-Deck")
         {
             currPlayer.canAddBack = false
+            
+            currPlayer.canHeal = true
+            nextPlayer.bloodThinner = false
+            nextPlayer.hasHauntTaunt = false
         }
         else if(nextPlayer.debuff == "Brass-Knuckles-Deck")
         {
             nextPlayer.bloodThinner = true
+            
+            currPlayer.canHeal = true
+            currPlayer.canAddBack = true
+            nextPlayer.hasHauntTaunt = false
         }
         else if (nextPlayer.debuff == "Haunt-Taunt-Deck")
         {
             nextPlayer.hasHauntTaunt = true
+            
+            currPlayer.canHeal = true
+            currPlayer.canAddBack = true
+            nextPlayer.bloodThinner = false
+        }
+        else {
+            currPlayer.canHeal = true
+            currPlayer.canAddBack = true
+            nextPlayer.bloodThinner = false
+            nextPlayer.hasHauntTaunt = false
         }
     }
 
@@ -1103,6 +1125,10 @@ class ViewPlayGame: UIViewController {
                 {
                     debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
                 }
+                else if(currPlayer.debuff == "Haunt-Taunt-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Haunt-Taunt-Deck-Icon")
+                }
                 else
                 {
                     debuffIcon1.image = UIImage(named: "")
@@ -1128,6 +1154,10 @@ class ViewPlayGame: UIViewController {
                 else if(currPlayer.debuff == "Brass-Knuckles-Deck")
                 {
                     debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Haunt-Taunt-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Haunt-Taunt-Deck-Icon")
                 }
                 else
                 {
