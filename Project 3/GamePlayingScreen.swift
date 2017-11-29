@@ -1017,7 +1017,7 @@ class ViewPlayGame: UIViewController {
             topCard2.image = UIImage(named: currPlayer.currDeck[1])
             UIView.animate(withDuration: 0.5, animations: {
                 var newCenter = self.discard2.center
-                newCenter.x -= 300
+                newCenter.x += 300
                 self.discard2.center = newCenter
             }, completion: { finished in
                 print("Off Screen")
@@ -1027,7 +1027,7 @@ class ViewPlayGame: UIViewController {
                     let truncate = discardName.substring(to: postfix)
                     self.discard2.image = UIImage(named: truncate + "-Single")
                     var newCenter = self.discard2.center
-                    newCenter.x += 300
+                    newCenter.x -= 300
                     self.discard2.center = newCenter
                 }, completion: { finished in
                     print("Discard Animation Complete")
@@ -1102,7 +1102,7 @@ class ViewPlayGame: UIViewController {
             self.topCard1.image = UIImage(named: nextPlayer.currDeck[1])
             UIView.animate(withDuration: 0.5, animations: {
                 var newCenter = self.discard1.center
-                newCenter.x += 300
+                newCenter.x -= 300
                 self.discard1.center = newCenter
             }, completion: { finished in
                 print("Off Screen")
@@ -1111,7 +1111,7 @@ class ViewPlayGame: UIViewController {
                 self.discard1.image = UIImage(named: "Handy-Discount-Single")
                 UIView.animate(withDuration: 0.5, animations: {
                     var newCenter = self.discard1.center
-                    newCenter.x -= 300
+                    newCenter.x += 300
                     self.discard1.center = newCenter
                 }, completion: { finished in
                     print("Discard Animation Complete")
