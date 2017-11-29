@@ -64,9 +64,9 @@ class ViewPlayGame: UIViewController {
             print("ERROR PICKING TURN")
         }
         
-        let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
+        /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
         
-        //let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
         
         if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
@@ -76,26 +76,47 @@ class ViewPlayGame: UIViewController {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
-        if(player1.currDeck == warriorDeck)
-        {
-            player1.deck = "Warrior"
-            player1Class.image = UIImage(named: "Warrior-Icon")
+        
+        var deckCheck = false
+    
+        for i in 0...19 {
+            if(player1.currDeck[i] == "Sword-Strike-Deck" && deckCheck == false) {
+                player1.deck = "Warrior"
+                player1Class.image = UIImage(named: "Warrior-Icon")
+                deckCheck = true
+            }
+            else if(player1.currDeck[i] == "Horde-Ransack-Deck" && deckCheck == false) {
+                player1.deck = "Goblin"
+                player1Class.image = UIImage(named: "Goblin-Icon")
+                deckCheck = true
+            }
+            else if(player1.currDeck[i] == "Magical-Bolt-Deck" && deckCheck == false) {
+                player1.deck = "Mage"
+                player1Class.image = UIImage(named: "Mage-Icon")
+                deckCheck = true
+            }
         }
-        else
-        {
-            player1.deck = "Mage"
-            player1Class.image = UIImage(named: "Mage-Icon")
+        deckCheck = false
+        
+        for i in 0...19 {
+            if(player2.currDeck[i] == "Sword-Strike-Deck" && deckCheck == false) {
+                player2.deck = "Warrior"
+                player2Class.image = UIImage(named: "Warrior-Icon")
+                deckCheck = true
+            }
+            else if(player2.currDeck[i] == "Horde-Ransack-Deck" && deckCheck == false) {
+                player2.deck = "Goblin"
+                player2Class.image = UIImage(named: "Goblin-Icon")
+                deckCheck = true
+            }
+            else if(player2.currDeck[i] == "Magical-Bolt-Deck" && deckCheck == false) {
+                player2.deck = "Mage"
+                player2Class.image = UIImage(named: "Mage-Icon")
+                deckCheck = true
+            }
         }
-        if(player2.currDeck == warriorDeck)
-        {
-            player2.deck = "Warrior"
-            player2Class.image = UIImage(named: "Warrior-Icon")
-        }
-        else
-        {
-            player2.deck = "Mage"
-            player2Class.image = UIImage(named: "Mage-Icon")
-        }
+        deckCheck = false
+        
         player1.currDeck = player1.currDeck.shuffled()
         player2.currDeck = player2.currDeck.shuffled()
         
@@ -142,7 +163,7 @@ class ViewPlayGame: UIViewController {
         var hasAttacked = false
         var canAddBack = true
         var bloodThinner = false
-        var hasSabotage = false
+        var hasHauntTaunt = false
         
         //Extra booleans for cards execution
         var hasGoblinGreed = false
@@ -192,7 +213,7 @@ class ViewPlayGame: UIViewController {
             case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
-            case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
+            case "Spell-Tome-Deck", "Blacksmith-Deck", "Money-is-Power-Deck":
                 currPlayer.attack += 3
                 updateAttackBar(currPlayer: currPlayer)
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
@@ -227,8 +248,8 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, opponent has -2 stamina (Goblin)
-            case "Sabotage-Deck":
-                nextPlayer.debuff = "Sabotage-Deck"
+            case "Haunt-Taunt-Deck":
+                nextPlayer.debuff = "Haunt-Taunt-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
@@ -251,7 +272,7 @@ class ViewPlayGame: UIViewController {
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
             //Deal 5 damage to self and gain 5 stamina. If player is at max stamina when playing the card (10), remove 6 stamina from opponent instead.
-            case "Village-Pillage-Deck":
+            case "Loot-Tool-Deck":
                 currPlayer.health -= 5
                 checkHealth(currPlayer: currPlayer)
                 updateHealthBar(currPlayer: currPlayer)
@@ -277,7 +298,7 @@ class ViewPlayGame: UIViewController {
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 2 damage. Plays top card of opponents deck on bottom
-            case "Barbaric-Burglary-Deck":
+            case "Sleight-of-Hand-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 2))
                 addToBack(arr: &nextPlayer.currDeck)
                 animateDiscard(currPlayer: nextPlayer)
@@ -305,8 +326,8 @@ class ViewPlayGame: UIViewController {
                 currPlayer.hasGoblinGreed = true
                 updateStaminaBar(currPlayer: currPlayer)
 
-            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Theft card at the bottom of your opponents deck
-            case "Theft-Deck":
+            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Handy-Discount card at the bottom of your opponents deck
+            case "Handy-Discount-Deck":
                 currPlayer.currStamina += 2
                 nextPlayer.currDeck.append(currPlayer.currDeck[0])
                 //Note that we add back after a card is being played so we need to set up the array in such a way that it has the wanted order after an add back.
@@ -350,7 +371,7 @@ class ViewPlayGame: UIViewController {
         if(currPlayer.buffArr.count == 3)
         {
             //check if replaced is "Spell-Tome-Deck" or "Blacksmith-Deck"
-            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Call-The-Horde-Deck")
+            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Money-is-Power-Deck")
             {
                 currPlayer.attack -= 3
                 updateAttackBar(currPlayer: currPlayer)
@@ -395,7 +416,7 @@ class ViewPlayGame: UIViewController {
                     }*/
                     print("buff add attack")
                 //+3 attack once while active
-                case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
+                case "Spell-Tome-Deck", "Blacksmith-Deck", "Money-is-Power-Deck":
                     //does not take place per turn 
                     print("buff add attack once")
                 //+2 health per turn
@@ -476,9 +497,9 @@ class ViewPlayGame: UIViewController {
         {
             nextPlayer.bloodThinner = true
         }
-        else if (nextPlayer.debuff == "Sabotage-Deck")
+        else if (nextPlayer.debuff == "Haunt-Taunt-Deck")
         {
-            nextPlayer.hasSabotage = true
+            nextPlayer.hasHauntTaunt = true
         }
     }
 
@@ -582,7 +603,7 @@ class ViewPlayGame: UIViewController {
             nextPlayer.currStamina -= 2
             nextPlayer.hasGoblinGreed = false
         }
-        else if(nextPlayer.hasSabotage)
+        else if(nextPlayer.hasHauntTaunt)
         {
             //print ("\n\n\n\(nextPlayer.currStamina)\n\n\n")
             nextPlayer.currStamina -= 2
@@ -601,9 +622,9 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
-                if(nextPlayer.hasSabotage)
+                if(nextPlayer.hasHauntTaunt)
                 {
-                    nextPlayer.hasSabotage = false
+                    nextPlayer.hasHauntTaunt = false
                     nextPlayer.currStamina += 2
                 }
             }
@@ -682,7 +703,7 @@ class ViewPlayGame: UIViewController {
         {
             for i in 0...(currPlayer.buffArr.count - 1)
             {
-                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Call-The-Horde-Deck")
+                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Money-is-Power-Deck")
                 {
                     hasBlacksmith = true
                 }
@@ -942,14 +963,14 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.75, animations: {
                 var newCenter = self.topCard2.center
                 newCenter.x += 300
                 self.topCard2.center = newCenter
             }, completion: { finished in
                 print("Off Screen")
                 self.revealTopCard(currPlayer: currPlayer)
-                UIView.animate(withDuration: 1, animations: {
+                UIView.animate(withDuration: 0.75, animations: {
                     var newCenter = self.topCard2.center
                     newCenter.x -= 300
                     self.topCard2.center = newCenter
@@ -1548,11 +1569,12 @@ class ViewPlayGame: UIViewController {
         printStats()
     }
     
-    @IBAction func viewDeckPressed(_ sender: Any) {
+    @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
         self.view.addSubview(popup.view)
+        popup.view.layer.zPosition = 3
         popup.didMove(toParentViewController: self)
     }
     

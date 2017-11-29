@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kb-fb-G7R">
-                                <rect key="frame" x="78" y="568" width="258" height="105"/>
+                                <rect key="frame" x="78" y="526" width="258" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
@@ -94,36 +94,41 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WoS-su-xZn">
-                                <rect key="frame" x="53" y="450" width="308" height="29"/>
+                                <rect key="frame" x="53" y="416" width="308" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Warrior"/>
                                     <segment title="Mage"/>
+                                    <segment title="Goblin"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Warrior-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DFm-Op-Srr">
+                                <rect key="frame" x="53" y="292" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mage-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EqG-QS-crK">
+                                <rect key="frame" x="157" y="292" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Goblin-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-4X-dEU">
+                                <rect key="frame" x="262" y="292" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PLAYER 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-sh-c5L">
-                                <rect key="frame" x="0.0" y="50" width="414" height="112"/>
+                                <rect key="frame" x="0.0" y="85" width="414" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CLASS SELECTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfS-iy-o6n">
-                                <rect key="frame" x="0.0" y="105" width="414" height="112"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Warrior-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DFm-Op-Srr">
-                                <rect key="frame" x="53" y="275" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mage-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EqG-QS-crK">
-                                <rect key="frame" x="211" y="275" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="oad-2f-ARd"/>
@@ -145,7 +150,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQb-Du-vry">
-                                <rect key="frame" x="78" y="568" width="258" height="105"/>
+                                <rect key="frame" x="78" y="526" width="258" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
@@ -159,37 +164,42 @@
                                     <segue destination="trm-yg-oo9" kind="show" id="B7z-PQ-c8L"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mage-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Du8-6V-vvR">
-                                <rect key="frame" x="211" y="275" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Warrior-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="OnY-j9-SGH">
-                                <rect key="frame" x="53" y="275" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="266-zr-XdP">
-                                <rect key="frame" x="53" y="450" width="308" height="29"/>
+                                <rect key="frame" x="53" y="416" width="308" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Warrior"/>
                                     <segment title="Mage"/>
+                                    <segment title="Goblin"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CLASS SELECTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-S0-BDx">
-                                <rect key="frame" x="0.0" y="102" width="414" height="112"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PLAYER 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8i-5H-LxH">
-                                <rect key="frame" x="0.0" y="52" width="414" height="112"/>
+                                <rect key="frame" x="0.0" y="85" width="414" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Warrior-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zfs-kl-IuN">
+                                <rect key="frame" x="53" y="292" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mage-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-Fd-yf4">
+                                <rect key="frame" x="157" y="292" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Goblin-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="dGa-sz-Jrm">
+                                <rect key="frame" x="262" y="292" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ZXg-nf-BMv"/>
@@ -264,7 +274,7 @@
                                 <state key="normal" title="Options" image="MenuButton-Up"/>
                                 <state key="highlighted" image="MenuButton-Down"/>
                                 <connections>
-                                    <action selector="viewDeckPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="h8R-Vy-Lu5"/>
+                                    <action selector="menuPressed:" destination="jsl-U6-zg7" eventType="touchUpInside" id="fzu-BI-6aA"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InterfaceBackDrop" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-Rh-KhR">
@@ -461,7 +471,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER 1 WINS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67k-iW-C0n">
-                                <rect key="frame" x="23.333333333333343" y="155" width="368.33333333333326" height="57"/>
+                                <rect key="frame" x="37.666666666666657" y="155" width="340" height="53.666666666666657"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -581,10 +591,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdU-Ba-zRn">
                                 <rect key="frame" x="214" y="599" width="188" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <state key="normal" image="Tutorial-Next-Up">
+                                <state key="normal" image="RemoveCard-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="Tutorial-Next-Down"/>
+                                <state key="highlighted" image="RemoveCard-Down"/>
                                 <connections>
                                     <action selector="removeButtonPress:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="G8O-jw-dPl"/>
                                 </connections>
@@ -609,10 +619,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdH-NT-ldZ">
                                 <rect key="frame" x="12" y="599" width="188" height="69"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                <state key="normal" image="Tutorial-Previous-Up">
+                                <state key="normal" image="AddCard-Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="Tutorial-Previous-Down"/>
+                                <state key="highlighted" image="AddCard-Down"/>
                                 <connections>
                                     <action selector="addButtonPress:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="NkI-Kk-mQK"/>
                                 </connections>
@@ -623,7 +633,7 @@
                                 <state key="normal" title="Options" image="MenuButton-Up"/>
                                 <state key="highlighted" image="MenuButton-Down"/>
                                 <connections>
-                                    <action selector="viewDeckPressed:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="VUu-co-VoV"/>
+                                    <action selector="menuPressed:" destination="Qyn-u6-q8H" eventType="touchUpInside" id="lJl-dY-UNY"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Turn-Bar" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-bJ-z8G">
@@ -802,7 +812,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER 2 WINS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4f-DJ-Rt9">
-                                <rect key="frame" x="20.666666666666657" y="155" width="372.66666666666674" height="57"/>
+                                <rect key="frame" x="37" y="155" width="340" height="53.666666666666657"/>
                                 <fontDescription key="fontDescription" name="MADEWaffleSoft" family="MADE Waffle Soft" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -832,6 +842,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddCard-Down" width="445" height="185"/>
+        <image name="AddCard-Up" width="445" height="185"/>
         <image name="Attack-Bar0" width="443" height="45"/>
         <image name="Back-to-home-Down" width="445" height="185"/>
         <image name="Back-to-home-Up" width="445" height="185"/>
@@ -841,6 +853,7 @@
         <image name="EndTurnButton-Up" width="1008" height="101"/>
         <image name="Flip-Coin-Down" width="445" height="185"/>
         <image name="Flip-Coin-Up" width="445" height="185"/>
+        <image name="Goblin-Icon" width="1024" height="1024"/>
         <image name="Health-Bar20" width="443" height="45"/>
         <image name="Health-Potion-Deck" width="487" height="651"/>
         <image name="InterfaceBackDrop" width="1028" height="504"/>
@@ -858,6 +871,8 @@
         <image name="PlayCardButton-Up" width="337" height="185"/>
         <image name="Quit-Down" width="445" height="185"/>
         <image name="Quit-Up" width="445" height="185"/>
+        <image name="RemoveCard-Down" width="445" height="185"/>
+        <image name="RemoveCard-Up" width="445" height="185"/>
         <image name="Select-Class-Down" width="445" height="185"/>
         <image name="Select-Class-Up" width="445" height="185"/>
         <image name="ShuffleButton-Down-2" width="183" height="185"/>
@@ -867,8 +882,6 @@
         <image name="TurnIncicatorBox" width="558" height="1310"/>
         <image name="Tutorial-Next-Down" width="493" height="185"/>
         <image name="Tutorial-Next-Up" width="493" height="185"/>
-        <image name="Tutorial-Previous-Down" width="493" height="185"/>
-        <image name="Tutorial-Previous-Up" width="493" height="185"/>
         <image name="Warrior-Icon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
