@@ -1,17 +1,17 @@
 //
-//  Project_3Tests.swift
+//  Project_3OnlineTests.swift
 //  Project 3Tests
 //
-//  Created by Giovanni on 10/21/17.
+//  Created by Giovanni on 11/29/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 
 import XCTest
 @testable import Project_3
 
-class Project_3Tests: XCTestCase {
+class Project_3OnlineTests: XCTestCase {
     
-    var viewGame = ViewPlayGame()
+    var viewGame = OnlineViewPlayGame()
     
     override func setUp() {
         super.setUp()
@@ -21,8 +21,8 @@ class Project_3Tests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-    }
-    
+}
+
     //  ***** TEST DEBUFFS *****
     
     //
@@ -49,19 +49,19 @@ class Project_3Tests: XCTestCase {
         //Pass turn to player 2 and check player 2's health.
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         XCTAssertTrue(player2.health == 17)
-                
+        
         //Pass one full turn and check player 2's health.
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         XCTAssertTrue(player2.health == 15)
-                    
+        
         //Pass one more full turn
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         
         //Chek that debuff is gone.
         XCTAssertTrue(player2.debuff == "")
- 
+        
         //Check that player 2's health did not change.
         XCTAssertTrue(player2.health == 15)
     }
@@ -624,7 +624,7 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.health == 19)
         XCTAssertTrue(player2.attack == 1)
     }
-   
+    
     //
     // Checks Haunt Taunt debuff under normal circumstances. Debuff should deal one damage when played and remove 2 of stamina from opponent's current stamina for 2 turns.
     //
@@ -671,7 +671,7 @@ class Project_3Tests: XCTestCase {
         
         //Check that Player 2's stamina is back to normal.
         XCTAssertTrue(player2.currStamina == 6)
-
+        
         //One more check is done due to the way stamina is added back.
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
@@ -1530,7 +1530,7 @@ class Project_3Tests: XCTestCase {
         
         //Check that player 2's attack did not change
         XCTAssertTrue(player2.attack == 0)
-
+        
     }
     
     //

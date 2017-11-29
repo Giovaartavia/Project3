@@ -229,18 +229,18 @@ class ViewPlayGame: UIViewController {
             case "Disarm-Deck":
                 nextPlayer.debuff = "Disarm-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2
+                nextPlayer.debuffTime = 3
             //Stops Opponent from healing
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2
+                nextPlayer.debuffTime = 3
             //1 damage to opponent
                 //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2
+                nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
                 //warrior: Opponent takes 2 damage per turn
@@ -254,7 +254,7 @@ class ViewPlayGame: UIViewController {
             case "Haunt-Taunt-Deck":
                 nextPlayer.debuff = "Haunt-Taunt-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 2
+                nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
                 //applyDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
@@ -761,7 +761,7 @@ class ViewPlayGame: UIViewController {
     
     //TEST PRINTS. Prints all stats
     
-    func printStats()
+    /*func printStats()
     {
         print("*********STATS*********")
         print ("Player 1's current stats: ")
@@ -792,7 +792,7 @@ class ViewPlayGame: UIViewController {
     {
         print ("Player 1's current top card: \(player1.currDeck[0])")
         print ("Player 2's current top card: \(player2.currDeck[0])")
-    }
+    }*/
  
     // END OF FUNCTIONS
     
@@ -1578,7 +1578,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
         
     }
     
@@ -1601,7 +1601,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
     }
     
 
@@ -1707,7 +1707,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
     }
     
     
@@ -1771,7 +1771,7 @@ class ViewPlayGame: UIViewController {
         }
         
         //TEST. Show stats
-        printStats()
+        //printStats()
     }
     
     @IBAction func menuPressed(_ sender: Any) {
