@@ -225,6 +225,7 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
             else {
                 addDeck(currDeck: deck2)
             }
+            
             print("DRAFT COMPLETE")
             let defaults = UserDefaults.standard
             defaults.set(deck1.deckArr, forKey: "draftedDeck1")
