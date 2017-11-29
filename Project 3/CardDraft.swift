@@ -89,16 +89,15 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
             deck2.deckArr = selectedDeck as [String]
         }
         
-        images = ["Bad-Medicine-Single", "Health-Potion-Single", "Life-Steal-Single", "Brass-Knuckles-Single", "Throwing-Knife-Single", "Smoke-Bomb-Single", "Blacksmith-Single", "Spell-Tome-Single"]
-        selectArr = [0, 0, 0, 0, 0, 0, 0, 0]
-        availableArr = [4, 4, 4, 4, 4, 4, 4, 4]
+        images = ["Bad-Medicine-Single", "Health-Potion-Single", "Life-Steal-Single", "Brass-Knuckles-Single", "Throwing-Knife-Single", "Smoke-Bomb-Single", "Haunt-Taunt-Single"]
+        selectArr = [0, 0, 0, 0, 0, 0, 0]
+        availableArr = [4, 4, 4, 4, 4, 4, 4]
         tempCardArr = ["Empty", "Empty"]
         selected = 0
         countTurns = 1
         viewCaro.isUserInteractionEnabled = true;
         viewCaro.reloadData()
         viewCaro.type = .rotary
-        //self.view bringSubviewToFront:addButton
     }
     
     class Deck {
@@ -238,13 +237,11 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
         }
     }
     
-    
-    @IBAction func viewDeckPressed(_ sender: Any) {
+    @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
     }
-    
 }

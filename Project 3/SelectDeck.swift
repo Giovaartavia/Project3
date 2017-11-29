@@ -25,6 +25,8 @@ class SelectionDeck1: UIViewController {
     
     let mageDeck = ["Magical-Bolt-Deck", "Magical-Bolt-Deck", "Arcane-Burst-Deck", "Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Spell-Tome-Deck", "Mana-Potion-Deck", "Mana-Potion-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
     
+    let goblinDeck = ["Horde-Ransack-Deck", "Horde-Ransack-Deck", "Loot-Tool-Deck", "Goblin-Greed-Deck", "Sleight-of-Hand-Deck", "Handy-Discount-Deck", "Money-is-Power-Deck", "Coin-Craze-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
+    
     ///Function that is called once Player 1 presses the Select Class button to confirm their class.
     ///This sets which deck Player 1 will use.
     /// - Sources:
@@ -44,6 +46,11 @@ class SelectionDeck1: UIViewController {
             let defaults = UserDefaults.standard
             //currDeck = mageDeck.shuffled()
             currDeck = mageDeck
+            defaults.set(currDeck, forKey: "deck1")
+        case 2:
+            let defaults = UserDefaults.standard
+            //currDeck = mageDeck.shuffled()
+            currDeck = goblinDeck
             defaults.set(currDeck, forKey: "deck1")
         default:
             currDeck = ["ERROR"]
@@ -68,6 +75,8 @@ class SelectionDeck2: UIViewController {
     
     let mageDeck = ["Magical-Bolt-Deck", "Magical-Bolt-Deck", "Arcane-Burst-Deck", "Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Spell-Tome-Deck", "Mana-Potion-Deck", "Mana-Potion-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
     
+    let goblinDeck = ["Horde-Ransack-Deck", "Horde-Ransack-Deck", "Loot-Tool-Deck", "Goblin-Greed-Deck", "Sleight-of-Hand-Deck", "Handy-Discount-Deck", "Money-is-Power-Deck", "Coin-Craze-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
+    
     ///Function that is called once Player 2 presses the Select Class button to confirm their class.
     ///This sets which deck Player 2 will use.
     /// - Sources:
@@ -86,6 +95,11 @@ class SelectionDeck2: UIViewController {
             let defaults = UserDefaults.standard
             //currDeck = mageDeck.shuffled()
             currDeck = mageDeck
+            defaults.set(currDeck, forKey: "deck2")
+        case 2:
+            let defaults = UserDefaults.standard
+            //currDeck = mageDeck.shuffled()
+            currDeck = goblinDeck
             defaults.set(currDeck, forKey: "deck2")
         default:
             currDeck = ["ERROR"]

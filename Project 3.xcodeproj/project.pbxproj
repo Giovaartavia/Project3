@@ -503,10 +503,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88LS55E862;
+				DEVELOPMENT_TEAM = 76W897MPSS;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ".com-MemoryLeeks.TopDeckG";
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -521,10 +521,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88LS55E862;
+				DEVELOPMENT_TEAM = 76W897MPSS;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ".com-MemoryLeeks.TopDeckG";
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
