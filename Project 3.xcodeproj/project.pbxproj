@@ -160,11 +160,11 @@
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
 				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
 				CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */,
-				CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */,
 				CB304B141FC74CD20046EF77 /* OnlineSelectDeck.swift */,
 				840731691FC217B20025C1A8 /* iCarousel.h */,
 				840731681FC217B20025C1A8 /* iCarousel.m */,
 				84D9F5471FC1D21C00C733C5 /* CardDraft.swift */,
+				CB304B151FC74CD20046EF77 /* OnlineGamePlayingScreen.swift */,
 				AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */,
 				84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */,
 				84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */,
@@ -502,12 +502,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 76W897MPSS;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeckG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -520,12 +522,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 76W897MPSS;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeckG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -538,6 +542,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ML.Project-3Tests";
@@ -554,6 +559,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ML.Project-3Tests";
