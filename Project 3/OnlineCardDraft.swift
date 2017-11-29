@@ -197,7 +197,6 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     {
         switch command {
         case "removeCard":
-            screenService.send(screenName: "removeCard")
             selectArr[viewCaro.currentItemIndex] = selectArr[viewCaro.currentItemIndex] - 1
             selected = selected - 1
             availableArr[viewCaro.currentItemIndex] = availableArr[viewCaro.currentItemIndex] + 1
@@ -208,7 +207,6 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     
             removeCard(card: truncate+"-Deck")
         case "addCard":
-            screenService.send(screenName: "addCard")
             selectArr[viewCaro.currentItemIndex] = selectArr[viewCaro.currentItemIndex] + 1
             selected = selected + 1
             availableArr[viewCaro.currentItemIndex] = availableArr[viewCaro.currentItemIndex] - 1
@@ -251,7 +249,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
             selectLabel.text = "0 Selected"
             howManyLabel.text = "PICK TWO CARDS"
             countTurns = countTurns + 1
-            updateLabels()
+            availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
         }
         else if(draftTurn == 2 && selected == 2 && countTurns != 12) {
             screenService.send(screenName: "Player2Turn")
@@ -264,18 +262,18 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
             selectLabel.text = "0 Selected"
             howManyLabel.text = "PICK TWO CARDS"
             countTurns = countTurns + 1
-            updateLabels()
+            availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
         }
         else if(countTurns == 12 && selected == 2) {
             if(draftTurn % 2 == 1) {
                 screenService.send(screenName: "Player1Final")
                 addDeck(currDeck: deck1)
-                updateLabels()
+                availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
             }
             else {
                 screenService.send(screenName: "Player2Final")
                 addDeck(currDeck: deck2)
-                updateLabels()
+                availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
             }
             print("DRAFT COMPLETE")
             let defaults = UserDefaults.standard
