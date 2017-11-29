@@ -89,9 +89,9 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
             deck2.deckArr = selectedDeck as [String]
         }
         
-        images = ["Bad-Medicine-Single", "Health-Potion-Single", "Life-Steal-Single", "Brass-Knuckles-Single", "Throwing-Knife-Single", "Smoke-Bomb-Single", "Blacksmith-Single", "Spell-Tome-Single"]
-        selectArr = [0, 0, 0, 0, 0, 0, 0, 0]
-        availableArr = [4, 4, 4, 4, 4, 4, 4, 4]
+        images = ["Bad-Medicine-Single", "Health-Potion-Single", "Life-Steal-Single", "Brass-Knuckles-Single", "Throwing-Knife-Single", "Smoke-Bomb-Single", "Haunt-Taunt-Single"]
+        selectArr = [0, 0, 0, 0, 0, 0, 0]
+        availableArr = [4, 4, 4, 4, 4, 4, 4]
         tempCardArr = ["Empty", "Empty"]
         selected = 0
         countTurns = 1
