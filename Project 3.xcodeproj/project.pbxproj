@@ -23,6 +23,7 @@
 		AC0C0BEB1F9BFBD70026A225 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0C0BEA1F9BFBD70026A225 /* Assets.xcassets */; };
 		AC0C0BEE1F9BFBD70026A225 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */; };
 		AC0C0BF91F9BFBD70026A225 /* Project_3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0BF81F9BFBD70026A225 /* Project_3Tests.swift */; };
+		AC0DB5A81FCF257000795556 /* Project_3OnlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DB5A71FCF257000795556 /* Project_3OnlineTests.swift */; };
 		AC26F6821FCDFCCA00F53BAE /* OnlineMenuPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC26F6811FCDFCCA00F53BAE /* OnlineMenuPopup.swift */; };
 		AC2B42731F9FCE2300397CD8 /* GamePlayingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */; };
 		AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */; };
@@ -75,6 +76,7 @@
 		AC0C0BF81F9BFBD70026A225 /* Project_3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_3Tests.swift; sourceTree = "<group>"; };
 		AC0C0BFA1F9BFBD70026A225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC0C0BFF1F9BFBD70026A225 /* Project 3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project 3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0DB5A71FCF257000795556 /* Project_3OnlineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_3OnlineTests.swift; sourceTree = "<group>"; };
 		AC26F6811FCDFCCA00F53BAE /* OnlineMenuPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineMenuPopup.swift; sourceTree = "<group>"; };
 		AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GamePlayingScreen.storyboard; sourceTree = "<group>"; };
 		AC2B42741F9FCF1D00397CD8 /* GamePlayingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayingScreen.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				AC0C0BF81F9BFBD70026A225 /* Project_3Tests.swift */,
 				AC0C0BFA1F9BFBD70026A225 /* Info.plist */,
+				AC0DB5A71FCF257000795556 /* Project_3OnlineTests.swift */,
 			);
 			path = "Project 3Tests";
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0DB5A81FCF257000795556 /* Project_3OnlineTests.swift in Sources */,
 				AC0C0BF91F9BFBD70026A225 /* Project_3Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
