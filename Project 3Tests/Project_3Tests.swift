@@ -626,40 +626,40 @@ class Project_3Tests: XCTestCase {
     }
    
     //
-    // Checks Sabotage debuff under normal circumstances. Debuff should deal one damage when played and remove 2 of stamina from opponent's current stamina for 2 turns.
+    // Checks Haunt Taunt debuff under normal circumstances. Debuff should deal one damage when played and remove 2 of stamina from opponent's current stamina for 2 turns.
     //
-    func testSabotage()
+    func testHauntTaunt()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Sabotage-Deck"]
+        player1.currDeck = ["Haunt-Taunt-Deck"]
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
         
-        XCTAssertTrue(player2.hasSabotage == false)
+        XCTAssertTrue(player2.hasHauntTaunt == false)
         
         //Player 1 plays Sabotage debuff.
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
         //Check that debuff was added succesfully
-        XCTAssertTrue(player2.debuff == "Sabotage-Deck")
-        XCTAssertTrue(player2.hasSabotage == true)
+        XCTAssertTrue(player2.debuff == "Haunt-Taunt-Deck")
+        XCTAssertTrue(player2.hasHauntTaunt == true)
         
         //Check player 2's health.
         XCTAssertTrue(player2.health == 19)
         
         //Pass the turn to Player 2. Check Player 2's stamina.
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
-        XCTAssertTrue(player2.hasSabotage == true)
+        XCTAssertTrue(player2.hasHauntTaunt == true)
         XCTAssertTrue(player2.currStamina == 0) //2 - 2 = 0
         
         //Pass one full turn and check Player 2's stamina.
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
-        XCTAssertTrue(player2.hasSabotage == true)
+        XCTAssertTrue(player2.hasHauntTaunt == true)
         XCTAssertTrue(player2.currStamina == 2)
-        XCTAssertTrue(player2.debuff == "Sabotage-Deck")
+        XCTAssertTrue(player2.debuff == "Haunt-Taunt-Deck")
         
         //Pass one more full turn
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
@@ -667,7 +667,7 @@ class Project_3Tests: XCTestCase {
         
         //Check that debuff is gone
         XCTAssertTrue(player2.debuff == "")
-        XCTAssertTrue(player2.hasSabotage == false)
+        XCTAssertTrue(player2.hasHauntTaunt == false)
         
         //Check that Player 2's stamina is back to normal.
         XCTAssertTrue(player2.currStamina == 6)
@@ -681,14 +681,14 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Checks Sabotage debuff when opponent has 10 stamina. Debuff should deal one damage when played and remove 2 of stamina from opponent's current stamina for 2 turns.
+    // Checks Haunt Taunt debuff when opponent has 10 stamina. Debuff should deal one damage when played and remove 2 of stamina from opponent's current stamina for 2 turns.
     //
     func testSabotageWith10Stamina()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Sabotage-Deck"]
+        player1.currDeck = ["Haunt-Taunt-Deck"]
         player2.currStamina = 10
         player2.totalStamina = 10
         player1.name = "testPlayer1"
@@ -698,11 +698,11 @@ class Project_3Tests: XCTestCase {
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
         //Check that debuff was added succesfully
-        XCTAssertTrue(player2.debuff == "Sabotage-Deck")
+        XCTAssertTrue(player2.debuff == "Haunt-Taunt-Deck")
         
         //Pass the turn to Player 2. Check Player 2's stamina.
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
-        XCTAssertTrue(player2.hasSabotage == true)
+        //XCTAssertTrue(player2.hasSabotage == true)
         XCTAssertTrue(player2.currStamina == 8)
         print("\n\n\n \(player2.currStamina) \n\n\n")
         
@@ -710,7 +710,7 @@ class Project_3Tests: XCTestCase {
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
         XCTAssertTrue(player2.currStamina == 8)
-        XCTAssertTrue(player2.debuff == "Sabotage-Deck")
+        XCTAssertTrue(player2.debuff == "Haunt-Taunt-Deck")
         
         //Pass one more full turn
         viewGame.endTurn(currPlayer: player2, nextPlayer: player1)
@@ -1029,12 +1029,12 @@ class Project_3Tests: XCTestCase {
     //
     // Check Sleight of Hand extra card under normal circumstances. Sleight of Hand should deal to damage to your opponent and place the top card of player 2's deck on the bottom of their deck.
     //
-    func testBarbaricBurglary()
+    func testSleightOfHand()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Barbaric-Burglary-Deck"]
+        player1.currDeck = ["Sleight-of-Hand-Deck"]
         player2.currDeck = ["Life-Steal-Deck", "Mana-Potion-Deck", "Smoke-Bomb-Deck"]
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
@@ -1054,14 +1054,14 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Theft extra card under normal circumstances. Theft should restore 2 Stamina to player 1, place the top card of player 2's deck on the top of player 1's deck, and place player 1's Theft card at the bottom of player 2's deck
+    // Check Handy Discount extra card under normal circumstances. Handy Discount should restore 2 Stamina to player 1, place the top card of player 2's deck on the top of player 1's deck, and place player 1's Theft card at the bottom of player 2's deck
     //
-    func testTheft()
+    func testHandyDiscount()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Theft-Deck", "a", "b", "c", "d"]
+        player1.currDeck = ["Handy-Discount-Deck", "a", "b", "c", "d"]
         player2.currDeck = ["v" ,"w", "x", "y", "z"]
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
@@ -1076,18 +1076,18 @@ class Project_3Tests: XCTestCase {
         XCTAssertTrue(player1.currDeck == ["v", "a", "b", "c", "d"])
         
         //Check player 2's deck.
-        XCTAssertTrue(player2.currDeck == ["w","x","y", "z", "Theft-Deck"])
+        XCTAssertTrue(player2.currDeck == ["w","x","y", "z", "Handy-Discount-Deck"])
     }
     
     //
-    // Check Village Pillage extra card when both players are low on total stamina. Village Pillage should deal 5 damage to player 1 and give 5 current stamina to player 1.
+    // Check Loot Tool extra card when both players are low on total stamina. Village Pillage should deal 5 damage to player 1 and give 5 current stamina to player 1.
     //
-    func testVillagePillageWithLowStamina()
+    func testLootToolWithLowStamina()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Village-Pillage-Deck"]
+        player1.currDeck = ["Loot-Tool-Deck"]
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
         
@@ -1102,14 +1102,14 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Village Pillage extra card when player 1 has 10 stamina and player 2 is low on stamina. Village Pillage should deal 5 damage to player 1 and remove 6 stamina from player 2 (making it zero in this case).
+    // Check Loot Tool extra card when player 1 has 10 stamina and player 2 is low on stamina. Loot Tool should deal 5 damage to player 1 and remove 6 stamina from player 2 (making it zero in this case).
     //
-    func testVillagePillageWithMaxStaminaAndLowOpponentStamina()
+    func testLootToolWithMaxStaminaAndLowOpponentStamina()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Village-Pillage-Deck"]
+        player1.currDeck = ["Loot-Tool-Deck"]
         player1.currStamina = 10
         player1.totalStamina = 10
         player1.name = "testPlayer1"
@@ -1134,14 +1134,14 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Village Pillage extra card when player 1 has 10 stamina and player 2 is low on stamina. Village Pillage should deal 5 damage to player 1 and remove 6 stamina from player 2 (making it four in this case).
+    // Check Loot Tool extra card when player 1 has 10 stamina and player 2 is low on stamina. Loot Tool should deal 5 damage to player 1 and remove 6 stamina from player 2 (making it four in this case).
     //
-    func testVillagePillageWithMaxStaminaAndHighOpponentStamina()
+    func testLootToolWithMaxStaminaAndHighOpponentStamina()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Village-Pillage-Deck"]
+        player1.currDeck = ["Loot-Tool-Deck"]
         player1.currStamina = 10
         player1.totalStamina = 10
         player2.currStamina = 10
@@ -1168,14 +1168,14 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Village Pillage interaction with Goblin Green when players have 8 stamina. Goblin Greed should set player 1's stamina to 10, thusm making it remove 6 stamina to opponent.
+    // Check Loot Tool interaction with Goblin Green when players have 8 stamina. Loot Tool should set player 1's stamina to 10, thusm making it remove 6 stamina to opponent.
     //
-    func testVillagePillageWithGoblinGreed()
+    func testLootToolWithGoblinGreed()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Goblin-Greed-Deck", "Village-Pillage-Deck"]
+        player1.currDeck = ["Goblin-Greed-Deck", "Loot-Tool-Deck"]
         player1.currStamina = 8
         player1.totalStamina = 8
         player2.currStamina = 8
@@ -1681,15 +1681,15 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Call the Horde buff under normal circumstances. Call the Horde should add 3 attack to player until it is removed from the buff array.
+    // Check Money is Power buff under normal circumstances. Money is Power should add 3 attack to player until it is removed from the buff array.
     //
-    func testCallTheHorde()
+    func testMoneyIsPower()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Call-The-Horde-Deck"]
-        player2.currDeck = ["Call-The-Horde-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
+        player1.currDeck = ["Money-is-Power-Deck"]
+        player2.currDeck = ["Money-is-Power-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"] //3 health potions are used as random buffs to test that buff is gone once it is removed from buff array
         player1.attack = 3
         player1.name = "testPlayer1"
         player2.name = "testPlayer2"
@@ -1698,7 +1698,7 @@ class Project_3Tests: XCTestCase {
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
         //Check if buff was correctly added to buffs array
-        XCTAssertTrue(player1.buffArr == ["Call-The-Horde-Deck"])
+        XCTAssertTrue(player1.buffArr == ["Money-is-Power-Deck"])
         
         //Check that attack has changed.
         XCTAssertTrue(player1.attack == 6)
@@ -1717,7 +1717,7 @@ class Project_3Tests: XCTestCase {
         viewGame.playCard(currPlayer: player1, nextPlayer: player2)
         
         //Check player 1's buff array.
-        XCTAssertTrue(player1.buffArr == ["Call-The-Horde-Deck", "Call-The-Horde-Deck"])
+        XCTAssertTrue(player1.buffArr == ["Money-is-Power-Deck", "Money-is-Power-Deck"])
         
         //Pass the turn to player 2. Player 2 plays two Health Potions.
         viewGame.endTurn(currPlayer: player1, nextPlayer: player2)
@@ -1725,7 +1725,7 @@ class Project_3Tests: XCTestCase {
         viewGame.playCard(currPlayer: player2, nextPlayer: player1)
         
         //Check player 2's buff array.
-        XCTAssertTrue(player2.buffArr == ["Call-The-Horde-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
+        XCTAssertTrue(player2.buffArr == ["Money-is-Power-Deck", "Health-Potion-Deck", "Health-Potion-Deck"])
         
         //Check player 2's attack stat.
         XCTAssertTrue(player2.attack == 3)
@@ -1760,14 +1760,14 @@ class Project_3Tests: XCTestCase {
     }
     
     //
-    // Check Call the Horde buff when adding the buff would cause the player to have over 10 attack. Call the Horde should allow the attack stat to go over 10 so that when it is removed the attack stat return to the value it should be. Note that even though the attack stat can be more than 10, only an attack stat of 10 is reflected on the animations and ATTACKS WILL NEVER DO MORE THAN 10 DAMAGE.
+    // Check Money is Power buff when adding the buff would cause the player to have over 10 attack. Money is Power should allow the attack stat to go over 10 so that when it is removed the attack stat return to the value it should be. Note that even though the attack stat can be more than 10, only an attack stat of 10 is reflected on the animations and ATTACKS WILL NEVER DO MORE THAN 10 DAMAGE.
     //
-    func testCallTheHordeWithOverTenAttack()
+    func testMoneyIsPowerWithOverTenAttack()
     {
         let player1 = viewGame.player1
         let player2 = viewGame.player2
         
-        player1.currDeck = ["Call-The-Horde-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"]
+        player1.currDeck = ["Money-is-Power-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Health-Potion-Deck"]
         player1.attack = 9
         player1.currStamina = 10
         player1.totalStamina = 10
