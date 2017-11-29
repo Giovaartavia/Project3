@@ -237,7 +237,6 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
         }
     }
     
-    
     @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)
