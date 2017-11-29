@@ -81,9 +81,25 @@ class OnlineCoinFlip: UIViewController {
             flipVisibility.isHidden = true;
             nextVisibility.isHidden = false;
             playerStart = 2;
+            
+
         }
     }
+    
+    @IBAction func coinFlipNext(_ sender: Any)
+    {
+        screenService.send(screenName: "next")
+    }
+    func coinFlipNextOnline()
+    {
+        let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier : ("cardDraft"))
+        self.present(viewController, animated: true)
+    }
+    
 }
+
+
 
 extension OnlineCoinFlip : ScreenServiceManagerDelegate
 {
@@ -111,6 +127,8 @@ extension OnlineCoinFlip : ScreenServiceManagerDelegate
                 case "start2":
                     //self.flipCoin(self)
                     self.onlineCoinFlip(coinStatus: "start2")
+                case "next" :
+                    self.coinFlipNextOnline()
                     
                 default:
                     NSLog("%@", "Unknown value received: \(screenString)")

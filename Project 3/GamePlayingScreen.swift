@@ -51,11 +51,13 @@ class ViewPlayGame: UIViewController {
         if(playerStart == 1)
         {
             playerTurn.text = "PLAYER 1's Turn"
+            Player2Indicator.isHidden = true;
             
         }
         else if(playerStart == 2)
         {
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
         }
         else
         {
@@ -66,11 +68,11 @@ class ViewPlayGame: UIViewController {
         
         let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
         
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player1.currDeck = selectedDeck as [String]
         }
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck2") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck2") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
@@ -83,11 +85,16 @@ class ViewPlayGame: UIViewController {
                 player1Class.image = UIImage(named: "Warrior-Icon")
                 deckCheck = true
             }
-        }
-        if(deckCheck == false)
-        {
-            player1.deck = "Mage"
-            player1Class.image = UIImage(named: "Mage-Icon")
+            else if(player1.currDeck[i] == "Horde-Ransack-Deck" && deckCheck == false) {
+                player1.deck = "Goblin"
+                player1Class.image = UIImage(named: "Goblin-Icon")
+                deckCheck = true
+            }
+            else if(player1.currDeck[i] == "Magical-Bolt-Deck" && deckCheck == false) {
+                player1.deck = "Mage"
+                player1Class.image = UIImage(named: "Mage-Icon")
+                deckCheck = true
+            }
         }
         deckCheck = false
         
@@ -97,14 +104,18 @@ class ViewPlayGame: UIViewController {
                 player2Class.image = UIImage(named: "Warrior-Icon")
                 deckCheck = true
             }
-        }
-        if(deckCheck == false)
-        {
-            player2.deck = "Mage"
-            player2Class.image = UIImage(named: "Mage-Icon")
+            else if(player2.currDeck[i] == "Horde-Ransack-Deck" && deckCheck == false) {
+                player2.deck = "Goblin"
+                player2Class.image = UIImage(named: "Goblin-Icon")
+                deckCheck = true
+            }
+            else if(player2.currDeck[i] == "Magical-Bolt-Deck" && deckCheck == false) {
+                player2.deck = "Mage"
+                player2Class.image = UIImage(named: "Mage-Icon")
+                deckCheck = true
+            }
         }
         deckCheck = false
-        
         
         player1.currDeck = player1.currDeck.shuffled()
         player2.currDeck = player2.currDeck.shuffled()
@@ -152,7 +163,7 @@ class ViewPlayGame: UIViewController {
         var hasAttacked = false
         var canAddBack = true
         var bloodThinner = false
-        var hasSabotage = false
+        var hasHauntTaunt = false
         
         //Extra booleans for cards execution
         var hasGoblinGreed = false
@@ -188,7 +199,7 @@ class ViewPlayGame: UIViewController {
             //check card played and update
             
             let currCard = currPlayer.currDeck[0]
-            var selfDamage = false
+            //var selfDamage = false
             
             //Test print
             //print ("Current stamina: ")
@@ -202,7 +213,7 @@ class ViewPlayGame: UIViewController {
             case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
-            case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
+            case "Spell-Tome-Deck", "Blacksmith-Deck", "Money-is-Power-Deck":
                 currPlayer.attack += 3
                 updateAttackBar(currPlayer: currPlayer)
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
@@ -237,8 +248,8 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, opponent has -2 stamina (Goblin)
-            case "Sabotage-Deck":
-                nextPlayer.debuff = "Sabotage-Deck"
+            case "Haunt-Taunt-Deck":
+                nextPlayer.debuff = "Haunt-Taunt-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
@@ -257,15 +268,37 @@ class ViewPlayGame: UIViewController {
                 checkHealth(currPlayer: currPlayer)
                 updateHealthBar(currPlayer: currPlayer)
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: (currPlayer.attack * 2) + 2))
-                selfDamage = true
+                //selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
+            //Deal 5 damage to self and gain 5 stamina. If player is at max stamina when playing the card (10), remove 6 stamina from opponent instead.
+            case "Loot-Tool-Deck":
+                currPlayer.health -= 5
+                checkHealth(currPlayer: currPlayer)
+                updateHealthBar(currPlayer: currPlayer)
+                if(currPlayer.currStamina == 8)
+                {
+                    nextPlayer.currStamina -= 6
+                    if(nextPlayer.currStamina < 0)
+                    {
+                        nextPlayer.currStamina = 0 //This check should never happen however it is here to avoid future card addition bugs
+                    }
+                    updateStaminaBar(currPlayer: nextPlayer)
+                }
+                else
+                {
+                    currPlayer.currStamina += 5
+                    if(currPlayer.currStamina > 10)
+                    {
+                        currPlayer.currStamina = 10
+                    }
+                }
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck", "Horde-Ransack-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 2 damage. Plays top card of opponents deck on bottom
-            case "Barbaric-Burglary-Deck":
+            case "Sleight-of-Hand-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 2))
                 addToBack(arr: &nextPlayer.currDeck)
                 animateDiscard(currPlayer: nextPlayer)
@@ -293,8 +326,8 @@ class ViewPlayGame: UIViewController {
                 currPlayer.hasGoblinGreed = true
                 updateStaminaBar(currPlayer: currPlayer)
 
-            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Theft card at the bottom of your opponents deck
-            case "Theft-Deck":
+            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Handy-Discount card at the bottom of your opponents deck
+            case "Handy-Discount-Deck":
                 currPlayer.currStamina += 2
                 nextPlayer.currDeck.append(currPlayer.currDeck[0])
                 //Note that we add back after a card is being played so we need to set up the array in such a way that it has the wanted order after an add back.
@@ -317,6 +350,8 @@ class ViewPlayGame: UIViewController {
         }
         else
         {
+            //endTurnButton.setImage(UIImage(named: "endTurnFlash"), for:.normal);
+           //player1Class.loadGif(name:"endTurnFlash" )
             print("NOT ENOUGH STAMINA HONEY!")
         }
 
@@ -336,7 +371,7 @@ class ViewPlayGame: UIViewController {
         if(currPlayer.buffArr.count == 3)
         {
             //check if replaced is "Spell-Tome-Deck" or "Blacksmith-Deck"
-            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Call-The-Horde-Deck")
+            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Money-is-Power-Deck")
             {
                 currPlayer.attack -= 3
                 updateAttackBar(currPlayer: currPlayer)
@@ -381,7 +416,7 @@ class ViewPlayGame: UIViewController {
                     }*/
                     print("buff add attack")
                 //+3 attack once while active
-                case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
+                case "Spell-Tome-Deck", "Blacksmith-Deck", "Money-is-Power-Deck":
                     //does not take place per turn 
                     print("buff add attack once")
                 //+2 health per turn
@@ -462,9 +497,9 @@ class ViewPlayGame: UIViewController {
         {
             nextPlayer.bloodThinner = true
         }
-        else if (nextPlayer.debuff == "Sabotage-Deck")
+        else if (nextPlayer.debuff == "Haunt-Taunt-Deck")
         {
-            nextPlayer.hasSabotage = true
+            nextPlayer.hasHauntTaunt = true
         }
     }
 
@@ -551,6 +586,10 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    /// Does respective debuff action.
+    /// - Parameters:
+    ///   - currPlayer: Player object who played the debuff card
+    ///   - nextPlayer: Player object who is being affected by the debuff
     func applyDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(nextPlayer.bloodThinner)
@@ -564,7 +603,7 @@ class ViewPlayGame: UIViewController {
             nextPlayer.currStamina -= 2
             nextPlayer.hasGoblinGreed = false
         }
-        else if(nextPlayer.hasSabotage)
+        else if(nextPlayer.hasHauntTaunt)
         {
             //print ("\n\n\n\(nextPlayer.currStamina)\n\n\n")
             nextPlayer.currStamina -= 2
@@ -583,9 +622,9 @@ class ViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
-                if(nextPlayer.hasSabotage)
+                if(nextPlayer.hasHauntTaunt)
                 {
-                    nextPlayer.hasSabotage = false
+                    nextPlayer.hasHauntTaunt = false
                     nextPlayer.currStamina += 2
                 }
             }
@@ -664,17 +703,12 @@ class ViewPlayGame: UIViewController {
         {
             for i in 0...(currPlayer.buffArr.count - 1)
             {
-                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Call-The-Horde-Deck")
+                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Money-is-Power-Deck")
                 {
                     hasBlacksmith = true
                 }
             }
         }
-        
-        /*if (currPlayer.buffArr[0] == "Blacksmith-Deck")
-        {
-            hasBlacksmith = true
-        }*/
 
         if(!hasBlacksmith)
         {
@@ -751,6 +785,11 @@ class ViewPlayGame: UIViewController {
     @IBOutlet weak var discard1: UIImageView!
     ///Image used for when Player 2 discards a card
     @IBOutlet weak var discard2: UIImageView!
+    
+    ///Image used to indicate player 1's turn
+    @IBOutlet weak var Player1Indicator: UIImageView!
+    ///Image used to indicate player 2's turn
+    @IBOutlet weak var Player2Indicator: UIImageView!
     
     //buff and debuff images
     ///Image used for Player 1's debuff
@@ -1375,21 +1414,26 @@ class ViewPlayGame: UIViewController {
             turn = 2
             endTurn(currPlayer: player1, nextPlayer: player2)
             playerTurn.text = "PLAYER 2's Turn"
+            Player1Indicator.isHidden = true;
+            Player2Indicator.isHidden = false;
             
             if(player2.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1398,33 +1442,43 @@ class ViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
+                
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else if(turn == 2)
         {
             turn = 1
+            
             endTurn(currPlayer: player2, nextPlayer: player1)
             playerTurn.text = "PLAYER 1's Turn"
+            Player1Indicator.isHidden = false;
+            Player2Indicator.isHidden = true;
             
             if(player1.shuffleCount == 2)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
             
             
@@ -1433,11 +1487,13 @@ class ViewPlayGame: UIViewController {
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down-Disabled"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up-Disabled"), for:.disabled);
             }
             else
             {
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.normal);
                 placeBottomButton.setImage(UIImage(named: "PlaceBottom-Down"), for:.highlighted);
+                placeBottomButton.setImage(UIImage(named: "PlaceBottom-Up"), for:.disabled);
             }
         }
         else
@@ -1463,16 +1519,19 @@ class ViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player1.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player1.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else if (turn == 2)
@@ -1486,16 +1545,19 @@ class ViewPlayGame: UIViewController {
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-2"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-2"), for:.disabled);
             }
             if(player2.shuffleCount == 1)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-1"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-1"), for:.disabled);
             }
             if(player2.shuffleCount == 0)
             {
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.normal);
                 shuffleButton.setImage(UIImage(named: "ShuffleButton-Down-0"), for:.highlighted);
+                shuffleButton.setImage(UIImage(named: "ShuffleButton-Up-0"), for:.disabled);
             }
         }
         else
