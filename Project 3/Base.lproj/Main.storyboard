@@ -18,12 +18,12 @@
             <point key="canvasLocation" x="1357" y="624"/>
         </scene>
         <!--OnlineGamePlayingScreen-->
-        <scene sceneID="TYv-lF-Coj">
+        <scene sceneID="Dk8-qI-Vho">
             <objects>
-                <viewControllerPlaceholder storyboardName="OnlineGamePlayingScreen" id="2LQ-BC-rbG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="19F-WP-6M8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="OnlineGamePlayingScreen" id="BUq-eK-SUN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1e-Dv-lXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="605"/>
+            <point key="canvasLocation" x="1695" y="622"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="l9a-IR-Ibg">
@@ -33,42 +33,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NAC-37-9qc">
-                                <rect key="frame" x="24.666666666666657" y="215.66666666666663" width="365" height="305"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGA-XJ-9uO">
-                                        <rect key="frame" x="0.0" y="0.0" width="365" height="145"/>
-                                        <state key="normal" image="Local-Play-Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="Local-Play-Down"/>
-                                        <connections>
-                                            <segue destination="TD2-Yn-bIE" kind="show" id="1Om-OR-crY"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ch7-F4-NT4">
-                                        <rect key="frame" x="0.0" y="160.00000000000003" width="365" height="144.99999999999997"/>
-                                        <state key="normal" image="Online-Play-Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="Online-Play-Down"/>
-                                        <connections>
-                                            <segue destination="2LQ-BC-rbG" kind="show" id="1nz-eB-Nke"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="305" id="8mR-zm-LJ8"/>
-                                    <constraint firstAttribute="width" constant="365" id="BOs-dm-5hQ"/>
-                                </constraints>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGA-XJ-9uO">
+                                <rect key="frame" x="40" y="256" width="335" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Local-Play-Up"/>
+                                <state key="highlighted" image="Local-Play-Down"/>
+                                <connections>
+                                    <segue destination="TD2-Yn-bIE" kind="show" id="1Om-OR-crY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ch7-F4-NT4">
+                                <rect key="frame" x="39" y="402" width="334" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Online-Play-Up"/>
+                                <state key="highlighted" image="Online-Play-Down"/>
+                                <connections>
+                                    <segue destination="BUq-eK-SUN" kind="show" id="Reg-VK-oy1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="NAC-37-9qc" firstAttribute="centerY" secondItem="y8z-vD-fR9" secondAttribute="centerY" id="JYa-tV-9ch"/>
-                            <constraint firstItem="NAC-37-9qc" firstAttribute="centerY" secondItem="y8z-vD-fR9" secondAttribute="centerY" id="fxk-2O-HtI"/>
-                            <constraint firstItem="NAC-37-9qc" firstAttribute="centerX" secondItem="y8z-vD-fR9" secondAttribute="centerX" id="sbv-9Q-cqW"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1rw-UE-ROl"/>
                     </view>
                 </viewController>

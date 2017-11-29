@@ -66,13 +66,13 @@ class ViewPlayGame: UIViewController {
         
         let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
         
-        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
+        //let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]
         
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player1.currDeck = selectedDeck as [String]
         }
-        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck2") as AnyObject {
+        if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck2") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
@@ -178,7 +178,7 @@ class ViewPlayGame: UIViewController {
             //check card played and update
             
             let currCard = currPlayer.currDeck[0]
-            var selfDamage = false
+            //var selfDamage = false
             
             //Test print
             //print ("Current stamina: ")
@@ -247,7 +247,7 @@ class ViewPlayGame: UIViewController {
                 checkHealth(currPlayer: currPlayer)
                 updateHealthBar(currPlayer: currPlayer)
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: (currPlayer.attack * 2) + 2))
-                selfDamage = true
+                //selfDamage = true
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
             //Deal 5 damage to self and gain 5 stamina. If player is at max stamina when playing the card (10), remove 6 stamina from opponent instead.
@@ -565,6 +565,10 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    /// Does respective debuff action.
+    /// - Parameters:
+    ///   - currPlayer: Player object who played the debuff card
+    ///   - nextPlayer: Player object who is being affected by the debuff
     func applyDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(nextPlayer.bloodThinner)
@@ -684,11 +688,6 @@ class ViewPlayGame: UIViewController {
                 }
             }
         }
-        
-        /*if (currPlayer.buffArr[0] == "Blacksmith-Deck")
-        {
-            hasBlacksmith = true
-        }*/
 
         if(!hasBlacksmith)
         {
