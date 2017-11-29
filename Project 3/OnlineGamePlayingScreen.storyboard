@@ -220,19 +220,6 @@
                                 <rect key="frame" x="211" y="134" width="203" height="468"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="t0J-Ge-Ktt">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
-                                <rect key="frame" x="10" y="92" width="393" height="551"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3Z-2I-Ytw">
                                 <rect key="frame" x="12" y="609" width="131" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -407,13 +394,24 @@
                                 <rect key="frame" x="22" y="248" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Ub-72V">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="t0J-Ge-Ktt">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-F1-w22">
+                                <rect key="frame" x="10" y="92" width="393" height="551"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="9t1-Ll-lEB"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Gga-Ub-72V"/>
-                                <exclude reference="jOn-F1-w22"/>
                                 <exclude reference="BUP-Rh-KhR"/>
                             </mask>
                         </variation>
@@ -522,25 +520,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-wr-l8T">
                                 <rect key="frame" x="20" y="40" width="374" height="676"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gg-dy-PJm">
-                                        <rect key="frame" x="164" y="551" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Close">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closeButtonPressed:" destination="mtJ-4L-pKb" eventType="touchUpInside" id="ICL-Rc-J7Y"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R17-1g-r5e">
                                         <rect key="frame" x="28" y="272" width="318" height="132"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Surrender-Up">
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Quit-Up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" image="Surrender-Down"/>
+                                        <state key="highlighted" image="Quit-Down"/>
                                         <connections>
                                             <action selector="surrenderPress:" destination="jsl-U6-zg7" eventType="touchUpInside" id="yrv-bb-K0b"/>
                                             <segue destination="LxY-3i-Ugb" kind="show" id="PWd-Y4-F04"/>
@@ -549,6 +537,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gg-dy-PJm">
+                                <rect key="frame" x="346" y="15" width="68" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="CloseButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="mtJ-4L-pKb" eventType="touchUpInside" id="ICL-Rc-J7Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="l8w-CS-geN"/>
@@ -829,6 +827,7 @@
         <image name="Back-to-home-Down" width="445" height="185"/>
         <image name="Back-to-home-Up" width="445" height="185"/>
         <image name="Buff-Debuff-Bar" width="443" height="85"/>
+        <image name="CloseButton" width="1024" height="1024"/>
         <image name="EndTurnButton-Down" width="1008" height="101"/>
         <image name="EndTurnButton-Up" width="1008" height="101"/>
         <image name="Flip-Coin-Down" width="445" height="185"/>
@@ -848,14 +847,14 @@
         <image name="Play-Again-Up" width="445" height="185"/>
         <image name="PlayCardButton-Down" width="337" height="185"/>
         <image name="PlayCardButton-Up" width="337" height="185"/>
+        <image name="Quit-Down" width="445" height="185"/>
+        <image name="Quit-Up" width="445" height="185"/>
         <image name="Select-Class-Down" width="445" height="185"/>
         <image name="Select-Class-Up" width="445" height="185"/>
         <image name="ShuffleButton-Down-2" width="183" height="185"/>
         <image name="ShuffleButton-Up" width="183" height="185"/>
         <image name="ShuffleButton-Up-2" width="183" height="185"/>
         <image name="Stamina-Bar0" width="443" height="45"/>
-        <image name="Surrender-Down" width="445" height="185"/>
-        <image name="Surrender-Up" width="445" height="185"/>
         <image name="Turn-Bar" width="1028" height="147"/>
         <image name="TurnIncicatorBox" width="558" height="1310"/>
         <image name="Tutorial-Next-Down" width="493" height="185"/>
