@@ -57,6 +57,28 @@ class SelectionDeck1: UIViewController {
             break
         }
     }
+    @IBAction func warriorPress(_ sender: Any) {
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "warriorPopupID") as! warriorPopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
+    }
+    @IBAction func magePress(_ sender: Any) {
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "magePopupID") as! magePopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
+    }
+    @IBAction func goblinPress(_ sender: Any) {
+        
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "goblinPopupID") as! goblinPopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
+    }
 }
 
 /// Class that handles player 2's class/deck selection
@@ -105,6 +127,29 @@ class SelectionDeck2: UIViewController {
             currDeck = ["ERROR"]
             break
         }
+    }
+    
+    @IBAction func warriorPress(_ sender: Any) {
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "warriorPopupID") as! warriorPopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
+    }
+    @IBAction func magePress(_ sender: Any) {
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "magePopupID") as! magePopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
+    }
+    @IBAction func goblinPress(_ sender: Any) {
+    
+        let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "goblinPopupID") as! goblinPopup
+        self.addChildViewController(popup)
+        popup.view.frame = self.view.frame
+        self.view.addSubview(popup.view)
+        popup.didMove(toParentViewController: self)
     }
 }
 
