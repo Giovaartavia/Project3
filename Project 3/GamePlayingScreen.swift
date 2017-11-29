@@ -1103,6 +1103,10 @@ class ViewPlayGame: UIViewController {
                 {
                     debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
                 }
+                else if(currPlayer.debuff == "Haunt-Taunt-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Haunt-Taunt-Deck-Icon")
+                }
                 else
                 {
                     debuffIcon1.image = UIImage(named: "")
@@ -1128,6 +1132,10 @@ class ViewPlayGame: UIViewController {
                 else if(currPlayer.debuff == "Brass-Knuckles-Deck")
                 {
                     debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Haunt-Taunt-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Haunt-Taunt-Deck-Icon")
                 }
                 else
                 {
