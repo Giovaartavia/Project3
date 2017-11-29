@@ -201,6 +201,9 @@ class ViewPlayGame: UIViewController {
             let currCard = currPlayer.currDeck[0]
             //var selfDamage = false
             
+            //special discard animation is needed when handy discount is played
+            var handyDiscard = false
+            
             //Test print
             //print ("Current stamina: ")
             //print(currPlayer.currStamina)
@@ -292,6 +295,7 @@ class ViewPlayGame: UIViewController {
                     {
                         currPlayer.currStamina = 10
                     }
+                    updateStaminaBar(currPlayer: currPlayer)
                 }
             //Does atk + 2 to opponent.
             case "Magical-Bolt-Deck", "Sword-Strike-Deck", "Horde-Ransack-Deck":
@@ -302,6 +306,7 @@ class ViewPlayGame: UIViewController {
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 2))
                 addToBack(arr: &nextPlayer.currDeck)
                 animateDiscard(currPlayer: nextPlayer)
+                updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, regain 3 hp.
             case "Life-Steal-Deck":
                 checkDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
@@ -328,6 +333,8 @@ class ViewPlayGame: UIViewController {
 
             //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Handy-Discount card at the bottom of your opponents deck
             case "Handy-Discount-Deck":
+                animateHandyDiscount(currPlayer: currPlayer, nextPlayer: nextPlayer)
+                handyDiscard = true
                 currPlayer.currStamina += 2
                 nextPlayer.currDeck.append(currPlayer.currDeck[0])
                 //Note that we add back after a card is being played so we need to set up the array in such a way that it has the wanted order after an add back.
@@ -346,7 +353,12 @@ class ViewPlayGame: UIViewController {
             addToBack(arr: &currPlayer.currDeck)
             checkHealth(currPlayer: nextPlayer)
             checkHealth(currPlayer: currPlayer)
-            animateDiscard(currPlayer: currPlayer)
+            if(handyDiscard == false) {
+                animateDiscard(currPlayer: currPlayer)
+            }
+            else {
+                animateHandyDiscard(currPlayer: currPlayer)
+            }
         }
         else
         {
@@ -601,9 +613,9 @@ class ViewPlayGame: UIViewController {
     ///   - nextPlayer: Player object whose staminina asset only is being modified
     func checkStaminaCap(currPlayer: Player, nextPlayer: Player)
     {
-        if(currPlayer.totalStamina >= 10)
+        if(currPlayer.currStamina >= 10)//was totalStamina
         {
-            currPlayer.totalStamina = 10
+            //currPlayer.totalStamina = 10
             currPlayer.currStamina = 10
         }
     }
@@ -941,6 +953,169 @@ class ViewPlayGame: UIViewController {
                 }, completion: { finished in
                     print("Discard Animation Complete")
                     self.discard2.image = UIImage(named: "")
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+    }
+    
+    func animateHandyDiscard(currPlayer: Player) {
+        //disables buttons for animation duration
+        if(playCardButton != nil)
+        {
+            playCardButton.isEnabled = false
+        }
+        if(placeBottomButton != nil)
+        {
+            placeBottomButton.isEnabled = false
+        }
+        if(shuffleButton != nil)
+        {
+            shuffleButton.isEnabled = false
+        }
+        
+        if(currPlayer.name == "player1")
+        {
+            self.discard1.layer.zPosition = 2
+            self.topCard1.layer.zPosition = 1
+            discard1.image = UIImage(named: "Handy-Discount-Single")
+            topCard1.image = UIImage(named: currPlayer.currDeck[1])
+            UIView.animate(withDuration: 0.5, animations: {
+                var newCenter = self.discard1.center
+                newCenter.x -= 300
+                self.discard1.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                UIView.animate(withDuration: 0.5, animations: {
+                    let discardName = currPlayer.currDeck[0]
+                    let postfix = discardName.index(discardName.endIndex, offsetBy: -5)
+                    let truncate = discardName.substring(to: postfix)
+                    self.discard1.image = UIImage(named: truncate + "-Single")
+                    var newCenter = self.discard1.center
+                    newCenter.x += 300
+                    self.discard1.center = newCenter
+                }, completion: { finished in
+                    print("Discard Animation Complete")
+                    self.discard1.image = UIImage(named: "")
+                    self.revealTopCard(currPlayer: currPlayer)
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+        else if (currPlayer.name == "testPlayer1" || currPlayer.name == "testPlayer2") //Added for code testing purposes. No animations tested in code testing
+        {
+        }
+        else
+        {
+            self.discard2.layer.zPosition = 2
+            self.topCard2.layer.zPosition = 1
+            discard2.image = UIImage(named: "Handy-Discount-Single")
+            topCard2.image = UIImage(named: currPlayer.currDeck[1])
+            UIView.animate(withDuration: 0.5, animations: {
+                var newCenter = self.discard2.center
+                newCenter.x += 300
+                self.discard2.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                UIView.animate(withDuration: 0.5, animations: {
+                    let discardName = currPlayer.currDeck[0]
+                    let postfix = discardName.index(discardName.endIndex, offsetBy: -5)
+                    let truncate = discardName.substring(to: postfix)
+                    self.discard2.image = UIImage(named: truncate + "-Single")
+                    var newCenter = self.discard2.center
+                    newCenter.x -= 300
+                    self.discard2.center = newCenter
+                }, completion: { finished in
+                    print("Discard Animation Complete")
+                    self.discard2.image = UIImage(named: "")
+                    self.revealTopCard(currPlayer: currPlayer)
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+    }
+    
+    func animateHandyDiscount(currPlayer: Player, nextPlayer: Player)
+    {
+        //disables buttons for animation duration
+        if(playCardButton != nil)
+        {
+            playCardButton.isEnabled = false
+        }
+        if(placeBottomButton != nil)
+        {
+            placeBottomButton.isEnabled = false
+        }
+        if(shuffleButton != nil)
+        {
+            shuffleButton.isEnabled = false
+        }
+        
+        if(currPlayer.name == "player1")
+        {
+            self.discard2.layer.zPosition = 2
+            self.topCard2.layer.zPosition = 1
+            let discardName = nextPlayer.currDeck[0]
+            let postfix = discardName.index(discardName.endIndex, offsetBy: -5)
+            let truncate = discardName.substring(to: postfix)
+            discard2.image = UIImage(named: truncate + "-Single")
+            self.topCard2.image = UIImage(named: nextPlayer.currDeck[1])
+            UIView.animate(withDuration: 0.5, animations: {
+                var newCenter = self.discard2.center
+                newCenter.x += 300
+                self.discard2.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                self.discard2.layer.zPosition = 1
+                self.topCard2.layer.zPosition = 2
+                self.discard2.image = UIImage(named: "Handy-Discount-Single")
+                UIView.animate(withDuration: 0.5, animations: {
+                    var newCenter = self.discard2.center
+                    newCenter.x -= 300
+                    self.discard2.center = newCenter
+                }, completion: { finished in
+                    print("Discard Animation Complete")
+                    self.discard2.image = UIImage(named: "")
+                    self.playCardButton.isEnabled = true
+                    self.placeBottomButton.isEnabled = true
+                    self.shuffleButton.isEnabled = true
+                })
+            })
+        }
+        else if (currPlayer.name == "testPlayer1" || currPlayer.name == "testPlayer2") //Added for code testing purposes. No animations tested in code testing
+        {
+        }
+        else
+        {
+            self.discard1.layer.zPosition = 2
+            self.topCard1.layer.zPosition = 1
+            let discardName = nextPlayer.currDeck[0]
+            let postfix = discardName.index(discardName.endIndex, offsetBy: -5)
+            let truncate = discardName.substring(to: postfix)
+            discard1.image = UIImage(named: truncate + "-Single")
+            self.topCard1.image = UIImage(named: nextPlayer.currDeck[1])
+            UIView.animate(withDuration: 0.5, animations: {
+                var newCenter = self.discard1.center
+                newCenter.x -= 300
+                self.discard1.center = newCenter
+            }, completion: { finished in
+                print("Off Screen")
+                self.discard1.layer.zPosition = 1
+                self.topCard1.layer.zPosition = 2
+                self.discard1.image = UIImage(named: "Handy-Discount-Single")
+                UIView.animate(withDuration: 0.5, animations: {
+                    var newCenter = self.discard1.center
+                    newCenter.x += 300
+                    self.discard1.center = newCenter
+                }, completion: { finished in
+                    print("Discard Animation Complete")
+                    self.discard1.image = UIImage(named: "")
                     self.playCardButton.isEnabled = true
                     self.placeBottomButton.isEnabled = true
                     self.shuffleButton.isEnabled = true
