@@ -1,8 +1,8 @@
 //
-//  CoinFlip.swift
+//  OnlineCoinFlip.swift
 //  Project 3
 //
-//  Created by James Glass on 11/16/17.
+//  Created by Brandon Lammey on 11/20/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 

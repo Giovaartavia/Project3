@@ -1,8 +1,8 @@
 //
-//  SelectDeck.swift
+//  OnlineSelectDeck.swift
 //  Project 3
 //
-//  Created by James Glass on 11/16/17.
+//  Created by Brandon Lammey on 11/20/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 
@@ -71,6 +71,8 @@ class OnlineSelectionDeck1: UIViewController {
     }
     
     /// Chooses which deck the other player chooses
+    /// - Parameters:
+    ///   - selectedSegment: String with player class
     func confirmSelectionOnline1(selectedSegment: String)
     {
         switch selectedSegment
@@ -114,10 +116,6 @@ class OnlineSelectionDeck2: UIViewController
     }
     @IBOutlet weak var segmentSelect: UISegmentedControl!
     
-    /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
-    
-    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
-    
     let warriorDeck = ["Sword-Strike-Deck", "Sword-Strike-Deck", "Double-Edge-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Liquid-Courage-Deck", "Liquid-Courage-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
     
     let mageDeck = ["Magical-Bolt-Deck", "Magical-Bolt-Deck", "Arcane-Burst-Deck", "Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Spell-Tome-Deck", "Mana-Potion-Deck", "Mana-Potion-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
@@ -160,6 +158,10 @@ class OnlineSelectionDeck2: UIViewController
         let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
         self.present(viewController, animated: true)
     }
+    
+    /// Chooses which deck the other player chooses
+    /// - Parameters:
+    ///   - selectedSegment: String with player class
     func confirmSelectionOnline2(selectedSegment: String)
     {
         switch selectedSegment
@@ -189,11 +191,15 @@ class OnlineSelectionDeck2: UIViewController
 }
 
 
-
+///extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
 {
     
-    
+    /// Empty function which recieves the names of connected devices to the MultiPeer session
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - connectedDevices: Names of devices connected to
     func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])
     {
         OperationQueue.main.addOperation
@@ -202,7 +208,11 @@ extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
         }
     }
     
-    
+    /// Using commands recieved via screenString makes changes to recieving device
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - screenString: String recieved from MultiPeer connected device
     func screenChanged(manager: ScreenServiceManager, screenString: String)
     {
         OperationQueue.main.addOperation
@@ -237,7 +247,7 @@ extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
     
 }
 
-//extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
+///extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineSelectionDeck2 : ScreenServiceManagerDelegate
 {
     

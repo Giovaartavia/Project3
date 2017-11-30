@@ -60,7 +60,7 @@ class OnlineMenuPopup: UIViewController {
     
 }
 
-/// Online extension for OnlimeMenuPopup. Checks the execution from the connected device and either sends an error message or calls the appropriate function.
+/// Online extension for OnlineMenuPopup. Checks the execution from the connected device and either sends an error message or calls the appropriate function.
 extension OnlineMenuPopup : ScreenServiceManagerDelegate
 {
     func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])

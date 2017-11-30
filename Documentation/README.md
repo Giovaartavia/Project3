@@ -10,7 +10,7 @@ Step 1: In Terminal, use the command: git clone https://github.com/Giovaartavia/
 
 Step 2: Open the Project3 folder in Xcode
 
-Step 3: You can change the compile destination to a simulator or you phone.
+Step 3: You can change the compile destination to a simulator or your phone.
 
 Step 4: Hit the play button and you're ready to start playing!
 
@@ -18,7 +18,11 @@ In the future, we might try to get the app on the App Store so you can directly 
 
 ## Documentation
 
-To generate our code documentation, we used the Quick Help Pane in Xcode 8. While the Project is open in the Xcode, you may either search through the documentation or click on a function and have all the information appear in the Quick Help Pane.
+All of our documentation and development artifacts can be found in the Documentation folder in this repo.
+
+To generate our HTML code documentation, we used the command-line based utility, Jazzy. All of the generated documentation can be found in the docs folder in the Documentation folder.
+
+To learn more about Jazzy, please check out its github page here: https://github.com/Realm/jazzy
 
 ## Sources & References
 
@@ -56,6 +60,21 @@ Source for learning how to send data from one view controller to another:
 * @author Dharmesh Kheni
 * @link https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
 * @DateAccessed 11/02/17
+
+Source for learning how to use multipeer connectivity
+* @author Ralf Ebert
+* @link https://www.ralfebert.de/tutorials/ios-swift-multipeer-connectivity/
+* @DateAccessed 11/21/17
+
+Source for learning how to create popups
+* @author Seemu Apps
+* @link https://www.youtube.com/watch?v=FgCIRMz_3dE
+* @DateAccessed 11/25/17
+
+iCarousel Library:
+* @author Nick Lockwood
+* @link https://github.com/nicklockwood/iCarousel
+* @DateAccessed 11/23/17
 
 UIKit Library:
 * @author Apple Inc.

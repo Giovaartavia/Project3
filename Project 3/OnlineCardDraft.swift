@@ -1,8 +1,8 @@
 //
-//  CardDraft.swift
+//  OnlineCardDraft.swift
 //  Project 3
 //
-//  Created by James Glass on 11/19/17.
+//  Created by Brandon Lammey on 11/20/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 
@@ -67,13 +67,29 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         return tempView
     }
     
+    /// Creates a ui image view and sets images to the view
+    ///
+    /// - Parameters:
+    ///   - carousel: iCarousel object
+    ///   - viewForItemAt index: Int value of item index
+    ///   - reusing view: Reused UIView
+    ///
+    /// - Return: A UIView
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if option == iCarouselOption.spacing {
             return value * 1.2
         }
         return value
     }
-    
+   
+    /// Sets the spacing inbetween carousel images
+    ///
+    /// - Parameters:
+    ///   - carousel: iCarousel object
+    ///   - valueFor option: option for the selected iCarousel
+    ///   - withDefault value: CGFloat value of iCarousel
+    ///
+    /// - Return: CGFloat value
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         selectLabel.text = String(selectArr[viewCaro.currentItemIndex]) + " Selected"
         availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
@@ -121,6 +137,12 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         screenService.delegate = self
     }
     
+    /// Deck Object
+    /// Object includes a deck array and name
+    ///
+    /// - Parameters:
+    ///   - name: Player's name. For now just "player1" or "player2"
+    ///   - deckArr: Stores the deck of each player
     class Deck {
         var name: String
         var deckArr: [String]
@@ -130,6 +152,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
+    /// Adds the selected card to a temporary array
+    /// Searchs for an "Empty" and replaces it with the name of the card
+    ///
+    /// - Parameters:
+    ///   - card: card to be added to the temporary array
     func addCard(card: String) {
         var j = 0
         for i in 0...1 {
@@ -140,6 +167,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
+    /// Adds the two selected cards to either player 1 or 2's deck
+    /// Searchs for two "Empty"s and replaces them with the names of the cards
+    ///
+    /// - Parameters:
+    ///   - card: card to be added to the temporary array
     func addDeck(currDeck: Deck) {
         var j = 0
         for i in 0...19 {
@@ -157,7 +189,14 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         tempCardArr = ["Empty", "Empty"]
     }
     
+    ///Outlet for the add card button
     @IBOutlet weak var addButton: UIButton!
+    
+    /// Checks if the player can add any more cards or not
+    /// If so, calls addCard, updates labels, and updates selected/available array values
+    ///
+    /// - Parameters:
+    ///   - sender: Player pressing button
     @IBAction func addButtonPress(_ sender: Any) {
         if(selectArr[viewCaro.currentItemIndex] != 2 && availableArr[viewCaro.currentItemIndex] != 0 && selected != 2)
         {
@@ -179,6 +218,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         
     }
     
+    /// Removes a card from the temporary card array
+    /// Searches for card name and replaces with an "Empty"
+    ///
+    /// - Parameters:
+    ///   - card: card to be removed from temp array
     func removeCard(card: String) {
         var j = 0
         for i in 0...1 {
@@ -189,7 +233,14 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
+    ///Outlet for the remove card button
     @IBOutlet weak var removeButton: UIButton!
+    
+    /// Checks if the player can remove any more cards or not
+    /// If so, calls removeCard, updates labels, and updates selected/available array values
+    ///
+    /// - Parameters:
+    ///   - sender: Player pressing button
     @IBAction func removeButtonPress(_ sender: Any)
     {
         if(selectArr[viewCaro.currentItemIndex] != 0 && selected != 0)
@@ -244,6 +295,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         
     }
     
+    ///Updates all of the labels on the card drafting screen besides the Player Turn label
     func updateLabels() {
         selectLabel.text = String(selectArr[viewCaro.currentItemIndex]) + " Selected"
         availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
@@ -258,8 +310,16 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
+    ///Outlet for the end turn button
     @IBOutlet weak var endTurnButton: UIButton!
     
+    /// Checks if the player has selected two cards, what turn it currently is, and how many turns have passed
+    /// If player one's turn, go to player two's and vice versa
+    /// If the number of turns is 12, take steps to end the drafting phase
+    /// This calls to updateLabels, and resets all of the selected values for the next player's turn
+    ///
+    /// - Parameters:
+    ///   - sender: Player pressing button
     @IBAction func endTurnButtonPress(_ sender: Any) {
         if(draftTurn == 1 && selected == 2 && countTurns != 12) {
             screenService.send(screenName: "Player1Turn")
@@ -361,7 +421,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
-    
+    ///Button no longer used
     @IBAction func viewDeckPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
         let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) as! OnlineMenuPopup
