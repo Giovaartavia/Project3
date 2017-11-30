@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-/// Class that handles player 1's class/deck selection
+/// Online class that handles Player 1's class cards selection.
+/// Player 1 can either be a Mage, Warrior, or Goblin.
 class OnlineSelectionDeck1: UIViewController {
     let screenService = ScreenServiceManager()
 
@@ -21,10 +22,6 @@ class OnlineSelectionDeck1: UIViewController {
     
     
     @IBOutlet weak var segmentSelect: UISegmentedControl!
-    
-    /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
-     
-     let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
     
     let warriorDeck = ["Sword-Strike-Deck", "Sword-Strike-Deck", "Double-Edge-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Liquid-Courage-Deck", "Liquid-Courage-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
     
@@ -72,10 +69,10 @@ class OnlineSelectionDeck1: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
         self.present(viewController, animated: true)
     }
+    
+    /// Chooses which deck the other player chooses
     func confirmSelectionOnline1(selectedSegment: String)
     {
-
-        
         switch selectedSegment
         {
         case "0":
@@ -105,7 +102,8 @@ class OnlineSelectionDeck1: UIViewController {
     }
 }
 
-/// Class that handles player 2's class/deck selection
+/// Online class that handles Player 2's class cards selection.
+/// Player 2 can either be a Mage, Warrior, or Goblin.
 class OnlineSelectionDeck2: UIViewController
 {
     let screenService = ScreenServiceManager()
@@ -224,6 +222,12 @@ extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
                     let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
                     self.present(viewController, animated: true)
+                case "p1.2":
+                    self.confirmSelectionOnline1(selectedSegment: "2")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
+                    self.present(viewController, animated: true)
                 default:
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
@@ -261,6 +265,12 @@ extension OnlineSelectionDeck2 : ScreenServiceManagerDelegate
                     self.present(viewController, animated: true)
                 case "p2.1":
                     self.confirmSelectionOnline2(selectedSegment: "1")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
+                    self.present(viewController, animated: true)
+                case "p2.2":
+                    self.confirmSelectionOnline2(selectedSegment: "2")
                     //move to next view controller
                     let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
