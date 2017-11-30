@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		627F82AD1FCFB713008D839B /* warriorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F82AA1FCFB712008D839B /* warriorPopup.swift */; };
-		627F82AE1FCFB713008D839B /* goblinPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F82AB1FCFB712008D839B /* goblinPopup.swift */; };
 		627F82AF1FCFB713008D839B /* magePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F82AC1FCFB713008D839B /* magePopup.swift */; };
 		8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840731681FC217B20025C1A8 /* iCarousel.m */; };
 		8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407316C1FC2185F0025C1A8 /* QuartzCore.framework */; };
@@ -342,7 +341,7 @@
 				627F82AD1FCFB713008D839B /* warriorPopup.swift in Sources */,
 				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
 				84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */,
-				627F82AE1FCFB713008D839B /* goblinPopup.swift in Sources */,
+				842B08AF1FCFBA520019A00C /* warriorPopup.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
 				627F82AF1FCFB713008D839B /* magePopup.swift in Sources */,
 				84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */,
