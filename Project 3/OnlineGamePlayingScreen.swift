@@ -88,6 +88,16 @@ class OnlineViewPlayGame: UIViewController {
         screenService.delegate = self
     }
     
+    @IBAction func onlimeMenuButtonPressed(_ sender: Any) {
+        let popup = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+        let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) as! OnlineMenuPopup
+        self.addChildViewController(viewController)
+        viewController.view.frame = self.view.frame
+        self.view.addSubview(viewController.view)
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    
     /// Player Object
     /// Object includes a deckArray along with various stats used for gameplay
     ///
@@ -120,7 +130,7 @@ class OnlineViewPlayGame: UIViewController {
         var hasAttacked = false
         var canAddBack = true
         var bloodThinner = false
-        var hasSabotage = false
+        var hasHauntTaunt = false
         
         //Extra booleans for cards execution
         var hasGoblinGreed = false
@@ -165,12 +175,12 @@ class OnlineViewPlayGame: UIViewController {
             switch currCard
             {
                 
-                //buffs (INFINITE)  
-            //+1 attack per turn      
+                //buffs (INFINITE)
+            //+1 attack per turn
             case "Mana-Potion-Deck", "Liquid-Courage-Deck", "Coin-Craze-Deck":
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
             //+3 attack once while active
-            case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
+            case "Spell-Tome-Deck", "Blacksmith-Deck", "Money-is-Power-Deck":
                 currPlayer.attack += 3
                 updateAttackBar(currPlayer: currPlayer)
                 addBuff(newBuff: currCard, currPlayer: currPlayer)
@@ -188,16 +198,16 @@ class OnlineViewPlayGame: UIViewController {
             case "Bad-Medicine-Deck":
                 nextPlayer.debuff = "Bad-Medicine-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
-                nextPlayer.debuffTime = 3      
-            //1 damage to opponent
-                //mage: Opponent cannot use move card option
+                nextPlayer.debuffTime = 3
+                //1 damage to opponent
+            //mage: Opponent cannot use move card option
             case "Voodoo-Doll-Deck":
                 nextPlayer.debuff = "Voodoo-Doll-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
-                //warrior: Opponent takes 2 damage per turn
+            //warrior: Opponent takes 2 damage per turn
             case "Brass-Knuckles-Deck":
                 nextPlayer.debuff = "Brass-Knuckles-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
@@ -205,12 +215,13 @@ class OnlineViewPlayGame: UIViewController {
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 1 damage, opponent has -2 stamina (Goblin)
-            case "Sabotage-Deck":
-                nextPlayer.debuff = "Sabotage-Deck"
+            case "Haunt-Taunt-Deck":
+                nextPlayer.debuff = "Haunt-Taunt-Deck"
                 updateDebuffBar(currPlayer: nextPlayer)
                 nextPlayer.debuffTime = 3
                 nextPlayer.health -= 1
                 updateHealthBar(currPlayer: nextPlayer)
+                //applyDebuff(currPlayer: currPlayer, nextPlayer: nextPlayer)
                 
                 // single turn
             //Places top card of opponents deck on the bottom
@@ -228,7 +239,7 @@ class OnlineViewPlayGame: UIViewController {
                 checkHealth(currPlayer: nextPlayer)
                 updateHealthBar(currPlayer: nextPlayer)
             //Deal 5 damage to self and gain 5 stamina. If player is at max stamina when playing the card (10), remove 6 stamina from opponent instead.
-            case "Village-Pillage-Deck":
+            case "Loot-Tool-Deck":
                 currPlayer.health -= 5
                 checkHealth(currPlayer: currPlayer)
                 updateHealthBar(currPlayer: currPlayer)
@@ -254,7 +265,7 @@ class OnlineViewPlayGame: UIViewController {
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: currPlayer.attack + 2))
                 updateHealthBar(currPlayer: nextPlayer)
             //Do 2 damage. Plays top card of opponents deck on bottom
-            case "Barbaric-Burglary-Deck":
+            case "Sleight-of-Hand-Deck":
                 attackDamage(currPlayer: currPlayer, nextPlayer: nextPlayer, damage: checkAttack(currPlayer: currPlayer, damage: 2))
                 addToBack(arr: &nextPlayer.currDeck)
                 animateDiscard(currPlayer: nextPlayer)
@@ -281,9 +292,9 @@ class OnlineViewPlayGame: UIViewController {
                 checkStaminaCap(currPlayer: currPlayer, nextPlayer: nextPlayer)
                 currPlayer.hasGoblinGreed = true
                 updateStaminaBar(currPlayer: currPlayer)
-
-            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Theft card at the bottom of your opponents deck
-            case "Theft-Deck":
+                
+            //Restore 2 Stamina. Place top card of opponents deck on the top of your deck. Place your Handy-Discount card at the bottom of your opponents deck
+            case "Handy-Discount-Deck":
                 currPlayer.currStamina += 2
                 nextPlayer.currDeck.append(currPlayer.currDeck[0])
                 //Note that we add back after a card is being played so we need to set up the array in such a way that it has the wanted order after an add back.
@@ -306,9 +317,11 @@ class OnlineViewPlayGame: UIViewController {
         }
         else
         {
+            //endTurnButton.setImage(UIImage(named: "endTurnFlash"), for:.normal);
+            //player1Class.loadGif(name:"endTurnFlash" )
             print("NOT ENOUGH STAMINA HONEY!")
         }
-
+        
     }
 
     
@@ -325,17 +338,17 @@ class OnlineViewPlayGame: UIViewController {
         if(currPlayer.buffArr.count == 3)
         {
             //check if replaced is "Spell-Tome-Deck" or "Blacksmith-Deck"
-            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Call-The-Horde-Deck")
+            if(currPlayer.buffArr[0] == "Spell-Tome-Deck" || currPlayer.buffArr[0] == "Blacksmith-Deck" || currPlayer.buffArr[0] == "Money-is-Power-Deck")
             {
                 currPlayer.attack -= 3
                 updateAttackBar(currPlayer: currPlayer)
             }
-
-            //change front 
+            
+            //change front
             currPlayer.buffArr[0] = newBuff
             updateBuffBar(currPlayer: currPlayer)
-            //move to back 
-            addToBack(arr: &currPlayer.buffArr)         
+            //move to back
+            addToBack(arr: &currPlayer.buffArr)
         }
         else if(currPlayer.buffArr.count >= 0 && currPlayer.buffArr.count < 3)
         {
@@ -347,8 +360,8 @@ class OnlineViewPlayGame: UIViewController {
         {
             print("Error in add buff")
         }
-    } 
-
+    }
+    
     /// Check players buffArr and player modify stats based on buff type
     ///
     /// - Parameter currPlayer: PLayer object currently executing turn
@@ -365,13 +378,13 @@ class OnlineViewPlayGame: UIViewController {
                     currPlayer.attack += 1
                     updateAttackBar(currPlayer: currPlayer)
                     /*if currPlayer.attack > 10
-                    {
-                        currPlayer.attack = 10
-                    }*/
+                     {
+                     currPlayer.attack = 10
+                     }*/
                     print("buff add attack")
                 //+3 attack once while active
-                case "Spell-Tome-Deck", "Blacksmith-Deck", "Call-The-Horde-Deck":
-                    //does not take place per turn 
+                case "Spell-Tome-Deck", "Blacksmith-Deck", "Money-is-Power-Deck":
+                    //does not take place per turn
                     print("buff add attack once")
                 //+2 health per turn
                 case "Health-Potion-Deck":
@@ -385,7 +398,7 @@ class OnlineViewPlayGame: UIViewController {
                     {
                         print("Did not heal because Bad-Medicine-Deck debuff is active")
                     }
-
+                    
                     print("buff add health")
                 default:
                     print("Error inside checkBuffs")
@@ -442,18 +455,40 @@ class OnlineViewPlayGame: UIViewController {
         if(currPlayer.debuff == "Bad-Medicine-Deck")
         {
             currPlayer.canHeal = false
+            
+            currPlayer.canAddBack = true
+            nextPlayer.bloodThinner = false
+            nextPlayer.hasHauntTaunt = false
         }
         else if(currPlayer.debuff == "Voodoo-Doll-Deck")
         {
             currPlayer.canAddBack = false
+            
+            currPlayer.canHeal = true
+            nextPlayer.bloodThinner = false
+            nextPlayer.hasHauntTaunt = false
         }
         else if(nextPlayer.debuff == "Brass-Knuckles-Deck")
         {
             nextPlayer.bloodThinner = true
+            
+            currPlayer.canHeal = true
+            currPlayer.canAddBack = true
+            nextPlayer.hasHauntTaunt = false
         }
-        else if (nextPlayer.debuff == "Sabotage-Deck")
+        else if (nextPlayer.debuff == "Haunt-Taunt-Deck")
         {
-            nextPlayer.hasSabotage = true
+            nextPlayer.hasHauntTaunt = true
+            
+            currPlayer.canHeal = true
+            currPlayer.canAddBack = true
+            nextPlayer.bloodThinner = false
+        }
+        else {
+            currPlayer.canHeal = true
+            currPlayer.canAddBack = true
+            nextPlayer.bloodThinner = false
+            nextPlayer.hasHauntTaunt = false
         }
     }
 
@@ -540,6 +575,10 @@ class OnlineViewPlayGame: UIViewController {
         }
     }
     
+    /// Does respective debuff action.
+    /// - Parameters:
+    ///   - currPlayer: Player object who played the debuff card
+    ///   - nextPlayer: Player object who is being affected by the debuff
     func applyDebuff(currPlayer: Player, nextPlayer: Player)
     {
         if(nextPlayer.bloodThinner)
@@ -553,10 +592,12 @@ class OnlineViewPlayGame: UIViewController {
             nextPlayer.currStamina -= 2
             nextPlayer.hasGoblinGreed = false
         }
-        else if(currPlayer.hasSabotage)
+        else if(nextPlayer.hasHauntTaunt)
         {
-            currPlayer.currStamina -= 2
-            updateStaminaBar(currPlayer: currPlayer)
+            //print ("\n\n\n\(nextPlayer.currStamina)\n\n\n")
+            nextPlayer.currStamina -= 2
+            //print ("\n\n\n\(currPlayer.currStamina)\n\n\n")
+            updateStaminaBar(currPlayer: nextPlayer)
         }
         
         //Keep track of debuff. Debuff can only live for 2 back-and-forth turns.
@@ -570,7 +611,11 @@ class OnlineViewPlayGame: UIViewController {
                 nextPlayer.bloodThinner = false
                 nextPlayer.canHeal = true
                 nextPlayer.canAddBack = true
-                nextPlayer.hasSabotage = false
+                if(nextPlayer.hasHauntTaunt)
+                {
+                    nextPlayer.hasHauntTaunt = false
+                    nextPlayer.currStamina += 2
+                }
             }
         }
     }
@@ -647,18 +692,13 @@ class OnlineViewPlayGame: UIViewController {
         {
             for i in 0...(currPlayer.buffArr.count - 1)
             {
-                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Call-The-Horde-Deck")
+                if(currPlayer.buffArr[i] == "Blacksmith-Deck" || currPlayer.buffArr[i] == "Spell-Tome-Deck" || currPlayer.buffArr[i] == "Money-is-Power-Deck")
                 {
                     hasBlacksmith = true
                 }
             }
         }
         
-        /*if (currPlayer.buffArr[0] == "Blacksmith-Deck")
-        {
-            hasBlacksmith = true
-        }*/
-
         if(!hasBlacksmith)
         {
             if (currPlayer.attack > 10)
@@ -1054,6 +1094,10 @@ class OnlineViewPlayGame: UIViewController {
                 {
                     debuffIcon1.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
                 }
+                else if(currPlayer.debuff == "Haunt-Taunt-Deck")
+                {
+                    debuffIcon1.image = UIImage(named: "Haunt-Taunt-Deck-Icon")
+                }
                 else
                 {
                     debuffIcon1.image = UIImage(named: "")
@@ -1079,6 +1123,10 @@ class OnlineViewPlayGame: UIViewController {
                 else if(currPlayer.debuff == "Brass-Knuckles-Deck")
                 {
                     debuffIcon2.image = UIImage(named: "Brass-Knuckles-Deck-Icon")
+                }
+                else if(currPlayer.debuff == "Haunt-Taunt-Deck")
+                {
+                    debuffIcon2.image = UIImage(named: "Haunt-Taunt-Deck-Icon")
                 }
                 else
                 {

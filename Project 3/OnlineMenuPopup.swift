@@ -32,20 +32,20 @@ class OnlineMenuPopup: UIViewController {
     }
     
     @IBAction func onlineSurrenderButtonPress(_ sender: Any) {
-        print("********** HERE **********")
-        print("********** HERE **********")
-        print("********** HERE **********")
-        print("********** HERE **********")
-        print("********** HERE **********")
+        print("********** Quit Pressed HERE **********")
+        print("********** Quit Pressed HERE **********")
+        print("********** Quit Pressed HERE **********")
+        print("********** Quit Pressed HERE **********")
+        print("********** Quit Pressed HERE **********")
         screenService.send(screenName: "Surrender")
     }
     func onlineSurrender()
     {
-        print("********** HERE **********")
-        print("********** HERE **********")
-        print("********** HERE **********")
-        print("********** HERE **********")
-        print("********** HERE **********")
+        print("********** Function Executed HERE **********")
+        print("********** Function Executed HERE **********")
+        print("********** Function Executed HERE **********")
+        print("********** Function Executed HERE **********")
+        print("********** Function Executed HERE **********")
         
         let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier : ("surrenderScreen"))
@@ -68,16 +68,20 @@ extension OnlineMenuPopup : ScreenServiceManagerDelegate
     {
         OperationQueue.main.addOperation
             {
+                print("********** HERE **********")
+                print("********** HERE **********")
+                print("********** HERE **********")
+                print("********** HERE **********")
+                print("********** HERE **********")
                 //determine which btton was pressed and push changes to all screens
-                switch screenString
+                if (screenString == "Surrender")
                 {
-                case "Surrender" :
                     self.onlineSurrender()
-                    
-                default:
+                }
+                else
+                {
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
-                
         }
     }
 }
