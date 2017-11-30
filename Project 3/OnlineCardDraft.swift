@@ -11,8 +11,8 @@ import UIKit
 
 class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     var images = [String]()
-    var selectArr = [Int]()
-    var availableArr = [Int]()
+    var selectArr = [Int]() //cards selected
+    var availableArr = [Int]() //cards available
     var tempCardArr = [String]()
     var draftTurn = playerStart
     var selected = Int()
@@ -148,7 +148,9 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     @IBAction func addButtonPress(_ sender: Any) {
         if(selectArr[viewCaro.currentItemIndex] != 2 && availableArr[viewCaro.currentItemIndex] != 0 && selected != 2)
         {
-            screenService.send(screenName: "addCard")
+            let name = "addCard." + String(viewCaro.currentItemIndex)
+            screenService.send(screenName: name)
+            
             selectArr[viewCaro.currentItemIndex] = selectArr[viewCaro.currentItemIndex] + 1
             selected = selected + 1
             availableArr[viewCaro.currentItemIndex] = availableArr[viewCaro.currentItemIndex] - 1
@@ -195,23 +197,25 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     
     func updateCardSelectionOnline(command: String)
     {
-        switch command {
+        var newDeckArray = command.components(separatedBy: ".")
+        let position = Int(newDeckArray[1])!
+        switch newDeckArray[0] {
         case "removeCard":
-            selectArr[viewCaro.currentItemIndex] = selectArr[viewCaro.currentItemIndex] - 1
+            selectArr[position] = selectArr[position] - 1
             selected = selected - 1
-            availableArr[viewCaro.currentItemIndex] = availableArr[viewCaro.currentItemIndex] + 1
+            availableArr[position] = availableArr[position] + 1
             
-            let cardName = images[viewCaro.currentItemIndex]
+            let cardName = images[position]
             let postfix = cardName.index(cardName.endIndex, offsetBy: -7)
             let truncate = cardName.substring(to: postfix)
     
             removeCard(card: truncate+"-Deck")
         case "addCard":
-            selectArr[viewCaro.currentItemIndex] = selectArr[viewCaro.currentItemIndex] + 1
+            selectArr[position] = selectArr[position] + 1
             selected = selected + 1
-            availableArr[viewCaro.currentItemIndex] = availableArr[viewCaro.currentItemIndex] - 1
+            availableArr[position] = availableArr[position] - 1
             
-            let cardName = images[viewCaro.currentItemIndex]
+            let cardName = images[position]
             let postfix = cardName.index(cardName.endIndex, offsetBy: -7)
             let truncate = cardName.substring(to: postfix)
             
@@ -220,15 +224,6 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         default:
             NSLog("%@", "Unknown value received: \(command)")
         }
-        print("updateCardSelect")
-        print("=====================")
-        print("=====================")
-        print("=====================")
-        print(tempCardArr.joined(separator: "."))
-        print("=====================")
-        print("=====================")
-        print("=====================")
-        print("updateCardSelect")
         
     }
     
@@ -372,22 +367,17 @@ extension OnlineCardDraft : ScreenServiceManagerDelegate
     {
         OperationQueue.main.addOperation
             {
-                switch screenString
+                
+                if(screenString.contains("Player1Turn") || screenString.contains("Player2Turn") || screenString.contains("Player1Final") || screenString.contains("Player2Final"))
                 {
-                case "Player1Turn":
                     self.endTurnPressOnline(command: screenString)
-                case "Player2Turn":
-                    self.endTurnPressOnline(command: screenString)
-                case "Player1Final" :
-                    self.endTurnPressOnline(command: screenString)
-                case "Player2Final" :
-                    self.endTurnPressOnline(command: screenString)
-                case "addCard" :
+                }
+                else if(screenString.contains("addCard") || screenString.contains("removeCard"))
+                {
                     self.updateCardSelectionOnline(command: screenString)
-                case "removeCard" :
-                    self.updateCardSelectionOnline(command: screenString)
-                    
-                default:
+                }
+                else
+                {
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
                 
