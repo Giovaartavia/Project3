@@ -52,26 +52,44 @@ class OnlineViewPlayGame: UIViewController {
             let selectedDeck : [NSString] = test as! [NSString]
             player2.currDeck = selectedDeck as [String]
         }
-        if(player1.currDeck == warriorDeck)
-        {
-            player1.deck = "Warrior"
-            player1Class.image = UIImage(named: "Warrior-Icon")
+        var deckCheck = false
+        
+        for i in 0...19 {
+            if(player1.currDeck[i] == "Sword-Strike-Deck" && deckCheck == false) {
+                player1.deck = "Warrior"
+                player1Class.image = UIImage(named: "Warrior-Icon")
+                deckCheck = true
+            }
+            else if(player1.currDeck[i] == "Horde-Ransack-Deck" && deckCheck == false) {
+                player1.deck = "Goblin"
+                player1Class.image = UIImage(named: "Goblin-Icon")
+                deckCheck = true
+            }
+            else if(player1.currDeck[i] == "Magical-Bolt-Deck" && deckCheck == false) {
+                player1.deck = "Mage"
+                player1Class.image = UIImage(named: "Mage-Icon")
+                deckCheck = true
+            }
         }
-        else
-        {
-            player1.deck = "Mage"
-            player1Class.image = UIImage(named: "Mage-Icon")
+        deckCheck = false
+        for i in 0...19 {
+            if(player2.currDeck[i] == "Sword-Strike-Deck" && deckCheck == false) {
+                player2.deck = "Warrior"
+                player2Class.image = UIImage(named: "Warrior-Icon")
+                deckCheck = true
+            }
+            else if(player2.currDeck[i] == "Horde-Ransack-Deck" && deckCheck == false) {
+                player2.deck = "Goblin"
+                player2Class.image = UIImage(named: "Goblin-Icon")
+                deckCheck = true
+            }
+            else if(player2.currDeck[i] == "Magical-Bolt-Deck" && deckCheck == false) {
+                player2.deck = "Mage"
+                player2Class.image = UIImage(named: "Mage-Icon")
+                deckCheck = true
+            }
         }
-        if(player2.currDeck == warriorDeck)
-        {
-            player2.deck = "Warrior"
-            player2Class.image = UIImage(named: "Warrior-Icon")
-        }
-        else
-        {
-            player2.deck = "Mage"
-            player2Class.image = UIImage(named: "Mage-Icon")
-        }
+        deckCheck = false
         player1.currDeck = player1.currDeck.shuffled()
         player2.currDeck = player2.currDeck.shuffled()
         

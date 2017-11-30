@@ -64,10 +64,7 @@ class ViewPlayGame: UIViewController {
             print("ERROR PICKING TURN")
         }
         
-        /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
-        
-        let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
-        
+        ///grabs saved drafted decks and gives them to each respective player class
         if let test : AnyObject = UserDefaults.standard.object(forKey: "draftedDeck1") as Optional {
             let selectedDeck : [NSString] = test as! [NSString]
             player1.currDeck = selectedDeck as [String]
@@ -77,6 +74,7 @@ class ViewPlayGame: UIViewController {
             player2.currDeck = selectedDeck as [String]
         }
         
+        ///checks whether a specific deck class card is in a deck. This is used to assign the player class images
         var deckCheck = false
     
         for i in 0...19 {
@@ -124,8 +122,10 @@ class ViewPlayGame: UIViewController {
         revealTopCard(currPlayer: player2)
         updateStaminaBar(currPlayer: player1)
         updateStaminaBar(currPlayer: player2)
+        ///Long Press Gesture Recognizer used for pushing down on deck1
         let holdDeck1 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard1(_:)))
         topCard1Button.addGestureRecognizer(holdDeck1)
+        ///Long Press Gesture Recognizer used for pushing down on deck2
         let holdDeck2 = UILongPressGestureRecognizer(target: self, action: #selector(holdTopCard2(_:)))
         topCard2Button.addGestureRecognizer(holdDeck2)
         blurTopCard.isHidden = true;
@@ -345,6 +345,7 @@ class ViewPlayGame: UIViewController {
                 let currDeckSize = currPlayer.currDeck.count - 1
                 currPlayer.currDeck.insert(currPlayer.currDeck[currDeckSize], at: 0)
                 currPlayer.currDeck.remove(at: currDeckSize + 1)
+                updateStaminaBar(currPlayer: currPlayer)
                 
             default: //Necessary
                 print("Error in card selection switch case")
@@ -730,6 +731,13 @@ class ViewPlayGame: UIViewController {
         topCard2Button.isEnabled = false
     }
     
+    /// Checks modies attack damage based on buffs and debuffs
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Player Object who is executing their turn
+    ///   - damage: raw damage before buffs and debuff calculations
+    ///
+    /// - Return: Damage value after buffs and debuffs are factored in
     func checkAttack(currPlayer: Player, damage: Int) -> Int
     {
         var hasBlacksmith = false
@@ -961,6 +969,11 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    /// Special animation for discarding Handy Discount
+    /// This affects the players deck who is playing the Handy Discount Card
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Player Object who is executing their turn
     func animateHandyDiscard(currPlayer: Player) {
         //disables buttons for animation duration
         if(playCardButton != nil)
@@ -1041,6 +1054,11 @@ class ViewPlayGame: UIViewController {
         }
     }
     
+    /// Special animation for adding Handy Discount to the opposing player's deck.
+    /// This affects the players deck who isn't playing the Handy Discount Card
+    ///
+    /// - Parameters:
+    ///   - currPlayer: Player Object who is executing their turn
     func animateHandyDiscount(currPlayer: Player, nextPlayer: Player)
     {
         //disables buttons for animation duration
@@ -1607,9 +1625,9 @@ class ViewPlayGame: UIViewController {
 
     /// Calls on endTurn function
     /// Replenishes stamina, updates total stamina, and checks for buffs/debuffs
-    /// Chenges turn
+    /// Changes turn
     ///
-    /// - Parameter sender: PLayer pressing button
+    /// - Parameter sender: Player pressing button
     @IBAction func endTurnPress(_ sender: Any) {
         /*UIView.animate(withDuration: 1, animations: {
             self.center = CGPointMake(playerTurn.center.x, playerTurn.center.y+400)
@@ -1774,6 +1792,10 @@ class ViewPlayGame: UIViewController {
         //printStats()
     }
     
+    /// Adds a child subview to the parent view controller.
+    /// This is used to have a menu popup when the menu button is pressed
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
         self.addChildViewController(popup)

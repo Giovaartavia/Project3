@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		627F7A8E1FCF2FE2005F716E /* magePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F7A8D1FCF2FE2005F716E /* magePopup.swift */; };
-		627F7A901FCF3014005F716E /* goblinPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F7A8F1FCF3014005F716E /* goblinPopup.swift */; };
-		627F7A941FCF7B75005F716E /* warriorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F7A931FCF7B75005F716E /* warriorPopup.swift */; };
-		62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */; };
 		8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840731681FC217B20025C1A8 /* iCarousel.m */; };
 		8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407316C1FC2185F0025C1A8 /* QuartzCore.framework */; };
 		84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */; };
@@ -56,10 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		627F7A8D1FCF2FE2005F716E /* magePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magePopup.swift; sourceTree = "<group>"; };
-		627F7A8F1FCF3014005F716E /* goblinPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goblinPopup.swift; sourceTree = "<group>"; };
-		627F7A931FCF7B75005F716E /* warriorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = warriorPopup.swift; sourceTree = "<group>"; };
-		62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFANIMATE.swift; sourceTree = "<group>"; };
 		840731671FC217B10025C1A8 /* Project 3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project 3-Bridging-Header.h"; sourceTree = "<group>"; };
 		840731681FC217B20025C1A8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		840731691FC217B20025C1A8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
@@ -131,7 +123,6 @@
 		AC0C0BD71F9BFBD70026A225 = {
 			isa = PBXGroup;
 			children = (
-				62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */,
 				84BFF5B61FAA3ED500AB0B3F /* MADE Waffle Soft.otf */,
 				AC0C0BE21F9BFBD70026A225 /* Project 3 */,
 				AC0C0BF71F9BFBD70026A225 /* Project 3Tests */,
@@ -335,7 +326,6 @@
 			files = (
 				84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */,
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
-				62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */,
 				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
 				627F7A901FCF3014005F716E /* goblinPopup.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
@@ -520,10 +510,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8KBK4EBEM;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = .com.MemoryLeeks.TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeckG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
@@ -540,10 +530,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8KBK4EBEM;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = .com.MemoryLeeks.TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeckG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
