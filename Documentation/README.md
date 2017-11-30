@@ -18,7 +18,11 @@ In the future, we might try to get the app on the App Store so you can directly 
 
 ## Documentation
 
-To generate our code documentation, we used the Quick Help Pane in Xcode 8. While the Project is open in the Xcode, you may either search through the documentation or click on a function and have all the information appear in the Quick Help Pane.
+All of our documentation and development artifacts can be found in the Documentation folder in this repo.
+
+To generate our HTML code documentation, we used the command-line based utility, Jazzy. All of the generated documentation can be found in the docs folder in the Documentation folder.
+
+To learn more about Jazzy, please check out its github page here: https://github.com/Realm/jazzy
 
 ## Sources & References
 
