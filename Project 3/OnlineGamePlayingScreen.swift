@@ -2020,9 +2020,15 @@ class OnlineViewPlayGame: UIViewController {
     }
 }
 
+//extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineViewPlayGame : ScreenServiceManagerDelegate
 {
 
+    /// Empty function which recieves the names of connected devices to the MultiPeer session
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - connectedDevices: Names of devices connected to
     func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])
     {
         OperationQueue.main.addOperation
@@ -2032,7 +2038,11 @@ extension OnlineViewPlayGame : ScreenServiceManagerDelegate
     }
  
  
-    
+    /// Using commands recieved via screenString makes changes to recieving device
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - screenString: String recieved from MultiPeer connected device
     func screenChanged(manager: ScreenServiceManager, screenString: String)
     {
         OperationQueue.main.addOperation
