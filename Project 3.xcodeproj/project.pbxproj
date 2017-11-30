@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627F7A8E1FCF2FE2005F716E /* magePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F7A8D1FCF2FE2005F716E /* magePopup.swift */; };
+		627F7A901FCF3014005F716E /* goblinPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F7A8F1FCF3014005F716E /* goblinPopup.swift */; };
+		627F7A941FCF7B75005F716E /* warriorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627F7A931FCF7B75005F716E /* warriorPopup.swift */; };
 		62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */; };
 		8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840731681FC217B20025C1A8 /* iCarousel.m */; };
 		8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407316C1FC2185F0025C1A8 /* QuartzCore.framework */; };
@@ -53,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		627F7A8D1FCF2FE2005F716E /* magePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magePopup.swift; sourceTree = "<group>"; };
+		627F7A8F1FCF3014005F716E /* goblinPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goblinPopup.swift; sourceTree = "<group>"; };
+		627F7A931FCF7B75005F716E /* warriorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = warriorPopup.swift; sourceTree = "<group>"; };
 		62EE6CB11FCAA95D00755DBF /* GIFANIMATE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFANIMATE.swift; sourceTree = "<group>"; };
 		840731671FC217B10025C1A8 /* Project 3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project 3-Bridging-Header.h"; sourceTree = "<group>"; };
 		840731681FC217B20025C1A8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 			children = (
 				AC26F6811FCDFCCA00F53BAE /* OnlineMenuPopup.swift */,
 				84BD688C1FC763EE00F93C90 /* menuPopup.swift */,
+				627F7A931FCF7B75005F716E /* warriorPopup.swift */,
+				627F7A8D1FCF2FE2005F716E /* magePopup.swift */,
+				627F7A8F1FCF3014005F716E /* goblinPopup.swift */,
 				AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */,
 				84BFF5B41FAA3E5B00AB0B3F /* Fonts */,
 				AC0C0BE71F9BFBD70026A225 /* Main.storyboard */,
@@ -328,6 +337,7 @@
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
 				62EE6CB21FCAA95D00755DBF /* GIFANIMATE.swift in Sources */,
 				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
+				627F7A901FCF3014005F716E /* goblinPopup.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
 				CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */,
 				CB658A2D1FCB4BF100AA6A37 /* OnlineCardDraft.swift in Sources */,
@@ -335,11 +345,13 @@
 				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
 				84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
+				627F7A8E1FCF2FE2005F716E /* magePopup.swift in Sources */,
 				84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */,
 				8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */,
 				84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */,
 				AC26F6821FCDFCCA00F53BAE /* OnlineMenuPopup.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
+				627F7A941FCF7B75005F716E /* warriorPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
