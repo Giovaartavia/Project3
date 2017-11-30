@@ -66,13 +66,13 @@ extension OnlineMenuPopup : ScreenServiceManagerDelegate
     
     func screenChanged(manager: ScreenServiceManager, screenString: String)
     {
+        NSLog("********** HERE **********")
+        NSLog("********** HERE **********")
+        NSLog("********** HERE **********")
+        NSLog("********** HERE **********")
+        NSLog("********** HERE **********")
         OperationQueue.main.addOperation
             {
-                print("********** HERE **********")
-                print("********** HERE **********")
-                print("********** HERE **********")
-                print("********** HERE **********")
-                print("********** HERE **********")
                 //determine which btton was pressed and push changes to all screens
                 if (screenString == "Surrender")
                 {
