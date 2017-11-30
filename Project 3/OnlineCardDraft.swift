@@ -11,18 +11,30 @@ import UIKit
 
 /// Class that calls and creates a carrousel to select neutral cards.
 class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
+    /// Array of card image strings
     var images = [String]()
+    /// Array of selected cards so far.
     var selectArr = [Int]() //cards selected
+     /// Array of cards are still available to be chosen.
     var availableArr = [Int]() //cards available
+    /// Temporary array of cards that holds which cards a player has selected in a single turn. Resets after endTurn is pressed.
     var tempCardArr = [String]()
+    /// Player's turn to pick 2 cards.
     var draftTurn = playerStart
+    /// Contains the amount of selected cards a player has in a turn. There has to be 2 cards selected in order to pass the turn and the maximum amount of selected cards is 2.
     var selected = Int()
+    /// Amounts of turns that have been played on card select. They increment by 1 every time endTurn is pressed. Starts at 1 and ends at 12.
     var countTurns = Int()
     
+    ///iCarousel object
     @IBOutlet var viewCaro: iCarousel!
+    ///label that tells us which player is drafting
     @IBOutlet weak var playerLabel: UILabel!
+    ///label that tells us how many cards are selected of a given type
     @IBOutlet weak var selectLabel: UILabel!
+    ///label that tells us how many cards are available to select of a given type
     @IBOutlet weak var availableLabel: UILabel!
+    ///label that tells the player how many more cards to draft
     @IBOutlet weak var howManyLabel: UILabel!
     
     var deck1 = Deck(name: "player1", deckArr: ["Empty"])
