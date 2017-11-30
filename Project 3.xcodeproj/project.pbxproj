@@ -146,6 +146,9 @@
 			children = (
 				AC26F6811FCDFCCA00F53BAE /* OnlineMenuPopup.swift */,
 				84BD688C1FC763EE00F93C90 /* menuPopup.swift */,
+				627F7A931FCF7B75005F716E /* warriorPopup.swift */,
+				627F7A8D1FCF2FE2005F716E /* magePopup.swift */,
+				627F7A8F1FCF3014005F716E /* goblinPopup.swift */,
 				AC0C0BE31F9BFBD70026A225 /* AppDelegate.swift */,
 				84BFF5B41FAA3E5B00AB0B3F /* Fonts */,
 				AC0C0BE71F9BFBD70026A225 /* Main.storyboard */,
@@ -324,6 +327,7 @@
 				84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */,
 				AC2B42751F9FCF1D00397CD8 /* GamePlayingScreen.swift in Sources */,
 				CB304B131FC74C8B0046EF77 /* OnlineCoinFlip.swift in Sources */,
+				627F7A901FCF3014005F716E /* goblinPopup.swift in Sources */,
 				84C2DEE41FAA9EEB006D2E2D /* Main.swift in Sources */,
 				CB304B191FC77B150046EF77 /* OnlineServiceManager.swift in Sources */,
 				CB658A2D1FCB4BF100AA6A37 /* OnlineCardDraft.swift in Sources */,
@@ -331,11 +335,13 @@
 				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
 				84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
+				627F7A8E1FCF2FE2005F716E /* magePopup.swift in Sources */,
 				84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */,
 				8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */,
 				84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */,
 				AC26F6821FCDFCCA00F53BAE /* OnlineMenuPopup.swift in Sources */,
 				AC0C0BE41F9BFBD70026A225 /* AppDelegate.swift in Sources */,
+				627F7A941FCF7B75005F716E /* warriorPopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,10 +510,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8KBK4EBEM;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = .com.MemoryLeeks.TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeckG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
@@ -524,10 +530,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8KBK4EBEM;
+				DEVELOPMENT_TEAM = 88LS55E862;
 				INFOPLIST_FILE = "Project 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = .com.MemoryLeeks.TopDeck;
+				PRODUCT_BUNDLE_IDENTIFIER = MemoryLeeks.TopDeckG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Project 3/Project 3-Bridging-Header.h";
