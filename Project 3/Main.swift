@@ -18,6 +18,8 @@ class Tutorial: UIViewController {
     var loc = 0;
     
     ///Function that moves the tutorial image to the previous image
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func PrevScreen(_ sender: Any) {
         //print("PREV")
         if(loc == 0)
@@ -32,6 +34,8 @@ class Tutorial: UIViewController {
     }
     
     ///Function that moves the tutorial image to the next image
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func NextScreen(_ sender: Any) {
         //print("NEXT")
         if(loc == 8)

@@ -108,6 +108,10 @@ class OnlineViewPlayGame: UIViewController {
         screenService.delegate = self
     }
     
+    ///Function that is called once a player presses the menu button.
+    ///Shows a popup of the menu viewcontroller.
+    /// - Parameters:
+    ///   - sender: Button that is being pressed
     @IBAction func onlimeMenuButtonPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
         let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) as! OnlineMenuPopup
