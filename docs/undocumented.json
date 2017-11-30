@@ -1,0 +1,1573 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 14,
+      "symbol": "UIImageView.loadGif(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 27,
+      "symbol": "UIImage.gif(data:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 37,
+      "symbol": "UIImage.gif(url:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 53,
+      "symbol": "UIImage.gif(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 70,
+      "symbol": "UIImage.delayForImageAtIndex(_:source:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 101,
+      "symbol": "UIImage.gcdForPair(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 136,
+      "symbol": "UIImage.gcdForArray(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift",
+      "line": 150,
+      "symbol": "UIImage.animatedImageWithSource(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 12,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 14,
+      "symbol": "AppDelegate.window",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 17,
+      "symbol": "AppDelegate.application(_:didFinishLaunchingWithOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 22,
+      "symbol": "AppDelegate.applicationWillResignActive(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 27,
+      "symbol": "AppDelegate.applicationDidEnterBackground(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 32,
+      "symbol": "AppDelegate.applicationWillEnterForeground(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 36,
+      "symbol": "AppDelegate.applicationDidBecomeActive(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/AppDelegate.swift",
+      "line": 40,
+      "symbol": "AppDelegate.applicationWillTerminate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 12,
+      "symbol": "CardDraft",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 13,
+      "symbol": "CardDraft.images",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 14,
+      "symbol": "CardDraft.selectArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 15,
+      "symbol": "CardDraft.availableArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 16,
+      "symbol": "CardDraft.tempCardArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 17,
+      "symbol": "CardDraft.draftTurn",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 18,
+      "symbol": "CardDraft.selected",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 19,
+      "symbol": "CardDraft.countTurns",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 21,
+      "symbol": "CardDraft.viewCaro",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 22,
+      "symbol": "CardDraft.playerLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 23,
+      "symbol": "CardDraft.selectLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 24,
+      "symbol": "CardDraft.availableLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 25,
+      "symbol": "CardDraft.howManyLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 27,
+      "symbol": "CardDraft.deck1",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 28,
+      "symbol": "CardDraft.deck2",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 30,
+      "symbol": "CardDraft.numberOfItems(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 34,
+      "symbol": "CardDraft.carousel(_:viewForItemAt:reusing:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 55,
+      "symbol": "CardDraft.carousel(_:valueFor:withDefault:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 62,
+      "symbol": "CardDraft.carouselCurrentItemIndexDidChange(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 67,
+      "symbol": "CardDraft.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 103,
+      "symbol": "CardDraft.Deck",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 104,
+      "symbol": "CardDraft.Deck.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 105,
+      "symbol": "CardDraft.Deck.deckArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 106,
+      "symbol": "CardDraft.Deck.init(name:deckArr:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 112,
+      "symbol": "CardDraft.addCard(card:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 122,
+      "symbol": "CardDraft.addDeck(currDeck:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 139,
+      "symbol": "CardDraft.addButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 140,
+      "symbol": "CardDraft.addButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 157,
+      "symbol": "CardDraft.removeCard(card:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 167,
+      "symbol": "CardDraft.removeButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 168,
+      "symbol": "CardDraft.removeButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 183,
+      "symbol": "CardDraft.updateLabels()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 197,
+      "symbol": "CardDraft.endTurnButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 198,
+      "symbol": "CardDraft.endTurnButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift",
+      "line": 241,
+      "symbol": "CardDraft.menuPressed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 141,
+      "symbol": "ViewPlayGame.Player.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 142,
+      "symbol": "ViewPlayGame.Player.currDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 143,
+      "symbol": "ViewPlayGame.Player.deck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 144,
+      "symbol": "ViewPlayGame.Player.init(name:currDeck:deck:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 150,
+      "symbol": "ViewPlayGame.Player.currStamina",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 151,
+      "symbol": "ViewPlayGame.Player.totalStamina",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 152,
+      "symbol": "ViewPlayGame.Player.health",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 153,
+      "symbol": "ViewPlayGame.Player.attack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 154,
+      "symbol": "ViewPlayGame.Player.buffArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 155,
+      "symbol": "ViewPlayGame.Player.debuff",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 156,
+      "symbol": "ViewPlayGame.Player.debuffTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 157,
+      "symbol": "ViewPlayGame.Player.shuffleCount",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 160,
+      "symbol": "ViewPlayGame.Player.canHeal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 161,
+      "symbol": "ViewPlayGame.Player.hasAttacked",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 162,
+      "symbol": "ViewPlayGame.Player.canAddBack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 163,
+      "symbol": "ViewPlayGame.Player.bloodThinner",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 164,
+      "symbol": "ViewPlayGame.Player.hasHauntTaunt",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 167,
+      "symbol": "ViewPlayGame.Player.hasGoblinGreed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 732,
+      "symbol": "ViewPlayGame.checkAttack(currPlayer:damage:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 963,
+      "symbol": "ViewPlayGame.animateHandyDiscard(currPlayer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 1043,
+      "symbol": "ViewPlayGame.animateHandyDiscount(currPlayer:nextPlayer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift",
+      "line": 1776,
+      "symbol": "ViewPlayGame.menuPressed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/Main.swift",
+      "line": 17,
+      "symbol": "Tutorial.tutorialArray",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/Main.swift",
+      "line": 18,
+      "symbol": "Tutorial.loc",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": null,
+      "symbol": "OnlineCardDraft",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 12,
+      "symbol": "OnlineCardDraft",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 13,
+      "symbol": "OnlineCardDraft.images",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 14,
+      "symbol": "OnlineCardDraft.selectArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 15,
+      "symbol": "OnlineCardDraft.availableArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 16,
+      "symbol": "OnlineCardDraft.tempCardArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 17,
+      "symbol": "OnlineCardDraft.draftTurn",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 18,
+      "symbol": "OnlineCardDraft.selected",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 19,
+      "symbol": "OnlineCardDraft.countTurns",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 21,
+      "symbol": "OnlineCardDraft.viewCaro",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 22,
+      "symbol": "OnlineCardDraft.playerLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 23,
+      "symbol": "OnlineCardDraft.selectLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 24,
+      "symbol": "OnlineCardDraft.availableLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 25,
+      "symbol": "OnlineCardDraft.howManyLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 27,
+      "symbol": "OnlineCardDraft.deck1",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 28,
+      "symbol": "OnlineCardDraft.deck2",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 31,
+      "symbol": "OnlineCardDraft.screenService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 33,
+      "symbol": "OnlineCardDraft.numberOfItems(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 37,
+      "symbol": "OnlineCardDraft.carousel(_:viewForItemAt:reusing:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 58,
+      "symbol": "OnlineCardDraft.carousel(_:valueFor:withDefault:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 65,
+      "symbol": "OnlineCardDraft.carouselCurrentItemIndexDidChange(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 70,
+      "symbol": "OnlineCardDraft.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 111,
+      "symbol": "OnlineCardDraft.Deck",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 112,
+      "symbol": "OnlineCardDraft.Deck.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 113,
+      "symbol": "OnlineCardDraft.Deck.deckArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 114,
+      "symbol": "OnlineCardDraft.Deck.init(name:deckArr:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 120,
+      "symbol": "OnlineCardDraft.addCard(card:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 130,
+      "symbol": "OnlineCardDraft.addDeck(currDeck:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 147,
+      "symbol": "OnlineCardDraft.addButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 148,
+      "symbol": "OnlineCardDraft.addButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 167,
+      "symbol": "OnlineCardDraft.removeCard(card:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 177,
+      "symbol": "OnlineCardDraft.removeButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 178,
+      "symbol": "OnlineCardDraft.removeButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 196,
+      "symbol": "OnlineCardDraft.updateCardSelectionOnline(command:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 235,
+      "symbol": "OnlineCardDraft.updateLabels()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 249,
+      "symbol": "OnlineCardDraft.endTurnButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 250,
+      "symbol": "OnlineCardDraft.endTurnButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 299,
+      "symbol": "OnlineCardDraft.endTurnPressOnline(command:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 347,
+      "symbol": "OnlineCardDraft.viewDeckPressed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 361,
+      "symbol": "OnlineCardDraft.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift",
+      "line": 371,
+      "symbol": "OnlineCardDraft.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift",
+      "line": 16,
+      "symbol": "OnlineCoinFlip.screenService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift",
+      "line": 18,
+      "symbol": "OnlineCoinFlip.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift",
+      "line": 89,
+      "symbol": "OnlineCoinFlip.coinFlipNext(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift",
+      "line": 93,
+      "symbol": "OnlineCoinFlip.coinFlipNextOnline()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift",
+      "line": 108,
+      "symbol": "OnlineCoinFlip.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift",
+      "line": 117,
+      "symbol": "OnlineCoinFlip.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 22,
+      "symbol": "OnlineViewPlayGame.screenService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 100,
+      "symbol": "OnlineViewPlayGame.Player.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 101,
+      "symbol": "OnlineViewPlayGame.Player.currDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 102,
+      "symbol": "OnlineViewPlayGame.Player.deck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 103,
+      "symbol": "OnlineViewPlayGame.Player.init(name:currDeck:deck:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 109,
+      "symbol": "OnlineViewPlayGame.Player.currStamina",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 110,
+      "symbol": "OnlineViewPlayGame.Player.totalStamina",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 111,
+      "symbol": "OnlineViewPlayGame.Player.health",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 112,
+      "symbol": "OnlineViewPlayGame.Player.attack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 113,
+      "symbol": "OnlineViewPlayGame.Player.buffArr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 114,
+      "symbol": "OnlineViewPlayGame.Player.debuff",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 115,
+      "symbol": "OnlineViewPlayGame.Player.debuffTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 116,
+      "symbol": "OnlineViewPlayGame.Player.shuffleCount",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 119,
+      "symbol": "OnlineViewPlayGame.Player.canHeal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 120,
+      "symbol": "OnlineViewPlayGame.Player.hasAttacked",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 121,
+      "symbol": "OnlineViewPlayGame.Player.canAddBack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 122,
+      "symbol": "OnlineViewPlayGame.Player.bloodThinner",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 123,
+      "symbol": "OnlineViewPlayGame.Player.hasHauntTaunt",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 126,
+      "symbol": "OnlineViewPlayGame.Player.hasGoblinGreed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 678,
+      "symbol": "OnlineViewPlayGame.checkAttack(currPlayer:damage:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 709,
+      "symbol": "OnlineViewPlayGame.printStats()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 736,
+      "symbol": "OnlineViewPlayGame.printTopCard()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 1371,
+      "symbol": "OnlineViewPlayGame.playCardPressOnline(currTurn:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 1411,
+      "symbol": "OnlineViewPlayGame.placeBottomPressOnline(currTurn:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 1532,
+      "symbol": "OnlineViewPlayGame.endTurnPressOnline(currTurn:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 1698,
+      "symbol": "OnlineViewPlayGame.shufflePressOnline(currTurn:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 1805,
+      "symbol": "OnlineViewPlayGame.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift",
+      "line": 1815,
+      "symbol": "OnlineViewPlayGame.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": null,
+      "symbol": "OnlineMenuPopup",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 12,
+      "symbol": "OnlineMenuPopup",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 15,
+      "symbol": "OnlineMenuPopup.screenService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 17,
+      "symbol": "OnlineMenuPopup.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 30,
+      "symbol": "OnlineMenuPopup.closeButtonPressed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 34,
+      "symbol": "OnlineMenuPopup.onlineSurrenderButtonPress(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 42,
+      "symbol": "OnlineMenuPopup.onlineSurrender()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 59,
+      "symbol": "OnlineMenuPopup.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift",
+      "line": 67,
+      "symbol": "OnlineMenuPopup.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 14,
+      "symbol": "OnlineSelectionDeck1.screenService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 16,
+      "symbol": "OnlineSelectionDeck1.currDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 17,
+      "symbol": "OnlineSelectionDeck1.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 23,
+      "symbol": "OnlineSelectionDeck1.segmentSelect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 29,
+      "symbol": "OnlineSelectionDeck1.warriorDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 31,
+      "symbol": "OnlineSelectionDeck1.mageDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 33,
+      "symbol": "OnlineSelectionDeck1.goblinDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 75,
+      "symbol": "OnlineSelectionDeck1.confirmSelectionOnline1(selectedSegment:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 111,
+      "symbol": "OnlineSelectionDeck2.screenService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 112,
+      "symbol": "OnlineSelectionDeck2.currDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 113,
+      "symbol": "OnlineSelectionDeck2.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 117,
+      "symbol": "OnlineSelectionDeck2.segmentSelect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 123,
+      "symbol": "OnlineSelectionDeck2.warriorDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 125,
+      "symbol": "OnlineSelectionDeck2.mageDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 127,
+      "symbol": "OnlineSelectionDeck2.goblinDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 165,
+      "symbol": "OnlineSelectionDeck2.confirmSelectionOnline2(selectedSegment:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 199,
+      "symbol": "OnlineSelectionDeck1.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 208,
+      "symbol": "OnlineSelectionDeck1.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 240,
+      "symbol": "OnlineSelectionDeck2.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift",
+      "line": 249,
+      "symbol": "OnlineSelectionDeck2.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": null,
+      "symbol": "ScreenServiceManager",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": null,
+      "symbol": "ScreenServiceManager",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": null,
+      "symbol": "ScreenServiceManager",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 12,
+      "symbol": "ScreenServiceManager",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 17,
+      "symbol": "ScreenServiceManager.ScreenServiceType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 19,
+      "symbol": "ScreenServiceManager.myPeerId",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 20,
+      "symbol": "ScreenServiceManager.serviceAdvertiser",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 21,
+      "symbol": "ScreenServiceManager.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 24,
+      "symbol": "ScreenServiceManager.serviceBrowser",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 26,
+      "symbol": "ScreenServiceManager.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 41,
+      "symbol": "ScreenServiceManager.deinit",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 47,
+      "symbol": "ScreenServiceManager.session",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 59,
+      "symbol": "ScreenServiceManager.advertiser(_:didNotStartAdvertisingPeer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 63,
+      "symbol": "ScreenServiceManager.advertiser(_:didReceiveInvitationFromPeer:withContext:invitationHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 74,
+      "symbol": "ScreenServiceManager.browser(_:didNotStartBrowsingForPeers:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 78,
+      "symbol": "ScreenServiceManager.browser(_:foundPeer:withDiscoveryInfo:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 86,
+      "symbol": "ScreenServiceManager.browser(_:lostPeer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 90,
+      "symbol": "ScreenServiceManager.send(screenName:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 108,
+      "symbol": "ScreenServiceManager.session(_:peer:didChange:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 114,
+      "symbol": "ScreenServiceManager.session(_:didReceive:fromPeer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 120,
+      "symbol": "ScreenServiceManager.session(_:didReceive:withName:fromPeer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 124,
+      "symbol": "ScreenServiceManager.session(_:didStartReceivingResourceWithName:fromPeer:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 128,
+      "symbol": "ScreenServiceManager.session(_:didFinishReceivingResourceWithName:fromPeer:at:withError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 134,
+      "symbol": "ScreenServiceManagerDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 136,
+      "symbol": "ScreenServiceManagerDelegate.connectedDevicesChanged(manager:connectedDevices:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift",
+      "line": 137,
+      "symbol": "ScreenServiceManagerDelegate.screenChanged(manager:screenString:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 14,
+      "symbol": "SelectionDeck1.currDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 15,
+      "symbol": "SelectionDeck1.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 18,
+      "symbol": "SelectionDeck1.segmentSelect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 24,
+      "symbol": "SelectionDeck1.warriorDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 26,
+      "symbol": "SelectionDeck1.mageDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 28,
+      "symbol": "SelectionDeck1.goblinDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 64,
+      "symbol": "SelectionDeck2.currDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 65,
+      "symbol": "SelectionDeck2.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 68,
+      "symbol": "SelectionDeck2.segmentSelect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 74,
+      "symbol": "SelectionDeck2.warriorDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 76,
+      "symbol": "SelectionDeck2.mageDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift",
+      "line": 78,
+      "symbol": "SelectionDeck2.goblinDeck",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/ViewController.swift",
+      "line": 14,
+      "symbol": "ViewController.options(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/ViewController.swift",
+      "line": 17,
+      "symbol": "ViewController.optionsButton",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/ViewController.swift",
+      "line": 19,
+      "symbol": "ViewController.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/ViewController.swift",
+      "line": 25,
+      "symbol": "ViewController.didReceiveMemoryWarning()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/menuPopup.swift",
+      "line": 12,
+      "symbol": "menuPopup",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/menuPopup.swift",
+      "line": 13,
+      "symbol": "menuPopup.viewDidLoad()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jamesglass/EECS448/Project3/Project 3/menuPopup.swift",
+      "line": 18,
+      "symbol": "menuPopup.closeButtonPressed(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/jamesglass/EECS448/Project3"
+}
