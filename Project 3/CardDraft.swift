@@ -9,13 +9,21 @@
 import Foundation
 import UIKit
 
+/// Class that calls and creates a carrousel to select neutral cards.
 class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
+    /// Array of card image strings
     var images = [String]()
+    /// Array of selected cards so far.
     var selectArr = [Int]()
+    /// Array of cards are still available to be chosen.
     var availableArr = [Int]()
+    /// Temporary array of cards that holds which cards a player has selected in a single turn. Resets after endTurn is pressed.
     var tempCardArr = [String]()
+    /// Player's turn to pick 2 cards.
     var draftTurn = playerStart
+    /// Contains the amount of selected cards a player has in a turn. There has to be 2 cards selected in order to pass the turn and the maximum amount of selected cards is 2.
     var selected = Int()
+    /// Amounts of turns that have been played on card select. They increment by 1 every time endTurn is pressed. Starts at 1 and ends at 12.
     var countTurns = Int()
     
     @IBOutlet var viewCaro: iCarousel!
@@ -24,9 +32,14 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet weak var availableLabel: UILabel!
     @IBOutlet weak var howManyLabel: UILabel!
     
+    /// Player 1's deck. Builds up as card select goes.
     var deck1 = Deck(name: "player1", deckArr: ["Empty"])
+    /// Player 1's deck. Builds up as card select goes.
     var deck2 = Deck(name: "player2", deckArr: ["Empty"])
     
+    /// Returns the number of items in the carousel.
+    /// - Parameters:
+    ///   - in carousel: Carousel object of type iCarousel.
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
     }
@@ -64,6 +77,7 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
         availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
     }
     
+    /// This function is called once the Card Draft is loaded.
     override func viewDidLoad() {
         
         if(playerStart == 1)
@@ -99,6 +113,7 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
         viewCaro.reloadData()
         viewCaro.type = .rotary
     }
+    
     
     class Deck {
         var name: String
