@@ -26,10 +26,15 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     /// Amounts of turns that have been played on card select. They increment by 1 every time endTurn is pressed. Starts at 1 and ends at 12.
     var countTurns = Int()
     
+    ///iCarousel object
     @IBOutlet var viewCaro: iCarousel!
+    ///label that tells us which player is drafting
     @IBOutlet weak var playerLabel: UILabel!
+    ///label that tells us how many cards are selected of a given type
     @IBOutlet weak var selectLabel: UILabel!
+    ///label that tells us how many cards are available to select of a given type
     @IBOutlet weak var availableLabel: UILabel!
+    ///label that tells the player how many more cards to draft
     @IBOutlet weak var howManyLabel: UILabel!
     
     /// Player 1's deck. Builds up as card select goes.
@@ -43,6 +48,15 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
     }
+    
+    /// Creates a ui image view and sets images to the view
+    ///
+    /// - Parameters:
+    ///   - carousel: Player Object who is executing their turn
+    ///   - viewForItemAt index: Player Object who is not executing their turn
+    ///   - reusing view: Player Object who is not executing their turn
+    ///
+    /// - Return: A UIView
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         //Create a UI View
@@ -58,9 +72,6 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
         //imageView.image = images[index]
         imageView.image = UIImage(named: images[index])
         tempView.addSubview(imageView)
-        
-        //Set Selected Label to display correct value
-        //selectLabel.text = String(selectArr[viewCaro.currentItemIndex]) + " Selected"
         
         return tempView
     }
