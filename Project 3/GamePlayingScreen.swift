@@ -137,7 +137,7 @@ class ViewPlayGame: UIViewController {
     /// - Parameters:
     ///   - name: Player's name. For now just "player1" or "player2"
     ///   - currDeck: Stores which deck the player is using
-    ///   - deck: Stores the name of the player's deck "Warrior" or "Mage"
+    ///   - deck: Stores the name of the player's deck "Warrior" "Goblin" or "Mage"
     class Player
     {
         var name: String
