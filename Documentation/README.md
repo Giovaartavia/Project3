@@ -10,7 +10,7 @@ Step 1: In Terminal, use the command: git clone https://github.com/Giovaartavia/
 
 Step 2: Open the Project3 folder in Xcode
 
-Step 3: You can change the compile destination to a simulator or you phone.
+Step 3: You can change the compile destination to a simulator or your phone.
 
 Step 4: Hit the play button and you're ready to start playing!
 
@@ -56,6 +56,21 @@ Source for learning how to send data from one view controller to another:
 * @author Dharmesh Kheni
 * @link https://stackoverflow.com/questions/31587181/sending-array-data-from-one-view-controller-to-another
 * @DateAccessed 11/02/17
+
+Source for learning how to use multipeer connectivity
+* @author Ralf Ebert
+* @link https://www.ralfebert.de/tutorials/ios-swift-multipeer-connectivity/
+* @DateAccessed 11/21/17
+
+Source for learning how to create popups
+* @author Seemu Apps
+* @link https://www.youtube.com/watch?v=FgCIRMz_3dE
+* @DateAccessed 11/25/17
+
+iCarousel Library:
+* @author Nick Lockwood
+* @link https://github.com/nicklockwood/iCarousel
+* @DateAccessed 11/23/17
 
 UIKit Library:
 * @author Apple Inc.
