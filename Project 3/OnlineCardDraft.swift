@@ -208,6 +208,10 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
+    /// Updates card selection on carrousel 
+    /// - Parameters:
+    ///   - command: string received which determines
+    ///     the player deck to be modified
     func updateCardSelectionOnline(command: String)
     {
         var newDeckArray = command.components(separatedBy: ".")
