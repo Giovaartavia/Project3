@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// Class that calls and creates a carrousel to select neutral cards.
 class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     var images = [String]()
     var selectArr = [Int]() //cards selected
@@ -30,10 +31,21 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     //multipeer connectivity manager
     let screenService = ScreenServiceManager()
     
+    /// Returns the number of items in the carousel.
+    /// - Parameters:
+    ///   - in carousel: Carousel object of type iCarousel.
     func numberOfItems(in carousel: iCarousel) -> Int {
         return images.count
     }
     
+    /// Creates a ui image view and sets images to the view
+    ///
+    /// - Parameters:
+    ///   - carousel: Player Object who is executing their turn
+    ///   - viewForItemAt index: Player Object who is not executing their turn
+    ///   - reusing view: Player Object who is not executing their turn
+    ///
+    /// - Return: A UIView
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         //Create a UI View
         let tempView = UIView(frame: CGRect(x: 0, y: 13, width: 253, height: 353))
@@ -67,6 +79,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         availableLabel.text = String(availableArr[viewCaro.currentItemIndex]) + " Available"
     }
     
+    /// This function is called once the Card Draft is loaded.
     override func viewDidLoad() {
         
         if(playerStart == 1)
@@ -195,6 +208,10 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
+    /// Updates card selection on carrousel 
+    /// - Parameters:
+    ///   - command: string received which determines
+    ///     the player deck to be modified
     func updateCardSelectionOnline(command: String)
     {
         var newDeckArray = command.components(separatedBy: ".")
@@ -242,6 +259,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     }
     
     @IBOutlet weak var endTurnButton: UIButton!
+    
     @IBAction func endTurnButtonPress(_ sender: Any) {
         if(draftTurn == 1 && selected == 2 && countTurns != 12) {
             screenService.send(screenName: "Player1Turn")
@@ -291,6 +309,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
             print("Error")
         }
     }
+    
+    /// Updates player deck and selected cards for drafting
+    /// - Parameters:
+    ///   - command: string received which determines
+    ///     the player deck to be modified
     func endTurnPressOnline(command: String)
     {
         switch command
@@ -350,9 +373,15 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     
 }
 
+//extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineCardDraft : ScreenServiceManagerDelegate
 {
     
+    /// Empty function which recieves the names of connected devices to the MultiPeer session
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - connectedDevices: Names of devices connected to
     func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])
     {
         OperationQueue.main.addOperation
@@ -362,7 +391,11 @@ extension OnlineCardDraft : ScreenServiceManagerDelegate
     }
     
     
-    
+    /// Using commands recieved via screenString makes changes to recieving device
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - screenString: String recieved from MultiPeer connected device
     func screenChanged(manager: ScreenServiceManager, screenString: String)
     {
         OperationQueue.main.addOperation

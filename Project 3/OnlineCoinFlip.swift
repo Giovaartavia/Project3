@@ -62,8 +62,6 @@ class OnlineCoinFlip: UIViewController {
     /// Function that pushes the flipped coin result to all other players
     ///
     /// - Parameter coinStatus: State of the coin
-    
-    
     func onlineCoinFlip(coinStatus: String)
     {
         if(coinStatus == "start1")
@@ -86,10 +84,15 @@ class OnlineCoinFlip: UIViewController {
         }
     }
     
+    /// Function sends string using MultiPeer connectivity
+    ///
+    /// - Parameter sender: Player pressing button
     @IBAction func coinFlipNext(_ sender: Any)
     {
         screenService.send(screenName: "next")
     }
+    
+    /// Function moves screen to OnlineGamePLayingScreen view controller
     func coinFlipNextOnline()
     {
         let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
@@ -100,11 +103,16 @@ class OnlineCoinFlip: UIViewController {
 }
 
 
-
+//extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineCoinFlip : ScreenServiceManagerDelegate
 {
     
     
+    /// Empty function which recieves the names of connected devices to the MultiPeer session
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - connectedDevices: Names of devices connected to
     func connectedDevicesChanged(manager: ScreenServiceManager, connectedDevices: [String])
     {
         OperationQueue.main.addOperation
@@ -114,6 +122,11 @@ extension OnlineCoinFlip : ScreenServiceManagerDelegate
     }
     
     
+    /// Using commands recieved via screenString makes changes to recieving device
+    ///
+    /// - Parameters:
+    ///   - manager: ScreenServiceManager
+    ///   - screenString: String recieved from MultiPeer connected device
     func screenChanged(manager: ScreenServiceManager, screenString: String)
     {
         OperationQueue.main.addOperation

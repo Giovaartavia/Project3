@@ -1,6 +1,7 @@
 //
 //  OnlineServiceManager.swift
 //  Project 3
+//  
 //
 //  Created by Archer on 11/23/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
@@ -9,6 +10,9 @@
 import Foundation
 import MultipeerConnectivity
 
+
+///Code from: https://www.ralfebert.de/tutorials/ios-swift-multipeer-connectivity/
+///Multipeer Connectivity Framework
 class ScreenServiceManager : NSObject
 {
     
@@ -53,6 +57,7 @@ class ScreenServiceManager : NSObject
     
 }
 
+//extends ScreenServiceManager to auto-join when recieving a join request
 extension ScreenServiceManager : MCNearbyServiceAdvertiserDelegate
 {
     
@@ -68,6 +73,7 @@ extension ScreenServiceManager : MCNearbyServiceAdvertiserDelegate
     
 }
 
+//extends ScreenServiceManager to find and invite peers
 extension ScreenServiceManager : MCNearbyServiceBrowserDelegate
 {
     
@@ -103,6 +109,7 @@ extension ScreenServiceManager : MCNearbyServiceBrowserDelegate
     
 }
 
+//extends ScreenServiceManager adding in sessions to recieve data
 extension ScreenServiceManager : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
@@ -131,6 +138,7 @@ extension ScreenServiceManager : MCSessionDelegate {
     
 }
 
+//Functions used when handling data directly in MultiPeer framework
 protocol ScreenServiceManagerDelegate {
     
     func connectedDevicesChanged(manager : ScreenServiceManager, connectedDevices: [String])
