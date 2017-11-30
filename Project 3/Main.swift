@@ -14,7 +14,7 @@ class Tutorial: UIViewController {
     
     ///Image the shows a tutorial page
     @IBOutlet weak var TutorialImage: UIImageView!
-    let tutorialArray = ["Tutorial1","Tutorial2","Tutorial3","Tutorial4","Tutorial5","Tutorial6","Tutorial7"];
+    let tutorialArray = ["Tutorial1","Tutorial2","Tutorial3","Tutorial4","Tutorial5","Tutorial6","Tutorial7","Tutorial8","Tutorial9"];
     var loc = 0;
     
     ///Function that moves the tutorial image to the previous image
@@ -22,7 +22,7 @@ class Tutorial: UIViewController {
         //print("PREV")
         if(loc == 0)
         {
-            loc = 6;
+            loc = 8;
         }
         else
         {
@@ -34,7 +34,7 @@ class Tutorial: UIViewController {
     ///Function that moves the tutorial image to the next image
     @IBAction func NextScreen(_ sender: Any) {
         //print("NEXT")
-        if(loc == 6)
+        if(loc == 8)
         {
             loc = 0;
         }
