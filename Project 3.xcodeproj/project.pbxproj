@@ -10,8 +10,8 @@
 		8407316A1FC217B20025C1A8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840731681FC217B20025C1A8 /* iCarousel.m */; };
 		8407316D1FC218780025C1A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407316C1FC2185F0025C1A8 /* QuartzCore.framework */; };
 		842B08A71FCF93810019A00C /* goblinPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B08A61FCF93810019A00C /* goblinPopup.swift */; };
-		842B08A91FCF938A0019A00C /* warriorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B08A81FCF938A0019A00C /* warriorPopup.swift */; };
 		842B08AB1FCF93980019A00C /* magePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B08AA1FCF93980019A00C /* magePopup.swift */; };
+		842B08AF1FCFBA520019A00C /* warriorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B08AE1FCFBA520019A00C /* warriorPopup.swift */; };
 		84A604DB1FBE4AA600D6B4A5 /* CoinFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */; };
 		84A604DD1FBE4B3000D6B4A5 /* SelectDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */; };
 		84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD688C1FC763EE00F93C90 /* menuPopup.swift */; };
@@ -60,8 +60,8 @@
 		840731691FC217B20025C1A8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		8407316C1FC2185F0025C1A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		842B08A61FCF93810019A00C /* goblinPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = goblinPopup.swift; sourceTree = "<group>"; };
-		842B08A81FCF938A0019A00C /* warriorPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = warriorPopup.swift; sourceTree = "<group>"; };
 		842B08AA1FCF93980019A00C /* magePopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = magePopup.swift; sourceTree = "<group>"; };
+		842B08AE1FCFBA520019A00C /* warriorPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = warriorPopup.swift; sourceTree = "<group>"; };
 		84A604DA1FBE4AA600D6B4A5 /* CoinFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFlip.swift; sourceTree = "<group>"; };
 		84A604DC1FBE4B3000D6B4A5 /* SelectDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeck.swift; sourceTree = "<group>"; };
 		84BD688C1FC763EE00F93C90 /* menuPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuPopup.swift; sourceTree = "<group>"; };
@@ -160,12 +160,12 @@
 				AC0C0BEA1F9BFBD70026A225 /* Assets.xcassets */,
 				CB304B0A1FC749470046EF77 /* OnlineGamePlayingScreen.storyboard */,
 				AC0C0BEC1F9BFBD70026A225 /* LaunchScreen.storyboard */,
+				842B08AE1FCFBA520019A00C /* warriorPopup.swift */,
 				CB304B121FC74C8B0046EF77 /* OnlineCoinFlip.swift */,
 				CB658A2C1FCB4BF100AA6A37 /* OnlineCardDraft.swift */,
 				AC0C0BEF1F9BFBD70026A225 /* Info.plist */,
 				AC2B42721F9FCE2300397CD8 /* GamePlayingScreen.storyboard */,
 				842B08A61FCF93810019A00C /* goblinPopup.swift */,
-				842B08A81FCF938A0019A00C /* warriorPopup.swift */,
 				842B08AA1FCF93980019A00C /* magePopup.swift */,
 				CB304B181FC77B150046EF77 /* OnlineServiceManager.swift */,
 				840731691FC217B20025C1A8 /* iCarousel.h */,
@@ -339,6 +339,7 @@
 				CB304B171FC74CD20046EF77 /* OnlineGamePlayingScreen.swift in Sources */,
 				CB304B161FC74CD20046EF77 /* OnlineSelectDeck.swift in Sources */,
 				84BD688D1FC763EE00F93C90 /* menuPopup.swift in Sources */,
+				842B08AF1FCFBA520019A00C /* warriorPopup.swift in Sources */,
 				84C2DEE61FAAA054006D2E2D /* ViewController.swift in Sources */,
 				84D9F5481FC1D21C00C733C5 /* CardDraft.swift in Sources */,
 				842B08AB1FCF93980019A00C /* magePopup.swift in Sources */,
