@@ -1,8 +1,8 @@
 //
-//  GamePlayingScreen.swift
+//  OnlineGamePlayingScreen.swift
 //  Project 3
 //
-//  Created by Giovanni, Brandon, Dylan, James on 10/24/17.
+//  Created by Giovanni, Brandon, Dylan, James on 11/20/17.
 //  Copyright © 2017 Memory Leeks. All rights reserved.
 //
 
@@ -1916,6 +1916,11 @@ class OnlineViewPlayGame: UIViewController {
         printStats()
     }
 
+    /// Recieves String containing player turn and deck info to set a shuffled
+    /// deck array for player then update buttons in game
+    ///
+    /// - Parameters:
+    ///   - currTurn:String with current turn and deck array all elements seperated by '.'
     func shufflePressOnline(currTurn: String)
     {
         var newDeckArray = currTurn.components(separatedBy: ".")
