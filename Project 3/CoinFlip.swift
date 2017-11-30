@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-///Class that contains the coin flip screen.
+///Class that contains the coin flip screen, flips a coin, and depending on the value chooses a player to begin drafting.
 class CoinFlip: UIViewController {
     
     ///Image used for the coin. Either Heads or Tails
@@ -22,7 +22,7 @@ class CoinFlip: UIViewController {
     @IBOutlet weak var nextVisibility: UIButton!
     
     
-    /// Function that flips a coin
+    /// Function that flips a coin and depending on the value shows a picture and chooses starting player.
     ///
     /// - Parameter sender: Player pressing button
     @IBAction func flipCoin(_ sender: Any) {

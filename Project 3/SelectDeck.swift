@@ -9,17 +9,15 @@
 import Foundation
 import UIKit
 
-/// Class that handles player 1's class/deck selection
+/// Class that handles Player 1's class cards selection.
+/// Player 1 can either be a Mage, Warrior, or Goblin.
 class SelectionDeck1: UIViewController {
+    /// Variable for player 1's current deck. Contiains a dummy string value.
     var currDeck = ["Initial"];
     override func viewDidLoad() {
         //Nothing yet :)
     }
     @IBOutlet weak var segmentSelect: UISegmentedControl!
-    
-    /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
-     
-     let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
     
     let warriorDeck = ["Sword-Strike-Deck", "Sword-Strike-Deck", "Double-Edge-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Liquid-Courage-Deck", "Liquid-Courage-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
     
@@ -57,6 +55,8 @@ class SelectionDeck1: UIViewController {
             break
         }
     }
+    
+    /// Function that shows Warrior cards as a popup for Player 1 when Warrior's picture is clicked.
     @IBAction func warriorPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "warriorPopupID") as! warriorPopup
         self.addChildViewController(popup)
@@ -64,6 +64,8 @@ class SelectionDeck1: UIViewController {
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
     }
+    
+    /// Function that shows Mage cards as a popup for Player 1 when Mage's picture is clicked.
     @IBAction func magePress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "magePopupID") as! magePopup
         self.addChildViewController(popup)
@@ -71,8 +73,9 @@ class SelectionDeck1: UIViewController {
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
     }
+    
+    /// Function that shows Goblin cards as a popup for Player 1 when Goblin's picture is clicked.
     @IBAction func goblinPress(_ sender: Any) {
-        
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "goblinPopupID") as! goblinPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
@@ -81,17 +84,15 @@ class SelectionDeck1: UIViewController {
     }
 }
 
-/// Class that handles player 2's class/deck selection
+/// Class that handles Player 1's class cards selection.
+/// Player 1 can either be a Mage, Warrior, or Goblin.
 class SelectionDeck2: UIViewController {
+    /// Variable for player 1's current deck. Contiains a dummy string value.
     var currDeck = ["Initial"];
     override func viewDidLoad() {
         //Nothing yet :)
     }
     @IBOutlet weak var segmentSelect: UISegmentedControl!
-    
-    /*let warriorDeck = ["Throwing-Knife-Deck", "Throwing-Knife-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Liquid-Courage-Deck","Brass-Knuckles-Deck", "Brass-Knuckles-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Double-Edge-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck", "Sword-Strike-Deck"]
-    
-    let mageDeck = ["Life-Steal-Deck", "Life-Steal-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Mana-Potion-Deck","Voodoo-Doll-Deck", "Voodoo-Doll-Deck", "Disarm-Deck", "Disarm-Deck", "Spell-Tome-Deck", "Smoke-Bomb-Deck", "Smoke-Bomb-Deck", "Arcane-Burst-Deck", "Health-Potion-Deck", "Health-Potion-Deck", "Bad-Medicine-Deck", "Bad-Medicine-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck", "Magical-Bolt-Deck"]*/
     
     let warriorDeck = ["Sword-Strike-Deck", "Sword-Strike-Deck", "Double-Edge-Deck", "Disarm-Deck", "Disarm-Deck", "Blacksmith-Deck", "Liquid-Courage-Deck", "Liquid-Courage-Deck", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty", "Empty"]
     
@@ -129,6 +130,7 @@ class SelectionDeck2: UIViewController {
         }
     }
     
+    /// Function that shows Warrior cards as a popup for Player 2 when Warrior's picture is clicked.
     @IBAction func warriorPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "warriorPopupID") as! warriorPopup
         self.addChildViewController(popup)
@@ -136,6 +138,8 @@ class SelectionDeck2: UIViewController {
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
     }
+    
+    /// Function that shows Mage cards as a popup for Player 1 when Mage's picture is clicked.
     @IBAction func magePress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "magePopupID") as! magePopup
         self.addChildViewController(popup)
@@ -143,8 +147,9 @@ class SelectionDeck2: UIViewController {
         self.view.addSubview(popup.view)
         popup.didMove(toParentViewController: self)
     }
-    @IBAction func goblinPress(_ sender: Any) {
     
+    /// Function that shows Goblin cards as a popup for Player 1 when Goblin's picture is clicked.
+    @IBAction func goblinPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "goblinPopupID") as! goblinPopup
         self.addChildViewController(popup)
         popup.view.frame = self.view.frame
