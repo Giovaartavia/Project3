@@ -90,8 +90,11 @@ class OnlineViewPlayGame: UIViewController {
             }
         }
         deckCheck = false
-        player1.currDeck = player1.currDeck.shuffled()
-        player2.currDeck = player2.currDeck.shuffled()
+        
+        //initial shuffle off for online (TODO: equal shuffled deck for both classes)
+        //player1.currDeck = player1.currDeck.shuffled()
+        //player2.currDeck = player2.currDeck.shuffled()
+        
         
         revealTopCard(currPlayer: player1)
         revealTopCard(currPlayer: player2)

@@ -222,6 +222,12 @@ extension OnlineSelectionDeck1 : ScreenServiceManagerDelegate
                     let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
                     self.present(viewController, animated: true)
+                case "p1.2":
+                    self.confirmSelectionOnline1(selectedSegment: "2")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("Player2Selection"))
+                    self.present(viewController, animated: true)
                 default:
                     NSLog("%@", "Unknown value received: \(screenString)")
                 }
@@ -259,6 +265,12 @@ extension OnlineSelectionDeck2 : ScreenServiceManagerDelegate
                     self.present(viewController, animated: true)
                 case "p2.1":
                     self.confirmSelectionOnline2(selectedSegment: "1")
+                    //move to next view controller
+                    let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
+                    self.present(viewController, animated: true)
+                case "p2.2":
+                    self.confirmSelectionOnline2(selectedSegment: "2")
                     //move to next view controller
                     let storyboard = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier : ("CoinFlip"))
