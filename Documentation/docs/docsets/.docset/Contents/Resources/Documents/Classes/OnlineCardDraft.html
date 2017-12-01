@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OnlineCardDraft Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/OnlineCardDraft" class="dashAnchor"></a>
+    <a title="OnlineCardDraft Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (70% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        OnlineCardDraft Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CardDraft.html">CardDraft</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CardDraft/Deck.html">– Deck</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CoinFlip.html">CoinFlip</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineCardDraft.html">OnlineCardDraft</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineCardDraft/Deck.html">– Deck</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineCoinFlip.html">OnlineCoinFlip</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineMenuPopup.html">OnlineMenuPopup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineSelectionDeck1.html">OnlineSelectionDeck1</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineSelectionDeck2.html">OnlineSelectionDeck2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineViewPlayGame.html">OnlineViewPlayGame</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OnlineViewPlayGame/Player.html">– Player</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ScreenServiceManager.html">ScreenServiceManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SelectionDeck1.html">SelectionDeck1</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SelectionDeck2.html">SelectionDeck2</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Tutorial.html">Tutorial</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewController.html">ViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewPlayGame.html">ViewPlayGame</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewPlayGame/Player.html">– Player</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/goblinPopup.html">goblinPopup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/magePopup.html">magePopup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/menuPopup.html">menuPopup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/warriorPopup.html">warriorPopup</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:9Project_311playerStartSiv">playerStart</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/MutableCollection.html">MutableCollection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ScreenServiceManagerDelegate.html">ScreenServiceManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>OnlineCardDraft</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">OnlineCardDraft</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="n">iCarouselDataSource</span><span class="p">,</span> <span class="n">iCarouselDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Class that calls and creates a carrousel to select neutral cards.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC6imagesSaySSGv"></a>
+                    <a name="//apple_ref/swift/Property/images" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC6imagesSaySSGv">images</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Array of card image strings</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">images</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC9selectArrSaySiGv"></a>
+                    <a name="//apple_ref/swift/Property/selectArr" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC9selectArrSaySiGv">selectArr</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Array of selected cards so far.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">selectArr</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span> <span class="c1">//cards selected</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC12availableArrSaySiGv"></a>
+                    <a name="//apple_ref/swift/Property/availableArr" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC12availableArrSaySiGv">availableArr</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Array of cards are still available to be chosen.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">availableArr</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span> <span class="c1">//cards available</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC04tempC3ArrSaySSGv"></a>
+                    <a name="//apple_ref/swift/Property/tempCardArr" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC04tempC3ArrSaySSGv">tempCardArr</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Temporary array of cards that holds which cards a player has selected in a single turn. Resets after endTurn is pressed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">tempCardArr</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC9draftTurnSiv"></a>
+                    <a name="//apple_ref/swift/Property/draftTurn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC9draftTurnSiv">draftTurn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Player&rsquo;s turn to pick 2 cards.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">draftTurn</span> <span class="o">=</span> <span class="n"><a href="../Global Variables.html#/s:9Project_311playerStartSiv">playerStart</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC8selectedSiv"></a>
+                    <a name="//apple_ref/swift/Property/selected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC8selectedSiv">selected</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Contains the amount of selected cards a player has in a turn. There has to be 2 cards selected in order to pass the turn and the maximum amount of selected cards is 2.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">selected</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC10countTurnsSiv"></a>
+                    <a name="//apple_ref/swift/Property/countTurns" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC10countTurnsSiv">countTurns</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Amounts of turns that have been played on card select. They increment by 1 every time endTurn is pressed. Starts at 1 and ends at 12.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">countTurns</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)viewCaro"></a>
+                    <a name="//apple_ref/swift/Property/viewCaro" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)viewCaro">viewCaro</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>iCarousel object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">viewCaro</span><span class="p">:</span> <span class="n">iCarousel</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)playerLabel"></a>
+                    <a name="//apple_ref/swift/Property/playerLabel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)playerLabel">playerLabel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>label that tells us which player is drafting</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">playerLabel</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)selectLabel"></a>
+                    <a name="//apple_ref/swift/Property/selectLabel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)selectLabel">selectLabel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>label that tells us how many cards are selected of a given type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">selectLabel</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)availableLabel"></a>
+                    <a name="//apple_ref/swift/Property/availableLabel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)availableLabel">availableLabel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>label that tells us how many cards are available to select of a given type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">availableLabel</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)howManyLabel"></a>
+                    <a name="//apple_ref/swift/Property/howManyLabel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)howManyLabel">howManyLabel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>label that tells the player how many more cards to draft</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">howManyLabel</span><span class="p">:</span> <span class="kt">UILabel</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC5deck1AC4DeckCv"></a>
+                    <a name="//apple_ref/swift/Property/deck1" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC5deck1AC4DeckCv">deck1</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">deck1</span> <span class="o">=</span> <span class="kt"><a href="../Classes/OnlineCardDraft/Deck.html">Deck</a></span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"player1"</span><span class="p">,</span> <span class="nv">deckArr</span><span class="p">:</span> <span class="p">[</span><span class="s">"Empty"</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC5deck2AC4DeckCv"></a>
+                    <a name="//apple_ref/swift/Property/deck2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC5deck2AC4DeckCv">deck2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">deck2</span> <span class="o">=</span> <span class="kt"><a href="../Classes/OnlineCardDraft/Deck.html">Deck</a></span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"player2"</span><span class="p">,</span> <span class="nv">deckArr</span><span class="p">:</span> <span class="p">[</span><span class="s">"Empty"</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC13screenServiceAA06ScreenF7ManagerCv"></a>
+                    <a name="//apple_ref/swift/Property/screenService" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC13screenServiceAA06ScreenF7ManagerCv">screenService</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">screenService</span> <span class="o">=</span> <span class="kt"><a href="../Classes/ScreenServiceManager.html">ScreenServiceManager</a></span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)numberOfItemsInCarousel:"></a>
+                    <a name="//apple_ref/swift/Method/numberOfItems(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)numberOfItemsInCarousel:">numberOfItems(in:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the number of items in the carousel.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">numberOfItems</span><span class="p">(</span><span class="k">in</span> <span class="nv">carousel</span><span class="p">:</span> <span class="n">iCarousel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)carousel:viewForItemAtIndex:reusingView:"></a>
+                    <a name="//apple_ref/swift/Method/carousel(_:viewForItemAt:reusing:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)carousel:viewForItemAtIndex:reusingView:">carousel(_:viewForItemAt:reusing:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a ui image view and sets images to the view</p>
+
+<ul>
+<li><p>Return: A UIView</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">carousel</span><span class="p">(</span><span class="n">_</span> <span class="nv">carousel</span><span class="p">:</span> <span class="n">iCarousel</span><span class="p">,</span> <span class="n">viewForItemAt</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">reusing</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>carousel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Player Object who is executing their turn</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)carousel:valueForOption:withDefault:"></a>
+                    <a name="//apple_ref/swift/Method/carousel(_:valueFor:withDefault:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)carousel:valueForOption:withDefault:">carousel(_:valueFor:withDefault:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a ui image view and sets images to the view</p>
+
+<ul>
+<li><p>Return: A UIView</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">carousel</span><span class="p">(</span><span class="n">_</span> <span class="nv">carousel</span><span class="p">:</span> <span class="n">iCarousel</span><span class="p">,</span> <span class="n">valueFor</span> <span class="nv">option</span><span class="p">:</span> <span class="n">iCarouselOption</span><span class="p">,</span> <span class="n">withDefault</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>carousel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>iCarousel object</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)carouselCurrentItemIndexDidChange:"></a>
+                    <a name="//apple_ref/swift/Method/carouselCurrentItemIndexDidChange(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)carouselCurrentItemIndexDidChange:">carouselCurrentItemIndexDidChange(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the spacing inbetween carousel images</p>
+
+<ul>
+<li><p>Return: CGFloat value</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">carouselCurrentItemIndexDidChange</span><span class="p">(</span><span class="n">_</span> <span class="nv">carousel</span><span class="p">:</span> <span class="n">iCarousel</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>carousel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>iCarousel object</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)viewDidLoad"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)viewDidLoad">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This function is called once the Card Draft is loaded.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC4DeckC"></a>
+                    <a name="//apple_ref/swift/Class/Deck" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC4DeckC">Deck</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deck Object
+Object includes a deck array and name</p>
+
+                        <a href="../Classes/OnlineCardDraft/Deck.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">Deck</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Player&rsquo;s name. For now just <q>player1</q> or <q>player2</q></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>deckArr</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Stores the deck of each player</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC03addC0ySS4card_tF"></a>
+                    <a name="//apple_ref/swift/Method/addCard(card:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC03addC0ySS4card_tF">addCard(card:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds the selected card to a temporary array
+Searchs for an <q>Empty</q> and replaces it with the name of the card</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addCard</span><span class="p">(</span><span class="nv">card</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>card</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>card to be added to the temporary array</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC7addDeckyAC0F0C04currF0_tF"></a>
+                    <a name="//apple_ref/swift/Method/addDeck(currDeck:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC7addDeckyAC0F0C04currF0_tF">addDeck(currDeck:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds the two selected cards to either player 1 or 2&rsquo;s deck
+Searchs for two <q>Empty</q>s and replaces them with the names of the cards</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addDeck</span><span class="p">(</span><span class="nv">currDeck</span><span class="p">:</span> <span class="kt"><a href="../Classes/OnlineCardDraft/Deck.html">Deck</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>card</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>card to be added to the temporary array</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)addButton"></a>
+                    <a name="//apple_ref/swift/Property/addButton" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)addButton">addButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Outlet for the add card button</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">addButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)addButtonPress:"></a>
+                    <a name="//apple_ref/swift/Method/addButtonPress(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)addButtonPress:">addButtonPress(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if the player can add any more cards or not
+If so, calls addCard, updates labels, and updates selected/available array values</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">addButtonPress</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Player pressing button</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC06removeC0ySS4card_tF"></a>
+                    <a name="//apple_ref/swift/Method/removeCard(card:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC06removeC0ySS4card_tF">removeCard(card:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes a card from the temporary card array
+Searches for card name and replaces with an <q>Empty</q></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeCard</span><span class="p">(</span><span class="nv">card</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>card</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>card to be removed from temp array</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)removeButton"></a>
+                    <a name="//apple_ref/swift/Property/removeButton" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)removeButton">removeButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Outlet for the remove card button</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">removeButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)removeButtonPress:"></a>
+                    <a name="//apple_ref/swift/Method/removeButtonPress(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)removeButtonPress:">removeButtonPress(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if the player can remove any more cards or not
+If so, calls removeCard, updates labels, and updates selected/available array values</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">removeButtonPress</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Player pressing button</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC06updatec9SelectionB0ySS7command_tF"></a>
+                    <a name="//apple_ref/swift/Method/updateCardSelectionOnline(command:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC06updatec9SelectionB0ySS7command_tF">updateCardSelectionOnline(command:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates card selection on carrousel </p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">updateCardSelectionOnline</span><span class="p">(</span><span class="nv">command</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>command</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>string received which determines
+the player deck to be modified</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC12updateLabelsyyF"></a>
+                    <a name="//apple_ref/swift/Method/updateLabels()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC12updateLabelsyyF">updateLabels()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates all of the labels on the card drafting screen besides the Player Turn label</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">updateLabels</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(py)endTurnButton"></a>
+                    <a name="//apple_ref/swift/Property/endTurnButton" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(py)endTurnButton">endTurnButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Outlet for the end turn button</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">endTurnButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)endTurnButtonPress:"></a>
+                    <a name="//apple_ref/swift/Method/endTurnButtonPress(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)endTurnButtonPress:">endTurnButtonPress(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if the player has selected two cards, what turn it currently is, and how many turns have passed
+If player one&rsquo;s turn, go to player two&rsquo;s and vice versa
+If the number of turns is 12, take steps to end the drafting phase
+This calls to updateLabels, and resets all of the selected values for the next player&rsquo;s turn</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">endTurnButtonPress</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Player pressing button</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC012endTurnPressB0ySS7command_tF"></a>
+                    <a name="//apple_ref/swift/Method/endTurnPressOnline(command:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC012endTurnPressB0ySS7command_tF">endTurnPressOnline(command:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates player deck and selected cards for drafting</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">endTurnPressOnline</span><span class="p">(</span><span class="nv">command</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>command</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>string received which determines
+the player deck to be modified</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Project_3@objc(cs)OnlineCardDraft(im)viewDeckPressed:"></a>
+                    <a name="//apple_ref/swift/Method/viewDeckPressed(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Project_3@objc(cs)OnlineCardDraft(im)viewDeckPressed:">viewDeckPressed(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a child subview to the parent view controller.
+This is used to have a menu popup when the menu button is pressed</p>
+
+<ul>
+<li>Sources:
+
+<ul>
+<li>function for creating popup adapted from <a href="https://www.youtube.com/watch?v=FgCIRMz_3dE">https://www.youtube.com/watch?v=FgCIRMz_3dE</a></li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">viewDeckPressed</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Player pressing button</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC23connectedDevicesChangedyAA20ScreenServiceManagerC7manager_SaySSG0eF0tF"></a>
+                    <a name="//apple_ref/swift/Method/connectedDevicesChanged(manager:connectedDevices:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC23connectedDevicesChangedyAA20ScreenServiceManagerC7manager_SaySSG0eF0tF">connectedDevicesChanged(manager:connectedDevices:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Empty function which recieves the names of connected devices to the MultiPeer session</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">connectedDevicesChanged</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt"><a href="../Classes/ScreenServiceManager.html">ScreenServiceManager</a></span><span class="p">,</span> <span class="nv">connectedDevices</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>ScreenServiceManager</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connectedDevices</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Names of devices connected to</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Project_315OnlineCardDraftC13screenChangedyAA20ScreenServiceManagerC7manager_SS0E6StringtF"></a>
+                    <a name="//apple_ref/swift/Method/screenChanged(manager:screenString:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Project_315OnlineCardDraftC13screenChangedyAA20ScreenServiceManagerC7manager_SS0E6StringtF">screenChanged(manager:screenString:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Using commands recieved via screenString makes changes to recieving device</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">screenChanged</span><span class="p">(</span><span class="nv">manager</span><span class="p">:</span> <span class="kt"><a href="../Classes/ScreenServiceManager.html">ScreenServiceManager</a></span><span class="p">,</span> <span class="nv">screenString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>ScreenServiceManager</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>screenString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String recieved from MultiPeer connected device</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-11-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
