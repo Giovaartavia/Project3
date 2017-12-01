@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1006"
             endingLineNumber = "1006"
-            landmarkName = "animateShuffle(currPlayer:)"
+            landmarkName = "animateHandyDiscard(currPlayer:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

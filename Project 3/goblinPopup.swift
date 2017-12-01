@@ -9,22 +9,30 @@
 import Foundation
 import UIKit
 
+/// goblinPopup class that pops up an overlay that displays the goblin cards
+/// - Sources:
+///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///
 class goblinPopup: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
     }
     
+    /// Closes the popup when pressed.
     @IBAction func closeButtonPressed(_ sender: Any) {
         self.view.removeFromSuperview()
     }
     
+    ///displays the number of the shown card in the deck
     @IBOutlet weak var numInDeck: UILabel!
+    ///displays the card image
     @IBOutlet weak var cardImage: UIImageView!
     
     let deckArray = ["Horde-Ransack-Single", "Loot-Tool-Single", "Goblin-Greed-Single", "Sleight-of-Hand-Single", "Handy-Discount-Single", "Money-is-Power-Single", "Coin-Craze-Single"];
     var loc = 0;
     
+    ///shows the next card and updates the number of cards in the deck
     @IBAction func nextCard(_ sender: Any) {
         //print("NEXT")
         if(loc == 6)
@@ -46,6 +54,7 @@ class goblinPopup: UIViewController {
         cardImage.image = UIImage(named: deckArray[loc]);
     }
     
+    ///shows the prev card and updates the number of cards in the deck
     @IBAction func prevCard(_ sender: Any) {
         //print("PREV")
         if(loc == 0)

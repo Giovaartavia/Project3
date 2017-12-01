@@ -110,6 +110,8 @@ class OnlineViewPlayGame: UIViewController {
     
     ///Function that is called once a player presses the menu button.
     ///Shows a popup of the menu viewcontroller.
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
     /// - Parameters:
     ///   - sender: Button that is being pressed
     @IBAction func onlimeMenuButtonPressed(_ sender: Any) {
