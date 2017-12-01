@@ -421,7 +421,11 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
         }
     }
     
-    ///Button no longer used
+    /// Adds a child subview to the parent view controller.
+    /// This is used to have a menu popup when the menu button is pressed
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+    /// - Parameter sender: Player pressing button
     @IBAction func viewDeckPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "OnlineGamePlayingScreen", bundle: nil)
         let viewController = popup.instantiateViewController(withIdentifier: ("onlineMenuPopupID")) as! OnlineMenuPopup

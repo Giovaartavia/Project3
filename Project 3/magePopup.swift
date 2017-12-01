@@ -9,24 +9,31 @@
 import Foundation
 import UIKit
 
+/// magePopup class that pops up an overlay that displays the mage cards
+/// - Sources:
+///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///
 class magePopup: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
     }
     
+    /// Closes the popup when pressed.
     @IBAction func closeButtonPressed(_ sender: Any) {
         self.view.removeFromSuperview()
     }
     
     
     
-    
+    ///displays the number of the shown card in the deck
     @IBOutlet weak var numInDeck: UILabel!
+    ///displays the card image
     @IBOutlet weak var cardImage: UIImageView!
     let deckArray = ["Magical-Bolt-Single", "Arcane-Burst-Single", "Voodoo-Doll-Single", "Spell-Tome-Single", "Mana-Potion-Single"]
     var loc = 0;
     
+    ///shows the next card and updates the number of cards in the deck
     @IBAction func nextCard(_ sender: Any) {
         //print("NEXT")
         if(loc == 4)
@@ -48,6 +55,7 @@ class magePopup: UIViewController {
         cardImage.image = UIImage(named: deckArray[loc]);
     }
     
+    ///shows the prev card and updates the number of cards in the deck
     @IBAction func prevCard(_ sender: Any) {
         //print("PREV")
         if(loc == 0)

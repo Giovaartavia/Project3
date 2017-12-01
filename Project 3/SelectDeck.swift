@@ -57,6 +57,9 @@ class SelectionDeck1: UIViewController {
     }
     
     /// Function that shows Warrior cards as a popup for Player 1 when Warrior's picture is clicked.
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+    /// - Parameter sender: Player pressing button
     @IBAction func warriorPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "warriorPopupID") as! warriorPopup
         self.addChildViewController(popup)
@@ -66,6 +69,9 @@ class SelectionDeck1: UIViewController {
     }
     
     /// Function that shows Mage cards as a popup for Player 1 when Mage's picture is clicked.
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+    /// - Parameter sender: Player pressing button
     @IBAction func magePress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "magePopupID") as! magePopup
         self.addChildViewController(popup)
@@ -75,6 +81,9 @@ class SelectionDeck1: UIViewController {
     }
     
     /// Function that shows Goblin cards as a popup for Player 1 when Goblin's picture is clicked.
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+    /// - Parameter sender: Player pressing button
     @IBAction func goblinPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "goblinPopupID") as! goblinPopup
         self.addChildViewController(popup)
@@ -131,7 +140,8 @@ class SelectionDeck2: UIViewController {
     }
     
     /// Function that shows Warrior cards as a popup for Player 2 when Warrior's picture is clicked.
-    ///
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
     /// - Parameter sender: Player pressing button
     @IBAction func warriorPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "warriorPopupID") as! warriorPopup
@@ -141,8 +151,9 @@ class SelectionDeck2: UIViewController {
         popup.didMove(toParentViewController: self)
     }
     
-    /// Function that shows Mage cards as a popup for Player 1 when Mage's picture is clicked.
-    ///
+    /// Function that shows Mage cards as a popup for Player 2 when Mage's picture is clicked.
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
     /// - Parameter sender: Player pressing button
     @IBAction func magePress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "magePopupID") as! magePopup
@@ -152,8 +163,9 @@ class SelectionDeck2: UIViewController {
         popup.didMove(toParentViewController: self)
     }
     
-    /// Function that shows Goblin cards as a popup for Player 1 when Goblin's picture is clicked.
-    ///
+    /// Function that shows Goblin cards as a popup for Player 2 when Goblin's picture is clicked.
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
     /// - Parameter sender: Player pressing button
     @IBAction func goblinPress(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "goblinPopupID") as! goblinPopup

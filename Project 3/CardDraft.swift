@@ -319,7 +319,8 @@ class CardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     /// Adds a child subview to the parent view controller.
     /// This is used to have a menu popup when the menu button is pressed
-    ///
+    /// - Sources:
+    ///     - function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
     /// - Parameter sender: Player pressing button
     @IBAction func menuPressed(_ sender: Any) {
         let popup = UIStoryboard(name: "GamePlayingScreen", bundle: nil).instantiateViewController(withIdentifier: "menuPopupID") as! menuPopup
