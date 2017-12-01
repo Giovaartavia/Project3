@@ -445,7 +445,7 @@ class OnlineCardDraft: UIViewController, iCarouselDataSource, iCarouselDelegate 
     
 }
 
-//extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
+///extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineCardDraft : ScreenServiceManagerDelegate
 {
     

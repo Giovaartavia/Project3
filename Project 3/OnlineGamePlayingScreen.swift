@@ -2029,7 +2029,7 @@ class OnlineViewPlayGame: UIViewController {
     }
 }
 
-//extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
+///extends OnlineViewPLayGame to add in ScreenServiceManager MultiPeer functions
 extension OnlineViewPlayGame : ScreenServiceManagerDelegate
 {
 
