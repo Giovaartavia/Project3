@@ -212,24 +212,92 @@ SWIFT_CLASS("_TtC9Project_311AppDelegate")
 @class NSBundle;
 @class NSCoder;
 
+/// Class that calls and creates a carrousel to select neutral cards.
 SWIFT_CLASS("_TtC9Project_39CardDraft")
 @interface CardDraft : UIViewController <iCarouselDataSource, iCarouselDelegate>
+/// iCarousel object
 @property (nonatomic, strong) IBOutlet iCarousel * _Null_unspecified viewCaro;
+/// label that tells us which player is drafting
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified playerLabel;
+/// label that tells us how many cards are selected of a given type
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified selectLabel;
+/// label that tells us how many cards are available to select of a given type
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified availableLabel;
+/// label that tells the player how many more cards to draft
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified howManyLabel;
+/// Returns the number of items in the carousel.
+/// \param in carousel Carousel object of type iCarousel.
+///
 - (NSInteger)numberOfItemsInCarousel:(iCarousel * _Nonnull)carousel SWIFT_WARN_UNUSED_RESULT;
+/// Creates a ui image view and sets images to the view
+/// <ul>
+///   <li>
+///     Return: A UIView
+///   </li>
+/// </ul>
+/// \param carousel iCarousel object
+///
+/// \param viewForItemAt index Int value of item index
+///
+/// \param reusing view Reused UIView
+///
 - (UIView * _Nonnull)carousel:(iCarousel * _Nonnull)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView * _Nullable)view SWIFT_WARN_UNUSED_RESULT;
+/// Sets the spacing inbetween carousel images
+/// <ul>
+///   <li>
+///     Return: CGFloat value
+///   </li>
+/// </ul>
+/// \param carousel iCarousel object
+///
+/// \param valueFor option option for the selected iCarousel
+///
+/// \param withDefault value CGFloat value of iCarousel
+///
 - (CGFloat)carousel:(iCarousel * _Nonnull)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value SWIFT_WARN_UNUSED_RESULT;
+/// This function is called when ever the carousel is moved. Either by tap or slide gesture
+/// \param carousel iCarousel object
+///
 - (void)carouselCurrentItemIndexDidChange:(iCarousel * _Nonnull)carousel;
+/// This function is called once the Card Draft is loaded.
 - (void)viewDidLoad;
+/// Outlet for the add card button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified addButton;
+/// Checks if the player can add any more cards or not
+/// If so, calls addCard, updates labels, and updates selected/available array values
+/// \param sender Player pressing button
+///
 - (IBAction)addButtonPress:(id _Nonnull)sender;
+/// Outlet for the remove card button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified removeButton;
+/// Checks if the player can remove any more cards or not
+/// If so, calls removeCard, updates labels, and updates selected/available array values
+/// \param sender Player pressing button
+///
 - (IBAction)removeButtonPress:(id _Nonnull)sender;
+/// Outlet for the end turn button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified endTurnButton;
+/// Checks if the player has selected two cards, what turn it currently is, and how many turns have passed
+/// If player one’s turn, go to player two’s and vice versa
+/// If the number of turns is 12, take steps to end the drafting phase
+/// This calls to updateLabels, and resets all of the selected values for the next player’s turn
+/// \param sender Player pressing button
+///
 - (IBAction)endTurnButtonPress:(id _Nonnull)sender;
+/// Adds a child subview to the parent view controller.
+/// This is used to have a menu popup when the menu button is pressed
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
 - (IBAction)menuPressed:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -237,7 +305,7 @@ SWIFT_CLASS("_TtC9Project_39CardDraft")
 
 @class UIImageView;
 
-/// Class that contains the coin flip screen.
+/// Class that contains the coin flip screen, flips a coin, and depending on the value chooses a player to begin drafting.
 SWIFT_CLASS("_TtC9Project_38CoinFlip")
 @interface CoinFlip : UIViewController
 /// Image used for the coin. Either Heads or Tails
@@ -248,7 +316,7 @@ SWIFT_CLASS("_TtC9Project_38CoinFlip")
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified flipVisibility;
 /// Button that shows the next button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified nextVisibility;
-/// Function that flips a coin
+/// Function that flips a coin and depending on the value shows a picture and chooses starting player.
 /// \param sender Player pressing button
 ///
 - (IBAction)flipCoin:(id _Nonnull)sender;
@@ -257,24 +325,101 @@ SWIFT_CLASS("_TtC9Project_38CoinFlip")
 @end
 
 
+/// Class that calls and creates a carrousel to select neutral cards.
 SWIFT_CLASS("_TtC9Project_315OnlineCardDraft")
 @interface OnlineCardDraft : UIViewController <iCarouselDataSource, iCarouselDelegate>
+/// iCarousel object
 @property (nonatomic, strong) IBOutlet iCarousel * _Null_unspecified viewCaro;
+/// label that tells us which player is drafting
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified playerLabel;
+/// label that tells us how many cards are selected of a given type
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified selectLabel;
+/// label that tells us how many cards are available to select of a given type
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified availableLabel;
+/// label that tells the player how many more cards to draft
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified howManyLabel;
+/// Returns the number of items in the carousel.
+/// \param in carousel Carousel object of type iCarousel.
+///
 - (NSInteger)numberOfItemsInCarousel:(iCarousel * _Nonnull)carousel SWIFT_WARN_UNUSED_RESULT;
+/// Creates a ui image view and sets images to the view
+/// <ul>
+///   <li>
+///     Return: A UIView
+///   </li>
+/// </ul>
+/// \param carousel Player Object who is executing their turn
+///
+/// \param viewForItemAt index Player Object who is not executing their turn
+///
+/// \param reusing view Player Object who is not executing their turn
+///
 - (UIView * _Nonnull)carousel:(iCarousel * _Nonnull)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView * _Nullable)view SWIFT_WARN_UNUSED_RESULT;
+/// Creates a ui image view and sets images to the view
+/// <ul>
+///   <li>
+///     Return: A UIView
+///   </li>
+/// </ul>
+/// \param carousel iCarousel object
+///
+/// \param viewForItemAt index Int value of item index
+///
+/// \param reusing view Reused UIView
+///
 - (CGFloat)carousel:(iCarousel * _Nonnull)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value SWIFT_WARN_UNUSED_RESULT;
+/// Sets the spacing inbetween carousel images
+/// <ul>
+///   <li>
+///     Return: CGFloat value
+///   </li>
+/// </ul>
+/// \param carousel iCarousel object
+///
+/// \param valueFor option option for the selected iCarousel
+///
+/// \param withDefault value CGFloat value of iCarousel
+///
 - (void)carouselCurrentItemIndexDidChange:(iCarousel * _Nonnull)carousel;
+/// This function is called once the Card Draft is loaded.
 - (void)viewDidLoad;
+/// Outlet for the add card button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified addButton;
+/// Checks if the player can add any more cards or not
+/// If so, calls addCard, updates labels, and updates selected/available array values
+/// \param sender Player pressing button
+///
 - (IBAction)addButtonPress:(id _Nonnull)sender;
+/// Outlet for the remove card button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified removeButton;
+/// Checks if the player can remove any more cards or not
+/// If so, calls removeCard, updates labels, and updates selected/available array values
+/// \param sender Player pressing button
+///
 - (IBAction)removeButtonPress:(id _Nonnull)sender;
+/// Outlet for the end turn button
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified endTurnButton;
+/// Checks if the player has selected two cards, what turn it currently is, and how many turns have passed
+/// If player one’s turn, go to player two’s and vice versa
+/// If the number of turns is 12, take steps to end the drafting phase
+/// This calls to updateLabels, and resets all of the selected values for the next player’s turn
+/// \param sender Player pressing button
+///
 - (IBAction)endTurnButtonPress:(id _Nonnull)sender;
+/// Adds a child subview to the parent view controller.
+/// This is used to have a menu popup when the menu button is pressed
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
 - (IBAction)viewDeckPressed:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -299,6 +444,9 @@ SWIFT_CLASS("_TtC9Project_314OnlineCoinFlip")
 /// \param sender Player pressing button
 ///
 - (IBAction)flipCoin:(id _Nonnull)sender;
+/// Function sends string using MultiPeer connectivity
+/// \param sender Player pressing button
+///
 - (IBAction)coinFlipNext:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -307,10 +455,14 @@ SWIFT_CLASS("_TtC9Project_314OnlineCoinFlip")
 
 
 
+/// Class that shows the online menu as a popup while hiding background by making it a darker color.
 SWIFT_CLASS("_TtC9Project_315OnlineMenuPopup")
 @interface OnlineMenuPopup : UIViewController
+/// Executed when the popup is loaded. Changes the background color and initialized the multipeer service.
 - (void)viewDidLoad;
+/// Closes the popup when pressed.
 - (IBAction)closeButtonPressed:(id _Nonnull)sender;
+/// Executed when the “quit” button is pressed. Calls screenChanged from the class extension, giving it the string of “surrender”.
 - (IBAction)onlineSurrenderButtonPress:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -320,7 +472,8 @@ SWIFT_CLASS("_TtC9Project_315OnlineMenuPopup")
 
 @class UISegmentedControl;
 
-/// Class that handles player 1’s class/deck selection
+/// Online class that handles Player 1’s class cards selection.
+/// Player 1 can either be a Mage, Warrior, or Goblin.
 SWIFT_CLASS("_TtC9Project_320OnlineSelectionDeck1")
 @interface OnlineSelectionDeck1 : UIViewController
 - (void)viewDidLoad;
@@ -347,7 +500,8 @@ SWIFT_CLASS("_TtC9Project_320OnlineSelectionDeck1")
 
 
 
-/// Class that handles player 2’s class/deck selection
+/// Online class that handles Player 2’s class cards selection.
+/// Player 2 can either be a Mage, Warrior, or Goblin.
 SWIFT_CLASS("_TtC9Project_320OnlineSelectionDeck2")
 @interface OnlineSelectionDeck2 : UIViewController
 - (void)viewDidLoad;
@@ -376,12 +530,26 @@ SWIFT_CLASS("_TtC9Project_320OnlineSelectionDeck2")
 @class UIVisualEffectView;
 @class UIGestureRecognizer;
 
-/// Assigned by the coin flip
 /// Class that contains the entire game playing screen.
 SWIFT_CLASS("_TtC9Project_318OnlineViewPlayGame")
 @interface OnlineViewPlayGame : UIViewController
 /// This function is called once the View Play Game Screen is loaded
 - (void)viewDidLoad;
+/// Function that is called once a player presses the menu button.
+/// Shows a popup of the menu viewcontroller.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Button that is being pressed
+///
+- (IBAction)onlimeMenuButtonPressed:(id _Nonnull)sender;
 /// Image used for Player 1’s Top Card
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified topCard1;
 /// Image used for Player 2’s Top Card
@@ -486,7 +654,7 @@ SWIFT_CLASS("_TtC9Project_318OnlineViewPlayGame")
 - (IBAction)placeBottomPress:(id _Nonnull)sender;
 /// Calls on endTurn function
 /// Replenishes stamina, updates total stamina, and checks for buffs/debuffs
-/// Chenges turn
+/// Changes turn
 /// \param sender PLayer pressing button
 ///
 - (IBAction)endTurnPress:(id _Nonnull)sender;
@@ -509,6 +677,8 @@ SWIFT_CLASS("_TtC9Project_318OnlineViewPlayGame")
 
 
 
+/// Code from: https://www.ralfebert.de/tutorials/ios-swift-multipeer-connectivity/
+/// Multipeer Connectivity Framework
 SWIFT_CLASS("_TtC9Project_320ScreenServiceManager")
 @interface ScreenServiceManager : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -543,7 +713,8 @@ SWIFT_CLASS("_TtC9Project_320ScreenServiceManager")
 @end
 
 
-/// Class that handles player 1’s class/deck selection
+/// Class that handles Player 1’s class cards selection.
+/// Player 1 can either be a Mage, Warrior, or Goblin.
 SWIFT_CLASS("_TtC9Project_314SelectionDeck1")
 @interface SelectionDeck1 : UIViewController
 - (void)viewDidLoad;
@@ -563,12 +734,55 @@ SWIFT_CLASS("_TtC9Project_314SelectionDeck1")
 /// \param sender function called when button is pressed
 ///
 - (IBAction)confirmSelection:(id _Nonnull)sender;
+/// Function that shows Warrior cards as a popup for Player 1 when Warrior’s picture is clicked.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
+- (IBAction)warriorPress:(id _Nonnull)sender;
+/// Function that shows Mage cards as a popup for Player 1 when Mage’s picture is clicked.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
+- (IBAction)magePress:(id _Nonnull)sender;
+/// Function that shows Goblin cards as a popup for Player 1 when Goblin’s picture is clicked.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
+- (IBAction)goblinPress:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-/// Class that handles player 2’s class/deck selection
+/// Class that handles Player 1’s class cards selection.
+/// Player 1 can either be a Mage, Warrior, or Goblin.
 SWIFT_CLASS("_TtC9Project_314SelectionDeck2")
 @interface SelectionDeck2 : UIViewController
 - (void)viewDidLoad;
@@ -588,6 +802,48 @@ SWIFT_CLASS("_TtC9Project_314SelectionDeck2")
 /// \param sender function called when button is pressed
 ///
 - (IBAction)confirmSelection:(id _Nonnull)sender;
+/// Function that shows Warrior cards as a popup for Player 2 when Warrior’s picture is clicked.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
+- (IBAction)warriorPress:(id _Nonnull)sender;
+/// Function that shows Mage cards as a popup for Player 2 when Mage’s picture is clicked.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
+- (IBAction)magePress:(id _Nonnull)sender;
+/// Function that shows Goblin cards as a popup for Player 2 when Goblin’s picture is clicked.
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
+- (IBAction)goblinPress:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -599,16 +855,16 @@ SWIFT_CLASS("_TtC9Project_38Tutorial")
 /// Image the shows a tutorial page
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified TutorialImage;
 /// Function that moves the tutorial image to the previous image
+/// \param sender Player pressing button
+///
 - (IBAction)PrevScreen:(id _Nonnull)sender;
 /// Function that moves the tutorial image to the next image
+/// \param sender Player pressing button
+///
 - (IBAction)NextScreen:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
-
-
 
 
 /// Class for view controllers. Handles some warnings. Mainly used when we were learning swift.
@@ -732,14 +988,28 @@ SWIFT_CLASS("_TtC9Project_312ViewPlayGame")
 - (IBAction)placeBottomPress:(id _Nonnull)sender;
 /// Calls on endTurn function
 /// Replenishes stamina, updates total stamina, and checks for buffs/debuffs
-/// Chenges turn
-/// \param sender PLayer pressing button
+/// Changes turn
+/// \param sender Player pressing button
 ///
 - (IBAction)endTurnPress:(id _Nonnull)sender;
 /// Call on shuffleCards function and update players shuffleCount stat
 /// \param sender Player pressing button
 ///
 - (IBAction)shufflePress:(id _Nonnull)sender;
+/// Adds a child subview to the parent view controller.
+/// This is used to have a menu popup when the menu button is pressed
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+/// \param sender Player pressing button
+///
 - (IBAction)menuPressed:(id _Nonnull)sender;
 /// Function that ends the game
 /// \param sender Surrender button is pressed
@@ -754,10 +1024,99 @@ SWIFT_CLASS("_TtC9Project_312ViewPlayGame")
 @end
 
 
+/// goblinPopup class that pops up an overlay that displays the goblin cards
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC9Project_311goblinPopup")
+@interface goblinPopup : UIViewController
+- (void)viewDidLoad;
+/// Closes the popup when pressed.
+- (IBAction)closeButtonPressed:(id _Nonnull)sender;
+/// displays the number of the shown card in the deck
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified numInDeck;
+/// displays the card image
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified cardImage;
+/// shows the next card and updates the number of cards in the deck
+- (IBAction)nextCard:(id _Nonnull)sender;
+/// shows the prev card and updates the number of cards in the deck
+- (IBAction)prevCard:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// magePopup class that pops up an overlay that displays the mage cards
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC9Project_39magePopup")
+@interface magePopup : UIViewController
+- (void)viewDidLoad;
+/// Closes the popup when pressed.
+- (IBAction)closeButtonPressed:(id _Nonnull)sender;
+/// displays the number of the shown card in the deck
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified numInDeck;
+/// displays the card image
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified cardImage;
+/// shows the next card and updates the number of cards in the deck
+- (IBAction)nextCard:(id _Nonnull)sender;
+/// shows the prev card and updates the number of cards in the deck
+- (IBAction)prevCard:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Class that shows the menu as a popup while hiding background by making it a darker color.
 SWIFT_CLASS("_TtC9Project_39menuPopup")
 @interface menuPopup : UIViewController
 - (void)viewDidLoad;
+/// Closes the popup when pressed.
 - (IBAction)closeButtonPressed:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// warriorPopup class that pops up an overlay that displays the warrior cards
+/// <ul>
+///   <li>
+///     Sources:
+///     <ul>
+///       <li>
+///         function for creating popup adapted from https://www.youtube.com/watch?v=FgCIRMz_3dE
+///       </li>
+///     </ul>
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC9Project_312warriorPopup")
+@interface warriorPopup : UIViewController
+- (void)viewDidLoad;
+/// Closes the popup when pressed.
+- (IBAction)closeButtonPressed:(id _Nonnull)sender;
+/// displays the number of the shown card in the deck
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified numInDeck;
+/// displays the card image
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified cardImage;
+/// shows the next card and updates the number of cards in the deck
+- (IBAction)nextCard:(id _Nonnull)sender;
+/// shows the prev card and updates the number of cards in the deck
+- (IBAction)prevCard:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

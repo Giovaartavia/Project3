@@ -1,18 +1,20 @@
 version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
 options: "7c17504eef9fb3e07fb261d5a1b81836"
-build_time: [1512000852, 847730000]
+build_time: [1512087774, 733999000]
 inputs:
   "/Users/jamesglass/EECS448/Project3/Project 3/CoinFlip.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/GamePlayingScreen.swift": [9223372036, 854775807]
-  "/Users/jamesglass/EECS448/Project3/GIFANIMATE.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCoinFlip.swift": [9223372036, 854775807]
+  "/Users/jamesglass/EECS448/Project3/Project 3/goblinPopup.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/Main.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/OnlineServiceManager.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/OnlineCardDraft.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/OnlineGamePlayingScreen.swift": [9223372036, 854775807]
+  "/Users/jamesglass/EECS448/Project3/Project 3/warriorPopup.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/OnlineSelectDeck.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/menuPopup.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/ViewController.swift": [9223372036, 854775807]
+  "/Users/jamesglass/EECS448/Project3/Project 3/magePopup.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/CardDraft.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/SelectDeck.swift": [9223372036, 854775807]
   "/Users/jamesglass/EECS448/Project3/Project 3/OnlineMenuPopup.swift": [9223372036, 854775807]
